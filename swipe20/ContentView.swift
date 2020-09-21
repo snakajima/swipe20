@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var page = 0
     var body: some View {
         VStack {
+            Playground()
             SwipeView(scene:scene)
             Button("Play") {
                 print("play")
