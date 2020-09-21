@@ -38,6 +38,7 @@ struct SwipeElement {
         if let backgroundColor = self.backgroundColor {
             layer.backgroundColor = backgroundColor
         }
+        layer.cornerRadius = cornerRadius ?? 0
         
         return layer
     }
