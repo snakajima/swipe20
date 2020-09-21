@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        SwipeView(s_script1)
+        VStack {
+            SwipeView(s_script1)
+            Button("Play") {
+                print("play")
+            }
+        }
     }
 }
 

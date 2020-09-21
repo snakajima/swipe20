@@ -73,6 +73,11 @@ let s_script1:[String:Any] = [
 ]
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeView(s_script1)
+        VStack {
+            SwipeView(s_script1)
+            Button("Play") {
+                print("play")
+            }
+        }
     }
 }
