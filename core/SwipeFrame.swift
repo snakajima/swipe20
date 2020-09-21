@@ -16,14 +16,14 @@ struct SwipeFrame {
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
 
         var ids = [String]()
-        var elements = [String:SwipeElement]()
+        var elements:[String:SwipeElement] = base?.elements ?? [:]
         for elementScript in elementScripts {
             if let id = elementScript["id"] as? String {
                 ids.append(id)
                 elements[id] = SwipeElement(elementScript, base:base?.elements[id])
             }
         }
-        self.ids = ids
+        self.ids = base?.ids ?? ids
         self.elements = elements
     }
     
