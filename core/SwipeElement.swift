@@ -21,6 +21,7 @@ struct SwipeElement {
                              width: SwipeParser.asCGFloat(script, "w", 100),
                              height: SwipeParser.asCGFloat(script, "h", 100))
         layer.backgroundColor = NSColor.red.cgColor
+        layer.name = script["id"] as? String
         return layer
     }
 }

@@ -47,16 +47,29 @@ struct SwipeView: NSViewRepresentable {
     }
 }
 
-let s_script1 = [
+let s_script1:[String:Any] = [
     "scene":[
         "elements":[[
+            "id":"id0",
             "text":"Hello World",
             "x":200, "y":0, "w":80, "h":80
         ],[
+            "id":"id2",
             "text":"Hello World 2",
             "x":220, "y":100, "w":80, "h":80
         ]]
-    ]
+    ],
+    "pages":[[
+        "elements":[[
+            "elements":[[
+                "id":"id0",
+                "x":300, "y":10, "w":80, "h":80
+            ],[
+                "id":"id2",
+                "x":220, "y":100, "w":120, "h":60
+            ]]
+        ]]
+    ]]
 ]
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
