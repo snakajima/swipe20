@@ -27,6 +27,7 @@ struct SwipeView: NSViewRepresentable {
         let layer = CALayer()
         let layers = scene.makeLayers()
         layers.forEach { layer.addSublayer($0) }
+        layer.backgroundColor = NSColor.yellow.cgColor
         nsView.layer = layer
         return nsView
     }
@@ -36,14 +37,19 @@ struct SwipeView: NSViewRepresentable {
         guard let layer = nsView.layer else {
             return
         }
-            
-        layer.backgroundColor = NSColor.yellow.cgColor
+        context.coordinator.move(to: pageIndex, layer:layer)
     }
 
     class Coordinator: NSObject {
         let view: SwipeView
+        var pageIndex = 0
         init(_ view: SwipeView) {
             self.view = view
+        }
+        
+        func move(to:Int, layer:CALayer) {
+            pageIndex = to
+            print("moveTo called")
         }
     }
 }
