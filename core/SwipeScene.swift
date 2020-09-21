@@ -14,8 +14,11 @@ struct SwipeScene {
     
     init(_ script:[String:Any]?) {
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
+        var base:SwipeFrame? = nil
         self.frames = scriptFrames.map {
-            SwipeFrame($0)
+            let frame = SwipeFrame($0, base:base)
+            base = frame
+            return frame
         }
     }
     

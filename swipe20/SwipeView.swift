@@ -52,7 +52,7 @@ let s_script1:[String:Any] = [
             "text":"Hello World",
             "x":200, "y":0, "w":80, "h":80
         ],[
-            "id":"id2",
+            "id":"id1",
             "text":"Hello World 2",
             "x":220, "y":100, "w":80, "h":80
         ]]
@@ -61,15 +61,17 @@ let s_script1:[String:Any] = [
             "id":"id0",
             "x":300, "y":10, "w":80, "h":80
         ],[
-            "id":"id2",
+            "id":"id1",
             "x":220, "y":100, "w":120, "h":60
         ]]
     ],[
         "elements":[[
             "id":"id0",
             "x":300, "y":110, "w":80, "h":80
-        ],[
-            "id":"id2",
+        ]]
+    ],[
+        "elements":[[
+            "id":"id1",
             "x":220, "y":200, "w":120, "h":60
         ]]
     ]]
@@ -77,11 +79,7 @@ let s_script1:[String:Any] = [
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            //let scene = SwipeScene(s_script1)
-            //SwipeView(scene:scene)
-            Button("Play") {
-                print("play")
-            }
+            SwipeView(scene:scene, frameIndex: 0)
         }
     }
 }
