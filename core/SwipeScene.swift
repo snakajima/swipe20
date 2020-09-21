@@ -25,7 +25,7 @@ struct SwipeScene {
     }
     
     func apply(index:Int, to layers:[CALayer]) {
-        guard index < frames.count else {
+        guard index >= 0 && index < frames.count else {
             return
         }
         let frame = frames[index]
