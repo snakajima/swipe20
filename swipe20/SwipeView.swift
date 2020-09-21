@@ -28,6 +28,7 @@ struct SwipeView: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
+        print("updateNSView called")
         guard let layer = nsView.layer else {
             return
         }

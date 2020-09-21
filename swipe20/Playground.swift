@@ -7,12 +7,14 @@
 import SwiftUI
 
 struct Playground: View {
-    @State var value = 0
+    @State var value = CGFloat(0)
     @State var color = Color.green
+    @State var opacity = 1.0
     var body: some View {
         VStack {
             Rectangle()
                 .fill(color)
+                .opacity(opacity)
                 .frame(width:100, height:100)
             Text("Hello World \(value)")
             Button("Test") {
@@ -28,7 +30,8 @@ struct Playground: View {
                     case 4:
                         self.color = Color.black
                     default:
-                        self.color = Color.white
+                        self.color = Color.blue
+                        self.opacity = 0
                     }
                 }
             }
