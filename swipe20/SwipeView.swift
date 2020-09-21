@@ -42,6 +42,9 @@ private let s_script1 = [
         "elements":[[
             "text":"Hello World",
             "x":0, "y":0, "w":100, "h":100
+        ],[
+            "text":"Hello World 2",
+            "x":0, "y":100, "w":100, "h":100
         ]]
     ]
 ]
