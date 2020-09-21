@@ -12,6 +12,7 @@
 		742A094C2518633100862F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 742A094B2518633100862F36 /* Assets.xcassets */; };
 		742A094F2518633100862F36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 742A094E2518633100862F36 /* Preview Assets.xcassets */; };
 		742A09522518633100862F36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 742A09502518633100862F36 /* Main.storyboard */; };
+		742A095D251863FF00862F36 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A095C251863FF00862F36 /* SwipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		742A09512518633100862F36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		742A09532518633100862F36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		742A09542518633100862F36 /* swipe20.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swipe20.entitlements; sourceTree = "<group>"; };
+		742A095C251863FF00862F36 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 		742A093B2518632F00862F36 = {
 			isa = PBXGroup;
 			children = (
+				742A095B2518639C00862F36 /* core */,
 				742A09462518632F00862F36 /* swipe20 */,
 				742A09452518632F00862F36 /* Products */,
 			);
@@ -62,6 +65,7 @@
 				742A09532518633100862F36 /* Info.plist */,
 				742A09542518633100862F36 /* swipe20.entitlements */,
 				742A094D2518633100862F36 /* Preview Content */,
+				742A095C251863FF00862F36 /* SwipeView.swift */,
 			);
 			path = swipe20;
 			sourceTree = "<group>";
@@ -72,6 +76,13 @@
 				742A094E2518633100862F36 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		742A095B2518639C00862F36 /* core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
 				742A094A2518632F00862F36 /* ContentView.swift in Sources */,
 				742A09482518632F00862F36 /* AppDelegate.swift in Sources */,
 			);
