@@ -7,10 +7,11 @@
 
 import Foundation
 
-class SwipeScene {
+struct SwipeScene {
     let elements:[SwipeElement]
-    init(_ script:[String:Any]) {
-        guard let elements = script["elements"] as? [[String:Any]] else {
+    init(_ script:[String:Any]?) {
+        guard let script = script,
+              let elements = script["elements"] as? [[String:Any]] else {
             self.elements = []
             return
         }

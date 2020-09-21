@@ -9,7 +9,12 @@ import Foundation
 import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
+    let scene:SwipeScene
+    let pages:[SwipePage]
     init(_ script:[String:Any]) {
+        self.scene = SwipeScene(script["scene"] as? [String:Any])
+        let pages = script["pages"] as? [[String:Any]] ?? [[String:Any]]()
+        self.pages = pages.map { SwipePage($0) }
     }
     
     func makeCoordinator() -> Coordinator {

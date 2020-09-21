@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SwipeElement {
+struct SwipeElement {
     init(_ script:[String:Any]) {
         
     }

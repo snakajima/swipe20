@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SwipePage {
+struct SwipePage {
     init(_ script:[String:Any]) {
         
     }
