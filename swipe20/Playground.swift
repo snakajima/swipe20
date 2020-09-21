@@ -16,7 +16,7 @@ struct Playground: View {
                 .frame(width:100, height:100)
             Text("Hello World \(value)")
             Button("Test") {
-                withAnimation { () -> Void in
+                withAnimation(.easeIn(duration: 2.0)) { () -> Void in
                     self.value += 1
                     switch(self.value) {
                     case 1:
