@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            SwipeView(s_script1)
+            let scene = SwipeScene(s_script1)
+            SwipeView(scene:scene)
             Button("Play") {
                 print("play")
             }

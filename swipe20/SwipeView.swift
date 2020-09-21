@@ -10,8 +10,8 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    init(_ script:[String:Any]) {
-        self.scene = SwipeScene(script)
+    init(scene:SwipeScene) {
+        self.scene = scene
     }
     
     func makeCoordinator() -> Coordinator {
@@ -68,7 +68,8 @@ let s_script1:[String:Any] = [
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            SwipeView(s_script1)
+            let scene = SwipeScene(s_script1)
+            SwipeView(scene:scene)
             Button("Play") {
                 print("play")
             }
