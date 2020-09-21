@@ -13,7 +13,7 @@ struct SwipeScene {
     var frameCount:Int { frames.count }
     
     init(_ script:[String:Any]?) {
-        let scriptFrames = script?["frames"] as? [[String:Any]] ?? [[String:Any]]()
+        let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         self.frames = scriptFrames.map {
             SwipeFrame($0)
         }
