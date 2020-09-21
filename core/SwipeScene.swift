@@ -17,11 +17,12 @@ struct SwipeScene {
         }
     }
     
-    func makeLayers() -> [CALayer] {
-        guard let frame = frames.first else {
-            return []
+    func makeLayer() -> CALayer {
+        let layer = CALayer()
+        if let frame = frames.first {
+            layer.sublayers = frame.makeLayers()
         }
-        return frame.makeLayers()
+        return layer
     }
     
     func apply(index:Int, to layers:[CALayer]) {

@@ -24,11 +24,7 @@ struct SwipeView: NSViewRepresentable {
     func makeNSView(context: Context) -> some NSView {
         print("makeNSView called")
         let nsView = NSView()
-        let layer = CALayer()
-        let layers = scene.makeLayers()
-        layers.forEach { layer.addSublayer($0) }
-        layer.backgroundColor = NSColor.yellow.cgColor
-        nsView.layer = layer
+        nsView.layer = scene.makeLayer()
         return nsView
     }
     
