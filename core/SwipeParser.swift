@@ -36,10 +36,7 @@ struct SwipeParser {
         "lightGray":CGColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1.0),
     ]
     
-    static func parseColor(_ value:Any?, defaultColor:CGColor = colorMap["clear"]!) -> CGColor {
-        if value == nil {
-            return defaultColor
-        }
+    static func parseColor(_ value:Any?) -> CGColor? {
         if let rgba = value as? [String: Any] {
             var red:CGFloat = 0.0, blue:CGFloat = 0.0, green:CGFloat = 0.0
             var alpha:CGFloat = 1.0
@@ -91,9 +88,9 @@ struct SwipeParser {
                     }
                     return CGColor(red: CGFloat(r)/255, green: CGFloat(g%256)/255, blue: CGFloat(b%256)/255, alpha: CGFloat(a%256)/255)
                 }
-                return colorMap["green"]!
+                return nil
             }
         }
-        return colorMap["red"]!
+        return nil
     }
 }

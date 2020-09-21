@@ -24,7 +24,6 @@ struct SwipeScene {
     
     func makeLayer() -> CALayer {
         let layer = CALayer()
-        layer.backgroundColor = CGColor(srgbRed: 1.0, green: 1.0, blue: 0.5, alpha: 1.0)
         if let frame = frames.first {
             layer.sublayers = frame.makeLayers()
         }
