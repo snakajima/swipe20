@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var page = 0
     var body: some View {
         VStack {
             let scene = SwipeScene(s_script1)
             SwipeView(scene:scene)
             Button("Play") {
                 print("play")
+                self.page = 1
             }
         }
     }
