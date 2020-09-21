@@ -23,15 +23,20 @@ struct SwipeView: NSViewRepresentable {
     
     func makeNSView(context: Context) -> some NSView {
         let nsView = NSView()
-        nsView.layer = CALayer()
+        let layer = CALayer()
+        let layers = scene.makeLayers()
+        layers.forEach { layer.addSublayer($0) }
+        nsView.layer = layer
         return nsView
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
-        if let layer = nsView.layer {
-            layer.backgroundColor = NSColor.yellow.cgColor
+        guard let layer = nsView.layer else {
+            return
         }
-        //
+            
+        layer.backgroundColor = NSColor.yellow.cgColor
+        
     }
 
     class Coordinator: NSObject {

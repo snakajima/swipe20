@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Cocoa
 
 struct SwipeScene {
     let elements:[SwipeElement]
@@ -18,5 +19,9 @@ struct SwipeScene {
         self.elements = elements.map { (elementScript) -> SwipeElement in
             SwipeElement(elementScript)
         }
+    }
+    
+    func makeLayers() -> [CALayer] {
+        return elements.map { $0.makeLayer() }
     }
 }
