@@ -10,11 +10,8 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    let pages:[SwipeFrame]
     init(_ script:[String:Any]) {
-        self.scene = SwipeScene(script["scene"] as? [String:Any])
-        let pages = script["pages"] as? [[String:Any]] ?? [[String:Any]]()
-        self.pages = pages.map { SwipeFrame($0) }
+        self.scene = SwipeScene(script)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -48,7 +45,7 @@ struct SwipeView: NSViewRepresentable {
 }
 
 let s_script1:[String:Any] = [
-    "scene":[
+    "frames":[[
         "elements":[[
             "id":"id0",
             "text":"Hello World",
@@ -58,8 +55,7 @@ let s_script1:[String:Any] = [
             "text":"Hello World 2",
             "x":220, "y":100, "w":80, "h":80
         ]]
-    ],
-    "pages":[[
+    ],[
         "elements":[[
             "id":"id0",
             "x":300, "y":10, "w":80, "h":80
