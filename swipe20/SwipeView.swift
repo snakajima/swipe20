@@ -79,7 +79,7 @@ let s_script1:[String:Any] = [
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            SwipeView(scene:scene, frameIndex: 0)
+            SwipeView(scene:scene, frameIndex: 1)
         }
     }
 }
