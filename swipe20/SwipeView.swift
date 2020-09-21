@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    @Binding var pageIndex: Int
+    var pageIndex: Int
     /*
     init(scene:SwipeScene) {
         self.scene = scene

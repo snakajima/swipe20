@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             //Playground()
-            SwipeView(scene:scene, pageIndex:$page)
+            SwipeView(scene:scene, pageIndex:page)
             Text("PageIndex = \(self.page)")
             Button("Play") {
                 print("play")
