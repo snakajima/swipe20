@@ -34,10 +34,10 @@ struct SwipeView: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
         print("updateNSView called \(pageIndex)")
-        guard let layer = nsView.layer else {
+        guard let layers = nsView.layer?.sublayers else {
             return
         }
-        context.coordinator.move(to: pageIndex, layer:layer)
+        context.coordinator.move(to: pageIndex, layers:layers)
     }
 
     class Coordinator: NSObject {
@@ -46,8 +46,8 @@ struct SwipeView: NSViewRepresentable {
             self.view = view
         }
         
-        func move(to pageIndex:Int, layer:CALayer) {
-            view.scene.apply(index: pageIndex, to: layer.sublayers ?? [])
+        func move(to pageIndex:Int, layers:[CALayer]) {
+            view.scene.apply(index: pageIndex, to: layers)
         }
     }
 }
