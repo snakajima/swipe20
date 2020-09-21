@@ -17,10 +17,12 @@ struct SwipeFrame {
 
         var ids = [String]()
         var elements = [String:SwipeElement]()
+        var prevElement:SwipeElement?
         for elementScript in elementScripts {
             if let id = elementScript["id"] as? String {
                 ids.append(id)
-                elements[id] = SwipeElement(elementScript)
+                elements[id] = SwipeElement(elementScript, base:prevElement)
+                prevElement = elements[id]
             }
         }
         self.ids = ids
