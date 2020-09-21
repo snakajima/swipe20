@@ -21,7 +21,7 @@ struct SwipeElement {
                        y: SwipeParser.asCGFloat(script["y"], origin.y),
                        width: SwipeParser.asCGFloat(script["w"], size.width),
                        height: SwipeParser.asCGFloat(script["h"], size.height))
-        backgroundColor = SwipeParser.parseColor(script["bg"])
+        backgroundColor = SwipeParser.parseColor(script["bg"]) ?? base?.backgroundColor
         name = script["id"] as? String
     }
     
