@@ -50,6 +50,7 @@ struct SwipeView: NSViewRepresentable {
         func move(to:CGFloat, layer:CALayer) {
             pageIndex = to
             print("moveTo called")
+            view.scene.apply(index: Int(pageIndex), to: layer.sublayers ?? [])
         }
     }
 }

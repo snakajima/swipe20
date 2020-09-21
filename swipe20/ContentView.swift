@@ -16,9 +16,15 @@ struct ContentView: View {
             //Playground()
             SwipeView(scene:scene, pageIndex:page)
             Text("PageIndex = \(self.page)")
-            Button("Play") {
-                print("play")
-                self.page += 1
+            Button("Prev") {
+                withAnimation {
+                    self.page -= 1
+                }
+            }
+            Button("Next") {
+                withAnimation {
+                    self.page += 1
+                }
             }
         }
     }
