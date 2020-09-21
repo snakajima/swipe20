@@ -13,11 +13,12 @@ struct ContentView: View {
     @State var page = 0
     var body: some View {
         VStack {
-            Playground()
-            SwipeView(scene:scene)
+            //Playground()
+            SwipeView(scene:scene, pageIndex:$page)
+            Text("PageIndex = \(self.page)")
             Button("Play") {
                 print("play")
-                self.page = 1
+                self.page += 1
             }
         }
     }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
+    @Binding var pageIndex: Int
     /*
     init(scene:SwipeScene) {
         self.scene = scene
@@ -31,7 +32,7 @@ struct SwipeView: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
-        print("updateNSView called")
+        print("updateNSView called \(pageIndex)")
         guard let layer = nsView.layer else {
             return
         }
@@ -71,8 +72,8 @@ let s_script1:[String:Any] = [
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            let scene = SwipeScene(s_script1)
-            SwipeView(scene:scene)
+            //let scene = SwipeScene(s_script1)
+            //SwipeView(scene:scene)
             Button("Play") {
                 print("play")
             }
