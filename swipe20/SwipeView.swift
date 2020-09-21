@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    var pageIndex: CGFloat
+    var pageIndex: Int
     /*
     init(scene:SwipeScene) {
         self.scene = scene
@@ -42,12 +42,12 @@ struct SwipeView: NSViewRepresentable {
 
     class Coordinator: NSObject {
         let view: SwipeView
-        var pageIndex = CGFloat(0)
+        var pageIndex = 0
         init(_ view: SwipeView) {
             self.view = view
         }
         
-        func move(to:CGFloat, layer:CALayer) {
+        func move(to:Int, layer:CALayer) {
             pageIndex = to
             print("moveTo called")
             view.scene.apply(index: Int(pageIndex), to: layer.sublayers ?? [])
@@ -73,6 +73,14 @@ let s_script1:[String:Any] = [
         ],[
             "id":"id2",
             "x":220, "y":100, "w":120, "h":60
+        ]]
+    ],[
+        "elements":[[
+            "id":"id0",
+            "x":300, "y":110, "w":80, "h":80
+        ],[
+            "id":"id2",
+            "x":220, "y":200, "w":120, "h":60
         ]]
     ]]
 ]

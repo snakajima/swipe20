@@ -10,7 +10,7 @@ import SwiftUI
 let scene = SwipeScene(s_script1)
 
 struct ContentView: View {
-    @State var page = CGFloat(0)
+    @State var page = 0
     var body: some View {
         VStack {
             //Playground()
