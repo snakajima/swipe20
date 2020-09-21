@@ -16,11 +16,12 @@ struct SwipeElement {
     
     func makeLayer() -> CALayer {
         let layer = CALayer()
-        layer.frame = CGRect(x: script["x"] as? CGFloat ?? 0,
-                             y: script["y"] as? CGFloat ?? 0,
-                             width: script["w"] as? CGFloat ?? 100,
-                             height: script["h"] as? CGFloat ?? 100)
+        layer.frame = CGRect(x: SwipeParser.asCGFloat(script, "x"),
+                             y: SwipeParser.asCGFloat(script, "y"),
+                             width: SwipeParser.asCGFloat(script, "w", 100),
+                             height: SwipeParser.asCGFloat(script, "h", 100))
         layer.backgroundColor = NSColor.red.cgColor
         return layer
     }
 }
+

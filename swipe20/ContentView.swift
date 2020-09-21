@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-private let s_script1 = [
-    "pages": [
-    ]
-]
-
 struct ContentView: View {
     var body: some View {
         SwipeView(s_script1)

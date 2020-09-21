@@ -16,8 +16,8 @@ struct SwipeScene {
             self.elements = []
             return
         }
-        self.elements = elements.map { (elementScript) -> SwipeElement in
-            SwipeElement(elementScript)
+        self.elements = elements.map {
+            SwipeElement($0)
         }
     }
     
