@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
+    init(_ script:[String:Any]) {
+    }
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -35,8 +37,13 @@ struct SwipeView: NSViewRepresentable {
     }
 }
 
+private let s_script1 = [
+    "elements":[
+        "text":"Hello World"
+    ]
+]
 struct SwipeView_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeView()
+        SwipeView(s_script1)
     }
 }
