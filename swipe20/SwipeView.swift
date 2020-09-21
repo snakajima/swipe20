@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    var pageIndex: Int
+    var pageIndex: CGFloat
     /*
     init(scene:SwipeScene) {
         self.scene = scene
@@ -42,12 +42,12 @@ struct SwipeView: NSViewRepresentable {
 
     class Coordinator: NSObject {
         let view: SwipeView
-        var pageIndex = 0
+        var pageIndex = CGFloat(0)
         init(_ view: SwipeView) {
             self.view = view
         }
         
-        func move(to:Int, layer:CALayer) {
+        func move(to:CGFloat, layer:CALayer) {
             pageIndex = to
             print("moveTo called")
         }
