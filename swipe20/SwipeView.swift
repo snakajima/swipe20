@@ -42,15 +42,12 @@ struct SwipeView: NSViewRepresentable {
 
     class Coordinator: NSObject {
         let view: SwipeView
-        var pageIndex = 0
         init(_ view: SwipeView) {
             self.view = view
         }
         
-        func move(to:Int, layer:CALayer) {
-            pageIndex = to
-            print("moveTo called")
-            view.scene.apply(index: Int(pageIndex), to: layer.sublayers ?? [])
+        func move(to pageIndex:Int, layer:CALayer) {
+            view.scene.apply(index: pageIndex, to: layer.sublayers ?? [])
         }
     }
 }
