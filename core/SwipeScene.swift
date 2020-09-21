@@ -23,4 +23,12 @@ struct SwipeScene {
         }
         return frame.makeLayers()
     }
+    
+    func apply(index:Int, to layers:[CALayer]) {
+        guard index < frames.count else {
+            return
+        }
+        let frame = frames[index]
+        frame.apply(to:layers)
+    }
 }

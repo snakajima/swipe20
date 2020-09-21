@@ -24,10 +24,10 @@ struct SwipeElement {
     }
     
     func makeLayer() -> CALayer {
-        return apply(layer: CALayer())
+        return apply(to: CALayer())
     }
     
-    func apply(layer:CALayer) -> CALayer {
+    func apply(to layer:CALayer) -> CALayer {
         layer.frame = frame
         layer.backgroundColor = NSColor.red.cgColor
         layer.name = name

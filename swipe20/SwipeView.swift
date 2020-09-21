@@ -33,7 +33,6 @@ struct SwipeView: NSViewRepresentable {
         }
             
         layer.backgroundColor = NSColor.yellow.cgColor
-        
     }
 
     class Coordinator: NSObject {

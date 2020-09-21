@@ -34,4 +34,14 @@ struct SwipeFrame {
             elements[$0]!.makeLayer()
         }
     }
+    
+    func apply(to layers:[CALayer]) {
+        for layer in layers {
+            guard let name = layer.name,
+                  let element = elements[name] else {
+                return
+            }
+            _ = element.apply(to: layer)
+        }
+    }
 }
