@@ -8,14 +8,14 @@
 import Foundation
 
 struct SwipeParser {
-    static func asCGFloat(_ script:[String:Any], _ key:String, _ defaultValue:CGFloat = 0) -> CGFloat {
-        if let value = script[key] as? CGFloat {
+    static func asCGFloat(_ inputValue:Any?, _ defaultValue:CGFloat = 0) -> CGFloat {
+        if let value = inputValue as? CGFloat {
             return value
         }
-        if let value = script[key] as? Int {
+        if let value = inputValue as? Int {
             return CGFloat(value)
         }
-        if let value = script[key] as? Double {
+        if let value = inputValue as? Double {
             return CGFloat(value)
         }
         return defaultValue
