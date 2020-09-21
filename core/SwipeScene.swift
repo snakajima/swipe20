@@ -9,7 +9,9 @@ import Foundation
 import Cocoa
 
 struct SwipeScene {
-    let frames:[SwipeFrame]
+    private let frames:[SwipeFrame]
+    var frameCount:Int { frames.count }
+    
     init(_ script:[String:Any]?) {
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? [[String:Any]]()
         self.frames = scriptFrames.map {
@@ -26,14 +28,14 @@ struct SwipeScene {
         return layer
     }
     
-    func apply(index:Int, to layer:CALayer?) {
-        guard index >= 0 && index < frames.count else {
+    func apply(frameIndex:Int, to layer:CALayer?) {
+        guard frameIndex >= 0 && frameIndex < frames.count else {
             return
         }
         guard let layers = layer?.sublayers else {
             return
         }
-        let frame = frames[index]
+        let frame = frames[frameIndex]
         frame.apply(to:layers)
     }
 }

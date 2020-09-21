@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    var pageIndex: Int
+    var frameIndex: Int
     /*
     init(scene:SwipeScene) {
         self.scene = scene
@@ -29,8 +29,8 @@ struct SwipeView: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
-        print("updateNSView called \(pageIndex)")
-        context.coordinator.move(to: pageIndex, layer:nsView.layer)
+        print("updateNSView called \(frameIndex)")
+        context.coordinator.move(to: frameIndex, layer:nsView.layer)
     }
 
     class Coordinator: NSObject {
@@ -39,8 +39,8 @@ struct SwipeView: NSViewRepresentable {
             self.view = view
         }
         
-        func move(to pageIndex:Int, layer:CALayer?) {
-            view.scene.apply(index: pageIndex, to: layer)
+        func move(to frameIndex:Int, layer:CALayer?) {
+            view.scene.apply(frameIndex: frameIndex, to: layer)
         }
     }
 }

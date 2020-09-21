@@ -10,22 +10,20 @@ import SwiftUI
 let scene = SwipeScene(s_script1)
 
 struct ContentView: View {
-    @State var page = 0
+    @State var frameIndex = 0
     var body: some View {
         VStack {
             //Playground()
-            SwipeView(scene:scene, pageIndex:page)
-            Text("PageIndex = \(self.page)")
+            SwipeView(scene:scene, frameIndex:frameIndex)
+            Text("PageIndex = \(self.frameIndex)")
             Button("Prev") {
-                withAnimation {
-                    self.page -= 1
-                }
+                self.frameIndex -= 1
             }
+            .disabled(frameIndex <= 0)
             Button("Next") {
-                withAnimation {
-                    self.page += 1
-                }
+                self.frameIndex += 1
             }
+            .disabled(frameIndex >= scene.frameCount - 1)
         }
     }
 }
