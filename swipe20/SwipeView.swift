@@ -10,15 +10,18 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
+    /*
     init(scene:SwipeScene) {
         self.scene = scene
     }
+    */
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
     
     func makeNSView(context: Context) -> some NSView {
+        print("makeNSView called")
         let nsView = NSView()
         let layer = CALayer()
         let layers = scene.makeLayers()
