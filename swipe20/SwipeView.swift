@@ -38,8 +38,11 @@ struct SwipeView: NSViewRepresentable {
 }
 
 private let s_script1 = [
-    "elements":[
-        "text":"Hello World"
+    "scene":[
+        "elements":[[
+            "text":"Hello World",
+            "x":0, "y":0, "w":100, "h":100
+        ]]
     ]
 ]
 struct SwipeView_Previews: PreviewProvider {
