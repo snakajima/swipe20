@@ -7,13 +7,21 @@
 
 import SwiftUI
 
-let scene = SwipeScene(s_script1)
 
 struct ContentView: View {
     @State var frameIndex = 0
+    let scene:SwipeScene
+    
+    init() {
+        if let path = Bundle.main.path(forResource: "sample1", ofType: "json") {
+            print(path)
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path))
+            print(data)
+        }
+        self.scene = SwipeScene(s_script1)
+    }
     var body: some View {
         VStack {
-            //Playground()
             SwipeView(scene:scene, frameIndex:frameIndex)
             HStack {
                 Button("Prev") {
@@ -33,6 +41,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        return ContentView()
     }
 }
