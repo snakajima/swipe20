@@ -20,7 +20,7 @@
 		742A096E2519124C00862F36 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096D2519124C00862F36 /* Playground.swift */; };
 		742A09772519BC0300862F36 /* kodim03.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A09762519BC0300862F36 /* kodim03.png */; };
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
-		74BD7103251A62CD00F41F3D /* sample1.json in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.json */; };
+		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,7 @@
 		742A096D2519124C00862F36 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		742A09762519BC0300862F36 /* kodim03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim03.png; sourceTree = "<group>"; };
 		742A097D2519BC1C00862F36 /* kodim17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim17.png; sourceTree = "<group>"; };
-		74BD7102251A62CD00F41F3D /* sample1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sample1.json; sourceTree = "<group>"; };
+		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
 		74BD710A251A718A00F41F3D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +117,7 @@
 			children = (
 				742A09762519BC0300862F36 /* kodim03.png */,
 				742A097D2519BC1C00862F36 /* kodim17.png */,
-				74BD7102251A62CD00F41F3D /* sample1.json */,
+				74BD7102251A62CD00F41F3D /* sample1.swipe */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 				742A094F2518633100862F36 /* Preview Assets.xcassets in Resources */,
 				742A09772519BC0300862F36 /* kodim03.png in Resources */,
 				742A094C2518633100862F36 /* Assets.xcassets in Resources */,
-				74BD7103251A62CD00F41F3D /* sample1.json in Resources */,
+				74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

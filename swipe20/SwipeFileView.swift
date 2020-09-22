@@ -11,7 +11,7 @@ struct SwipeFileView: View {
     let scene:SwipeScene
     
     init(_ filename:String) {
-        if let path = Bundle.main.path(forResource: filename, ofType: "json"),
+        if let path = Bundle.main.path(forResource: filename, ofType: "swipe"),
            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
            let json = try?  JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [String:Any] {
             self.scene = SwipeScene(json)
