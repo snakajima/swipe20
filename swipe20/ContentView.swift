@@ -15,15 +15,17 @@ struct ContentView: View {
         VStack {
             //Playground()
             SwipeView(scene:scene, frameIndex:frameIndex)
-            Text("PageIndex = \(self.frameIndex)")
-            Button("Prev") {
-                self.frameIndex -= 1
+            HStack {
+                Button("Prev") {
+                    self.frameIndex -= 1
+                }
+                .disabled(frameIndex <= 0)
+                Button("Next") {
+                    self.frameIndex += 1
+                }
+                .disabled(frameIndex >= scene.frameCount - 1)
+                Text("Frame#: \(self.frameIndex)")
             }
-            .disabled(frameIndex <= 0)
-            Button("Next") {
-                self.frameIndex += 1
-            }
-            .disabled(frameIndex >= scene.frameCount - 1)
         }
     }
 }
