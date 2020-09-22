@@ -22,14 +22,12 @@ struct SwipeView: NSViewRepresentable {
     }
     
     func makeNSView(context: Context) -> some NSView {
-        print("makeNSView called")
         let nsView = NSView()
         nsView.layer = scene.makeLayer()
         return nsView
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
-        print("updateNSView called \(frameIndex)")
         context.coordinator.move(to: frameIndex, layer:nsView.layer)
     }
 

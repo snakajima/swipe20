@@ -12,7 +12,6 @@ struct SwipeFrame {
     let ids:[String]
     let elements:[String:SwipeElement]
     init(_ script:[String:Any], base:SwipeFrame?) {
-        print("SwipeFrame", script)
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
 
         var ids = [String]()
