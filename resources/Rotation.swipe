@@ -3,13 +3,28 @@
     "frames":[{
         "elements":[{
             "id":"id0",
-            "backgroundColor":"blue",
+            "img":"kodim03.png",
             "x":100, "y":100, "w":320, "h":240
         }]
     },{
         "elements":[{
             "id":"id0",
             "rotate":30, 
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "rotate":[60,0,0],
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "rotate":[0,60,0],
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "rotate":[0,60,60],
         }]
     }]
 }

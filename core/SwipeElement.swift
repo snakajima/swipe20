@@ -32,7 +32,14 @@ struct SwipeElement {
         var xf = CATransform3DIdentity
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
             xf = CATransform3DRotate(xf, rot * CGFloat(CGFloat.pi / 180.0), 0, 0, 1)
+        } else if let rots = script["rotate"] as? [CGFloat], rots.count == 3 {
+            xf.m34 = -1.0/500; // add the perspective
+            let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
+            xf = CATransform3DRotate(xf, rots[0] * m, 1, 0, 0)
+            xf = CATransform3DRotate(xf, rots[1] * m, 0, 1, 0)
+            xf = CATransform3DRotate(xf, rots[2] * m, 0, 0, 1)
         }
+
         self.xf = xf
         name = script["id"] as? String
         if let imageName = script["img"] as? String {

@@ -25,6 +25,7 @@ struct SwipeScene {
     
     func makeLayer() -> CALayer {
         let layer = CALayer()
+        
         if let color = self.backgroundColor {
             layer.backgroundColor = color
         }
