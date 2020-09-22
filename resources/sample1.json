@@ -5,7 +5,12 @@
             "id":"id0",
             "text":"Hello World!",
             "foregroundColor":"gray",
-            "filter":"CIGaussianBlur",
+            "filter":{
+                "name":"CIGaussianBlur",
+                "params":{
+                    "inputRadius":1.0
+                }
+            },
             "x":200, "y":0, "w":300, "h":80
         },{
             "id":"id1",

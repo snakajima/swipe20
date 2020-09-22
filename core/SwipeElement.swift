@@ -56,8 +56,10 @@ struct SwipeElement {
                 layer.masksToBounds = true
             }
         }
-        if let filterName = script["filter"] as? String {
+        if let filterInfo = script["filter"] as? [String:Any],
+           let filterName = filterInfo["name"] as? String {
             if let filter = CIFilter(name: filterName) {
+                filter.name = "f0"
                 layer.filters = [filter]
             }
         }
