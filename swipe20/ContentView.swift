@@ -6,14 +6,30 @@
 //
 import SwiftUI
 
+struct Sample: Identifiable {
+    let id = UUID()
+    let title:String
+    let filename:String
+}
+let s_samples = [
+    Sample(title: "Sample 1", filename: "sample1"),
+    Sample(title: "Sample 2", filename: "sample1"),
+]
+
 struct ContentView: View {
     var body: some View {
-        SwipeFileView(filename:"sample1")
+        NavigationView {
+            List(s_samples) { sample in
+                NavigationLink(destination: SwipeFileView(filename:sample.filename)) {
+                    Text(sample.title)
+                }
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        return ContentView()
+        ContentView()
     }
 }
