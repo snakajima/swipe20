@@ -7,8 +7,9 @@
 import Cocoa
 
 struct SwipeFrame {
-    let ids:[String]
-    let elements:[String:SwipeElement]
+    private let ids:[String]
+    private let elements:[String:SwipeElement]
+    
     init(_ script:[String:Any], base:SwipeFrame?) {
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
 

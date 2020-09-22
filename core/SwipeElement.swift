@@ -7,15 +7,16 @@
 import Cocoa
 
 struct SwipeElement {
-    let script:[String:Any]
-    let name:String?
-    let image:CGImage?
+    private let script:[String:Any]
+    private let name:String?
+    private let image:CGImage?
     
-    let frame:CGRect
-    let backgroundColor:CGColor?
-    let foregroundColor:CGColor?
-    let cornerRadius:CGFloat?
-    let xf:CATransform3D
+    private let frame:CGRect
+    private let backgroundColor:CGColor?
+    private let foregroundColor:CGColor?
+    private let cornerRadius:CGFloat?
+    private let xf:CATransform3D
+    
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
         let origin = base?.frame.origin ?? CGPoint.zero
