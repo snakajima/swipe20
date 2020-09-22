@@ -29,7 +29,7 @@ struct SwipeParser {
         "blue":CGColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0),
         "green":CGColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
         "black":CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0),
-        "white":CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
+        "white":CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
         "yellow":CGColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0),
         "gray":CGColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0),
         "darkGray":CGColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.0),

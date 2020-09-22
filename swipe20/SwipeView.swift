@@ -46,6 +46,7 @@ struct SwipeView: NSViewRepresentable {
 }
 
 let s_script1:[String:Any] = [
+    "backgroundColor":"#FFFFCC",
     "frames":[[
         "elements":[[
             "id":"id0",

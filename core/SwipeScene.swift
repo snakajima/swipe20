@@ -10,6 +10,7 @@ import Cocoa
 
 struct SwipeScene {
     private let frames:[SwipeFrame]
+    private let backgroundColor:CGColor?
     var frameCount:Int { frames.count }
     
     init(_ script:[String:Any]?) {
@@ -20,10 +21,15 @@ struct SwipeScene {
             base = frame
             return frame
         }
+        
+        backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
     }
     
     func makeLayer() -> CALayer {
         let layer = CALayer()
+        if let color = self.backgroundColor {
+            layer.backgroundColor = color
+        }
         if let frame = frames.first {
             layer.sublayers = frame.makeLayers()
         }
