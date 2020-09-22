@@ -4,8 +4,6 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
-
-import Foundation
 import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
@@ -49,54 +47,14 @@ let s_script1:[String:Any] = [
         ],[
             "id":"id1",
             "x":220, "y":100, "w":80, "h":80,
-            "backgroundColor":"red"
-        ],[
-            "id":"id2",
-            "x":10, "y":300, "w":100, "h":100,
-            "img":"kodim03.png",
+            "backgroundColor":"red",
             "cornerRadius": 20
-        ]]
-    ],[
-        "elements":[[
-            "id":"id0",
-            "x":300, "y":10,
-        ],[
-            "id":"id1",
-            "x":220, "y":100, "w":120, "h":60,
-            "cornerRadius": 20,
-        ],[
-            "id":"id2",
-            "x":10, "y":200, "w":200, "h":200,
-        ]]
-    ],[
-        "elements":[[
-            "id":"id0",
-            "foregroundColor":"black",
-            "x":300, "y":110,
-        ],[
-            "id":"id1",
-            "backgroundColor":"blue"
-        ]]
-    ],[
-        "elements":[[
-            "id":"id1",
-            "x":220, "y":200, "w":120, "h":60,
-            "rotate":90
-        ]]
-    ],[
-        "elements":[[
-            "id":"id0",
-            "rotate":30,
-        ],[
-            "id":"id2",
-            "x":100, "y":200, "w":200, "h":200,
         ]]
     ]]
 ]
 
-let s_scene = SwipeScene(s_script1)
-
 struct SwipeView_Previews: PreviewProvider {
+    static let s_scene = SwipeScene(s_script1)
     static var previews: some View {
         VStack {
             SwipeView(scene:s_scene, frameIndex:0)

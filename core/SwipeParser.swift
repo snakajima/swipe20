@@ -4,7 +4,6 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/21/20.
 //
-
 import Foundation
 
 struct SwipeParser {

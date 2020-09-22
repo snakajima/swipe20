@@ -4,8 +4,6 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
-
-import Foundation
 import Cocoa
 
 struct SwipeFrame {
