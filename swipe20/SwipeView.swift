@@ -75,7 +75,8 @@ let s_script1:[String:Any] = [
     ],[
         "elements":[[
             "id":"id1",
-            "x":220, "y":200, "w":120, "h":60
+            "x":220, "y":200, "w":120, "h":60,
+            "rotate":90
         ]]
     ]]
 ]
