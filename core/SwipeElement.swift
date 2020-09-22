@@ -47,6 +47,7 @@ struct SwipeElement {
     }
     
     func apply(to layer:CALayer) -> CALayer {
+        layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
             layer.backgroundColor = backgroundColor
