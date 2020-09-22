@@ -13,12 +13,15 @@ struct ContentView: View {
     let scene:SwipeScene
     
     init() {
-        if let path = Bundle.main.path(forResource: "sample1", ofType: "json") {
-            print(path)
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path))
-            print(data)
+        if let path = Bundle.main.path(forResource: "sample1", ofType: "json"),
+           let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+           let json = try?  JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [String:Any] {
+            self.scene = SwipeScene(json)
+            print("success")
+        } else {
+            self.scene = SwipeScene(s_script1)
+            print("fail")
         }
-        self.scene = SwipeScene(s_script1)
     }
     var body: some View {
         VStack {
