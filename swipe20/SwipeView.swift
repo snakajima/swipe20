@@ -59,7 +59,7 @@ let s_script1:[String:Any] = [
         ],[
             "id":"id2",
             "x":10, "y":300, "w":100, "h":100,
-            "img":"lena.jpg",
+            "img":"kodim03.png",
             "cornerRadius": 20
         ]]
     ],[
