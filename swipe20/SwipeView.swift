@@ -50,8 +50,7 @@ let s_script1:[String:Any] = [
         "elements":[[
             "id":"id0",
             "text":"Hello World",
-            "x":200, "y":0, "w":80, "h":80,
-            "backgroundColor":"green"
+            "x":200, "y":0, "w":300, "h":80,
         ],[
             "id":"id1",
             "x":220, "y":100, "w":80, "h":80,
@@ -65,11 +64,11 @@ let s_script1:[String:Any] = [
     ],[
         "elements":[[
             "id":"id0",
-            "x":300, "y":10, "w":80, "h":80
+            "x":300, "y":10,
         ],[
             "id":"id1",
             "x":220, "y":100, "w":120, "h":60,
-            "cornerRadius": 20
+            "cornerRadius": 20,
         ],[
             "id":"id2",
             "x":10, "y":200, "w":200, "h":200,
@@ -77,7 +76,9 @@ let s_script1:[String:Any] = [
     ],[
         "elements":[[
             "id":"id0",
-            "x":300, "y":110, "w":80, "h":80,
+            "x":300, "y":110,
+        ],[
+            "id":"id1",
             "backgroundColor":"blue"
         ]]
     ],[
