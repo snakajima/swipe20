@@ -28,7 +28,14 @@ struct SwipeElement {
     }
     
     func makeLayer() -> CALayer {
-        let layer = CALayer()
+        let layer:CALayer
+        if let text = script["text"] as? String {
+            let textLayer = CATextLayer()
+            textLayer.string = text
+            layer = textLayer
+        } else {
+            layer = CALayer()
+        }
         layer.name = name
         return apply(to: layer)
     }

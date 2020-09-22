@@ -54,7 +54,6 @@ let s_script1:[String:Any] = [
             "bg":"green"
         ],[
             "id":"id1",
-            "text":"Hello World 2",
             "x":220, "y":100, "w":80, "h":80,
             "bg":"red"
         ]]
