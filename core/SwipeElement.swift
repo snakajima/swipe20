@@ -15,6 +15,7 @@ struct SwipeElement {
     
     let frame:CGRect
     let backgroundColor:CGColor?
+    let foregroundColor:CGColor?
     let cornerRadius:CGFloat?
     let xf:CATransform3D
     init(_ script:[String:Any], base:SwipeElement?) {
@@ -26,6 +27,7 @@ struct SwipeElement {
                        width: SwipeParser.asCGFloat(script["w"]) ?? size.width,
                        height: SwipeParser.asCGFloat(script["h"]) ?? size.height)
         backgroundColor = SwipeParser.parseColor(script["backgroundColor"]) ?? base?.backgroundColor
+        foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
         cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
         var xf = CATransform3DIdentity
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
@@ -63,6 +65,11 @@ struct SwipeElement {
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
             layer.backgroundColor = backgroundColor
+        }
+        if let textLayer = layer as? CATextLayer {
+            if let color = foregroundColor {
+                textLayer.foregroundColor = color
+            }
         }
         layer.cornerRadius = cornerRadius ?? 0
         layer.transform = xf

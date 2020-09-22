@@ -51,6 +51,7 @@ let s_script1:[String:Any] = [
         "elements":[[
             "id":"id0",
             "text":"Hello World",
+            "foregroundColor":"gray",
             "x":200, "y":0, "w":300, "h":80,
         ],[
             "id":"id1",
@@ -77,6 +78,7 @@ let s_script1:[String:Any] = [
     ],[
         "elements":[[
             "id":"id0",
+            "foregroundColor":"black",
             "x":300, "y":110,
         ],[
             "id":"id1",
@@ -90,6 +92,9 @@ let s_script1:[String:Any] = [
         ]]
     ],[
         "elements":[[
+            "id":"id0",
+            "rotate":30,
+        ],[
             "id":"id2",
             "x":100, "y":200, "w":200, "h":200,
         ]]
