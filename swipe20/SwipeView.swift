@@ -51,11 +51,11 @@ let s_script1:[String:Any] = [
             "id":"id0",
             "text":"Hello World",
             "x":200, "y":0, "w":80, "h":80,
-            "bg":"green"
+            "backgroundColor":"green"
         ],[
             "id":"id1",
             "x":220, "y":100, "w":80, "h":80,
-            "bg":"red"
+            "backgroundColor":"red"
         ]]
     ],[
         "elements":[[
@@ -70,7 +70,7 @@ let s_script1:[String:Any] = [
         "elements":[[
             "id":"id0",
             "x":300, "y":110, "w":80, "h":80,
-            "bg":"blue"
+            "backgroundColor":"blue"
         ]]
     ],[
         "elements":[[

@@ -23,13 +23,11 @@ struct SwipeElement {
                        y: SwipeParser.asCGFloat(script["y"]) ?? origin.y,
                        width: SwipeParser.asCGFloat(script["w"]) ?? size.width,
                        height: SwipeParser.asCGFloat(script["h"]) ?? size.height)
-        backgroundColor = SwipeParser.parseColor(script["bg"]) ?? base?.backgroundColor
+        backgroundColor = SwipeParser.parseColor(script["backgroundColor"]) ?? base?.backgroundColor
         cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
         var xf = CATransform3DIdentity
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
             xf = CATransform3DRotate(xf, rot * CGFloat(CGFloat.pi / 180.0), 0, 0, 1)
-        } else {
-            xf = base?.xf ?? CATransform3DIdentity
         }
         self.xf = xf
         name = script["id"] as? String
