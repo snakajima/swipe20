@@ -8,7 +8,7 @@
             "filter":{
                 "name":"CIGaussianBlur",
                 "params":{
-                    "inputRadius":1.0
+                    "inputRadius":0.0
                 }
             },
             "x":200, "y":0, "w":300, "h":80
@@ -25,7 +25,12 @@
     },{
         "elements":[{
             "id":"id0",
-            "x":300, "y":10
+            "x":300, "y":10,
+            "filter":{
+                "params":{
+                    "inputRadius":5.0
+                }
+            }
         },{
             "id":"id1",
             "x":220, "y":100, "w":120, "h":60,
@@ -38,7 +43,12 @@
         "elements":[{
             "id":"id0",
             "foregroundColor":"black",
-            "x":300, "y":110
+            "x":300, "y":110,
+            "filter":{
+                "params":{
+                    "inputRadius":0.0
+                }
+            }
         },{
             "id":"id1",
             "backgroundColor":"blue"
