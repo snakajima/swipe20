@@ -7,9 +7,26 @@
 
 import SwiftUI
 
+let scene = SwipeScene(s_script1)
+
 struct ContentView: View {
+    @State var frameIndex = 0
     var body: some View {
-        SwipeView()
+        VStack {
+            //Playground()
+            SwipeView(scene:scene, frameIndex:frameIndex)
+            HStack {
+                Button("Prev") {
+                    self.frameIndex -= 1
+                }
+                .disabled(frameIndex <= 0)
+                Button("Next") {
+                    self.frameIndex += 1
+                }
+                .disabled(frameIndex >= scene.frameCount - 1)
+                Text("Frame#: \(self.frameIndex)")
+            }
+        }
     }
 }
 
