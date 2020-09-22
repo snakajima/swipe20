@@ -17,10 +17,9 @@ struct ContentView: View {
            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
            let json = try?  JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [String:Any] {
             self.scene = SwipeScene(json)
-            print("success")
         } else {
-            self.scene = SwipeScene(s_script1)
-            print("fail")
+            self.scene = SwipeScene([:])
+            print("load JSON failed")
         }
     }
     var body: some View {

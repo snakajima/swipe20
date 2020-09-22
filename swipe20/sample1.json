@@ -3,7 +3,7 @@
     "frames":[{
         "elements":[{
             "id":"id0",
-            "text":"Hello World",
+            "text":"Hello World!",
             "foregroundColor":"gray",
             "x":200, "y":0, "w":300, "h":80
         },{
