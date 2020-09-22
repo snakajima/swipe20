@@ -22,6 +22,7 @@
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
+		74BD710E251ABCE800F41F3D /* HelloWorld.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD710D251ABCE800F41F3D /* HelloWorld.swipe */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
 		74BD710A251A718A00F41F3D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		74BD710D251ABCE800F41F3D /* HelloWorld.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.swipe; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				742A09762519BC0300862F36 /* kodim03.png */,
 				742A097D2519BC1C00862F36 /* kodim17.png */,
 				74BD7102251A62CD00F41F3D /* sample1.swipe */,
+				74BD710D251ABCE800F41F3D /* HelloWorld.swipe */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				742A094F2518633100862F36 /* Preview Assets.xcassets in Resources */,
 				742A09772519BC0300862F36 /* kodim03.png in Resources */,
 				742A094C2518633100862F36 /* Assets.xcassets in Resources */,
+				74BD710E251ABCE800F41F3D /* HelloWorld.swipe in Resources */,
 				74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

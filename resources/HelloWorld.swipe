@@ -1,0 +1,16 @@
+{
+    "backgroundColor":"#FFFFCC",
+    "frames":[{
+        "elements":[{
+            "id":"id0",
+            "text":"Hello World!",
+            "foregroundColor":"black",
+            "x":10, "y":10, "w":300, "h":80
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":100, 
+        }]
+    }]
+}
