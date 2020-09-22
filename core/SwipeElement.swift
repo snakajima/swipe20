@@ -5,6 +5,7 @@
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
 import Cocoa
+import CoreImage
 
 struct SwipeElement {
     private let script:[String:Any]
@@ -53,6 +54,11 @@ struct SwipeElement {
                 layer.contents = image
                 layer.contentsGravity = .resizeAspectFill
                 layer.masksToBounds = true
+            }
+        }
+        if let filterName = script["filter"] as? String {
+            if let filter = CIFilter(name: filterName) {
+                layer.filters = [filter]
             }
         }
         layer.name = name
