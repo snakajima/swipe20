@@ -1,0 +1,15 @@
+{
+    "backgroundColor":"#FFFFCC",
+    "frames":[{
+        "elements":[{
+            "id":"id0",
+            "backgroundColor":"blue",
+            "x":100, "y":100, "w":320, "h":240
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "rotate":30, 
+        }]
+    }]
+}
