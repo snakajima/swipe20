@@ -18,6 +18,7 @@
 		742A096725186B1D00862F36 /* SwipeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096625186B1D00862F36 /* SwipeElement.swift */; };
 		742A096A2518D72700862F36 /* SwipeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09692518D72700862F36 /* SwipeParser.swift */; };
 		742A096E2519124C00862F36 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096D2519124C00862F36 /* Playground.swift */; };
+		742A09732519B76400862F36 /* lena.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 742A09722519B76400862F36 /* lena.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		742A096625186B1D00862F36 /* SwipeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeElement.swift; sourceTree = "<group>"; };
 		742A09692518D72700862F36 /* SwipeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeParser.swift; sourceTree = "<group>"; };
 		742A096D2519124C00862F36 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
+		742A09722519B76400862F36 /* lena.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lena.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				742A09472518632F00862F36 /* AppDelegate.swift */,
 				742A09492518632F00862F36 /* ContentView.swift */,
+				742A09722519B76400862F36 /* lena.jpg */,
 				742A094B2518633100862F36 /* Assets.xcassets */,
 				742A09502518633100862F36 /* Main.storyboard */,
 				742A09532518633100862F36 /* Info.plist */,
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				742A09522518633100862F36 /* Main.storyboard in Resources */,
+				742A09732519B76400862F36 /* lena.jpg in Resources */,
 				742A094F2518633100862F36 /* Preview Assets.xcassets in Resources */,
 				742A094C2518633100862F36 /* Assets.xcassets in Resources */,
 			);

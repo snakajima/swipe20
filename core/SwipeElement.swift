@@ -10,10 +10,12 @@ import Cocoa
 
 struct SwipeElement {
     let script:[String:Any]
+    let name:String?
+    let image:CGImage?
+    
     let frame:CGRect
     let backgroundColor:CGColor?
     let cornerRadius:CGFloat?
-    let name:String?
     let xf:CATransform3D
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
@@ -31,6 +33,11 @@ struct SwipeElement {
         }
         self.xf = xf
         name = script["id"] as? String
+        if let imageName = script["img"] as? String {
+            self.image = NSImage(named: imageName)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+        } else {
+            self.image = nil
+        }
     }
     
     func makeLayer() -> CALayer {
@@ -41,6 +48,11 @@ struct SwipeElement {
             layer = textLayer
         } else {
             layer = CALayer()
+            if let image = self.image {
+                layer.contents = image
+                layer.contentsGravity = .resizeAspectFill
+                layer.masksToBounds = true
+            }
         }
         layer.name = name
         return apply(to: layer)

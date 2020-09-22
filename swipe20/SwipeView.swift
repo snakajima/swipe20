@@ -56,6 +56,11 @@ let s_script1:[String:Any] = [
             "id":"id1",
             "x":220, "y":100, "w":80, "h":80,
             "backgroundColor":"red"
+        ],[
+            "id":"id2",
+            "x":10, "y":300, "w":100, "h":100,
+            "img":"lena.jpg",
+            "cornerRadius": 20
         ]]
     ],[
         "elements":[[
@@ -65,6 +70,9 @@ let s_script1:[String:Any] = [
             "id":"id1",
             "x":220, "y":100, "w":120, "h":60,
             "cornerRadius": 20
+        ],[
+            "id":"id2",
+            "x":10, "y":200, "w":200, "h":200,
         ]]
     ],[
         "elements":[[
@@ -77,6 +85,11 @@ let s_script1:[String:Any] = [
             "id":"id1",
             "x":220, "y":200, "w":120, "h":60,
             "rotate":90
+        ]]
+    ],[
+        "elements":[[
+            "id":"id2",
+            "x":100, "y":200, "w":200, "h":200,
         ]]
     ]]
 ]
