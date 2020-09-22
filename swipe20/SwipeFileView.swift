@@ -33,7 +33,7 @@ struct SwipeFileView: View {
                     self.frameIndex += 1
                 }
                 .disabled(frameIndex >= scene.frameCount - 1)
-                Text("Frame#: \(self.frameIndex)")
+                Text(scene.name(ofFrameAtIndex: frameIndex))
             }
         }
     }

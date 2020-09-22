@@ -44,4 +44,12 @@ struct SwipeScene {
         let frame = frames[frameIndex]
         frame.apply(to:layers)
     }
+    
+    func name(ofFrameAtIndex frameIndex:Int) -> String {
+        guard frameIndex >= 0 && frameIndex < frames.count else {
+            return "N/A"
+        }
+        let frame = frames[frameIndex]
+        return frame.name ?? "frame #\(frameIndex)"
+    }
 }
