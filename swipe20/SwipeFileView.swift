@@ -10,7 +10,7 @@ struct SwipeFileView: View {
     @State var frameIndex = 0
     let scene:SwipeScene
     
-    init(filename:String) {
+    init(_ filename:String) {
         if let path = Bundle.main.path(forResource: filename, ofType: "json"),
            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
            let json = try?  JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [String:Any] {
@@ -41,6 +41,6 @@ struct SwipeFileView: View {
 
 struct SwipeFileView_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeFileView(filename:"sample1")
+        SwipeFileView("sample1")
     }
 }

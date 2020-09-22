@@ -20,7 +20,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(s_samples) { sample in
-                NavigationLink(destination: SwipeFileView(filename:sample.filename)) {
+                NavigationLink(destination: SwipeFileView(sample.filename)) {
                     Text(sample.title)
                 }
             }
