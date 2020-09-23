@@ -45,11 +45,11 @@ struct LayerTestView: NSViewRepresentable {
 
 struct Playground2_Previews: PreviewProvider {
     static var previews: some View {
-        Playground2_view()
+        Playground2_View()
     }
 }
 
-struct Playground2_view: View {
+struct Playground2_View: View {
     @State private var value: Double = 0.5
     var body: some View {
         VStack {
