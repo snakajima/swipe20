@@ -11,6 +11,7 @@ struct SwipeElement {
     private let script:[String:Any]
     private let name:String?
     private let image:CGImage?
+    private let path:CGPath?
     
     private let frame:CGRect
     private let backgroundColor:CGColor?
@@ -56,6 +57,7 @@ struct SwipeElement {
         } else {
             self.image = nil
         }
+        self.path = SwipePath.parse(script["path"]) ?? base?.path
 
         // nested elements
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
@@ -77,6 +79,11 @@ struct SwipeElement {
             let textLayer = CATextLayer()
             textLayer.string = text
             layer = textLayer
+        } else if let path = self.path {
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.path = path
+            shapeLayer.fillColor = CGColor(red: 1, green: 0, blue: 0, alpha: 1)
+            layer = shapeLayer
         } else {
             layer = CALayer()
             if let image = self.image {
@@ -85,6 +92,7 @@ struct SwipeElement {
                 layer.masksToBounds = true
             }
         }
+        
         if let filterInfo = script["filter"] as? [String:Any],
            let filterName = filterInfo["name"] as? String {
             if let filter = CIFilter(name: filterName) {
