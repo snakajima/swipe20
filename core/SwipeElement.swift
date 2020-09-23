@@ -19,6 +19,7 @@ struct SwipeElement {
     private let foregroundColor:CGColor?
     private let fillColor:CGColor?
     private let strokeColor:CGColor?
+    private let lineWidth:CGFloat?
     private let cornerRadius:CGFloat?
     private let xf:CATransform3D
 
@@ -40,6 +41,7 @@ struct SwipeElement {
         self.foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
         self.fillColor = SwipeParser.parseColor(script["fillColor"]) ?? base?.fillColor
         self.strokeColor = SwipeParser.parseColor(script["strokeColor"]) ?? base?.strokeColor
+        self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
 
         var xf = CATransform3DIdentity
@@ -87,8 +89,6 @@ struct SwipeElement {
         } else if let path = self.path {
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = path
-            shapeLayer.lineWidth = 2.0
-            //shapeLayer.fillColor = CGColor(red: 1, green: 0, blue: 0, alpha: 1)
             layer = shapeLayer
         } else {
             layer = CALayer()
@@ -136,6 +136,9 @@ struct SwipeElement {
             }
             if let color = strokeColor {
                 shapeLayer.strokeColor = color
+            }
+            if let width = lineWidth {
+                shapeLayer.lineWidth = width
             }
         }
         layer.cornerRadius = cornerRadius ?? 0
