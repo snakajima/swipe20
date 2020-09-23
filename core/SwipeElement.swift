@@ -6,6 +6,7 @@
 //
 import Cocoa
 import CoreImage
+import SwiftUI
 
 struct SwipeElement {
     private let script:[String:Any]
@@ -16,6 +17,8 @@ struct SwipeElement {
     private let frame:CGRect
     private let backgroundColor:CGColor?
     private let foregroundColor:CGColor?
+    private let fillColor:CGColor?
+    private let strokeColor:CGColor?
     private let cornerRadius:CGFloat?
     private let xf:CATransform3D
 
@@ -35,6 +38,8 @@ struct SwipeElement {
 
         self.backgroundColor = SwipeParser.parseColor(script["backgroundColor"]) ?? base?.backgroundColor
         self.foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
+        self.fillColor = SwipeParser.parseColor(script["fillColor"]) ?? base?.fillColor
+        self.strokeColor = SwipeParser.parseColor(script["strokeColor"]) ?? base?.strokeColor
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
 
         var xf = CATransform3DIdentity
@@ -82,7 +87,8 @@ struct SwipeElement {
         } else if let path = self.path {
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = path
-            shapeLayer.fillColor = CGColor(red: 1, green: 0, blue: 0, alpha: 1)
+            shapeLayer.lineWidth = 2.0
+            //shapeLayer.fillColor = CGColor(red: 1, green: 0, blue: 0, alpha: 1)
             layer = shapeLayer
         } else {
             layer = CALayer()
@@ -124,6 +130,13 @@ struct SwipeElement {
             if let color = foregroundColor {
                 textLayer.foregroundColor = color
             }
+        } else if let shapeLayer = layer as? CAShapeLayer {
+            if let color = fillColor {
+                shapeLayer.fillColor = color
+            }
+            if let color = strokeColor {
+                shapeLayer.strokeColor = color
+            }
         }
         layer.cornerRadius = cornerRadius ?? 0
         layer.transform = xf
@@ -144,3 +157,9 @@ struct SwipeElement {
     }
 }
 
+
+struct SwipeElement_Previews: PreviewProvider {
+    static var previews: some View {
+        SwipeFileView("Shapes")
+    }
+}
