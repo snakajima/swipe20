@@ -9,6 +9,7 @@ import Cocoa
 struct SwipeScene {
     private let frames:[SwipeFrame]
     private let backgroundColor:CGColor?
+    private let duration:Double
     var frameCount:Int { frames.count }
     
     init(_ script:[String:Any]?) {
@@ -20,6 +21,7 @@ struct SwipeScene {
             return frame
         }
         
+        self.duration = script?["duration"] as? Double ?? 0.2
         backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
     }
     
@@ -42,8 +44,11 @@ struct SwipeScene {
         guard let layers = layer?.sublayers else {
             return
         }
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(duration)
         let frame = frames[frameIndex]
         frame.apply(to:layers)
+        CATransaction.commit()
     }
     
     func name(ofFrameAtIndex frameIndex:Int) -> String {
