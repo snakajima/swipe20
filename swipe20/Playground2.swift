@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct LayerTestView: NSViewRepresentable {
-    @State var value:Double
+    let value:Double
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
     
     func makeNSView(context: Context) -> some NSView {
+        print("makeNSView", value)
         let nsView = NSView()
         let layer = CALayer()
         layer.backgroundColor = NSColor.yellow.cgColor
@@ -27,8 +28,8 @@ struct LayerTestView: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
-        print("updateNSView")
         guard let layer1 = nsView.layer?.sublayers?.first else {
+            print("no layer1")
             return
         }
         layer1.frame = CGRect(origin: layer1.frame.origin, size: CGSize(width: value * 100, height: 100))
