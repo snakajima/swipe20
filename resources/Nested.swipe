@@ -15,6 +15,10 @@
         "elements":[{
             "id":"id0",
             "x":100, 
+            "elements":[{
+                "id":"id0",
+                "backgroundColor":"red",
+            }]
         }]
     }]
 }

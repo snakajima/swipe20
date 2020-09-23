@@ -114,6 +114,12 @@ struct SwipeElement {
                 layer.setValue(value, forKeyPath: "filters.f0.\(key)")
             }
         }
+        for sublayer in layer.sublayers ?? [] {
+            if let name = sublayer.name,
+               let element = elements[name] {
+                _ = element.apply(to: sublayer)
+            }
+        }
 
         return layer
     }
