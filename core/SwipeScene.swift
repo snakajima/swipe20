@@ -21,7 +21,7 @@ struct SwipeScene {
             return frame
         }
         
-        self.duration = script?["duration"] as? Double ?? 0.2
+        self.duration = script?["duration"] as? Double ?? 0.25 // same as system default
         backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
     }
     
@@ -41,7 +41,8 @@ struct SwipeScene {
         guard frameIndex >= 0 && frameIndex < frames.count else {
             return
         }
-        guard let layers = layer?.sublayers else {
+        guard let layer = layer,
+              let layers = layer.sublayers else {
             return
         }
         
@@ -53,6 +54,9 @@ struct SwipeScene {
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? self.duration)
         frame.apply(to:layers)
+        // NOTE: implemente delay later
+        // layer.beginTime = CACurrentMediaTime() + 1.0
+        // layer.fillMode = .backwards
         CATransaction.commit()
     }
     
