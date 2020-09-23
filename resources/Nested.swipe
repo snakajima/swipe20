@@ -14,7 +14,8 @@
     },{
         "elements":[{
             "id":"id0",
-            "x":100, 
+            "x":100,
+            "rotate":-30,
             "elements":[{
                 "id":"id0",
                 "backgroundColor":"red",
