@@ -41,6 +41,6 @@ struct SwipeFileView: View {
 
 struct SwipeFileView_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeFileView("sample1")
+        SwipeFileView("Nested")
     }
 }
