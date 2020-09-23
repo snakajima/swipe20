@@ -26,12 +26,15 @@ struct SwipeView: NSViewRepresentable {
 
     class Coordinator: NSObject {
         let view: SwipeView
+        private var lastIndex:Int? = nil
+        
         init(_ view: SwipeView) {
             self.view = view
         }
         
         func move(to frameIndex:Int, layer:CALayer?) {
-            view.scene.apply(frameIndex: frameIndex, to: layer)
+            view.scene.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex)
+            lastIndex = frameIndex
         }
     }
 }

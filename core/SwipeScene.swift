@@ -37,16 +37,21 @@ struct SwipeScene {
         return layer
     }
     
-    func apply(frameIndex:Int, to layer:CALayer?) {
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?) {
         guard frameIndex >= 0 && frameIndex < frames.count else {
             return
         }
         guard let layers = layer?.sublayers else {
             return
         }
+        
         let frame = frames[frameIndex]
+        var duration = frame.duration
+        if let lastIndex = lastIndex, lastIndex > frameIndex {
+            duration = frames[lastIndex].duration
+        }
         CATransaction.begin()
-        CATransaction.setAnimationDuration(frame.duration ?? duration)
+        CATransaction.setAnimationDuration(duration ?? self.duration)
         frame.apply(to:layers)
         CATransaction.commit()
     }
