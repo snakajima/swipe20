@@ -17,7 +17,10 @@ struct SwipeElement {
     private let foregroundColor:CGColor?
     private let cornerRadius:CGFloat?
     private let xf:CATransform3D
-    
+
+    private let ids:[String]
+    private let elements:[String:SwipeElement]
+
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
         let origin = base?.frame.origin ?? CGPoint.zero
@@ -47,6 +50,19 @@ struct SwipeElement {
         } else {
             self.image = nil
         }
+
+        // nested elements
+        let elementScripts = script["elements"] as? [[String:Any]] ?? []
+        var ids = [String]()
+        var elements:[String:SwipeElement] = base?.elements ?? [:]
+        for elementScript in elementScripts {
+            if let id = elementScript["id"] as? String {
+                ids.append(id)
+                elements[id] = SwipeElement(elementScript, base:base?.elements[id])
+            }
+        }
+        self.ids = base?.ids ?? ids
+        self.elements = elements
     }
     
     func makeLayer() -> CALayer {
@@ -71,6 +87,10 @@ struct SwipeElement {
             }
         }
         layer.name = name
+        layer.sublayers = ids.map {
+            elements[$0]!.makeLayer()
+        }
+
         return apply(to: layer)
     }
     
