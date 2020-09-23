@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LayerTestView: NSViewRepresentable {
+    @State var value:Double
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -26,6 +27,11 @@ struct LayerTestView: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NSViewType, context: Context) {
+        print("updateNSView")
+        guard let layer1 = nsView.layer?.sublayers?.first else {
+            return
+        }
+        layer1.frame = CGRect(origin: layer1.frame.origin, size: CGSize(width: value * 100, height: 100))
     }
 
     class Coordinator: NSObject {
@@ -44,10 +50,11 @@ struct Playground2_Previews: PreviewProvider {
 }
 
 struct Playground2_view: View {
-    @State private var value: Double = 0
+    @State private var value: Double = 0.5
     var body: some View {
         VStack {
-            LayerTestView()
+            LayerTestView(value: value)
+            Text("value=\(value)")
             Slider(value: $value, in: 0...1.0)
         }
     }
