@@ -64,6 +64,11 @@ struct SwipeElement {
         } else {
             self.image = nil
         }
+        //
+        // NOTE: In order to eliminate unnecessary computation, we don't inherit path prop
+        // from the base element.
+        // As the side-effect, the path animation will happen at the different frame in reverse mode.
+        //
         self.path = SwipePath.parse(script["path"]) // NOTE: no inheritance
 
         // nested elements
