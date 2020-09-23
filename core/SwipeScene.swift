@@ -42,7 +42,7 @@ struct SwipeScene {
             return
         }
         guard let layer = layer,
-              let layers = layer.sublayers else {
+              let sublayers = layer.sublayers else {
             return
         }
         
@@ -53,7 +53,7 @@ struct SwipeScene {
         }
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? self.duration)
-        frame.apply(to:layers)
+        frame.apply(to:sublayers)
         // NOTE: implemente delay later
         // layer.beginTime = CACurrentMediaTime() + 1.0
         // layer.fillMode = .backwards
