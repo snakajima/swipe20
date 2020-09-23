@@ -37,7 +37,7 @@ struct SwipeScene {
         return layer
     }
     
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?) {
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, disableActions:Bool = false) {
         guard frameIndex >= 0 && frameIndex < frames.count else {
             return
         }
@@ -52,12 +52,30 @@ struct SwipeScene {
             duration = frames[lastIndex].duration
         }
         CATransaction.begin()
-        CATransaction.setAnimationDuration(duration ?? self.duration)
+        
+        if disableActions {
+            CATransaction.setAnimationDuration(1.0)
+            CATransaction.setDisableActions(true)
+        } else {
+            CATransaction.setAnimationDuration(duration ?? self.duration)
+        }
+        
         frame.apply(to:sublayers)
+        
         // NOTE: implemente delay later
         // layer.beginTime = CACurrentMediaTime() + 1.0
         // layer.fillMode = .backwards
         CATransaction.commit()
+    }
+    
+    func apply(timeOffset:Double, to layer:CALayer?) {
+        guard let layer = layer,
+              let sublayers = layer.sublayers else {
+            return
+        }
+        for sublayer in sublayers {
+            sublayer.timeOffset = timeOffset
+        }
     }
     
     func name(ofFrameAtIndex frameIndex:Int) -> String {

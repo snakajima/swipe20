@@ -1,5 +1,4 @@
 {
-    "duration": 2.0,
     "backgroundColor":"#FFFFCC",
     "frames":[{
         "elements":[{
@@ -10,6 +9,10 @@
                 "id":"id0",
                 "backgroundColor":"blue",
                 "x":10, "y":10, "w":80, "h":80,
+            },{
+                "id":"id1",
+                "backgroundColor":"green",
+                "x":110, "y":110, "w":80, "h":80,
             }]
         }]
     },{
@@ -17,9 +20,29 @@
             "id":"id0",
             "x":100,
             "rotate":-30,
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
             "elements":[{
                 "id":"id0",
                 "backgroundColor":"red",
+            }]
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "elements":[{
+                "id":"id0",
+                "rotate":-30,
+            }]
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "elements":[{
+                "id":"id1",
+                "rotate":-30,
             }]
         }]
     }]

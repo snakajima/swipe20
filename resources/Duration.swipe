@@ -10,24 +10,24 @@
     },{
         "elements":[{
             "id":"id0",
-            "rotate":60,
+            "rotate":90,
         }]
     },{
         "duration":0.1,
         "elements":[{
             "id":"id0",
-            "rotate":120,
+            "rotate":180,
         }]
     },{
         "duration":2.0,
         "elements":[{
             "id":"id0",
-            "rotate":180,
+            "rotate":270,
         }]
     },{
         "elements":[{
             "id":"id0",
-            "rotate":240,
+            "rotate":360,
         }]
     }]
 }

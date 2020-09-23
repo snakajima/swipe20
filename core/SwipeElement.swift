@@ -65,7 +65,7 @@ struct SwipeElement {
         self.elements = elements
     }
     
-    func makeLayer() -> CALayer {
+    func makeLayer(disableActions:Bool = false) -> CALayer {
         let layer:CALayer
         if let text = script["text"] as? String {
             let textLayer = CATextLayer()
@@ -89,6 +89,12 @@ struct SwipeElement {
         layer.name = name
         layer.sublayers = ids.map {
             elements[$0]!.makeLayer()
+        }
+        
+        if disableActions {
+            layer.beginTime = 0
+            layer.speed = 0
+            layer.fillMode = .forwards
         }
 
         return apply(to: layer)
