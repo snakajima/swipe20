@@ -14,6 +14,7 @@ struct Sample: Identifiable {
 let s_samples = [
     Sample(title: "Hello World", filename: "HelloWorld"),
     Sample(title: "Rotation", filename: "Rotation"),
+    Sample(title: "Nested", filename: "Nested"),
     Sample(title: "Sample 2", filename: "sample1"),
 ]
 
