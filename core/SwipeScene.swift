@@ -60,7 +60,7 @@ struct SwipeScene {
             CATransaction.setAnimationDuration(duration ?? self.duration)
         }
         
-        frame.apply(to:sublayers)
+        frame.apply(to:sublayers, duration:duration ?? self.duration)
         
         // NOTE: implemente delay later
         // layer.beginTime = CACurrentMediaTime() + 1.0

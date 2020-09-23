@@ -35,13 +35,13 @@ struct SwipeFrame {
         }
     }
     
-    func apply(to layers:[CALayer]) {
+    func apply(to layers:[CALayer], duration:Double) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
                 return
             }
-            _ = element.apply(to: layer)
+            _ = element.apply(to: layer, duration:duration)
         }
     }
 }

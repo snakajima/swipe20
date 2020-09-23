@@ -64,7 +64,7 @@ struct SwipeElement {
         } else {
             self.image = nil
         }
-        self.path = SwipePath.parse(script["path"]) ?? base?.path
+        self.path = SwipePath.parse(script["path"]) // NOTE: no inheritance
 
         // nested elements
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
@@ -116,10 +116,10 @@ struct SwipeElement {
             layer.fillMode = .forwards
         }
 
-        return apply(to: layer)
+        return apply(to: layer, duration:1e-10)
     }
     
-    func apply(to layer:CALayer) -> CALayer {
+    func apply(to layer:CALayer, duration:Double) -> CALayer {
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
@@ -131,6 +131,14 @@ struct SwipeElement {
             }
         } else if let shapeLayer = layer as? CAShapeLayer {
             if let path = path {
+                // path has no implicit animation
+                let ani = CABasicAnimation(keyPath: "path")
+                ani.fromValue = shapeLayer.path
+                ani.toValue = path
+                ani.beginTime = 0
+                ani.duration = duration
+                ani.fillMode = .both
+                shapeLayer.add(ani, forKey: "path")
                 shapeLayer.path = path
             }
             if let color = fillColor {
@@ -154,7 +162,7 @@ struct SwipeElement {
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
-                _ = element.apply(to: sublayer)
+                _ = element.apply(to: sublayer, duration:duration)
             }
         }
 
