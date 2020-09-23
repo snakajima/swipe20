@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import SwiftUI
 
 struct SwipePath {
 
@@ -172,3 +173,10 @@ struct SwipePath {
         return path
     }
 }
+
+struct SwipePath_Previews: PreviewProvider {
+    static var previews: some View {
+        SwipeFileView("Shapes")
+    }
+}
+

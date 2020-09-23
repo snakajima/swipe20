@@ -28,6 +28,7 @@
 		74BD7115251AC9CE00F41F3D /* Nested.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7114251AC9CE00F41F3D /* Nested.swipe */; };
 		74BD711A251B094100F41F3D /* Duration.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7119251B094100F41F3D /* Duration.swipe */; };
 		74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
+		74FAC20A251BC38900DD29EF /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		74BD7114251AC9CE00F41F3D /* Nested.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nested.swipe; sourceTree = "<group>"; };
 		74BD7119251B094100F41F3D /* Duration.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Duration.swipe; sourceTree = "<group>"; };
 		74FAC206251BBFA700DD29EF /* SwipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
+		74FAC209251BC38900DD29EF /* Shapes.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shapes.swipe; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				742A097D2519BC1C00862F36 /* kodim17.png */,
 				74BD7102251A62CD00F41F3D /* sample1.swipe */,
 				74BD710D251ABCE800F41F3D /* HelloWorld.swipe */,
+				74FAC209251BC38900DD29EF /* Shapes.swipe */,
 				74BD7114251AC9CE00F41F3D /* Nested.swipe */,
 				74BD7111251AC0CB00F41F3D /* Rotation.swipe */,
 				74BD7119251B094100F41F3D /* Duration.swipe */,
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74BD711A251B094100F41F3D /* Duration.swipe in Resources */,
+				74FAC20A251BC38900DD29EF /* Shapes.swipe in Resources */,
 				742A09522518633100862F36 /* Main.storyboard in Resources */,
 				742A097E2519BC1C00862F36 /* kodim17.png in Resources */,
 				742A094F2518633100862F36 /* Preview Assets.xcassets in Resources */,

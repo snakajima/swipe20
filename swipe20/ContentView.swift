@@ -16,6 +16,7 @@ let s_samples = [
     Sample(title: "Rotation", filename: "Rotation"),
     Sample(title: "Nested", filename: "Nested"),
     Sample(title: "Duration", filename: "Duration"),
+    Sample(title: "Shapes", filename: "Shapes"),
     Sample(title: "Sample 2", filename: "sample1"),
 ]
 
