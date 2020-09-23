@@ -1,0 +1,33 @@
+{
+    "duration":0.5,
+    "backgroundColor":"#FFFFCC",
+    "frames":[{
+        "elements":[{
+            "id":"id0",
+            "img":"kodim03.png",
+            "x":100, "y":100, "w":320, "h":240
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "rotate":60,
+        }]
+    },{
+        "duration":0.1,
+        "elements":[{
+            "id":"id0",
+            "rotate":120,
+        }]
+    },{
+        "duration":2.0,
+        "elements":[{
+            "id":"id0",
+            "rotate":180,
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "rotate":240,
+        }]
+    }]
+}

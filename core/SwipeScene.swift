@@ -44,9 +44,9 @@ struct SwipeScene {
         guard let layers = layer?.sublayers else {
             return
         }
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration)
         let frame = frames[frameIndex]
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(frame.duration ?? duration)
         frame.apply(to:layers)
         CATransaction.commit()
     }
