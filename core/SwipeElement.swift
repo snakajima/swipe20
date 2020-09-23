@@ -18,33 +18,39 @@ struct SwipeElement {
     private let cornerRadius:CGFloat?
     private let xf:CATransform3D
 
-    private let ids:[String]
-    private let elements:[String:SwipeElement]
+    private let subElementIds:[String]
+    private let subElements:[String:SwipeElement]
 
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
+        self.name = script["id"] as? String
+
         let origin = base?.frame.origin ?? CGPoint.zero
         let size = base?.frame.size ?? CGSize(width: 100, height: 100)
-        frame = CGRect(x: SwipeParser.asCGFloat(script["x"]) ?? origin.x,
+        self.frame = CGRect(x: SwipeParser.asCGFloat(script["x"]) ?? origin.x,
                        y: SwipeParser.asCGFloat(script["y"]) ?? origin.y,
                        width: SwipeParser.asCGFloat(script["w"]) ?? size.width,
                        height: SwipeParser.asCGFloat(script["h"]) ?? size.height)
-        backgroundColor = SwipeParser.parseColor(script["backgroundColor"]) ?? base?.backgroundColor
-        foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
-        cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
+
+        self.backgroundColor = SwipeParser.parseColor(script["backgroundColor"]) ?? base?.backgroundColor
+        self.foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
+        self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
+
         var xf = CATransform3DIdentity
+        var inheritXf = true
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
             xf = CATransform3DRotate(xf, rot * CGFloat(CGFloat.pi / 180.0), 0, 0, 1)
+            inheritXf = false
         } else if let rots = script["rotate"] as? [CGFloat], rots.count == 3 {
             xf.m34 = -1.0/500; // add the perspective
             let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
             xf = CATransform3DRotate(xf, rots[0] * m, 1, 0, 0)
             xf = CATransform3DRotate(xf, rots[1] * m, 0, 1, 0)
             xf = CATransform3DRotate(xf, rots[2] * m, 0, 0, 1)
+            inheritXf = false
         }
-
-        self.xf = xf
-        name = script["id"] as? String
+        self.xf = inheritXf ? base?.xf ?? xf : xf
+        
         if let imageName = script["img"] as? String {
             self.image = NSImage(named: imageName)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
         } else {
@@ -54,15 +60,15 @@ struct SwipeElement {
         // nested elements
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
         var ids = [String]()
-        var elements:[String:SwipeElement] = base?.elements ?? [:]
+        var elements:[String:SwipeElement] = base?.subElements ?? [:]
         for elementScript in elementScripts {
             if let id = elementScript["id"] as? String {
                 ids.append(id)
-                elements[id] = SwipeElement(elementScript, base:base?.elements[id])
+                elements[id] = SwipeElement(elementScript, base:base?.subElements[id])
             }
         }
-        self.ids = base?.ids ?? ids
-        self.elements = elements
+        self.subElementIds = base?.subElementIds ?? ids
+        self.subElements = elements
     }
     
     func makeLayer(disableActions:Bool = false) -> CALayer {
@@ -87,8 +93,8 @@ struct SwipeElement {
             }
         }
         layer.name = name
-        layer.sublayers = ids.map {
-            elements[$0]!.makeLayer()
+        layer.sublayers = subElementIds.map {
+            subElements[$0]!.makeLayer()
         }
         
         if disableActions {
@@ -121,7 +127,7 @@ struct SwipeElement {
         }
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
-               let element = elements[name] {
+               let element = subElements[name] {
                 _ = element.apply(to: sublayer)
             }
         }
