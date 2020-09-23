@@ -26,7 +26,7 @@ struct ContentView: View {
                 NavigationLink(destination: SwipeFileView(sample.filename)) {
                     Text(sample.title)
                 }
-            }
+            }.frame(maxWidth:200)
         }
     }
 }
