@@ -27,6 +27,7 @@
 		74BD7112251AC0CB00F41F3D /* Rotation.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7111251AC0CB00F41F3D /* Rotation.swipe */; };
 		74BD7115251AC9CE00F41F3D /* Nested.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7114251AC9CE00F41F3D /* Nested.swipe */; };
 		74BD711A251B094100F41F3D /* Duration.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7119251B094100F41F3D /* Duration.swipe */; };
+		74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		74BD7111251AC0CB00F41F3D /* Rotation.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rotation.swipe; sourceTree = "<group>"; };
 		74BD7114251AC9CE00F41F3D /* Nested.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nested.swipe; sourceTree = "<group>"; };
 		74BD7119251B094100F41F3D /* Duration.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Duration.swipe; sourceTree = "<group>"; };
+		74FAC206251BBFA700DD29EF /* SwipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				742A096025186A9800862F36 /* SwipeScene.swift */,
+				74FAC206251BBFA700DD29EF /* SwipePath.swift */,
 				742A096625186B1D00862F36 /* SwipeElement.swift */,
 				742A09692518D72700862F36 /* SwipeParser.swift */,
 				742A096325186ADB00862F36 /* SwipeFrame.swift */,
@@ -216,6 +219,7 @@
 			files = (
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
 				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
+				74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */,
 				742A096725186B1D00862F36 /* SwipeElement.swift in Sources */,
 				742A096125186A9900862F36 /* SwipeScene.swift in Sources */,
 				742A094A2518632F00862F36 /* ContentView.swift in Sources */,

@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    var frameIndex: Int
+    let frameIndex: Int
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
