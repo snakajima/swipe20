@@ -86,9 +86,8 @@ struct SwipeElement {
             let textLayer = CATextLayer()
             textLayer.string = text
             layer = textLayer
-        } else if let path = self.path {
+        } else if let _ = self.path {
             let shapeLayer = CAShapeLayer()
-            shapeLayer.path = path
             layer = shapeLayer
         } else {
             layer = CALayer()
@@ -131,6 +130,9 @@ struct SwipeElement {
                 textLayer.foregroundColor = color
             }
         } else if let shapeLayer = layer as? CAShapeLayer {
+            if let path = path {
+                shapeLayer.path = path
+            }
             if let color = fillColor {
                 shapeLayer.fillColor = color
             }
