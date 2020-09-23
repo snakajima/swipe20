@@ -41,7 +41,7 @@ struct SwipeFrame {
                   let element = elements[name] else {
                 return
             }
-            _ = element.apply(to: layer, duration:duration)
+            element.apply(to: layer, duration:duration)
         }
     }
 }

@@ -116,10 +116,11 @@ struct SwipeElement {
             layer.fillMode = .forwards
         }
 
-        return apply(to: layer, duration:1e-10)
+        apply(to: layer, duration:1e-10)
+        return layer
     }
     
-    func apply(to layer:CALayer, duration:Double) -> CALayer {
+    func apply(to layer:CALayer, duration:Double) {
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
@@ -162,11 +163,9 @@ struct SwipeElement {
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
-                _ = element.apply(to: sublayer, duration:duration)
+                element.apply(to: sublayer, duration:duration)
             }
         }
-
-        return layer
     }
 }
 
