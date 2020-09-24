@@ -10,16 +10,19 @@
         "elements":[{
             "id":"id0",
             "rotate":30,
+            "opacity":0,
         }]
     },{
         "elements":[{
             "id":"id0",
             "rotate":[60,0,0],
+            "opacity":0.5,
         }]
     },{
         "elements":[{
             "id":"id0",
             "rotate":[0,60,0],
+            "opacity":1.0,
         }]
     },{
         "elements":[{

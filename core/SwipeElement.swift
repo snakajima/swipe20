@@ -21,6 +21,7 @@ struct SwipeElement {
     private let strokeColor:CGColor?
     private let lineWidth:CGFloat?
     private let cornerRadius:CGFloat?
+    private let opacity:CGFloat?
     private let xf:CATransform3D
 
     private let subElementIds:[String]
@@ -43,7 +44,8 @@ struct SwipeElement {
         self.strokeColor = SwipeParser.parseColor(script["strokeColor"]) ?? base?.strokeColor
         self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
-
+        self.opacity = SwipeParser.asCGFloat(script["opacity"]) ?? base?.opacity
+        
         var xf = CATransform3DIdentity
         var inheritXf = true
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
@@ -158,6 +160,7 @@ struct SwipeElement {
             }
         }
         layer.cornerRadius = cornerRadius ?? 0
+        layer.opacity = Float(opacity ?? 1.0)
         layer.transform = xf
         if let filterInfo = script["filter"] as? [String:Any],
            let params = filterInfo["params"] as? [String:Any] {
