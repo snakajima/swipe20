@@ -6,7 +6,7 @@
 //
 import Cocoa
 
-struct SwipeCALayer {
+struct SwipeCALayerAlt: SwipeCALayerProtocol {
     let scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene
@@ -34,34 +34,47 @@ struct SwipeCALayer {
               let sublayers = layer.sublayers else {
             return
         }
-        
+
         let frame = scene.frames[frameIndex]
         var duration = frame.duration
-        if let lastIndex = lastIndex, lastIndex > frameIndex {
-            duration = scene.frames[lastIndex].duration
+        let transition = SwipeTransition.eval(from: lastIndex, to: frameIndex)
+        if transition == .prev {
+            duration = scene.frames[lastIndex!].duration
         }
         
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration ?? scene.duration)
-        frame.apply(to:sublayers, duration:duration ?? scene.duration)
-        CATransaction.commit()
+        let animation = SwipeAnimation(duration: duration ?? scene.duration)
+        animation.start { (ratio) in
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
+            CATransaction.commit()
+        }
     }
-    
 }
 
-extension SwipeFrame {
-    func apply(to layers:[CALayer], duration:Double) {
+private extension SwipeFrame {
+    func apply(to layers:[CALayer], ratio:Double, transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
                 return
             }
-            element.apply(to: layer, duration:duration)
+            element.apply(to: layer, ratio:ratio, transition: transition, base:base?.elements[name])
         }
     }
 }
 
-extension SwipeElement {
+private extension SwipeElement {
+    func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
+        self.apply(target: layer, ratio: ratio, from: base, to: self)
+        for sublayer in layer.sublayers ?? [] {
+            if let name = sublayer.name,
+               let element = subElements[name] {
+                element.apply(to: sublayer, ratio:ratio, transition: transition, base:base?.subElements[name])
+            }
+        }
+    }
+    
     func makeLayer() -> CALayer {
         let layer:CALayer
         if let text = script["text"] as? String {
@@ -91,11 +104,12 @@ extension SwipeElement {
         layer.sublayers = subElementIds.map {
             subElements[$0]!.makeLayer()
         }
-        apply(to: layer, duration:1e-10)
+        
+        apply(to: layer, duration:1e-10, transition: .initial, base:nil)
         return layer
     }
 
-    func apply(to layer:CALayer, duration:Double) {
+    func apply(to layer:CALayer, duration:Double, transition:SwipeTransition, base:SwipeElement?) {
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
@@ -128,9 +142,17 @@ extension SwipeElement {
             }
         }
         layer.cornerRadius = cornerRadius ?? 0
-        layer.opacity = Float(opacity ?? 1.0)
-        layer.anchorPoint = anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
+        layer.opacity = Float(opacity)
+        layer.anchorPoint = anchorPoint
+
+        var xf = CATransform3DIdentity
+        xf.m34 = -1.0/500; // add the perspective
+        let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
+        xf = CATransform3DRotate(xf, rotX * m, 1, 0, 0)
+        xf = CATransform3DRotate(xf, rotY * m, 0, 1, 0)
+        xf = CATransform3DRotate(xf, rotZ * m, 0, 0, 1)
         layer.transform = xf
+        
         if let filterInfo = script["filter"] as? [String:Any],
            let params = filterInfo["params"] as? [String:Any] {
             for (key, value) in params {
@@ -140,7 +162,19 @@ extension SwipeElement {
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
-                element.apply(to: sublayer, duration:duration)
+                element.apply(to: sublayer, duration:duration, transition: transition, base:base?.subElements[name])
             }
         }
-    }}
+    }
+}
+
+extension CALayer: RenderLayer {
+    var id: Any? {
+        get {
+            return self.contents
+        }
+        set {
+            self.contents = newValue
+        }
+    }
+}
