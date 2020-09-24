@@ -7,15 +7,15 @@
 import Foundation
 
 struct SwipeParser {
-    static func asDouble(_ inputValue:Any?) -> Double? {
-        if let value = inputValue as? Double {
+    static func asFloat(_ inputValue:Any?) -> Float? {
+        if let value = inputValue as? Float {
             return value
         }
         if let value = inputValue as? Int {
-            return Double(value)
+            return Float(value)
         }
         if let value = inputValue as? CGFloat {
-            return Double(value)
+            return Float(value)
         }
         return nil
     }

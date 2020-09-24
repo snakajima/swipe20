@@ -17,9 +17,9 @@ protocol SwipeRenderLayer: NSObjectProtocol {
 
 protocol SwipeRenderProperties {
     var frame:CGRect { get }
-    var opacity:Float? { get }
+    var opacity:Float { get }
     var transform:CATransform3D { get }
-    var anchorPoint:CGPoint? { get }
+    var anchorPoint:CGPoint { get }
 }
 
 struct SwipeAnimationApplier {
@@ -34,13 +34,13 @@ struct SwipeAnimationApplier {
     }
     
     func apply(ratio:CGFloat, initialing:Bool) {
-        if let opacityTo = to.opacity {
-            if let opacityFrom = from.opacity {
-                target.opacity = opacityFrom * Float(1.0 - ratio) + opacityTo * Float(ratio)
-            } else if initialing {
-                target.opacity = opacityTo
-            }
-        }
+        let left = 1.0 - ratio
+        target.opacity = from.opacity * Float(left) + to.opacity * Float(ratio)
+        let fr = from.frame
+        target.frame = CGRect(x: fr.minX * left + to.frame.minX * ratio,
+                              y: fr.minY * left + to.frame.minY * ratio,
+                              width: fr.width * left + to.frame.width * ratio,
+                              height: fr.height * left + to.frame.height * ratio)
     }
 }
 

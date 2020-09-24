@@ -15,7 +15,7 @@ struct SwipeElement {
     let path:CGPath?
     
     var frame:CGRect
-    var opacity:Double
+    var opacity:Float
     var anchorPoint:CGPoint
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
@@ -45,7 +45,7 @@ struct SwipeElement {
         self.strokeColor = SwipeParser.parseColor(script["strokeColor"]) ?? base?.strokeColor
         self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
-        self.opacity = SwipeParser.asDouble(script["opacity"]) ?? base?.opacity ?? 1.0
+        self.opacity = SwipeParser.asFloat(script["opacity"]) ?? base?.opacity ?? 1.0
         if let points = SwipeParser.asCGFloats(script["anchorPoint"]), points.count == 2 {
             self.anchorPoint = CGPoint(x: points[0], y: points[1])
         } else {
@@ -94,3 +94,5 @@ struct SwipeElement {
     }
 }
 
+extension SwipeElement : SwipeRenderProperties {
+}
