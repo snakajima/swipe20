@@ -23,6 +23,7 @@ let s_samples = [
     Sample(title: "Sample 2", filename: "sample1", options:nil),
     Sample(title: "Hello World (Alt)", filename: "HelloWorld", options:["alt":true]),
     Sample(title: "Rotation (Alt)", filename: "Rotation", options:["alt":true]),
+    Sample(title: "Gravity (Alt)", filename: "Gravity", options:["alt":true]),
     Sample(title: "AnchorPoint (Alt)", filename: "AnchorPoint", options:["alt":true]),
     Sample(title: "Opacity (Alt)", filename: "Opacity", options:["alt":true]),
     Sample(title: "Nested (Alt)", filename: "Nested", options:["alt":true]),
