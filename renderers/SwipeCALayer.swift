@@ -43,7 +43,7 @@ struct SwipeCALayer {
         }
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? scene.duration)
-        frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, prev:scene.frameAt(index: lastIndex))
+        frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:scene.frameAt(index: lastIndex))
         
         // NOTE: implemente delay later
         // layer.beginTime = CACurrentMediaTime() + 1.0
@@ -54,7 +54,7 @@ struct SwipeCALayer {
 }
 
 private extension SwipeFrame {
-    func apply(to layers:[CALayer], duration:Double, transition:SwipeTransition, prev:SwipeFrame?) {
+    func apply(to layers:[CALayer], duration:Double, transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
