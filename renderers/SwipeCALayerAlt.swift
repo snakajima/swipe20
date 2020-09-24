@@ -26,7 +26,7 @@ struct SwipeCALayer {
         return layer
     }
 
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?) {
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, disableActions:Bool = false) {
         guard frameIndex >= 0 && frameIndex < scene.frames.count else {
             return
         }
@@ -41,7 +41,14 @@ struct SwipeCALayer {
             duration = scene.frames[lastIndex].duration
         }
         CATransaction.begin()
-        CATransaction.setAnimationDuration(duration ?? scene.duration)
+        
+        if disableActions {
+            CATransaction.setAnimationDuration(1.0)
+            CATransaction.setDisableActions(true)
+        } else {
+            CATransaction.setAnimationDuration(duration ?? scene.duration)
+        }
+        
         frame.apply(to:sublayers, duration:duration ?? scene.duration)
         
         // NOTE: implemente delay later
@@ -52,7 +59,7 @@ struct SwipeCALayer {
     
 }
 
-private extension SwipeFrame {
+extension SwipeFrame {
     func apply(to layers:[CALayer], duration:Double) {
         for layer in layers {
             guard let name = layer.name,
@@ -64,8 +71,8 @@ private extension SwipeFrame {
     }
 }
 
-private extension SwipeElement {
-    func makeLayer() -> CALayer {
+extension SwipeElement {
+    func makeLayer(disableActions:Bool = false) -> CALayer {
         let layer:CALayer
         if let text = script["text"] as? String {
             let textLayer = CATextLayer()
@@ -95,6 +102,12 @@ private extension SwipeElement {
             subElements[$0]!.makeLayer()
         }
         
+        if disableActions {
+            layer.beginTime = 0
+            layer.speed = 0
+            layer.fillMode = .forwards
+        }
+
         apply(to: layer, duration:1e-10)
         return layer
     }
