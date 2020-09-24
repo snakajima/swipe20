@@ -24,6 +24,7 @@ struct SwipeElement {
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
     let transform:CATransform3D
+    let rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
     let subElements:[String:SwipeElement]
@@ -51,19 +52,29 @@ struct SwipeElement {
         } else {
             self.anchorPoint = base?.anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
         }
-        
+
         var xf = CATransform3DIdentity
         var inheritXf = true
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
             xf = CATransform3DRotate(xf, rot * CGFloat(CGFloat.pi / 180.0), 0, 0, 1)
             inheritXf = false
+            self.rotX = 0
+            self.rotY = 0
+            self.rotZ = rot
         } else if let rots = SwipeParser.asCGFloats(script["rotate"]), rots.count == 3 {
             xf.m34 = -1.0/500; // add the perspective
             let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
             xf = CATransform3DRotate(xf, rots[0] * m, 1, 0, 0)
             xf = CATransform3DRotate(xf, rots[1] * m, 0, 1, 0)
             xf = CATransform3DRotate(xf, rots[2] * m, 0, 0, 1)
+            self.rotX = rots[0]
+            self.rotY = rots[1]
+            self.rotZ = rots[2]
             inheritXf = false
+        } else {
+            self.rotX = 0
+            self.rotY = 0
+            self.rotZ = 0
         }
         self.transform = inheritXf ? base?.transform ?? xf : xf
         

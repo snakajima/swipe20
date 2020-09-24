@@ -135,7 +135,15 @@ private extension SwipeElement {
         layer.cornerRadius = cornerRadius ?? 0
         layer.opacity = Float(opacity)
         layer.anchorPoint = anchorPoint
-        layer.transform = transform
+
+        var xf = CATransform3DIdentity
+        xf.m34 = -1.0/500; // add the perspective
+        let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
+        xf = CATransform3DRotate(xf, rotX * m, 1, 0, 0)
+        xf = CATransform3DRotate(xf, rotY * m, 0, 1, 0)
+        xf = CATransform3DRotate(xf, rotZ * m, 0, 0, 1)
+        layer.transform = xf
+        
         if let filterInfo = script["filter"] as? [String:Any],
            let params = filterInfo["params"] as? [String:Any] {
             for (key, value) in params {
