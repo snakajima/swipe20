@@ -9,8 +9,9 @@ import SwiftUI
 struct SwipeFileView: View {
     @State var frameIndex = 0
     let scene:SwipeScene
+    let options:[String:Any]?
     
-    init(_ filename:String) {
+    init(_ filename:String, options:[String:Any]? = nil) {
         if let path = Bundle.main.path(forResource: filename, ofType: "swipe"),
            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
            let json = try?  JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [String:Any] {
@@ -19,11 +20,12 @@ struct SwipeFileView: View {
             self.scene = SwipeScene([:])
             print("load JSON failed")
         }
+        self.options = options
     }
 
     var body: some View {
         VStack {
-            SwipeView(scene:scene, frameIndex:frameIndex)
+            SwipeView(scene:scene, frameIndex:frameIndex, options: options)
             HStack {
                 Button("Prev") {
                     self.frameIndex -= 1

@@ -9,9 +9,10 @@ import SwiftUI
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
     let frameIndex: Int
+    let options:[String:Any]?
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self, scene:scene)
+        return Coordinator(self, scene:scene, options: options)
     }
     
     func makeNSView(context: Context) -> some NSView {
@@ -29,9 +30,15 @@ struct SwipeView: NSViewRepresentable {
         let renderer:SwipeCALayerProtocol
         private var lastIndex:Int? = nil
         
-        init(_ view: SwipeView, scene:SwipeScene) {
+        init(_ view: SwipeView, scene:SwipeScene, options:[String:Any]?) {
             self.view = view
-            self.renderer = SwipeCALayerAlt(scene: scene)
+            if let options = options, let alt = options["alt"] as? Bool, alt == true {
+                print("alt")
+                self.renderer = SwipeCALayer(scene: scene)
+            } else {
+                print("normal")
+                self.renderer = SwipeCALayerAlt(scene: scene)
+            }
         }
         
         func makeLayer() -> CALayer {
@@ -66,7 +73,7 @@ struct SwipeView_Previews: PreviewProvider {
     static let s_scene = SwipeScene(s_script1)
     static var previews: some View {
         VStack {
-            SwipeView(scene:s_scene, frameIndex:0)
+            SwipeView(scene:s_scene, frameIndex:0, options: nil)
         }
     }
 }
