@@ -43,7 +43,7 @@ struct SwipeCALayer {
         }
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? scene.duration)
-        frame.apply(to:sublayers, duration:duration ?? scene.duration)
+        frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition)
         
         // NOTE: implemente delay later
         // layer.beginTime = CACurrentMediaTime() + 1.0
@@ -54,13 +54,13 @@ struct SwipeCALayer {
 }
 
 private extension SwipeFrame {
-    func apply(to layers:[CALayer], duration:Double) {
+    func apply(to layers:[CALayer], duration:Double, transition:SwipeTransition) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
                 return
             }
-            element.apply(to: layer, duration:duration)
+            element.apply(to: layer, duration:duration, transition: transition)
         }
     }
 }
@@ -96,11 +96,11 @@ private extension SwipeElement {
             subElements[$0]!.makeLayer()
         }
         
-        apply(to: layer, duration:1e-10)
+        apply(to: layer, duration:1e-10, transition: .initial)
         return layer
     }
 
-    func apply(to layer:CALayer, duration:Double) {
+    func apply(to layer:CALayer, duration:Double, transition:SwipeTransition) {
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
@@ -145,7 +145,7 @@ private extension SwipeElement {
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
-                element.apply(to: sublayer, duration:duration)
+                element.apply(to: sublayer, duration:duration, transition: transition)
             }
         }
     }}
