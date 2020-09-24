@@ -23,7 +23,13 @@ protocol SwipeRenderProperties {
 }
 
 extension SwipeRenderProperties {
-    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties, to:SwipeRenderProperties) {
+    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?, to:SwipeRenderProperties) {
+        guard let from = from else {
+            target.opacity = to.opacity
+            target.frame = to.frame
+            return
+        }
+        
         let left = 1.0 - ratio
         target.opacity = from.opacity * Float(left) + to.opacity * Float(ratio)
         let fr = from.frame

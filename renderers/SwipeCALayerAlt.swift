@@ -51,23 +51,32 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         let animation = SwipeAnimation(duration: duration ?? scene.duration)
         animation.start { (ratio) in
             print("ratio=", ratio)
+            frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
         }
     }
 }
 
 private extension SwipeFrame {
-    func apply(to layers:[CALayer], duration:Double, transition:SwipeTransition, base:SwipeFrame?) {
+    func apply(to layers:[CALayer], ratio:Double, transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
                 return
             }
-            element.apply(to: layer, duration:duration, transition: transition, base:base?.elements[name])
+            element.apply(to: layer, ratio:ratio, transition: transition, base:base?.elements[name])
         }
     }
 }
 
 private extension SwipeElement {
+    func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
+        if transition == .initial {
+            self.apply(to: layer, duration: 1e-10, transition: transition, base: base)
+            return
+        }
+        self.apply(target: layer, ratio: ratio, from: base, to: self)
+    }
+    
     func makeLayer() -> CALayer {
         let layer:CALayer
         if let text = script["text"] as? String {
@@ -98,7 +107,7 @@ private extension SwipeElement {
             subElements[$0]!.makeLayer()
         }
         
-        apply(to: layer, duration:1e-10, transition: .initial, base:nil)
+        apply(to: layer, ratio:1e-10, transition: .initial, base:nil)
         return layer
     }
 
