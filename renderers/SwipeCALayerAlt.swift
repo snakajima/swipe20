@@ -66,7 +66,7 @@ private extension SwipeFrame {
 
 private extension SwipeElement {
     func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
-        self.apply(target: layer, ratio: ratio, from: base, to: self)
+        self.apply(target: layer, ratio: ratio, from: base, to: self, transition: transition)
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
