@@ -22,25 +22,15 @@ protocol SwipeRenderProperties {
     var anchorPoint:CGPoint { get }
 }
 
-struct SwipeAnimationApplier {
-    let target:SwipeRenderLayer
-    let from:SwipeRenderProperties
-    let to:SwipeRenderProperties
-    
-    init(target:SwipeRenderLayer, from:SwipeRenderProperties, to:SwipeRenderProperties) {
-        self.target = target
-        self.from = from
-        self.to = to
-    }
-    
-    func apply(ratio:CGFloat, initialing:Bool) {
+extension SwipeRenderProperties {
+    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties, to:SwipeRenderProperties) {
         let left = 1.0 - ratio
         target.opacity = from.opacity * Float(left) + to.opacity * Float(ratio)
         let fr = from.frame
-        target.frame = CGRect(x: fr.minX * left + to.frame.minX * ratio,
-                              y: fr.minY * left + to.frame.minY * ratio,
-                              width: fr.width * left + to.frame.width * ratio,
-                              height: fr.height * left + to.frame.height * ratio)
+        target.frame = CGRect(x: fr.minX * CGFloat(left) + to.frame.minX * CGFloat(ratio),
+                              y: fr.minY * CGFloat(left) + to.frame.minY * CGFloat(ratio),
+                              width: fr.width * CGFloat(left) + to.frame.width * CGFloat(ratio),
+                              height: fr.height * CGFloat(left) + to.frame.height * CGFloat(ratio))
     }
 }
 
