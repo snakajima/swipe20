@@ -44,7 +44,10 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         
         let animation = SwipeAnimation(duration: duration ?? scene.duration)
         animation.start { (ratio) in
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
             frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
+            CATransaction.commit()
         }
     }
 }

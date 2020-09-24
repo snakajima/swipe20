@@ -37,8 +37,8 @@ extension SwipeRenderProperties {
                               width: from.frame.width.mix(to.frame.width, ratio),
                               height: from.frame.height.mix(to.frame.height, ratio))
         let rotX = from.rotX.mix(to.rotX, ratio)
-        let rotY = from.rotX.mix(to.rotY, ratio)
-        let rotZ = from.rotX.mix(to.rotZ, ratio)
+        let rotY = from.rotY.mix(to.rotY, ratio)
+        let rotZ = from.rotZ.mix(to.rotZ, ratio)
         
         var xf = CATransform3DIdentity
         xf.m34 = -1.0/500; // add the perspective
