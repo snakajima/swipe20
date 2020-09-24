@@ -4,29 +4,29 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
-import Cocoa
+import Foundation
 import CoreImage
-import SwiftUI
+import Cocoa
 
 struct SwipeElement {
-    private let script:[String:Any]
-    private let name:String?
-    private let image:CGImage?
-    private let path:CGPath?
+    let script:[String:Any]
+    let name:String?
+    let image:CGImage?
+    let path:CGPath?
     
-    private let frame:CGRect
-    private let backgroundColor:CGColor?
-    private let foregroundColor:CGColor?
-    private let fillColor:CGColor?
-    private let strokeColor:CGColor?
-    private let lineWidth:CGFloat?
-    private let cornerRadius:CGFloat?
-    private let opacity:CGFloat?
-    private let anchorPoint:CGPoint?
-    private let xf:CATransform3D
+    let frame:CGRect
+    let backgroundColor:CGColor?
+    let foregroundColor:CGColor?
+    let fillColor:CGColor?
+    let strokeColor:CGColor?
+    let lineWidth:CGFloat?
+    let cornerRadius:CGFloat?
+    let opacity:CGFloat?
+    let anchorPoint:CGPoint?
+    let xf:CATransform3D
 
-    private let subElementIds:[String]
-    private let subElements:[String:SwipeElement]
+    let subElementIds:[String]
+    let subElements:[String:SwipeElement]
 
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
@@ -91,102 +91,5 @@ struct SwipeElement {
         }
         self.subElementIds = base?.subElementIds ?? ids
         self.subElements = elements
-    }
-    
-    func makeLayer(disableActions:Bool = false) -> CALayer {
-        let layer:CALayer
-        if let text = script["text"] as? String {
-            let textLayer = CATextLayer()
-            textLayer.string = text
-            layer = textLayer
-        } else if let _ = self.path {
-            let shapeLayer = CAShapeLayer()
-            layer = shapeLayer
-        } else {
-            layer = CALayer()
-            if let image = self.image {
-                layer.contents = image
-                layer.contentsGravity = .resizeAspectFill
-                layer.masksToBounds = true
-            }
-        }
-        
-        if let filterInfo = script["filter"] as? [String:Any],
-           let filterName = filterInfo["name"] as? String {
-            if let filter = CIFilter(name: filterName) {
-                filter.name = "f0"
-                layer.filters = [filter]
-            }
-        }
-        layer.name = name
-        layer.sublayers = subElementIds.map {
-            subElements[$0]!.makeLayer()
-        }
-        
-        if disableActions {
-            layer.beginTime = 0
-            layer.speed = 0
-            layer.fillMode = .forwards
-        }
-
-        apply(to: layer, duration:1e-10)
-        return layer
-    }
-    
-    func apply(to layer:CALayer, duration:Double) {
-        layer.transform = CATransform3DIdentity
-        layer.frame = frame
-        if let backgroundColor = self.backgroundColor {
-            layer.backgroundColor = backgroundColor
-        }
-        if let textLayer = layer as? CATextLayer {
-            if let color = foregroundColor {
-                textLayer.foregroundColor = color
-            }
-        } else if let shapeLayer = layer as? CAShapeLayer {
-            if let path = path {
-                // path has no implicit animation
-                let ani = CABasicAnimation(keyPath: "path")
-                ani.fromValue = shapeLayer.path
-                ani.toValue = path
-                ani.beginTime = 0
-                ani.duration = duration
-                ani.fillMode = .both
-                shapeLayer.add(ani, forKey: "path")
-                shapeLayer.path = path
-            }
-            if let color = fillColor {
-                shapeLayer.fillColor = color
-            }
-            if let color = strokeColor {
-                shapeLayer.strokeColor = color
-            }
-            if let width = lineWidth {
-                shapeLayer.lineWidth = width
-            }
-        }
-        layer.cornerRadius = cornerRadius ?? 0
-        layer.opacity = Float(opacity ?? 1.0)
-        layer.anchorPoint = anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
-        layer.transform = xf
-        if let filterInfo = script["filter"] as? [String:Any],
-           let params = filterInfo["params"] as? [String:Any] {
-            for (key, value) in params {
-                layer.setValue(value, forKeyPath: "filters.f0.\(key)")
-            }
-        }
-        for sublayer in layer.sublayers ?? [] {
-            if let name = sublayer.name,
-               let element = subElements[name] {
-                element.apply(to: sublayer, duration:duration)
-            }
-        }
-    }
-}
-
-
-struct SwipeElement_Previews: PreviewProvider {
-    static var previews: some View {
-        SwipeFileView("Shapes")
     }
 }

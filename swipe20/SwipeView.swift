@@ -11,12 +11,12 @@ struct SwipeView: NSViewRepresentable {
     let frameIndex: Int
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        return Coordinator(self, scene:scene)
     }
     
     func makeNSView(context: Context) -> some NSView {
         let nsView = NSView()
-        nsView.layer = scene.makeLayer()
+        nsView.layer = context.coordinator.makeLayer()
         return nsView
     }
     
@@ -26,14 +26,20 @@ struct SwipeView: NSViewRepresentable {
 
     class Coordinator: NSObject {
         let view: SwipeView
+        let renderer:SwipeCALayer
         private var lastIndex:Int? = nil
         
-        init(_ view: SwipeView) {
+        init(_ view: SwipeView, scene:SwipeScene) {
             self.view = view
+            self.renderer = SwipeCALayer(scene: scene)
+        }
+        
+        func makeLayer() -> CALayer {
+            renderer.makeLayer()
         }
         
         func move(to frameIndex:Int, layer:CALayer?) {
-            view.scene.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex)
+            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex)
             lastIndex = frameIndex
         }
     }
