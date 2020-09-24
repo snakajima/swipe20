@@ -4,9 +4,9 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
-import Cocoa
+import Foundation
 import CoreImage
-import SwiftUI
+import Cocoa
 
 struct SwipeElement {
     let script:[String:Any]
@@ -91,14 +91,5 @@ struct SwipeElement {
         }
         self.subElementIds = base?.subElementIds ?? ids
         self.subElements = elements
-    }
-    
-
-}
-
-
-struct SwipeElement_Previews: PreviewProvider {
-    static var previews: some View {
-        SwipeFileView("Shapes")
     }
 }
