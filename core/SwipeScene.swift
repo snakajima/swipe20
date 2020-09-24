@@ -57,6 +57,7 @@ struct SwipeScene {
         CATransaction.commit()
     }
     
+    /*
     func apply(timeOffset:Double, to layer:CALayer?) {
         guard let layer = layer,
               let sublayers = layer.sublayers else {
@@ -66,6 +67,7 @@ struct SwipeScene {
             sublayer.timeOffset = timeOffset
         }
     }
+    */
     
     func name(ofFrameAtIndex frameIndex:Int) -> String {
         guard frameIndex >= 0 && frameIndex < frames.count else {
