@@ -18,26 +18,26 @@ protocol SwipeRenderProperties {
 }
 
 extension SwipeRenderProperties {
-    func apply(target:RenderLayer, ratio:Double, from:SwipeRenderProperties?, to:SwipeRenderProperties, transition:SwipeTransition) {
+    func apply(target:RenderLayer, ratio:Double, from:SwipeRenderProperties?, transition:SwipeTransition) {
         guard let from = from else {
-            target.opacity = to.opacity
-            target.frame = to.frame
+            target.opacity = opacity
+            target.frame = frame
             return
         }
         
-        target.opacity = from.opacity.mix(to.opacity, ratio)
-        target.frame = CGRect(x: from.frame.minX.mix(to.frame.minX, ratio),
-                              y: from.frame.minY.mix(to.frame.minY, ratio),
-                              width: from.frame.width.mix(to.frame.width, ratio),
-                              height: from.frame.height.mix(to.frame.height, ratio))
+        target.opacity = from.opacity.mix(opacity, ratio)
+        target.frame = CGRect(x: from.frame.minX.mix(frame.minX, ratio),
+                              y: from.frame.minY.mix(frame.minY, ratio),
+                              width: from.frame.width.mix(frame.width, ratio),
+                              height: from.frame.height.mix(frame.height, ratio))
         
         if animationStyle == .gravity {
             target.frame = target.frame.applying(CGAffineTransform(translationX: 0, y: -CGFloat(ratio * ratio) * target.frame.minY))
         }
         
-        let rotX = from.rotX.mix(to.rotX, ratio)
-        let rotY = from.rotY.mix(to.rotY, ratio)
-        let rotZ = from.rotZ.mix(to.rotZ, ratio)
+        let rotX = from.rotX.mix(self.rotX, ratio)
+        let rotY = from.rotY.mix(self.rotY, ratio)
+        let rotZ = from.rotZ.mix(self.rotZ, ratio)
         
         var xf = CATransform3DIdentity
         xf.m34 = -1.0/500; // add the perspective
