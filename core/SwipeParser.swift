@@ -19,6 +19,19 @@ struct SwipeParser {
         }
         return nil
     }
+
+    static func asCGFloats(_ inputValue:Any?) -> [CGFloat]? {
+        if let array = inputValue as? [CGFloat] {
+            return array
+        }
+        if let array = inputValue as? [Int] {
+            return array.map { CGFloat($0) }
+        }
+        if let array = inputValue as? [Double] {
+            return array.map { CGFloat($0) }
+        }
+        return []
+    }
     
     static let regexColor = try! NSRegularExpression(pattern: "^#[A-F0-9]*$", options: NSRegularExpression.Options.caseInsensitive)
     
