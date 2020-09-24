@@ -33,6 +33,7 @@
 		74FAC267251CC09400DD29EF /* AnchorPoint.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC266251CC09400DD29EF /* AnchorPoint.swipe */; };
 		74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */; };
 		74FAC279251CF87600DD29EF /* SwipeCALayerAlt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */; };
+		74FAC27C251D102900DD29EF /* SwipeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27B251D102900DD29EF /* SwipeAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		74FAC266251CC09400DD29EF /* AnchorPoint.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnchorPoint.swipe; sourceTree = "<group>"; };
 		74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCALayer.swift; sourceTree = "<group>"; };
 		74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCALayerAlt.swift; sourceTree = "<group>"; };
+		74FAC27B251D102900DD29EF /* SwipeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				742A096625186B1D00862F36 /* SwipeElement.swift */,
 				742A09692518D72700862F36 /* SwipeParser.swift */,
 				742A096325186ADB00862F36 /* SwipeFrame.swift */,
+				74FAC27B251D102900DD29EF /* SwipeAnimation.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
 				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
 				74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */,
+				74FAC27C251D102900DD29EF /* SwipeAnimation.swift in Sources */,
 				74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */,
 				742A096725186B1D00862F36 /* SwipeElement.swift in Sources */,
 				74FAC279251CF87600DD29EF /* SwipeCALayerAlt.swift in Sources */,

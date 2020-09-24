@@ -49,6 +49,9 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         // layer.beginTime = CACurrentMediaTime() + 1.0
         // layer.fillMode = .backwards
         CATransaction.commit()
+        
+        let animation = SwipeAnimation(duration: duration ?? scene.duration)
+        animation.start()
     }
     
 }
