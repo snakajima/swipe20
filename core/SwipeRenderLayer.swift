@@ -29,12 +29,22 @@ extension SwipeRenderProperties {
             return
         }
         
-        let left = 1.0 - ratio
-        target.opacity = from.opacity * Float(left) + to.opacity * Float(ratio)
-        let fr = from.frame
-        target.frame = CGRect(x: fr.minX * CGFloat(left) + to.frame.minX * CGFloat(ratio),
-                              y: fr.minY * CGFloat(left) + to.frame.minY * CGFloat(ratio),
-                              width: fr.width * CGFloat(left) + to.frame.width * CGFloat(ratio),
-                              height: fr.height * CGFloat(left) + to.frame.height * CGFloat(ratio))
+        target.opacity = from.opacity.mix(to.opacity, ratio: ratio)
+        target.frame = CGRect(x: from.frame.minX.mix(to.frame.minX, ratio: ratio),
+                              y: from.frame.minY.mix(to.frame.minY, ratio: ratio),
+                              width: from.frame.width.mix(to.frame.width, ratio: ratio),
+                              height: from.frame.height.mix(to.frame.height, ratio: ratio))
+    }
+}
+
+private extension Float {
+    func mix(_ to:Float, ratio:Double) -> Float {
+        return self * Float(1 - ratio) + to * Float(ratio)
+    }
+}
+
+private extension CGFloat {
+    func mix(_ to:CGFloat, ratio:Double) -> CGFloat {
+        return self * CGFloat(1 - ratio) + to * CGFloat(ratio)
     }
 }
