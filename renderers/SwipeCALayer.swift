@@ -111,4 +111,53 @@ extension SwipeElement {
         apply(to: layer, duration:1e-10)
         return layer
     }
-}
+
+    func apply(to layer:CALayer, duration:Double) {
+        layer.transform = CATransform3DIdentity
+        layer.frame = frame
+        if let backgroundColor = self.backgroundColor {
+            layer.backgroundColor = backgroundColor
+        }
+        if let textLayer = layer as? CATextLayer {
+            if let color = foregroundColor {
+                textLayer.foregroundColor = color
+            }
+        } else if let shapeLayer = layer as? CAShapeLayer {
+            if let path = path {
+                // path has no implicit animation
+                let ani = CABasicAnimation(keyPath: "path")
+                ani.fromValue = shapeLayer.path
+                ani.toValue = path
+                ani.beginTime = 0
+                ani.duration = duration
+                ani.fillMode = .both
+                shapeLayer.add(ani, forKey: "path")
+                shapeLayer.path = path
+            }
+            if let color = fillColor {
+                shapeLayer.fillColor = color
+            }
+            if let color = strokeColor {
+                shapeLayer.strokeColor = color
+            }
+            if let width = lineWidth {
+                shapeLayer.lineWidth = width
+            }
+        }
+        layer.cornerRadius = cornerRadius ?? 0
+        layer.opacity = Float(opacity ?? 1.0)
+        layer.anchorPoint = anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
+        layer.transform = xf
+        if let filterInfo = script["filter"] as? [String:Any],
+           let params = filterInfo["params"] as? [String:Any] {
+            for (key, value) in params {
+                layer.setValue(value, forKeyPath: "filters.f0.\(key)")
+            }
+        }
+        for sublayer in layer.sublayers ?? [] {
+            if let name = sublayer.name,
+               let element = subElements[name] {
+                element.apply(to: sublayer, duration:duration)
+            }
+        }
+    }}

@@ -14,16 +14,16 @@ struct SwipeElement {
     let image:CGImage?
     let path:CGPath?
     
-    private let frame:CGRect
-    private let backgroundColor:CGColor?
-    private let foregroundColor:CGColor?
-    private let fillColor:CGColor?
-    private let strokeColor:CGColor?
-    private let lineWidth:CGFloat?
-    private let cornerRadius:CGFloat?
-    private let opacity:CGFloat?
-    private let anchorPoint:CGPoint?
-    private let xf:CATransform3D
+    let frame:CGRect
+    let backgroundColor:CGColor?
+    let foregroundColor:CGColor?
+    let fillColor:CGColor?
+    let strokeColor:CGColor?
+    let lineWidth:CGFloat?
+    let cornerRadius:CGFloat?
+    let opacity:CGFloat?
+    let anchorPoint:CGPoint?
+    let xf:CATransform3D
 
     let subElementIds:[String]
     let subElements:[String:SwipeElement]
@@ -93,55 +93,7 @@ struct SwipeElement {
         self.subElements = elements
     }
     
-    func apply(to layer:CALayer, duration:Double) {
-        layer.transform = CATransform3DIdentity
-        layer.frame = frame
-        if let backgroundColor = self.backgroundColor {
-            layer.backgroundColor = backgroundColor
-        }
-        if let textLayer = layer as? CATextLayer {
-            if let color = foregroundColor {
-                textLayer.foregroundColor = color
-            }
-        } else if let shapeLayer = layer as? CAShapeLayer {
-            if let path = path {
-                // path has no implicit animation
-                let ani = CABasicAnimation(keyPath: "path")
-                ani.fromValue = shapeLayer.path
-                ani.toValue = path
-                ani.beginTime = 0
-                ani.duration = duration
-                ani.fillMode = .both
-                shapeLayer.add(ani, forKey: "path")
-                shapeLayer.path = path
-            }
-            if let color = fillColor {
-                shapeLayer.fillColor = color
-            }
-            if let color = strokeColor {
-                shapeLayer.strokeColor = color
-            }
-            if let width = lineWidth {
-                shapeLayer.lineWidth = width
-            }
-        }
-        layer.cornerRadius = cornerRadius ?? 0
-        layer.opacity = Float(opacity ?? 1.0)
-        layer.anchorPoint = anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
-        layer.transform = xf
-        if let filterInfo = script["filter"] as? [String:Any],
-           let params = filterInfo["params"] as? [String:Any] {
-            for (key, value) in params {
-                layer.setValue(value, forKeyPath: "filters.f0.\(key)")
-            }
-        }
-        for sublayer in layer.sublayers ?? [] {
-            if let name = sublayer.name,
-               let element = subElements[name] {
-                element.apply(to: sublayer, duration:duration)
-            }
-        }
-    }
+
 }
 
 
