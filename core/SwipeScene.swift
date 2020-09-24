@@ -45,17 +45,12 @@ struct SwipeScene {
         backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
     }
     
-    /*
-    func apply(timeOffset:Double, to layer:CALayer?) {
-        guard let layer = layer,
-              let sublayers = layer.sublayers else {
-            return
+    func frameAt(index:Int?) -> SwipeFrame? {
+        guard let index = index else {
+            return nil
         }
-        for sublayer in sublayers {
-            sublayer.timeOffset = timeOffset
-        }
+        return frames[index]
     }
-    */
     
     func name(ofFrameAtIndex frameIndex:Int) -> String {
         guard frameIndex >= 0 && frameIndex < frames.count else {
