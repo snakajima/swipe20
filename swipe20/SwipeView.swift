@@ -31,7 +31,7 @@ struct SwipeView: NSViewRepresentable {
         
         init(_ view: SwipeView, scene:SwipeScene) {
             self.view = view
-            self.renderer = SwipeCALayer(scene: scene)
+            self.renderer = SwipeCALayerAlt(scene: scene)
         }
         
         func makeLayer() -> CALayer {
