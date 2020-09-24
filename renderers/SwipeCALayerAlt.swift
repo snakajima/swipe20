@@ -41,16 +41,9 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         if transition == .prev {
             duration = scene.frames[lastIndex!].duration
         }
-        /*
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration ?? scene.duration)
-        frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:scene.frameAt(index: lastIndex))
-        CATransaction.commit()
-        */
         
         let animation = SwipeAnimation(duration: duration ?? scene.duration)
         animation.start { (ratio) in
-            print("ratio=", ratio)
             frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
         }
     }

@@ -59,7 +59,7 @@ class SwipeAnimation {
             return
         }
         callback(delta / duration)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1/30) {
             self.tick(callback: callback)
         }
     }
