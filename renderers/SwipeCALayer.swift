@@ -6,7 +6,12 @@
 //
 import Cocoa
 
-struct SwipeCALayer {
+protocol SwipeCALayerProtocol {
+    func makeLayer() -> CALayer
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?)
+}
+
+struct SwipeCALayer: SwipeCALayerProtocol {
     let scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene
