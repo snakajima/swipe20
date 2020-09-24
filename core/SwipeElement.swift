@@ -16,7 +16,7 @@ struct SwipeElement {
     
     var frame:CGRect
     var opacity:Double
-    var anchorPoint:CGPoint?
+    var anchorPoint:CGPoint
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
     let fillColor:CGColor?
@@ -49,7 +49,7 @@ struct SwipeElement {
         if let points = SwipeParser.asCGFloats(script["anchorPoint"]), points.count == 2 {
             self.anchorPoint = CGPoint(x: points[0], y: points[1])
         } else {
-            self.anchorPoint = base?.anchorPoint
+            self.anchorPoint = base?.anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
         }
         
         var xf = CATransform3DIdentity
