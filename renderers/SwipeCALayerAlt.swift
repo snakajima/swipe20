@@ -6,7 +6,7 @@
 //
 import Cocoa
 
-struct SwipeCALayer {
+struct SwipeCALayerAlt {
     let scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene
@@ -40,16 +40,19 @@ struct SwipeCALayer {
         if let lastIndex = lastIndex, lastIndex > frameIndex {
             duration = scene.frames[lastIndex].duration
         }
-        
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? scene.duration)
         frame.apply(to:sublayers, duration:duration ?? scene.duration)
+        
+        // NOTE: implemente delay later
+        // layer.beginTime = CACurrentMediaTime() + 1.0
+        // layer.fillMode = .backwards
         CATransaction.commit()
     }
     
 }
 
-extension SwipeFrame {
+private extension SwipeFrame {
     func apply(to layers:[CALayer], duration:Double) {
         for layer in layers {
             guard let name = layer.name,
@@ -61,7 +64,7 @@ extension SwipeFrame {
     }
 }
 
-extension SwipeElement {
+private extension SwipeElement {
     func makeLayer() -> CALayer {
         let layer:CALayer
         if let text = script["text"] as? String {
@@ -91,6 +94,7 @@ extension SwipeElement {
         layer.sublayers = subElementIds.map {
             subElements[$0]!.makeLayer()
         }
+        
         apply(to: layer, duration:1e-10)
         return layer
     }
