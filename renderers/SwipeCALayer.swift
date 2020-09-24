@@ -60,7 +60,7 @@ private extension SwipeFrame {
                   let element = elements[name] else {
                 return
             }
-            element.apply(to: layer, duration:duration, transition: transition)
+            element.apply(to: layer, duration:duration, transition: transition, base:base?.elements[name])
         }
     }
 }
@@ -96,11 +96,11 @@ private extension SwipeElement {
             subElements[$0]!.makeLayer()
         }
         
-        apply(to: layer, duration:1e-10, transition: .initial)
+        apply(to: layer, duration:1e-10, transition: .initial, base:nil)
         return layer
     }
 
-    func apply(to layer:CALayer, duration:Double, transition:SwipeTransition) {
+    func apply(to layer:CALayer, duration:Double, transition:SwipeTransition, base:SwipeElement?) {
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
@@ -145,7 +145,7 @@ private extension SwipeElement {
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
-                element.apply(to: sublayer, duration:duration, transition: transition)
+                element.apply(to: sublayer, duration:duration, transition: transition, base:base?.subElements[name])
             }
         }
     }}
