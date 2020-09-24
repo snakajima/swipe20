@@ -70,10 +70,6 @@ private extension SwipeFrame {
 
 private extension SwipeElement {
     func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
-        if transition == .initial {
-            self.apply(to: layer, duration: 1e-10, transition: transition, base: base)
-            return
-        }
         self.apply(target: layer, ratio: ratio, from: base, to: self)
     }
     
@@ -107,7 +103,7 @@ private extension SwipeElement {
             subElements[$0]!.makeLayer()
         }
         
-        apply(to: layer, ratio:1e-10, transition: .initial, base:nil)
+        apply(to: layer, duration:1e-10, transition: .initial, base:nil)
         return layer
     }
 
