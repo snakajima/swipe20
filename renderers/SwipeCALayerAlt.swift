@@ -6,7 +6,7 @@
 //
 import Cocoa
 
-struct SwipeCALayerAlt {
+struct SwipeCALayerAlt:SwipeCALayerProtocol {
     let scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene

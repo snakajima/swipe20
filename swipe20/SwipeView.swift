@@ -26,12 +26,12 @@ struct SwipeView: NSViewRepresentable {
 
     class Coordinator: NSObject {
         let view: SwipeView
-        let renderer:SwipeCALayer
+        let renderer:SwipeCALayerProtocol
         private var lastIndex:Int? = nil
         
         init(_ view: SwipeView, scene:SwipeScene) {
             self.view = view
-            self.renderer = SwipeCALayer(scene: scene)
+            self.renderer = SwipeCALayerAlt(scene: scene)
         }
         
         func makeLayer() -> CALayer {
