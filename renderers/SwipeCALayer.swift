@@ -19,7 +19,9 @@ struct SwipeCALayer {
             layer.backgroundColor = color
         }
         if let frame = scene.frames.first {
-            layer.sublayers = frame.makeLayers()
+            layer.sublayers = frame.ids.map {
+                frame.elements[$0]!.makeLayer()
+            }
         }
         return layer
     }
