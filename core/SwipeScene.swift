@@ -13,7 +13,7 @@ enum SwipeTransition {
     case skip
     case same
     
-    func eval(from:Int?, to:Int) -> SwipeTransition {
+    static func eval(from:Int?, to:Int) -> SwipeTransition {
         guard let from = from else {
             return .initial
         }

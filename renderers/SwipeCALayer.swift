@@ -37,8 +37,9 @@ struct SwipeCALayer {
         
         let frame = scene.frames[frameIndex]
         var duration = frame.duration
-        if let lastIndex = lastIndex, lastIndex > frameIndex {
-            duration = scene.frames[lastIndex].duration
+        let transition = SwipeTransition.eval(from: lastIndex, to: frameIndex)
+        if transition == .prev {
+            duration = scene.frames[lastIndex!].duration
         }
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? scene.duration)
