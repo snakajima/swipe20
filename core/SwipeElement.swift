@@ -17,6 +17,7 @@ struct SwipeElement {
     var frame:CGRect
     var opacity:Float
     var anchorPoint:CGPoint
+    var animationStyle:SwipeAnimation.Style
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
     let fillColor:CGColor?
@@ -90,6 +91,13 @@ struct SwipeElement {
         }
         self.subElementIds = base?.subElementIds ?? ids
         self.subElements = elements
+        
+        switch(script["animation"] as? String) {
+        case "gravity":
+            animationStyle = .gravity
+        default:
+            animationStyle = .normal
+        }
     }
 }
 

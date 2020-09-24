@@ -10,6 +10,8 @@
         "elements":[{
             "id":"id0",
             "x":200, "y":100,
+            "animation": "gravity",
+            "duration": 1
         }]
     }]
 }
