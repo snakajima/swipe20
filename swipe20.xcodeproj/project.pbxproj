@@ -34,7 +34,7 @@
 		74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */; };
 		74FAC279251CF87600DD29EF /* SwipeCALayerAlt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */; };
 		74FAC27C251D102900DD29EF /* SwipeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27B251D102900DD29EF /* SwipeAnimation.swift */; };
-		74FAC27F251D3D0E00DD29EF /* SwipeRenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27E251D3D0E00DD29EF /* SwipeRenderLayer.swift */; };
+		74FAC27F251D3D0E00DD29EF /* RenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27E251D3D0E00DD29EF /* RenderLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +69,7 @@
 		74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCALayer.swift; sourceTree = "<group>"; };
 		74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCALayerAlt.swift; sourceTree = "<group>"; };
 		74FAC27B251D102900DD29EF /* SwipeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAnimation.swift; sourceTree = "<group>"; };
-		74FAC27E251D3D0E00DD29EF /* SwipeRenderLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRenderLayer.swift; sourceTree = "<group>"; };
+		74FAC27E251D3D0E00DD29EF /* RenderLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +138,7 @@
 				742A09692518D72700862F36 /* SwipeParser.swift */,
 				742A096325186ADB00862F36 /* SwipeFrame.swift */,
 				74FAC27B251D102900DD29EF /* SwipeAnimation.swift */,
-				74FAC27E251D3D0E00DD29EF /* SwipeRenderLayer.swift */,
+				74FAC27E251D3D0E00DD29EF /* RenderLayer.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 				742A096125186A9900862F36 /* SwipeScene.swift in Sources */,
 				742A094A2518632F00862F36 /* ContentView.swift in Sources */,
 				74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */,
-				74FAC27F251D3D0E00DD29EF /* SwipeRenderLayer.swift in Sources */,
+				74FAC27F251D3D0E00DD29EF /* RenderLayer.swift in Sources */,
 				742A096A2518D72700862F36 /* SwipeParser.swift in Sources */,
 				742A096425186ADB00862F36 /* SwipeFrame.swift in Sources */,
 				742A09482518632F00862F36 /* AppDelegate.swift in Sources */,

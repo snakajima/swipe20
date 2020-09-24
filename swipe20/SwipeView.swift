@@ -34,10 +34,10 @@ struct SwipeView: NSViewRepresentable {
             self.view = view
             if let options = options, let alt = options["alt"] as? Bool, alt == true {
                 print("alt")
-                self.renderer = SwipeCALayer(scene: scene)
+                self.renderer = SwipeCALayerAlt(scene: scene)
             } else {
                 print("normal")
-                self.renderer = SwipeCALayerAlt(scene: scene)
+                self.renderer = SwipeCALayer(scene: scene)
             }
         }
         
