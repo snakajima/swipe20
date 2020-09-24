@@ -31,10 +31,8 @@ extension SwipeRenderProperties {
                               width: from.frame.width.mix(to.frame.width, ratio),
                               height: from.frame.height.mix(to.frame.height, ratio))
         
-        let style = (transition == .prev) ? from.animationStyle : animationStyle
-        let fwdRatio = (transition == .prev) ? (1 - ratio) : ratio
-        if style == .gravity {
-            target.frame = target.frame.applying(CGAffineTransform(translationX: 0, y: -CGFloat(fwdRatio * fwdRatio) * target.frame.minY))
+        if animationStyle == .gravity {
+            target.frame = target.frame.applying(CGAffineTransform(translationX: 0, y: -CGFloat(ratio * ratio) * target.frame.minY))
         }
         
         let rotX = from.rotX.mix(to.rotX, ratio)
