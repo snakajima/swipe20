@@ -140,7 +140,7 @@ private extension SwipeElement {
         layer.cornerRadius = cornerRadius ?? 0
         layer.opacity = Float(opacity ?? 1.0)
         layer.anchorPoint = anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
-        layer.transform = xf
+        layer.transform = transform
         if let filterInfo = script["filter"] as? [String:Any],
            let params = filterInfo["params"] as? [String:Any] {
             for (key, value) in params {

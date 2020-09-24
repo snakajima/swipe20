@@ -14,16 +14,16 @@ struct SwipeElement {
     let image:CGImage?
     let path:CGPath?
     
-    let frame:CGRect
+    var frame:CGRect
+    var opacity:CGFloat?
+    var anchorPoint:CGPoint?
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
     let fillColor:CGColor?
     let strokeColor:CGColor?
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
-    let opacity:CGFloat?
-    let anchorPoint:CGPoint?
-    let xf:CATransform3D
+    let transform:CATransform3D
 
     let subElementIds:[String]
     let subElements:[String:SwipeElement]
@@ -65,7 +65,7 @@ struct SwipeElement {
             xf = CATransform3DRotate(xf, rots[2] * m, 0, 0, 1)
             inheritXf = false
         }
-        self.xf = inheritXf ? base?.xf ?? xf : xf
+        self.transform = inheritXf ? base?.transform ?? xf : xf
         
         if let imageName = script["img"] as? String {
             self.image = NSImage(named: imageName)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
@@ -93,3 +93,4 @@ struct SwipeElement {
         self.subElements = elements
     }
 }
+

@@ -16,9 +16,9 @@ protocol SwipeRenderLayer: NSObjectProtocol {
 }
 
 protocol SwipeRenderProperties {
-    var frame:CGRect? { get }
+    var frame:CGRect { get }
     var opacity:Float? { get }
-    var transform:CATransform3D? { get }
+    var transform:CATransform3D { get }
     var anchorPoint:CGPoint? { get }
 }
 
