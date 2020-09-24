@@ -30,3 +30,45 @@ struct SwipeCALayer {
         scene.apply(frameIndex: frameIndex, to: layer, lastIndex: lastIndex, disableActions: disableActions)
     }
 }
+
+extension SwipeElement {
+    func makeLayer(disableActions:Bool = false) -> CALayer {
+        let layer:CALayer
+        if let text = script["text"] as? String {
+            let textLayer = CATextLayer()
+            textLayer.string = text
+            layer = textLayer
+        } else if let _ = self.path {
+            let shapeLayer = CAShapeLayer()
+            layer = shapeLayer
+        } else {
+            layer = CALayer()
+            if let image = self.image {
+                layer.contents = image
+                layer.contentsGravity = .resizeAspectFill
+                layer.masksToBounds = true
+            }
+        }
+        
+        if let filterInfo = script["filter"] as? [String:Any],
+           let filterName = filterInfo["name"] as? String {
+            if let filter = CIFilter(name: filterName) {
+                filter.name = "f0"
+                layer.filters = [filter]
+            }
+        }
+        layer.name = name
+        layer.sublayers = subElementIds.map {
+            subElements[$0]!.makeLayer()
+        }
+        
+        if disableActions {
+            layer.beginTime = 0
+            layer.speed = 0
+            layer.fillMode = .forwards
+        }
+
+        apply(to: layer, duration:1e-10)
+        return layer
+    }
+}

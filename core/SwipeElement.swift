@@ -9,10 +9,10 @@ import CoreImage
 import SwiftUI
 
 struct SwipeElement {
-    private let script:[String:Any]
-    private let name:String?
-    private let image:CGImage?
-    private let path:CGPath?
+    let script:[String:Any]
+    let name:String?
+    let image:CGImage?
+    let path:CGPath?
     
     private let frame:CGRect
     private let backgroundColor:CGColor?
@@ -25,8 +25,8 @@ struct SwipeElement {
     private let anchorPoint:CGPoint?
     private let xf:CATransform3D
 
-    private let subElementIds:[String]
-    private let subElements:[String:SwipeElement]
+    let subElementIds:[String]
+    let subElements:[String:SwipeElement]
 
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
@@ -91,46 +91,6 @@ struct SwipeElement {
         }
         self.subElementIds = base?.subElementIds ?? ids
         self.subElements = elements
-    }
-    
-    func makeLayer(disableActions:Bool = false) -> CALayer {
-        let layer:CALayer
-        if let text = script["text"] as? String {
-            let textLayer = CATextLayer()
-            textLayer.string = text
-            layer = textLayer
-        } else if let _ = self.path {
-            let shapeLayer = CAShapeLayer()
-            layer = shapeLayer
-        } else {
-            layer = CALayer()
-            if let image = self.image {
-                layer.contents = image
-                layer.contentsGravity = .resizeAspectFill
-                layer.masksToBounds = true
-            }
-        }
-        
-        if let filterInfo = script["filter"] as? [String:Any],
-           let filterName = filterInfo["name"] as? String {
-            if let filter = CIFilter(name: filterName) {
-                filter.name = "f0"
-                layer.filters = [filter]
-            }
-        }
-        layer.name = name
-        layer.sublayers = subElementIds.map {
-            subElements[$0]!.makeLayer()
-        }
-        
-        if disableActions {
-            layer.beginTime = 0
-            layer.speed = 0
-            layer.fillMode = .forwards
-        }
-
-        apply(to: layer, duration:1e-10)
-        return layer
     }
     
     func apply(to layer:CALayer, duration:Double) {
