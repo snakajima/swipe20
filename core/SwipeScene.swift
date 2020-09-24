@@ -6,6 +6,26 @@
 //
 import Cocoa
 
+enum SwipeTransition {
+    case initial
+    case next
+    case prev
+    case skip
+    case same
+    
+    func eval(from:Int?, to:Int) -> SwipeTransition {
+        guard let from = from else {
+            return .initial
+        }
+        switch(from) {
+        case _ where from == to: return .same
+        case _ where to == from + 1 : return .next
+        case _ where to == from - 1 : return .prev
+        default: return .skip
+        }
+    }
+}
+
 struct SwipeScene {
     let frames:[SwipeFrame]
     let backgroundColor:CGColor?
