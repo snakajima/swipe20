@@ -51,20 +51,20 @@ class SwipeAnimation {
         self.duration = duration
     }
     
-    func start() {
+    func start(callback:@escaping (Double)->Void) {
         beginTime = CACurrentMediaTime()
-        tick()
+        tick(callback: callback)
     }
     
-    func tick() {
+    func tick(callback:@escaping (Double)->Void) {
         let delta = CACurrentMediaTime() - beginTime
         if delta > duration {
-            print("done")
+            callback(1.0)
             return
         }
-        print("delta", delta)
+        callback(delta / duration)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            self.tick()
+            self.tick(callback: callback)
         }
     }
 }

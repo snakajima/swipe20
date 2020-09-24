@@ -51,7 +51,9 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         CATransaction.commit()
         
         let animation = SwipeAnimation(duration: duration ?? scene.duration)
-        animation.start()
+        animation.start { (ratio) in
+            print("ratio=", ratio)
+        }
     }
     
 }
