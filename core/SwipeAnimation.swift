@@ -44,14 +44,27 @@ struct SwipeAnimationApplier {
     }
 }
 
-struct SwipeAnimation {
+class SwipeAnimation {
     let duration:Double
+    var beginTime:CFTimeInterval = 0
     init(duration:Double) {
         self.duration = duration
     }
     
     func start() {
-        let beginTime = CACurrentMediaTime()
-        print("start", beginTime)
+        beginTime = CACurrentMediaTime()
+        tick()
+    }
+    
+    func tick() {
+        let delta = CACurrentMediaTime() - beginTime
+        if delta > duration {
+            print("done")
+            return
+        }
+        print("delta", delta)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.tick()
+        }
     }
 }
