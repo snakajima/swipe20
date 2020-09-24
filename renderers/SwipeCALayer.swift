@@ -59,6 +59,18 @@ struct SwipeCALayer {
     
 }
 
+extension SwipeFrame {
+    func apply(to layers:[CALayer], duration:Double) {
+        for layer in layers {
+            guard let name = layer.name,
+                  let element = elements[name] else {
+                return
+            }
+            element.apply(to: layer, duration:duration)
+        }
+    }
+}
+
 extension SwipeElement {
     func makeLayer(disableActions:Bool = false) -> CALayer {
         let layer:CALayer

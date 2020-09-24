@@ -4,7 +4,7 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
-import Cocoa
+import Foundation
 
 struct SwipeFrame {
     let ids:[String]
@@ -27,15 +27,5 @@ struct SwipeFrame {
         }
         self.ids = base?.ids ?? ids
         self.elements = elements
-    }
-    
-    func apply(to layers:[CALayer], duration:Double) {
-        for layer in layers {
-            guard let name = layer.name,
-                  let element = elements[name] else {
-                return
-            }
-            element.apply(to: layer, duration:duration)
-        }
     }
 }
