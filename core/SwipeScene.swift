@@ -9,8 +9,7 @@ import Cocoa
 struct SwipeScene {
     let frames:[SwipeFrame]
     let backgroundColor:CGColor?
-    
-    private let duration:Double
+    let duration:Double
     var frameCount:Int { frames.count }
     
     init(_ script:[String:Any]?) {
@@ -24,37 +23,6 @@ struct SwipeScene {
         
         self.duration = script?["duration"] as? Double ?? 0.25 // same as system default
         backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
-    }
-    
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, disableActions:Bool = false) {
-        guard frameIndex >= 0 && frameIndex < frames.count else {
-            return
-        }
-        guard let layer = layer,
-              let sublayers = layer.sublayers else {
-            return
-        }
-        
-        let frame = frames[frameIndex]
-        var duration = frame.duration
-        if let lastIndex = lastIndex, lastIndex > frameIndex {
-            duration = frames[lastIndex].duration
-        }
-        CATransaction.begin()
-        
-        if disableActions {
-            CATransaction.setAnimationDuration(1.0)
-            CATransaction.setDisableActions(true)
-        } else {
-            CATransaction.setAnimationDuration(duration ?? self.duration)
-        }
-        
-        frame.apply(to:sublayers, duration:duration ?? self.duration)
-        
-        // NOTE: implemente delay later
-        // layer.beginTime = CACurrentMediaTime() + 1.0
-        // layer.fillMode = .backwards
-        CATransaction.commit()
     }
     
     /*

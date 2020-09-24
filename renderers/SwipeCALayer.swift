@@ -27,8 +27,36 @@ struct SwipeCALayer {
     }
 
     func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, disableActions:Bool = false) {
-        scene.apply(frameIndex: frameIndex, to: layer, lastIndex: lastIndex, disableActions: disableActions)
+        guard frameIndex >= 0 && frameIndex < scene.frames.count else {
+            return
+        }
+        guard let layer = layer,
+              let sublayers = layer.sublayers else {
+            return
+        }
+        
+        let frame = scene.frames[frameIndex]
+        var duration = frame.duration
+        if let lastIndex = lastIndex, lastIndex > frameIndex {
+            duration = scene.frames[lastIndex].duration
+        }
+        CATransaction.begin()
+        
+        if disableActions {
+            CATransaction.setAnimationDuration(1.0)
+            CATransaction.setDisableActions(true)
+        } else {
+            CATransaction.setAnimationDuration(duration ?? scene.duration)
+        }
+        
+        frame.apply(to:sublayers, duration:duration ?? scene.duration)
+        
+        // NOTE: implemente delay later
+        // layer.beginTime = CACurrentMediaTime() + 1.0
+        // layer.fillMode = .backwards
+        CATransaction.commit()
     }
+    
 }
 
 extension SwipeElement {
