@@ -22,6 +22,7 @@ struct SwipeElement {
     private let lineWidth:CGFloat?
     private let cornerRadius:CGFloat?
     private let opacity:CGFloat?
+    private let anchorPoint:CGPoint?
     private let xf:CATransform3D
 
     private let subElementIds:[String]
@@ -45,6 +46,11 @@ struct SwipeElement {
         self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
         self.opacity = SwipeParser.asCGFloat(script["opacity"]) ?? base?.opacity
+        if let points = script["anchorPoint"] as? [CGFloat], points.count == 2 {
+            self.anchorPoint = CGPoint(x: points[0], y: points[1])
+        } else {
+            self.anchorPoint = base?.anchorPoint
+        }
         
         var xf = CATransform3DIdentity
         var inheritXf = true
@@ -161,6 +167,7 @@ struct SwipeElement {
         }
         layer.cornerRadius = cornerRadius ?? 0
         layer.opacity = Float(opacity ?? 1.0)
+        layer.anchorPoint = anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
         layer.transform = xf
         if let filterInfo = script["filter"] as? [String:Any],
            let params = filterInfo["params"] as? [String:Any] {
