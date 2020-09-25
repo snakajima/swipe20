@@ -27,10 +27,16 @@ enum SwipeTransition {
 }
 
 struct SwipeScene {
+    enum PlayMode :String {
+        case none = "none"
+        case auto = "auto"     // automatically start and continue to the end
+        case cont = "continue" // once started, continue to the end
+    }
+    
     let frames:[SwipeFrame]
     let backgroundColor:CGColor?
     let duration:Double
-    let autoPlay:Bool
+    let playMode:PlayMode
     var frameCount:Int { frames.count }
     
     init(_ script:[String:Any]?) {
@@ -44,7 +50,16 @@ struct SwipeScene {
         
         self.duration = script?["duration"] as? Double ?? 0.25 // same as system default
         self.backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
-        self.autoPlay = script?["autoPlay"] as? Bool ?? false
+        
+        if let mode = script?["playmode"] as? String {
+            switch(mode) {
+            case PlayMode.auto.rawValue: self.playMode = .auto
+            case PlayMode.cont.rawValue: self.playMode = .cont
+            default: self.playMode = .none
+            }
+        } else {
+            self.playMode = .none
+        }
     }
     
     func frameAt(index:Int?) -> SwipeFrame? {
