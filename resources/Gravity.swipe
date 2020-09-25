@@ -1,5 +1,6 @@
 {
     "backgroundColor":"#FFFFCC",
+    "duration": 1,
     "frames":[{
         "elements":[{
             "id":"id0",
@@ -8,7 +9,12 @@
             "anchorPoint":[0.5,0]
         }]
     },{
-        "duration": 1,
+        "elements":[{
+            "id":"id0",
+            "x":100, "y":150,
+            "animation": "gravity",
+        }]
+    },{
         "elements":[{
             "id":"id0",
             "x":200, "y":100,
