@@ -36,8 +36,12 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             return
         }
 
-        let frame = scene.frames[frameIndex]
         let transition = SwipeTransition.eval(from: lastIndex, to: frameIndex)
+        if transition == .same {
+            return
+        }
+        
+        let frame = scene.frames[frameIndex]
         var duration = transition == .initial ? 1e-10 : frame.duration
         if transition == .prev {
             duration = scene.frames[lastIndex!].duration
