@@ -26,20 +26,25 @@ extension SwipeRenderProperties {
         }
         
         target.opacity = from.opacity.mix(opacity, ratio)
-        target.frame = CGRect(x: from.frame.minX.mix(frame.minX, ratio),
+        
+        var xf = CATransform3DIdentity
+        var newFrame = CGRect(x: from.frame.minX.mix(frame.minX, ratio),
                               y: from.frame.minY.mix(frame.minY, ratio),
                               width: from.frame.width.mix(frame.width, ratio),
                               height: from.frame.height.mix(frame.height, ratio))
         
         if animationStyle == .gravity {
-            target.frame = target.frame.applying(CGAffineTransform(translationX: 0, y: -CGFloat(ratio * ratio) * target.frame.minY))
+            let y = (ratio < 0.5) ?
+                from.frame.minY * CGFloat(1 - ratio * ratio * 4) :
+                frame.minY * CGFloat(1 - (1-ratio)*(1-ratio) * 4)
+            newFrame = CGRect(origin: CGPoint(x: newFrame.origin.x, y: y), size: newFrame.size)
         }
+        target.frame = newFrame
         
         let rotX = from.rotX.mix(self.rotX, ratio)
         let rotY = from.rotY.mix(self.rotY, ratio)
         let rotZ = from.rotZ.mix(self.rotZ, ratio)
         
-        var xf = CATransform3DIdentity
         xf.m34 = -1.0/500; // add the perspective
         let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
         xf = CATransform3DRotate(xf, rotX * m, 1, 0, 0)
