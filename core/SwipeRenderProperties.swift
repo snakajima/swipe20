@@ -34,9 +34,12 @@ extension SwipeRenderProperties {
                               height: from.frame.height.mix(frame.height, ratio))
         
         if animationStyle == .gravity {
-            let y = (ratio < 0.5) ?
-                from.frame.minY * CGFloat(1 - ratio * ratio * 4) :
-                frame.minY * CGFloat(1 - (1-ratio)*(1-ratio) * 4)
+            let y:CGFloat
+            switch(ratio) {
+            case _ where ratio < 0.5: y = from.frame.minY * CGFloat(1 - ratio * ratio * 4)
+            default: y = frame.minY * CGFloat(1 - (1-ratio)*(1-ratio) * 4)
+            }
+                
             newFrame = CGRect(origin: CGPoint(x: newFrame.origin.x, y: y), size: newFrame.size)
         }
         target.frame = newFrame
