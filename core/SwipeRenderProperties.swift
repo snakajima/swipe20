@@ -40,7 +40,8 @@ extension SwipeRenderProperties {
             case _ where ratio > 0.6: y = frame.minY * CGFloat(1 - (1-ratio)*(1-ratio) * 4)
             default:
                 y = 0
-                xf = CATransform3DScale(xf, 1.0, 0.5, 1.0)
+                let r = CGFloat(sin((ratio - 0.4) * 5 * .pi))
+                xf = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
             }
                 
             newFrame = CGRect(origin: CGPoint(x: newFrame.origin.x, y: y), size: newFrame.size)
