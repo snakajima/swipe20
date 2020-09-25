@@ -12,19 +12,25 @@
         "elements":[{
             "id":"id0",
             "x":120, "y":180,
-            "animation": "gravity",
+            "animation": {
+                "style":"gravity"
+            },
         }]
     },{
         "elements":[{
             "id":"id0",
             "x":220, "y":120,
-            "animation": "gravity",
+            "animation": {
+                "style":"gravity"
+            },
         }]
     },{
         "elements":[{
             "id":"id0",
             "x":320, "y":80,
-            "animation": "gravity",
+            "animation": {
+                "style":"gravity"
+            },
         }]
     }]
 }

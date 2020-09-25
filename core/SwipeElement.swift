@@ -91,13 +91,17 @@ struct SwipeElement {
         }
         self.subElementIds = base?.subElementIds ?? ids
         self.subElements = elements
-        
-        switch(script["animation"] as? String) {
-        case "gravity":
-            animationStyle = .gravity
-        default:
-            animationStyle = .normal
+
+        var style = SwipeAnimation.Style.normal
+        if let animation = script["animation"] as? [String:Any] {
+            switch(animation["style"] as? String) {
+            case "gravity":
+                style = .gravity
+            default:
+                break
+            }
         }
+        self.animationStyle = style
     }
 }
 
