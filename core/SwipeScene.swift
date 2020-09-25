@@ -30,6 +30,7 @@ struct SwipeScene {
     let frames:[SwipeFrame]
     let backgroundColor:CGColor?
     let duration:Double
+    let autoPlay:Bool
     var frameCount:Int { frames.count }
     
     init(_ script:[String:Any]?) {
@@ -42,7 +43,8 @@ struct SwipeScene {
         }
         
         self.duration = script?["duration"] as? Double ?? 0.25 // same as system default
-        backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
+        self.backgroundColor = SwipeParser.parseColor(script?["backgroundColor"])
+        self.autoPlay = script?["autoPlay"] as? Bool ?? false
     }
     
     func frameAt(index:Int?) -> SwipeFrame? {

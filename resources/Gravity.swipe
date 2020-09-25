@@ -1,6 +1,7 @@
 {
     "backgroundColor":"#FFFFCC",
     "duration": 1,
+    "autoPlay": true,
     "frames":[{
         "elements":[{
             "id":"id0",

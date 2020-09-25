@@ -50,7 +50,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
             CATransaction.commit()
             
-            if ratio == 1.0 {
+            if ratio == 1.0 && scene.autoPlay {
                 self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex)
             }
         }
