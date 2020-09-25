@@ -49,6 +49,10 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             CATransaction.setDisableActions(true)
             frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
             CATransaction.commit()
+            
+            if ratio == 1.0 {
+                self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex)
+            }
         }
     }
 }
