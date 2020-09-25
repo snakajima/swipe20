@@ -23,6 +23,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
                 frame.elements[$0]!.makeLayer()
             }
         }
+        layer.speed = 0
         return layer
     }
 
