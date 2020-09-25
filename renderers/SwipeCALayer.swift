@@ -8,7 +8,7 @@ import Cocoa
 
 protocol SwipeCALayerProtocol {
     func makeLayer() -> CALayer
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?)
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void)
 }
 
 struct SwipeCALayer: SwipeCALayerProtocol {
@@ -31,7 +31,7 @@ struct SwipeCALayer: SwipeCALayerProtocol {
         return layer
     }
 
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?) {
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
         guard frameIndex >= 0 && frameIndex < scene.frames.count else {
             return
         }

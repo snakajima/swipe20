@@ -27,7 +27,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         return layer
     }
 
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?) {
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
         guard frameIndex >= 0 && frameIndex < scene.frames.count else {
             return
         }
@@ -54,11 +54,12 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
             CATransaction.commit()
             
-            if ratio == 1.0 {
+            if ratio == 1.0 && frameIndex < scene.frameCount - 1 && transition != .prev {
                 switch(scene.playMode) {
                 case .auto, 
                      .cont where transition != .initial:
-                        self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex)
+                        self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex, updateFrameIndex: updateFrameIndex)
+                        updateFrameIndex(frameIndex + 1)
                     default:
                         break
                 }
