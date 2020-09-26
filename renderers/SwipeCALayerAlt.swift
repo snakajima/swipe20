@@ -18,7 +18,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         if let color = scene.backgroundColor {
             layer.backgroundColor = color
         }
-        if let frame = scene.frames.first {
+        if let frame = scene.firstFrame {
             layer.sublayers = frame.ids.map {
                 frame.elements[$0]!.makeLayer()
             }
@@ -28,7 +28,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
     }
 
     func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
-        guard frameIndex >= 0 && frameIndex < scene.frames.count else {
+        guard frameIndex >= 0 && frameIndex < scene.frameCount else {
             return
         }
         guard let layer = layer,
