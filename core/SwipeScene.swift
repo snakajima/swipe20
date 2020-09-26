@@ -38,7 +38,7 @@ struct SwipeScene {
         case cont = "continue"
     }
     
-    let frames:[SwipeFrame]
+    private let frames:[SwipeFrame]
     let backgroundColor:CGColor?
     let duration:Double
     let playMode:PlayMode

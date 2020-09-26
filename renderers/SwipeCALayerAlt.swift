@@ -28,10 +28,8 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
     }
 
     func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
-        guard frameIndex >= 0 && frameIndex < scene.frameCount else {
-            return
-        }
-        guard let layer = layer,
+        guard let frame = scene.frameAt(index: frameIndex),
+              let layer = layer,
               let sublayers = layer.sublayers else {
             return
         }
@@ -41,10 +39,9 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             return
         }
         
-        let frame = scene.frames[frameIndex]
         var duration = transition == .initial ? 1e-10 : frame.duration
         if transition == .prev {
-            duration = scene.frames[lastIndex!].duration
+            duration = scene.frameAt(index:lastIndex!)?.duration
         }
         
         let animation = SwipeAnimation(duration: duration ?? scene.duration)

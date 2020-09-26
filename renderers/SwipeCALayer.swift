@@ -32,27 +32,21 @@ struct SwipeCALayer: SwipeCALayerProtocol {
     }
 
     func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
-        guard frameIndex >= 0 && frameIndex < scene.frameCount else {
-            return
-        }
-        guard let layer = layer,
+        guard let frame = scene.frameAt(index: frameIndex),
+              let layer = layer,
               let sublayers = layer.sublayers else {
             return
         }
         
-        let frame = scene.frames[frameIndex]
         var duration = frame.duration
         let transition = SwipeTransition.eval(from: lastIndex, to: frameIndex)
         if transition == .prev {
-            duration = scene.frames[lastIndex!].duration
+            duration = scene.frameAt(index:lastIndex!)?.duration
         }
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration ?? scene.duration)
         frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:scene.frameAt(index: lastIndex))
         
-        // NOTE: implemente delay later
-        // layer.beginTime = CACurrentMediaTime() + 1.0
-        // layer.fillMode = .backwards
         CATransaction.commit()
     }
     
