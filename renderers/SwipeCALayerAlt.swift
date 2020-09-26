@@ -188,7 +188,7 @@ private extension SwipeElement {
     }
 }
 
-extension CALayer: RenderLayer {
+extension CALayer: SwipeRenderLayer {
     var id: Any? {
         get {
             return self.contents

@@ -6,7 +6,7 @@
 //
 import QuartzCore
 
-protocol RenderLayer: NSObjectProtocol {
+protocol SwipeRenderLayer: NSObjectProtocol {
     var id:Any? { get set }
     var frame:CGRect { get set }
     var opacity:Float { get set }
