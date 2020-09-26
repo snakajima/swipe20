@@ -71,7 +71,8 @@ struct SwipeScene {
     
     /// It returns a frame at the specified index
     func frameAt(index:Int?) -> SwipeFrame? {
-        guard let index = index else {
+        guard let index = index,
+              index >= 0 && index < frameCount else {
             return nil
         }
         return frames[index]
