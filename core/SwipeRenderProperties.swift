@@ -36,13 +36,14 @@ extension SwipeRenderProperties {
         if animationStyle == .gravity {
             let y:CGFloat
             let r0 = 0.4
+            let r1 = 0.2
             let r2 = 0.4
             switch(ratio) {
             case _ where ratio < r0: y = from.frame.minY * CGFloat(1 - ratio * ratio / r0 / r0)
             case _ where ratio > (1 - r2): y = frame.minY * CGFloat(1 - (1 - ratio) * (1 - ratio) / r2 / r2)
             default:
                 y = 0
-                let r = CGFloat(sin((ratio - r0) * 5 * .pi))
+                let r = CGFloat(sin((ratio - r0) / r1 * .pi))
                 xf = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
             }
                 
