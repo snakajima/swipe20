@@ -7,6 +7,7 @@
 
 import QuartzCore
 
+/// Source of properties to be applied to elements
 protocol SwipeRenderProperties {
     var frame:CGRect { get }
     var opacity:Float { get }
@@ -18,6 +19,7 @@ protocol SwipeRenderProperties {
 }
 
 extension SwipeRenderProperties {
+    /// Applies tween properties to the element
     func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?) {
         guard let from = from else {
             target.opacity = opacity
