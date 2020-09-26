@@ -150,8 +150,8 @@
 			children = (
 				742A096025186A9800862F36 /* SwipeScene.swift */,
 				742A096325186ADB00862F36 /* SwipeFrame.swift */,
-				74FAC206251BBFA700DD29EF /* SwipePath.swift */,
 				742A096625186B1D00862F36 /* SwipeElement.swift */,
+				74FAC206251BBFA700DD29EF /* SwipePath.swift */,
 				742A09692518D72700862F36 /* SwipeParser.swift */,
 				74FAC27B251D102900DD29EF /* SwipeAnimation.swift */,
 				74FAC27E251D3D0E00DD29EF /* SwipeRenderLayer.swift */,

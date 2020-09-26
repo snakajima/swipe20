@@ -6,6 +6,7 @@
 //
 import Foundation
 
+// A sollection of helper functions for parsing Swipe script
 struct SwipeParser {
     static func asFloat(_ inputValue:Any?) -> Float? {
         if let value = inputValue as? Float {

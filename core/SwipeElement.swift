@@ -8,16 +8,17 @@ import Foundation
 import CoreImage
 import Cocoa
 
+/// A structure that describes an element to be displayed on a scene
 struct SwipeElement {
     let script:[String:Any]
     let name:String?
     let image:CGImage?
     let path:CGPath?
     
-    var frame:CGRect
-    var opacity:Float
-    var anchorPoint:CGPoint
-    var animationStyle:SwipeAnimation.Style
+    private(set) var frame:CGRect
+    private(set) var opacity:Float
+    private(set) var anchorPoint:CGPoint
+    private(set) var animationStyle:SwipeAnimation.Style
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
     let fillColor:CGColor?
@@ -29,6 +30,7 @@ struct SwipeElement {
     let subElementIds:[String]
     let subElements:[String:SwipeElement]
 
+    /// Initializes an element with specified description. base is an element on the previous frame with the same id
     init(_ script:[String:Any], base:SwipeElement?) {
         self.script = script
         self.name = script["id"] as? String

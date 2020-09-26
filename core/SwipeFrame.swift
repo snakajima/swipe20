@@ -6,13 +6,15 @@
 //
 import Foundation
 
+/// A structure that describes a frame, which consists of a collection of elements
 struct SwipeFrame {
+    private let script:[String:Any]
     let ids:[String]
     let elements:[String:SwipeElement]
     let duration:Double?
-    private let script:[String:Any]
     var name:String? { script["name"] as? String } // name is optional
-    
+
+    /// Initializes a frame with a specitifed description. base is a previous frame to animate from.
     init(_ script:[String:Any], base:SwipeFrame?) {
         self.script = script
         self.duration = script["duration"] as? Double

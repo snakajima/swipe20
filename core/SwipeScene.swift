@@ -45,7 +45,7 @@ struct SwipeScene {
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
 
-    /// Initializes a scene object with specified description (in Swipe)
+    /// Initializes a scene with specified description (in Swipe script)
     init(_ script:[String:Any]?) {
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         var base:SwipeFrame? = nil

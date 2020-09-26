@@ -8,11 +8,13 @@
 import Cocoa
 import SwiftUI
 
+/// A structure that defines a static parse functions
 struct SwipePath {
 
     private static let regexSVG = try! NSRegularExpression(pattern: "[a-z][0-9\\-\\.,\\s]*", options: NSRegularExpression.Options.caseInsensitive)
     private static let regexNUM = try! NSRegularExpression(pattern: "[\\-]*[0-9\\.]+", options: NSRegularExpression.Options())
-    
+
+    /// Parses a SVG style path and reurns a CGPath
     static func parse(_ shape:Any?) -> CGPath? {
         guard let string = shape as? String else {
             return nil
