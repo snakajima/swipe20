@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
-    let frameIndex: Int
+    @Binding var frameIndex: Int
     let options:[String:Any]?
     
     func makeCoordinator() -> Coordinator {
@@ -46,7 +46,9 @@ struct SwipeView: NSViewRepresentable {
         }
         
         func move(to frameIndex:Int, layer:CALayer?) {
-            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex)
+            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, updateFrameIndex: { newIndex in
+                    self.view.frameIndex = newIndex
+            })
             lastIndex = frameIndex
         }
     }
@@ -71,9 +73,10 @@ let s_script1:[String:Any] = [
 
 struct SwipeView_Previews: PreviewProvider {
     static let s_scene = SwipeScene(s_script1)
+    @State static var frameIndex = 0
     static var previews: some View {
         VStack {
-            SwipeView(scene:s_scene, frameIndex:0, options: nil)
+            SwipeView(scene:s_scene, frameIndex:$frameIndex, options: nil)
         }
     }
 }

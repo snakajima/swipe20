@@ -23,10 +23,11 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
                 frame.elements[$0]!.makeLayer()
             }
         }
+        layer.speed = 0
         return layer
     }
 
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?) {
+    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
         guard frameIndex >= 0 && frameIndex < scene.frames.count else {
             return
         }
@@ -35,9 +36,13 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             return
         }
 
-        let frame = scene.frames[frameIndex]
-        var duration = frame.duration
         let transition = SwipeTransition.eval(from: lastIndex, to: frameIndex)
+        if transition == .same {
+            return
+        }
+        
+        let frame = scene.frames[frameIndex]
+        var duration = transition == .initial ? 1e-10 : frame.duration
         if transition == .prev {
             duration = scene.frames[lastIndex!].duration
         }
@@ -48,6 +53,17 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
             CATransaction.setDisableActions(true)
             frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
             CATransaction.commit()
+            
+            if ratio == 1.0 && frameIndex < scene.frameCount - 1 && transition != .prev {
+                switch(scene.playMode) {
+                case .auto, 
+                     .cont where transition != .initial:
+                        self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex, updateFrameIndex: updateFrameIndex)
+                        updateFrameIndex(frameIndex + 1)
+                    default:
+                        break
+                }
+            }
         }
     }
 }
@@ -66,7 +82,11 @@ private extension SwipeFrame {
 
 private extension SwipeElement {
     func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
-        self.apply(target: layer, ratio: ratio, from: base, to: self)
+        if transition == .prev, let base = base {
+            base.apply(target: layer, ratio: 1 - ratio, from: self)
+        } else {
+            self.apply(target: layer, ratio: ratio, from: base)
+        }
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
@@ -168,7 +188,7 @@ private extension SwipeElement {
     }
 }
 
-extension CALayer: RenderLayer {
+extension CALayer: SwipeRenderLayer {
     var id: Any? {
         get {
             return self.contents

@@ -7,6 +7,11 @@
 import QuartzCore
 
 class SwipeAnimation {
+    enum Style {
+        case normal
+        case gravity
+    }
+    
     let duration:Double
     var beginTime:CFTimeInterval = 0
     init(duration:Double) {
