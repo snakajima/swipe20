@@ -19,7 +19,7 @@ struct SwipeCALayer: SwipeCALayerProtocol {
     
     func makeLayer() -> CALayer {
         let layer = CALayer()
-        
+
         if let color = scene.backgroundColor {
             layer.backgroundColor = color
         }

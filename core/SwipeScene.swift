@@ -26,11 +26,16 @@ enum SwipeTransition {
     }
 }
 
+/// A structure that describes a series of frames to be presented animted between
 struct SwipeScene {
+    /// It controls the auto-play behavior
     enum PlayMode :String {
+        /// It does not auto-play
         case none = "none"
-        case auto = "auto"     // automatically start and continue to the end
-        case cont = "continue" // once started, continue to the end
+        /// It automatically starts playing to the end
+        case auto = "auto"
+        /// Once started, it plays to the end
+        case cont = "continue"
     }
     
     let frames:[SwipeFrame]
@@ -62,6 +67,7 @@ struct SwipeScene {
         }
     }
     
+    /// It returns a frame at the specified index
     func frameAt(index:Int?) -> SwipeFrame? {
         guard let index = index else {
             return nil
@@ -69,6 +75,7 @@ struct SwipeScene {
         return frames[index]
     }
     
+    /// It returns the display name of the frame
     func name(ofFrameAtIndex frameIndex:Int) -> String {
         guard frameIndex >= 0 && frameIndex < frames.count else {
             return "N/A"
