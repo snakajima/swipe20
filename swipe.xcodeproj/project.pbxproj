@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7436099425204CB1009EDBAF /* core in Resources */ = {isa = PBXBuildFile; fileRef = 7436099325204C9F009EDBAF /* core */; };
+		7436099725204CB2009EDBAF /* core in Resources */ = {isa = PBXBuildFile; fileRef = 7436099325204C9F009EDBAF /* core */; };
 		74FAC33B251FD63E00DD29EF /* swipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FAC331251FD63E00DD29EF /* swipe.framework */; };
 		74FAC340251FD63E00DD29EF /* swipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC33F251FD63E00DD29EF /* swipeTests.swift */; };
 		74FAC342251FD63E00DD29EF /* swipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 74FAC334251FD63E00DD29EF /* swipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7436099325204C9F009EDBAF /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; path = core; sourceTree = "<group>"; };
 		74FAC331251FD63E00DD29EF /* swipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC334251FD63E00DD29EF /* swipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swipe.h; sourceTree = "<group>"; };
 		74FAC335251FD63E00DD29EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				74FAC351251FD98300DD29EF /* swipe.podspec */,
+				7436099325204C9F009EDBAF /* core */,
 				74FAC333251FD63E00DD29EF /* swipe */,
 				74FAC33E251FD63E00DD29EF /* swipeTests */,
 				74FAC332251FD63E00DD29EF /* Products */,
@@ -183,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7436099425204CB1009EDBAF /* core in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7436099725204CB2009EDBAF /* core in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +363,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = swipe/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +390,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = swipe/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

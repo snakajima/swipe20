@@ -186,8 +186,8 @@
 		74FAC269251CC58300DD29EF /* renderers */ = {
 			isa = PBXGroup;
 			children = (
-				74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */,
 				74FAC323251EFAF600DD29EF /* SwipeCALayerProtocol.swift */,
+				74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */,
 				74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */,
 			);
 			path = renderers;
@@ -227,7 +227,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 742A093F2518632F00862F36 /* Build configuration list for PBXProject "swipe20" */;
+			buildConfigurationList = 742A093F2518632F00862F36 /* Build configuration list for PBXProject "swipe_dev" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -479,7 +479,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		742A093F2518632F00862F36 /* Build configuration list for PBXProject "swipe20" */ = {
+		742A093F2518632F00862F36 /* Build configuration list for PBXProject "swipe_dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				742A09552518633100862F36 /* Debug */,
