@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		742DFA382520C2B200A39C80 /* core in Resources */ = {isa = PBXBuildFile; fileRef = 742DFA372520C2B200A39C80 /* core */; };
-		742DFA3C2520C2BE00A39C80 /* pod in Resources */ = {isa = PBXBuildFile; fileRef = 742DFA3B2520C2BE00A39C80 /* pod */; };
+		742DFA812520C7E600A39C80 /* swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA742520C7E600A39C80 /* swipe.swift */; };
+		742DFA822520C7E600A39C80 /* swipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 742DFA752520C7E600A39C80 /* swipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74FAC33B251FD63E00DD29EF /* swipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FAC331251FD63E00DD29EF /* swipe.framework */; };
 		74FAC340251FD63E00DD29EF /* swipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC33F251FD63E00DD29EF /* swipeTests.swift */; };
 /* End PBXBuildFile section */
@@ -24,9 +24,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		742DFA372520C2B200A39C80 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = core; path = swipe/core; sourceTree = "<group>"; };
-		742DFA3B2520C2BE00A39C80 /* pod */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pod; path = swipe/pod; sourceTree = "<group>"; };
 		742DFA3F2520C3FE00A39C80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = swipe/Info.plist; sourceTree = "<group>"; };
+		742DFA742520C7E600A39C80 /* swipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swipe.swift; sourceTree = "<group>"; };
+		742DFA752520C7E600A39C80 /* swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swipe.h; sourceTree = "<group>"; };
+		742DFA772520C7E600A39C80 /* SwipePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
+		742DFA782520C7E600A39C80 /* SwipeRenderLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeRenderLayer.swift; sourceTree = "<group>"; };
+		742DFA792520C7E600A39C80 /* SwipeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeParser.swift; sourceTree = "<group>"; };
+		742DFA7A2520C7E600A39C80 /* SwipeFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeFrame.swift; sourceTree = "<group>"; };
+		742DFA7B2520C7E600A39C80 /* SwipePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipePage.swift; sourceTree = "<group>"; };
+		742DFA7C2520C7E600A39C80 /* SwipeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeScene.swift; sourceTree = "<group>"; };
+		742DFA7D2520C7E600A39C80 /* SwipeRenderProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeRenderProperties.swift; sourceTree = "<group>"; };
+		742DFA7E2520C7E600A39C80 /* SwipeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeAnimation.swift; sourceTree = "<group>"; };
+		742DFA7F2520C7E600A39C80 /* SwipeElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeElement.swift; sourceTree = "<group>"; };
 		74FAC331251FD63E00DD29EF /* swipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC33A251FD63E00DD29EF /* swipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC33F251FD63E00DD29EF /* swipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeTests.swift; sourceTree = "<group>"; };
@@ -53,12 +62,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		742DFA722520C7E600A39C80 /* swipe */ = {
+			isa = PBXGroup;
+			children = (
+				742DFA732520C7E600A39C80 /* pod */,
+				742DFA762520C7E600A39C80 /* core */,
+			);
+			path = swipe;
+			sourceTree = "<group>";
+		};
+		742DFA732520C7E600A39C80 /* pod */ = {
+			isa = PBXGroup;
+			children = (
+				742DFA742520C7E600A39C80 /* swipe.swift */,
+				742DFA752520C7E600A39C80 /* swipe.h */,
+			);
+			path = pod;
+			sourceTree = "<group>";
+		};
+		742DFA762520C7E600A39C80 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				742DFA772520C7E600A39C80 /* SwipePath.swift */,
+				742DFA782520C7E600A39C80 /* SwipeRenderLayer.swift */,
+				742DFA792520C7E600A39C80 /* SwipeParser.swift */,
+				742DFA7A2520C7E600A39C80 /* SwipeFrame.swift */,
+				742DFA7B2520C7E600A39C80 /* SwipePage.swift */,
+				742DFA7C2520C7E600A39C80 /* SwipeScene.swift */,
+				742DFA7D2520C7E600A39C80 /* SwipeRenderProperties.swift */,
+				742DFA7E2520C7E600A39C80 /* SwipeAnimation.swift */,
+				742DFA7F2520C7E600A39C80 /* SwipeElement.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		74FAC327251FD63E00DD29EF = {
 			isa = PBXGroup;
 			children = (
+				742DFA722520C7E600A39C80 /* swipe */,
 				742DFA3F2520C3FE00A39C80 /* Info.plist */,
-				742DFA3B2520C2BE00A39C80 /* pod */,
-				742DFA372520C2B200A39C80 /* core */,
 				74FAC351251FD98300DD29EF /* swipe.podspec */,
 				74FAC33E251FD63E00DD29EF /* swipeTests */,
 				74FAC332251FD63E00DD29EF /* Products */,
@@ -90,6 +132,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742DFA822520C7E600A39C80 /* swipe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,8 +217,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				742DFA3C2520C2BE00A39C80 /* pod in Resources */,
-				742DFA382520C2B200A39C80 /* core in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742DFA812520C7E600A39C80 /* swipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +435,7 @@
 		74FAC349251FD63E00DD29EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H34BY2CCCD;
 				INFOPLIST_FILE = swipeTests/Info.plist;
@@ -411,6 +454,7 @@
 		74FAC34A251FD63E00DD29EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H34BY2CCCD;
 				INFOPLIST_FILE = swipeTests/Info.plist;
