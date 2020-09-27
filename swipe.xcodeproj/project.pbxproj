@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		742DFA812520C7E600A39C80 /* swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA742520C7E600A39C80 /* swipe.swift */; };
 		742DFA822520C7E600A39C80 /* swipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 742DFA752520C7E600A39C80 /* swipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		742DFA9F2520CA4300A39C80 /* SwipeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7E2520C7E600A39C80 /* SwipeAnimation.swift */; };
+		742DFAA22520CA5000A39C80 /* SwipeRenderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7D2520C7E600A39C80 /* SwipeRenderProperties.swift */; };
+		742DFAA52520CA6100A39C80 /* SwipeRenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA782520C7E600A39C80 /* SwipeRenderLayer.swift */; };
 		74FAC33B251FD63E00DD29EF /* swipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FAC331251FD63E00DD29EF /* swipe.framework */; };
 		74FAC340251FD63E00DD29EF /* swipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC33F251FD63E00DD29EF /* swipeTests.swift */; };
 /* End PBXBuildFile section */
@@ -234,7 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742DFAA22520CA5000A39C80 /* SwipeRenderProperties.swift in Sources */,
 				742DFA812520C7E600A39C80 /* swipe.swift in Sources */,
+				742DFAA52520CA6100A39C80 /* SwipeRenderLayer.swift in Sources */,
+				742DFA9F2520CA4300A39C80 /* SwipeAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

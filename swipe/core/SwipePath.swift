@@ -6,7 +6,6 @@
 //
 
 import Cocoa
-import SwiftUI
 
 /// A structure that defines a static parse functions
 struct SwipePath {
@@ -176,9 +175,4 @@ struct SwipePath {
     }
 }
 
-struct SwipePath_Previews: PreviewProvider {
-    static var previews: some View {
-        SwipeFileView("Shapes")
-    }
-}
 
