@@ -12,6 +12,16 @@ protocol SwipeCALayerProtocol {
     func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void)
 }
 
+extension SwipeScene {
+    func makeLayer() -> CALayer {
+        let layer = CALayer()
+        if let color = self.backgroundColor {
+            layer.backgroundColor = color
+        }
+        return layer
+    }
+}
+
 extension SwipeElement {
     func makeLayerRaw() -> CALayer {
         let layer:CALayer

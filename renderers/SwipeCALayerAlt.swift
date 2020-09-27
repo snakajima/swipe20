@@ -13,11 +13,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
     }
     
     func makeLayer() -> CALayer {
-        let layer = CALayer()
-        
-        if let color = scene.backgroundColor {
-            layer.backgroundColor = color
-        }
+        let layer = scene.makeLayer()
         if let frame = scene.firstFrame {
             layer.sublayers = frame.ids.map {
                 frame.elements[$0]!.makeLayer()
