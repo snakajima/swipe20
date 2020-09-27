@@ -102,8 +102,8 @@
 		742A093B2518632F00862F36 = {
 			isa = PBXGroup;
 			children = (
+				74360A052520C0CA009EDBAF /* swipe */,
 				74BD710A251A718A00F41F3D /* README.md */,
-				742A095B2518639C00862F36 /* core */,
 				74FAC269251CC58300DD29EF /* renderers */,
 				74BD7108251A6CDF00F41F3D /* resources */,
 				742A09462518632F00862F36 /* swipe20 */,
@@ -158,6 +158,14 @@
 				74FAC287251D604900DD29EF /* SwipeRenderProperties.swift */,
 			);
 			path = core;
+			sourceTree = "<group>";
+		};
+		74360A052520C0CA009EDBAF /* swipe */ = {
+			isa = PBXGroup;
+			children = (
+				742A095B2518639C00862F36 /* core */,
+			);
+			path = swipe;
 			sourceTree = "<group>";
 		};
 		74BD7108251A6CDF00F41F3D /* resources */ = {
