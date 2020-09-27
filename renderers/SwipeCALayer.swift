@@ -59,33 +59,10 @@ private extension SwipeFrame {
     }
 }
 
+
 private extension SwipeElement {
     func makeLayer() -> CALayer {
-        let layer:CALayer
-        if let text = script["text"] as? String {
-            let textLayer = CATextLayer()
-            textLayer.string = text
-            layer = textLayer
-        } else if let _ = self.path {
-            let shapeLayer = CAShapeLayer()
-            layer = shapeLayer
-        } else {
-            layer = CALayer()
-            if let image = self.image {
-                layer.contents = image
-                layer.contentsGravity = .resizeAspectFill
-                layer.masksToBounds = true
-            }
-        }
-        
-        if let filterInfo = script["filter"] as? [String:Any],
-           let filterName = filterInfo["name"] as? String {
-            if let filter = CIFilter(name: filterName) {
-                filter.name = "f0"
-                layer.filters = [filter]
-            }
-        }
-        layer.name = name
+        let layer = makeLayerRaw()
         layer.sublayers = subElementIds.map {
             subElements[$0]!.makeLayer()
         }
