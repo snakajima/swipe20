@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		742DFA382520C2B200A39C80 /* core in Resources */ = {isa = PBXBuildFile; fileRef = 742DFA372520C2B200A39C80 /* core */; };
+		742DFA3C2520C2BE00A39C80 /* pod in Resources */ = {isa = PBXBuildFile; fileRef = 742DFA3B2520C2BE00A39C80 /* pod */; };
 		74FAC33B251FD63E00DD29EF /* swipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FAC331251FD63E00DD29EF /* swipe.framework */; };
 		74FAC340251FD63E00DD29EF /* swipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC33F251FD63E00DD29EF /* swipeTests.swift */; };
-		74FAC342251FD63E00DD29EF /* swipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 74FAC334251FD63E00DD29EF /* swipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		74FAC34E251FD75F00DD29EF /* swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC34D251FD75F00DD29EF /* swipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,13 +24,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		742DFA372520C2B200A39C80 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = core; path = swipe/core; sourceTree = "<group>"; };
+		742DFA3B2520C2BE00A39C80 /* pod */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pod; path = swipe/pod; sourceTree = "<group>"; };
+		742DFA3F2520C3FE00A39C80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = swipe/Info.plist; sourceTree = "<group>"; };
 		74FAC331251FD63E00DD29EF /* swipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74FAC334251FD63E00DD29EF /* swipe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swipe.h; sourceTree = "<group>"; };
-		74FAC335251FD63E00DD29EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74FAC33A251FD63E00DD29EF /* swipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC33F251FD63E00DD29EF /* swipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeTests.swift; sourceTree = "<group>"; };
 		74FAC341251FD63E00DD29EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		74FAC34D251FD75F00DD29EF /* swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipe.swift; sourceTree = "<group>"; };
 		74FAC351251FD98300DD29EF /* swipe.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = swipe.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,8 +56,10 @@
 		74FAC327251FD63E00DD29EF = {
 			isa = PBXGroup;
 			children = (
+				742DFA3F2520C3FE00A39C80 /* Info.plist */,
+				742DFA3B2520C2BE00A39C80 /* pod */,
+				742DFA372520C2B200A39C80 /* core */,
 				74FAC351251FD98300DD29EF /* swipe.podspec */,
-				74FAC333251FD63E00DD29EF /* swipe2 */,
 				74FAC33E251FD63E00DD29EF /* swipeTests */,
 				74FAC332251FD63E00DD29EF /* Products */,
 			);
@@ -70,16 +72,6 @@
 				74FAC33A251FD63E00DD29EF /* swipeTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		74FAC333251FD63E00DD29EF /* swipe2 */ = {
-			isa = PBXGroup;
-			children = (
-				74FAC334251FD63E00DD29EF /* swipe.h */,
-				74FAC335251FD63E00DD29EF /* Info.plist */,
-				74FAC34D251FD75F00DD29EF /* swipe.swift */,
-			);
-			path = swipe2;
 			sourceTree = "<group>";
 		};
 		74FAC33E251FD63E00DD29EF /* swipeTests */ = {
@@ -98,7 +90,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74FAC342251FD63E00DD29EF /* swipe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +174,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742DFA3C2520C2BE00A39C80 /* pod in Resources */,
+				742DFA382520C2B200A39C80 /* core in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +193,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74FAC34E251FD75F00DD29EF /* swipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +393,6 @@
 		74FAC349251FD63E00DD29EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H34BY2CCCD;
 				INFOPLIST_FILE = swipeTests/Info.plist;
@@ -420,7 +411,6 @@
 		74FAC34A251FD63E00DD29EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H34BY2CCCD;
 				INFOPLIST_FILE = swipeTests/Info.plist;
