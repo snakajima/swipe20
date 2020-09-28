@@ -81,6 +81,7 @@ extension SwipeRenderProperties {
         let r0 = 0.2 // anticipate
         let r2 = 0.1 // squeezing
         let r1 = 1.0 - r0 - r2 // jump
+        let height = CGFloat(100.0)
         switch(ratio) {
         case _ where ratio < r0:
             x = from.frame.minX
@@ -89,8 +90,9 @@ extension SwipeRenderProperties {
             x = frame.minX
             y = frame.minY
         default:
-            x = from.frame.minX.mix(frame.minX, (ratio - r0) / r1)
-            y = from.frame.minY.mix(frame.minY, (ratio - r0) / r1)
+            let r = (ratio - r0) / r1
+            x = from.frame.minX.mix(frame.minX, r)
+            y = from.frame.minY.mix(frame.minY, r) + height * CGFloat(1 - 4 * (r - 0.5) * (r - 0.5))
         }
             
         return (CGRect(origin: CGPoint(x: x, y: y), size: frame.size), xfNew)
