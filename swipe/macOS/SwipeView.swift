@@ -7,7 +7,7 @@
 import SwiftUI
 
 #if os(macOS)
-struct SwipeView: NSViewRepresentable {
+public struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
     @Binding var frameIndex: Int
     let options:[String:Any]?
