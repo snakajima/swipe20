@@ -35,8 +35,11 @@ extension SwipeRenderProperties {
                               width: from.frame.width.mix(frame.width, ratio),
                               height: from.frame.height.mix(frame.height, ratio))
         
-        if animationStyle == .bounce {
+        switch(animationStyle) {
+        case .bounce:
             (newFrame, xf) = bounce(ratio: ratio, from: from, frame: newFrame, xf: xf)
+        default:
+            break
         }
         target.frame = newFrame
         
