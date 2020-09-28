@@ -15,8 +15,8 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the descriptifon more in depth.
   #
 
-  spec.name         = "Swipe"
-  spec.version      = "0.0.12"
+  spec.name         = "swipe"
+  spec.version      = "0.0.14"
   spec.summary      = "A declarative animation engine."
 
   # This description is used to generate tags and improve search results.
