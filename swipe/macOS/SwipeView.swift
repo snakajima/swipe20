@@ -12,6 +12,12 @@ public struct SwipeView: NSViewRepresentable {
     @Binding var frameIndex: Int
     let options:[String:Any]?
     
+    public init(scene:SwipeScene, frameIndex:Binding<Int>, options:[String:Any]? = nil) {
+        self.scene = scene
+        self.options = options
+        self._frameIndex = frameIndex
+    }
+    
     public func makeCoordinator() -> Coordinator {
         return Coordinator(self, scene:scene, options: options)
     }

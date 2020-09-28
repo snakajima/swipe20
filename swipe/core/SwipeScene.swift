@@ -50,7 +50,7 @@ public struct SwipeScene {
     var firstFrame:SwipeFrame? { frames.first }
 
     /// Initializes a scene with specified description (in Swipe script)
-    init(_ script:[String:Any]?) {
+    public init(_ script:[String:Any]?) {
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         var base:SwipeFrame? = nil
         self.frames = scriptFrames.map {
