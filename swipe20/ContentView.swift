@@ -37,7 +37,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(s_samples) { sample in
-                NavigationLink(destination: SwipeFileView(sample.filename, options: sample.options)) {
+                NavigationLink(destination: SwipeFileView(sample.filename)) {
                     Text(sample.title)
                 }
             }.frame(maxWidth:200)

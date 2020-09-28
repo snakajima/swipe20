@@ -2,6 +2,9 @@
     "backgroundColor":"#FFFFCC",
     "duration": 1,
     "playmode": "continue",
+    "animation": {
+        "engine":"swipe"
+    },
     "frames":[{
         "elements":[{
             "id":"id0",

@@ -104,7 +104,6 @@
 			children = (
 				74360A052520C0CA009EDBAF /* swipe */,
 				74BD710A251A718A00F41F3D /* README.md */,
-				74FAC269251CC58300DD29EF /* renderers */,
 				74BD7108251A6CDF00F41F3D /* resources */,
 				742A09462518632F00862F36 /* swipe20 */,
 				742A09452518632F00862F36 /* Products */,
@@ -208,13 +207,6 @@
 				74FAC2FF251E46F600DD29EF /* Slide2.png */,
 			);
 			path = resources;
-			sourceTree = "<group>";
-		};
-		74FAC269251CC58300DD29EF /* renderers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = renderers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
