@@ -1,7 +1,6 @@
 {
     "backgroundColor":"#FFFFCC",
     "duration": 1,
-    "playmode": "xcontinue",
     "animation": {
         "engine":"swipe"
     },
