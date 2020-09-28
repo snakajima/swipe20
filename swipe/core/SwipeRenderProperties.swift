@@ -81,7 +81,7 @@ extension SwipeRenderProperties {
         let r0 = 0.5 // anticipate
         let r2 = 0.1 // squeezing
         let r1 = 1.0 - r0 - r2 // jump
-        let height = CGFloat(100.0)
+        let height = CGFloat(200.0)
         switch(ratio) {
         case _ where ratio < r0:
             x = from.frame.minX
