@@ -6,11 +6,11 @@
 //
 import Foundation
 import CoreImage
-import Cocoa
 #if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#elseif os(macOS)
+import Cocoa
 #endif
-
 
 /// A structure that describes an element to be displayed on a scene
 public struct SwipeElement {

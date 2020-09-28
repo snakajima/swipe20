@@ -4,8 +4,11 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/23/20.
 //
-
+#if os(iOS) || os(watchOS) || os(tvOS)
+import UIKit
+#elseif os(macOS)
 import Cocoa
+#endif
 
 /// A structure that defines a static parse functions
 public struct SwipePath {

@@ -4,7 +4,11 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
+#if os(iOS) || os(watchOS) || os(tvOS)
+import UIKit
+#elseif os(macOS)
 import Cocoa
+#endif
 
 public enum SwipeTransition {
     case initial

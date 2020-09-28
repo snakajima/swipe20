@@ -5,11 +5,11 @@
 //  Created by SATOSHI NAKAJIMA on 9/21/20.
 //
 import Foundation
-import Cocoa
 #if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
 typealias OSColor = UIColor
 #elseif os(macOS)
+import Cocoa
 typealias OSColor = NSColor
 #endif
 
