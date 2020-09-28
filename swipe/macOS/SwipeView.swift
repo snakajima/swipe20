@@ -12,21 +12,21 @@ public struct SwipeView: NSViewRepresentable {
     @Binding var frameIndex: Int
     let options:[String:Any]?
     
-    func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         return Coordinator(self, scene:scene, options: options)
     }
     
-    func makeNSView(context: Context) -> some NSView {
+    public func makeNSView(context: Context) -> some NSView {
         let nsView = NSView()
         nsView.layer = context.coordinator.makeLayer()
         return nsView
     }
     
-    func updateNSView(_ nsView: NSViewType, context: Context) {
+    public func updateNSView(_ nsView: NSViewType, context: Context) {
         context.coordinator.move(to: frameIndex, layer:nsView.layer)
     }
 
-    class Coordinator: NSObject {
+    public class Coordinator: NSObject {
         let view: SwipeView
         let renderer:SwipeCALayerProtocol
         private var lastIndex:Int? = nil
