@@ -38,6 +38,8 @@ extension SwipeRenderProperties {
         switch(animationStyle) {
         case .bounce:
             (newFrame, xf) = bounce(ratio: ratio, from: from, frame: newFrame, xf: xf)
+        case .jump:
+            (newFrame, xf) = jump(ratio: ratio, from: from, frame: newFrame, xf: xf)
         default:
             break
         }
@@ -61,6 +63,24 @@ extension SwipeRenderProperties {
         let r0 = 0.4 // going down
         let r1 = 0.2 // squeezing
         let r2 = 0.4 // going up
+        switch(ratio) {
+        case _ where ratio < r0: y = from.frame.minY * CGFloat(1 - ratio * ratio / r0 / r0)
+        case _ where ratio > (1 - r2): y = frame.minY * CGFloat(1 - (1 - ratio) * (1 - ratio) / r2 / r2)
+        default:
+            y = 0
+            let r = CGFloat(sin((ratio - r0) / r1 * .pi))
+            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
+        }
+            
+        return (CGRect(origin: CGPoint(x: frame.origin.x, y: y), size: frame.size), xfNew)
+    }
+    
+    func jump(ratio:Double, from:SwipeRenderProperties, frame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D) {
+        var xfNew = xf
+        let y:CGFloat
+        let r0 = 0.2 // going down
+        let r1 = 0.5 // squeezing
+        let r2 = 0.1 // going up
         switch(ratio) {
         case _ where ratio < r0: y = from.frame.minY * CGFloat(1 - ratio * ratio / r0 / r0)
         case _ where ratio > (1 - r2): y = frame.minY * CGFloat(1 - (1 - ratio) * (1 - ratio) / r2 / r2)
