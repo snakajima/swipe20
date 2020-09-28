@@ -13,23 +13,23 @@ import UIKit
 
 
 /// A structure that describes an element to be displayed on a scene
-struct SwipeElement {
+public struct SwipeElement {
     let script:[String:Any]
     let name:String?
     let image:CGImage?
     let path:CGPath?
     
-    private(set) var frame:CGRect
-    private(set) var opacity:Float
-    private(set) var anchorPoint:CGPoint
-    private(set) var animationStyle:SwipeAnimation.Style
+    private(set) public var frame:CGRect
+    private(set) public var opacity:Float
+    private(set) public var anchorPoint:CGPoint
+    private(set) public var animationStyle:SwipeAnimation.Style
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
     let fillColor:CGColor?
     let strokeColor:CGColor?
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
-    let rotX, rotY, rotZ:CGFloat
+    public let rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
     let subElements:[String:SwipeElement]

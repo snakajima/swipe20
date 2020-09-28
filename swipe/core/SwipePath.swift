@@ -8,7 +8,7 @@
 import Cocoa
 
 /// A structure that defines a static parse functions
-struct SwipePath {
+public struct SwipePath {
 
     private static let regexSVG = try! NSRegularExpression(pattern: "[a-z][0-9\\-\\.,\\s]*", options: NSRegularExpression.Options.caseInsensitive)
     private static let regexNUM = try! NSRegularExpression(pattern: "[\\-]*[0-9\\.]+", options: NSRegularExpression.Options())

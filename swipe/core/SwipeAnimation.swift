@@ -7,9 +7,9 @@
 import QuartzCore
 
 /// A object that performs simple animations
-class SwipeAnimation {
+public class SwipeAnimation {
     /// Specifies the type of animation
-    enum Style {
+    public enum Style {
         case normal
         case gravity
     }

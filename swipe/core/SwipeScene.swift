@@ -6,7 +6,7 @@
 //
 import Cocoa
 
-enum SwipeTransition {
+public enum SwipeTransition {
     case initial
     case next
     case prev
@@ -27,7 +27,7 @@ enum SwipeTransition {
 }
 
 /// A structure that describes a series of frames to be presented animted between
-struct SwipeScene {
+public struct SwipeScene {
     /// It controls the auto-play behavior
     enum PlayMode :String {
         /// It does not auto-play

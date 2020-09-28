@@ -8,7 +8,7 @@
 import QuartzCore
 
 /// Source of properties to be applied to elements
-protocol SwipeRenderProperties {
+public protocol SwipeRenderProperties {
     var frame:CGRect { get }
     var opacity:Float { get }
     var rotX:CGFloat { get }

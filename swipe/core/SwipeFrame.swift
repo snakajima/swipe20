@@ -7,7 +7,7 @@
 import Foundation
 
 /// A structure that describes a frame, which consists of a collection of elements
-struct SwipeFrame {
+public struct SwipeFrame {
     private let script:[String:Any]
     let ids:[String]
     let elements:[String:SwipeElement]
