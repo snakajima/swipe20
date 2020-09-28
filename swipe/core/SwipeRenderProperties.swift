@@ -86,7 +86,7 @@ extension SwipeRenderProperties {
         case _ where ratio < r0:
             x = from.frame.minX
             y = from.frame.minY
-            let r = CGFloat(sin(ratio / r1 * .pi))
+            let r = CGFloat(sin(ratio * ratio / r0 / r0 * .pi))
             xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
         case _ where ratio > (1 - r2):
             x = frame.minX
