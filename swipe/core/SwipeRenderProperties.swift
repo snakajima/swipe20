@@ -92,7 +92,7 @@ extension SwipeRenderProperties {
             x = frame.minX
             y = frame.minY
             let r = CGFloat(sin((1 - ratio) / r2 * .pi))
-            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
+            xfNew = CATransform3DScale(xf, 1.0 + r * 0.111, 1.0 - r * 0.1, 1.0)
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
