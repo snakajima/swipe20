@@ -10,16 +10,14 @@ import SwiftUI
 public struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
     @Binding var frameIndex: Int
-    let options:[String:Any]?
     
-    public init(scene:SwipeScene, frameIndex:Binding<Int>, options:[String:Any]? = nil) {
+    public init(scene:SwipeScene, frameIndex:Binding<Int>) {
         self.scene = scene
-        self.options = options
         self._frameIndex = frameIndex
     }
     
     public func makeCoordinator() -> Coordinator {
-        return Coordinator(self, scene:scene, options: options)
+        return Coordinator(self, scene:scene)
     }
     
     public func makeNSView(context: Context) -> some NSView {
@@ -34,18 +32,12 @@ public struct SwipeView: NSViewRepresentable {
 
     public class Coordinator: NSObject {
         let view: SwipeView
-        let renderer:SwipeCALayerProtocol
+        let renderer:SwipeCALayer
         private var lastIndex:Int? = nil
         
-        init(_ view: SwipeView, scene:SwipeScene, options:[String:Any]?) {
+        init(_ view: SwipeView, scene:SwipeScene) {
             self.view = view
-            if let options = options, let alt = options["alt"] as? Bool, alt == true {
-                print("alt")
-                self.renderer = SwipeCALayerAlt(scene: scene)
-            } else {
-                print("normal")
-                self.renderer = SwipeCALayer(scene: scene)
-            }
+            self.renderer = SwipeCALayer(scene: scene)
         }
         
         func makeLayer() -> CALayer {
@@ -83,7 +75,7 @@ struct SwipeView_Previews: PreviewProvider {
     @State static var frameIndex = 0
     static var previews: some View {
         VStack {
-            SwipeView(scene:s_scene, frameIndex:$frameIndex, options: nil)
+            SwipeView(scene:s_scene, frameIndex:$frameIndex)
         }
     }
 }

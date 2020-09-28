@@ -9,9 +9,10 @@ import QuartzCore
 /// A object that performs simple animations
 public class SwipeAnimation {
     /// Specifies the type of animation
-    public enum Style {
-        case normal
-        case gravity
+    public enum Style: String {
+        case normal = "normal"
+        case bounce = "bounce"
+        case jump = "jump"
     }
     
     private let duration:Double

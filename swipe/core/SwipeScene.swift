@@ -43,6 +43,7 @@ public struct SwipeScene {
     }
     
     private let frames:[SwipeFrame]
+    let script:[String:Any]?
     let backgroundColor:CGColor?
     let duration:Double
     let playMode:PlayMode
@@ -51,6 +52,7 @@ public struct SwipeScene {
 
     /// Initializes a scene with specified description (in Swipe script)
     public init(_ script:[String:Any]?) {
+        self.script = script
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         var base:SwipeFrame? = nil
         self.frames = scriptFrames.map {

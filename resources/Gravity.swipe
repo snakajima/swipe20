@@ -2,6 +2,9 @@
     "backgroundColor":"#FFFFCC",
     "duration": 1,
     "playmode": "continue",
+    "animation": {
+        "engine":"swipe"
+    },
     "frames":[{
         "elements":[{
             "id":"id0",
@@ -14,7 +17,7 @@
             "id":"id0",
             "x":120, "y":180,
             "animation": {
-                "style":"gravity"
+                "style":"bounce"
             },
         }]
     },{
@@ -22,15 +25,15 @@
             "id":"id0",
             "x":220, "y":120,
             "animation": {
-                "style":"gravity"
+                "style":"bounce"
             },
         }]
     },{
         "elements":[{
             "id":"id0",
-            "x":320, "y":80,
+            "x":320, "y":240,
             "animation": {
-                "style":"gravity"
+                "style":"bounce"
             },
         }]
     }]
