@@ -22,6 +22,7 @@ let s_samples = [
     Sample(title: "Sample 2", filename: "sample1"),
     Sample(title: "Slides", filename: "Slides"),
     Sample(title: "Bounce", filename: "Bounce"),
+    Sample(title: "Jump", filename: "Jump"),
     Sample(title: "Sample1", filename: "sample1"),
 ]
 

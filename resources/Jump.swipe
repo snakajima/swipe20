@@ -1,0 +1,40 @@
+{
+    "backgroundColor":"#FFFFCC",
+    "duration": 1,
+    "playmode": "continue",
+    "animation": {
+        "engine":"swipe"
+    },
+    "frames":[{
+        "elements":[{
+            "id":"id0",
+            "img":"pngwave.png",
+            "x":20, "y":240, "w":180, "h":180,
+            "anchorPoint":[0.5,0]
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":120, "y":180,
+            "animation": {
+                "style":"jump"
+            },
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":220, "y":120,
+            "animation": {
+                "style":"jump"
+            },
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":320, "y":240,
+            "animation": {
+                "style":"jump"
+            },
+        }]
+    }]
+}
