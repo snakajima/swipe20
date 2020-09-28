@@ -13,6 +13,7 @@
 		742DFAA22520CA5000A39C80 /* SwipeRenderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7D2520C7E600A39C80 /* SwipeRenderProperties.swift */; };
 		742DFAA52520CA6100A39C80 /* SwipeRenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA782520C7E600A39C80 /* SwipeRenderLayer.swift */; };
 		742DFAAD2520CBCB00A39C80 /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA772520C7E600A39C80 /* SwipePath.swift */; };
+		742DFAB02521981800A39C80 /* SwipeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA792520C7E600A39C80 /* SwipeParser.swift */; };
 		74FAC33B251FD63E00DD29EF /* swipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FAC331251FD63E00DD29EF /* swipe.framework */; };
 		74FAC340251FD63E00DD29EF /* swipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC33F251FD63E00DD29EF /* swipeTests.swift */; };
 /* End PBXBuildFile section */
@@ -243,6 +244,7 @@
 				742DFAA52520CA6100A39C80 /* SwipeRenderLayer.swift in Sources */,
 				742DFAAD2520CBCB00A39C80 /* SwipePath.swift in Sources */,
 				742DFA9F2520CA4300A39C80 /* SwipeAnimation.swift in Sources */,
+				742DFAB02521981800A39C80 /* SwipeParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

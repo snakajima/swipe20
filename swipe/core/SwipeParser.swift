@@ -5,6 +5,14 @@
 //  Created by SATOSHI NAKAJIMA on 9/21/20.
 //
 import Foundation
+import Cocoa
+#if os(iOS) || os(watchOS) || os(tvOS)
+import UIKit
+typealias OSColor = UIColor
+#elseif os(macOS)
+typealias OSColor = NSColor
+#endif
+
 
 // A sollection of helper functions for parsing Swipe script
 struct SwipeParser {
@@ -50,16 +58,16 @@ struct SwipeParser {
     static let regexColor = try! NSRegularExpression(pattern: "^#[A-F0-9]*$", options: NSRegularExpression.Options.caseInsensitive)
     
     static let colorMap = [
-        "clear":CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0),
-        "red":CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
-        "blue":CGColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0),
-        "green":CGColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
-        "black":CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0),
-        "white":CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
-        "yellow":CGColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0),
-        "gray":CGColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0),
-        "darkGray":CGColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.0),
-        "lightGray":CGColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1.0),
+        "clear":OSColor.clear.cgColor,
+        "red":OSColor.red.cgColor,
+        "blue":OSColor.blue.cgColor,
+        "green":OSColor.green.cgColor,
+        "black":OSColor.black.cgColor,
+        "white":OSColor.white.cgColor,
+        "yellow":OSColor.yellow.cgColor,
+        "gray":OSColor.gray.cgColor,
+        "darkGray":OSColor.darkGray.cgColor,
+        "lightGray":OSColor.lightGray.cgColor,
     ]
     
     static func parseColor(_ value:Any?) -> CGColor? {
@@ -78,7 +86,7 @@ struct SwipeParser {
             if let v = rgba["a"] as? CGFloat {
                 alpha = v
             }
-            return CGColor(red: red, green: green, blue: blue, alpha: alpha)
+            return OSColor(red: red, green: green, blue: blue, alpha: alpha).cgColor
         } else if let key = value as? String {
             if let color = colorMap[key] {
                 return color
