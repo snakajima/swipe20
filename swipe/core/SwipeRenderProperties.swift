@@ -39,7 +39,7 @@ extension SwipeRenderProperties {
         case .bounce:
             (newFrame, xf) = bounce(ratio: ratio, from: from, frame: newFrame, xf: xf)
         case .jump:
-            (newFrame, xf) = jump(ratio: ratio, from: from, frame: newFrame, xf: xf)
+            (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
         default:
             break
         }
@@ -75,7 +75,7 @@ extension SwipeRenderProperties {
         return (CGRect(origin: CGPoint(x: frame.origin.x, y: y), size: frame.size), xfNew)
     }
     
-    func jump(ratio:Double, from:SwipeRenderProperties, frame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D) {
+    func jump(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D) {
         var xfNew = xf
         let x, y:CGFloat
         let r0 = 0.5 // anticipate
@@ -99,7 +99,7 @@ extension SwipeRenderProperties {
             y = from.frame.minY.mix(frame.minY, r) + height * CGFloat(1 - 4 * (r - 0.5) * (r - 0.5))
         }
             
-        return (CGRect(origin: CGPoint(x: x, y: y), size: frame.size), xfNew)
+        return (CGRect(origin: CGPoint(x: x, y: y), size: newFrame.size), xfNew)
     }
 }
 
