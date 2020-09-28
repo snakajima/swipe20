@@ -120,7 +120,7 @@ struct SwipeParser {
                     default:
                         break;
                     }
-                    return CGColor(red: CGFloat(r)/255, green: CGFloat(g%256)/255, blue: CGFloat(b%256)/255, alpha: CGFloat(a%256)/255)
+                    return OSColor(red: CGFloat(r)/255, green: CGFloat(g%256)/255, blue: CGFloat(b%256)/255, alpha: CGFloat(a%256)/255).cgColor
                 }
                 return nil
             }

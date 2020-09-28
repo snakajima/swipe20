@@ -7,6 +7,10 @@
 import Foundation
 import CoreImage
 import Cocoa
+#if os(iOS) || os(watchOS) || os(tvOS)
+import UIKit
+#endif
+
 
 /// A structure that describes an element to be displayed on a scene
 struct SwipeElement {
@@ -70,7 +74,11 @@ struct SwipeElement {
         }
         
         if let imageName = script["img"] as? String {
+            #if os(iOS) || os(watchOS) || os(tvOS)
+            self.image = UIImage(named: imageName)?.cgImage
+            #elseif os(macOS)
             self.image = NSImage(named: imageName)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+            #endif
         } else {
             self.image = nil
         }
