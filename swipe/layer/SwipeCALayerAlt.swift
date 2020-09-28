@@ -161,13 +161,3 @@ private extension SwipeElement {
     }
 }
 
-extension CALayer: SwipeRenderLayer {
-    public var id: Any? {
-        get {
-            return self.contents
-        }
-        set {
-            self.contents = newValue
-        }
-    }
-}
