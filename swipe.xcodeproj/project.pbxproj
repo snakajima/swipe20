@@ -17,6 +17,11 @@
 		742DFAB3252199B000A39C80 /* SwipeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7F2520C7E600A39C80 /* SwipeElement.swift */; };
 		742DFAB6252199C100A39C80 /* SwipeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7A2520C7E600A39C80 /* SwipeFrame.swift */; };
 		742DFABB25219A1100A39C80 /* SwipeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7C2520C7E600A39C80 /* SwipeScene.swift */; };
+		742DFAEB2522112000A39C80 /* SwipeCALayerAlt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFAE82522112000A39C80 /* SwipeCALayerAlt.swift */; };
+		742DFAEC2522112000A39C80 /* SwipeCALayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFAE92522112000A39C80 /* SwipeCALayerProtocol.swift */; };
+		742DFAED2522112000A39C80 /* SwipeCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFAEA2522112000A39C80 /* SwipeCALayer.swift */; };
+		742DFAF3252211B400A39C80 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFAF1252211B400A39C80 /* SwipeView.swift */; };
+		742DFAF4252211B400A39C80 /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFAF2252211B400A39C80 /* SwipeFileView.swift */; };
 		74FAC33B251FD63E00DD29EF /* swipe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FAC331251FD63E00DD29EF /* swipe.framework */; };
 		74FAC340251FD63E00DD29EF /* swipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC33F251FD63E00DD29EF /* swipeTests.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +48,11 @@
 		742DFA7D2520C7E600A39C80 /* SwipeRenderProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeRenderProperties.swift; sourceTree = "<group>"; };
 		742DFA7E2520C7E600A39C80 /* SwipeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeAnimation.swift; sourceTree = "<group>"; };
 		742DFA7F2520C7E600A39C80 /* SwipeElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeElement.swift; sourceTree = "<group>"; };
+		742DFAE82522112000A39C80 /* SwipeCALayerAlt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCALayerAlt.swift; sourceTree = "<group>"; };
+		742DFAE92522112000A39C80 /* SwipeCALayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCALayerProtocol.swift; sourceTree = "<group>"; };
+		742DFAEA2522112000A39C80 /* SwipeCALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCALayer.swift; sourceTree = "<group>"; };
+		742DFAF1252211B400A39C80 /* SwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		742DFAF2252211B400A39C80 /* SwipeFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
 		74FAC331251FD63E00DD29EF /* swipe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swipe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC33A251FD63E00DD29EF /* swipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC33F251FD63E00DD29EF /* swipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeTests.swift; sourceTree = "<group>"; };
@@ -72,6 +82,8 @@
 		742DFA722520C7E600A39C80 /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				742DFAF0252211B400A39C80 /* macOS */,
+				742DFAE72522112000A39C80 /* layer */,
 				742DFA732520C7E600A39C80 /* pod */,
 				742DFA762520C7E600A39C80 /* core */,
 			);
@@ -100,6 +112,25 @@
 				742DFA7F2520C7E600A39C80 /* SwipeElement.swift */,
 			);
 			path = core;
+			sourceTree = "<group>";
+		};
+		742DFAE72522112000A39C80 /* layer */ = {
+			isa = PBXGroup;
+			children = (
+				742DFAE82522112000A39C80 /* SwipeCALayerAlt.swift */,
+				742DFAE92522112000A39C80 /* SwipeCALayerProtocol.swift */,
+				742DFAEA2522112000A39C80 /* SwipeCALayer.swift */,
+			);
+			path = layer;
+			sourceTree = "<group>";
+		};
+		742DFAF0252211B400A39C80 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				742DFAF1252211B400A39C80 /* SwipeView.swift */,
+				742DFAF2252211B400A39C80 /* SwipeFileView.swift */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		74FAC327251FD63E00DD29EF = {
@@ -242,11 +273,16 @@
 			files = (
 				742DFAA22520CA5000A39C80 /* SwipeRenderProperties.swift in Sources */,
 				742DFA812520C7E600A39C80 /* swipe.swift in Sources */,
+				742DFAED2522112000A39C80 /* SwipeCALayer.swift in Sources */,
+				742DFAF4252211B400A39C80 /* SwipeFileView.swift in Sources */,
+				742DFAEB2522112000A39C80 /* SwipeCALayerAlt.swift in Sources */,
 				742DFAA52520CA6100A39C80 /* SwipeRenderLayer.swift in Sources */,
 				742DFAB3252199B000A39C80 /* SwipeElement.swift in Sources */,
 				742DFAAD2520CBCB00A39C80 /* SwipePath.swift in Sources */,
 				742DFA9F2520CA4300A39C80 /* SwipeAnimation.swift in Sources */,
 				742DFAB6252199C100A39C80 /* SwipeFrame.swift in Sources */,
+				742DFAF3252211B400A39C80 /* SwipeView.swift in Sources */,
+				742DFAEC2522112000A39C80 /* SwipeCALayerProtocol.swift in Sources */,
 				742DFABB25219A1100A39C80 /* SwipeScene.swift in Sources */,
 				742DFAB02521981800A39C80 /* SwipeParser.swift in Sources */,
 			);

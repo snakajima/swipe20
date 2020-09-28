@@ -11,7 +11,7 @@ import UIKit
 import Cocoa
 #endif
 
-protocol SwipeCALayerProtocol {
+public protocol SwipeCALayerProtocol {
     func makeLayer() -> CALayer
     func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void)
 }

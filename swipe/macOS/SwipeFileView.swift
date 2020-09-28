@@ -6,7 +6,8 @@
 //
 import SwiftUI
 
-struct SwipeFileView: View {
+#if os(macOS)
+public struct SwipeFileView: View {
     @State var frameIndex = 0
     let scene:SwipeScene
     let options:[String:Any]?
@@ -23,7 +24,7 @@ struct SwipeFileView: View {
         self.options = options
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             SwipeView(scene:scene, frameIndex:$frameIndex, options: options)
             HStack {
@@ -46,3 +47,4 @@ struct SwipeFileView_Previews: PreviewProvider {
         SwipeFileView("Nested")
     }
 }
+#endif

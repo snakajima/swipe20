@@ -6,6 +6,7 @@
 //
 import SwiftUI
 
+#if os(macOS)
 struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
     @Binding var frameIndex: Int
@@ -80,3 +81,5 @@ struct SwipeView_Previews: PreviewProvider {
         }
     }
 }
+
+#endif

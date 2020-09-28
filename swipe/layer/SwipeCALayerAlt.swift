@@ -10,13 +10,13 @@ import UIKit
 import Cocoa
 #endif
 
-struct SwipeCALayerAlt: SwipeCALayerProtocol {
+public struct SwipeCALayerAlt: SwipeCALayerProtocol {
     let scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene
     }
     
-    func makeLayer() -> CALayer {
+    public func makeLayer() -> CALayer {
         let layer = scene.makeLayer()
         if let frame = scene.firstFrame {
             layer.sublayers = frame.ids.map {
@@ -27,7 +27,7 @@ struct SwipeCALayerAlt: SwipeCALayerProtocol {
         return layer
     }
 
-    func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
+    public func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
         guard let frame = scene.frameAt(index: frameIndex),
               let layer = layer,
               let sublayers = layer.sublayers else {
