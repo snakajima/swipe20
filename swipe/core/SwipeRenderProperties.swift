@@ -35,7 +35,7 @@ extension SwipeRenderProperties {
                               width: from.frame.width.mix(frame.width, ratio),
                               height: from.frame.height.mix(frame.height, ratio))
         
-        if animationStyle == .gravity {
+        if animationStyle == .bounce {
             let y:CGFloat
             let r0 = 0.4 // going down
             let r1 = 0.2 // squeezing

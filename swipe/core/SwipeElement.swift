@@ -103,13 +103,9 @@ public struct SwipeElement {
         self.subElements = elements
 
         var style = SwipeAnimation.Style.normal
-        if let animation = script["animation"] as? [String:Any] {
-            switch(animation["style"] as? String) {
-            case "gravity":
-                style = .gravity
-            default:
-                break
-            }
+        if let animation = script["animation"] as? [String:Any],
+           let rawValue = animation["style"] as? String {
+            style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal
         }
         self.animationStyle = style
     }
