@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		742DFA812520C7E600A39C80 /* swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA742520C7E600A39C80 /* swipe.swift */; };
-		742DFA822520C7E600A39C80 /* swipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 742DFA752520C7E600A39C80 /* swipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		742DFA822520C7E600A39C80 /* Swipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 742DFA752520C7E600A39C80 /* Swipe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		742DFA9F2520CA4300A39C80 /* SwipeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7E2520C7E600A39C80 /* SwipeAnimation.swift */; };
 		742DFAA22520CA5000A39C80 /* SwipeRenderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA7D2520C7E600A39C80 /* SwipeRenderProperties.swift */; };
 		742DFAA52520CA6100A39C80 /* SwipeRenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742DFA782520C7E600A39C80 /* SwipeRenderLayer.swift */; };
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		742DFA3F2520C3FE00A39C80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = swipe/Info.plist; sourceTree = "<group>"; };
 		742DFA742520C7E600A39C80 /* swipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swipe.swift; sourceTree = "<group>"; };
-		742DFA752520C7E600A39C80 /* swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swipe.h; sourceTree = "<group>"; };
+		742DFA752520C7E600A39C80 /* Swipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swipe.h; sourceTree = "<group>"; };
 		742DFA772520C7E600A39C80 /* SwipePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
 		742DFA782520C7E600A39C80 /* SwipeRenderLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeRenderLayer.swift; sourceTree = "<group>"; };
 		742DFA792520C7E600A39C80 /* SwipeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeParser.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		74FAC33A251FD63E00DD29EF /* swipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FAC33F251FD63E00DD29EF /* swipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeTests.swift; sourceTree = "<group>"; };
 		74FAC341251FD63E00DD29EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		74FAC351251FD98300DD29EF /* swipe.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = swipe.podspec; sourceTree = "<group>"; };
+		74FAC351251FD98300DD29EF /* Swipe.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Swipe.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				742DFA742520C7E600A39C80 /* swipe.swift */,
-				742DFA752520C7E600A39C80 /* swipe.h */,
+				742DFA752520C7E600A39C80 /* Swipe.h */,
 			);
 			path = pod;
 			sourceTree = "<group>";
@@ -107,7 +107,7 @@
 			children = (
 				742DFA722520C7E600A39C80 /* swipe */,
 				742DFA3F2520C3FE00A39C80 /* Info.plist */,
-				74FAC351251FD98300DD29EF /* swipe.podspec */,
+				74FAC351251FD98300DD29EF /* Swipe.podspec */,
 				74FAC33E251FD63E00DD29EF /* swipeTests */,
 				74FAC332251FD63E00DD29EF /* Products */,
 			);
@@ -138,7 +138,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				742DFA822520C7E600A39C80 /* swipe.h in Headers */,
+				742DFA822520C7E600A39C80 /* Swipe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
