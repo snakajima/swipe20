@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "swipe"
-  spec.version      = "0.0.14"
+  spec.version      = "0.0.15"
   spec.summary      = "A declarative animation engine."
 
   # This description is used to generate tags and improve search results.
