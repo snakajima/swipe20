@@ -4,9 +4,13 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/24/20.
 //
+#if os(iOS) || os(watchOS) || os(tvOS)
+import UIKit
+#elseif os(macOS)
 import Cocoa
+#endif
 
-struct SwipeCALayer: SwipeCALayerProtocol {
+struct SwipeCALayerAlt: SwipeCALayerProtocol {
     let scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene
@@ -19,6 +23,7 @@ struct SwipeCALayer: SwipeCALayerProtocol {
                 frame.elements[$0]!.makeLayer()
             }
         }
+        layer.speed = 0
         return layer
     }
 
@@ -28,35 +33,65 @@ struct SwipeCALayer: SwipeCALayerProtocol {
               let sublayers = layer.sublayers else {
             return
         }
-        
-        var duration = frame.duration
+
         let transition = SwipeTransition.eval(from: lastIndex, to: frameIndex)
+        if transition == .same {
+            return
+        }
+        
+        var duration = transition == .initial ? 1e-10 : frame.duration
         if transition == .prev {
             duration = scene.frameAt(index:lastIndex!)?.duration
         }
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration ?? scene.duration)
-        frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:scene.frameAt(index: lastIndex))
         
-        CATransaction.commit()
+        let animation = SwipeAnimation(duration: duration ?? scene.duration)
+        animation.start { (ratio) in
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
+            CATransaction.commit()
+            
+            if ratio == 1.0 && frameIndex < scene.frameCount - 1 && transition != .prev {
+                switch(scene.playMode) {
+                case .auto, 
+                     .cont where transition != .initial:
+                        self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex, updateFrameIndex: updateFrameIndex)
+                        updateFrameIndex(frameIndex + 1)
+                    default:
+                        break
+                }
+            }
+        }
     }
-    
 }
 
 private extension SwipeFrame {
-    func apply(to layers:[CALayer], duration:Double, transition:SwipeTransition, base:SwipeFrame?) {
+    func apply(to layers:[CALayer], ratio:Double, transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
                 return
             }
-            element.apply(to: layer, duration:duration, transition: transition, base:base?.elements[name])
+            element.apply(to: layer, ratio:ratio, transition: transition, base:base?.elements[name])
         }
     }
 }
 
-
 private extension SwipeElement {
+    func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
+        if transition == .prev, let base = base {
+            base.apply(target: layer, ratio: 1 - ratio, from: self)
+        } else {
+            self.apply(target: layer, ratio: ratio, from: base)
+        }
+        for sublayer in layer.sublayers ?? [] {
+            if let name = sublayer.name,
+               let element = subElements[name] {
+                element.apply(to: sublayer, ratio:ratio, transition: transition, base:base?.subElements[name])
+            }
+        }
+    }
+    
     func makeLayer() -> CALayer {
         let layer = makeLayerRaw()
         layer.sublayers = subElementIds.map {
@@ -110,7 +145,7 @@ private extension SwipeElement {
         xf = CATransform3DRotate(xf, rotY * m, 0, 1, 0)
         xf = CATransform3DRotate(xf, rotZ * m, 0, 0, 1)
         layer.transform = xf
-
+        
         if let filterInfo = script["filter"] as? [String:Any],
            let params = filterInfo["params"] as? [String:Any] {
             for (key, value) in params {
@@ -123,4 +158,16 @@ private extension SwipeElement {
                 element.apply(to: sublayer, duration:duration, transition: transition, base:base?.subElements[name])
             }
         }
-    }}
+    }
+}
+
+extension CALayer: SwipeRenderLayer {
+    public var id: Any? {
+        get {
+            return self.contents
+        }
+        set {
+            self.contents = newValue
+        }
+    }
+}

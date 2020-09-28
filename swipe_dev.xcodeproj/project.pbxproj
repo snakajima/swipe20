@@ -124,8 +124,6 @@
 			children = (
 				742A09472518632F00862F36 /* AppDelegate.swift */,
 				742A09492518632F00862F36 /* ContentView.swift */,
-				742A095C251863FF00862F36 /* SwipeView.swift */,
-				74BD7105251A691500F41F3D /* SwipeFileView.swift */,
 				742A094B2518633100862F36 /* Assets.xcassets */,
 				742A09502518633100862F36 /* Main.storyboard */,
 				742A09532518633100862F36 /* Info.plist */,
@@ -160,9 +158,30 @@
 			path = core;
 			sourceTree = "<group>";
 		};
+		742DFAE42522100400A39C80 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				742A095C251863FF00862F36 /* SwipeView.swift */,
+				74BD7105251A691500F41F3D /* SwipeFileView.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		742DFAE52522109A00A39C80 /* layer */ = {
+			isa = PBXGroup;
+			children = (
+				74FAC323251EFAF600DD29EF /* SwipeCALayerProtocol.swift */,
+				74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */,
+				74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */,
+			);
+			path = layer;
+			sourceTree = "<group>";
+		};
 		74360A052520C0CA009EDBAF /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				742DFAE52522109A00A39C80 /* layer */,
+				742DFAE42522100400A39C80 /* macOS */,
 				742A095B2518639C00862F36 /* core */,
 			);
 			path = swipe;
@@ -194,9 +213,6 @@
 		74FAC269251CC58300DD29EF /* renderers */ = {
 			isa = PBXGroup;
 			children = (
-				74FAC323251EFAF600DD29EF /* SwipeCALayerProtocol.swift */,
-				74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */,
-				74FAC278251CF87600DD29EF /* SwipeCALayerAlt.swift */,
 			);
 			path = renderers;
 			sourceTree = "<group>";
