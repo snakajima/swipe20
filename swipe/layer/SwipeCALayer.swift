@@ -18,7 +18,6 @@ public struct SwipeCALayer: SwipeCALayerProtocol {
         if let animation = scene.script?["animation"] as? [String:Any],
            let engine = animation["engine"] as? String, engine == "swipe" {
             self.useSwipeAnimation = true
-            print("**** engine = swipe")
         } else {
             self.useSwipeAnimation = false
         }
@@ -77,14 +76,24 @@ public struct SwipeCALayer: SwipeCALayerProtocol {
             CATransaction.begin()
             CATransaction.setAnimationDuration(duration ?? scene.duration)
             frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:scene.frameAt(index: lastIndex))
-            
             CATransaction.commit()
         }
     }
     
 }
 
+private extension SwipeScene {
+    func makeLayer() -> CALayer {
+        let layer = CALayer()
+        if let color = self.backgroundColor {
+            layer.backgroundColor = color
+        }
+        return layer
+    }
+}
+
 private extension SwipeFrame {
+    // This method will be called only once when we use Core Animation
     func apply(to layers:[CALayer], duration:Double,  transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
@@ -94,7 +103,8 @@ private extension SwipeFrame {
             element.apply(to: layer, duration:duration, transition: transition, base:base?.elements[name])
         }
     }
-    
+
+    // This method will be called multiple times when we use Swipe Animation
     func apply(to layers:[CALayer], ratio:Double, transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
@@ -108,7 +118,32 @@ private extension SwipeFrame {
 
 private extension SwipeElement {
     func makeLayer() -> CALayer {
-        let layer = makeLayerRaw()
+        let layer:CALayer
+        if let text = script["text"] as? String {
+            let textLayer = CATextLayer()
+            textLayer.string = text
+            layer = textLayer
+        } else if let _ = self.path {
+            let shapeLayer = CAShapeLayer()
+            layer = shapeLayer
+        } else {
+            layer = CALayer()
+            if let image = self.image {
+                layer.contents = image
+                layer.contentsGravity = .resizeAspectFill
+                layer.masksToBounds = true
+            }
+        }
+        
+        if let filterInfo = script["filter"] as? [String:Any],
+           let filterName = filterInfo["name"] as? String {
+            if let filter = CIFilter(name: filterName) {
+                filter.name = "f0"
+                layer.filters = [filter]
+            }
+        }
+        layer.name = name
+
         layer.sublayers = subElementIds.map {
             subElements[$0]!.makeLayer()
         }
@@ -117,6 +152,7 @@ private extension SwipeElement {
         return layer
     }
 
+    // This method will be called multiple times when we use Swipe Animation
     func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
         if transition == .prev, let base = base {
             base.apply(target: layer, ratio: 1 - ratio, from: self)
