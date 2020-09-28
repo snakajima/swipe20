@@ -78,7 +78,7 @@ extension SwipeRenderProperties {
     func jump(ratio:Double, from:SwipeRenderProperties, frame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D) {
         var xfNew = xf
         let x, y:CGFloat
-        let r0 = 0.2 // anticipate
+        let r0 = 0.5 // anticipate
         let r2 = 0.1 // squeezing
         let r1 = 1.0 - r0 - r2 // jump
         let height = CGFloat(100.0)
@@ -86,9 +86,13 @@ extension SwipeRenderProperties {
         case _ where ratio < r0:
             x = from.frame.minX
             y = from.frame.minY
+            let r = CGFloat(sin(ratio / r1 * .pi))
+            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
         case _ where ratio > (1 - r2):
             x = frame.minX
             y = frame.minY
+            let r = CGFloat(sin((1 - ratio) / r2 * .pi))
+            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
