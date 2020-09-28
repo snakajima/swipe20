@@ -32,7 +32,7 @@ public struct SwipeView: NSViewRepresentable {
 
     public class Coordinator: NSObject {
         let view: SwipeView
-        let renderer:SwipeCALayerProtocol
+        let renderer:SwipeCALayer
         private var lastIndex:Int? = nil
         
         init(_ view: SwipeView, scene:SwipeScene) {

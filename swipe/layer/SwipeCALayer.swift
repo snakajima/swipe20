@@ -10,7 +10,7 @@ import UIKit
 import Cocoa
 #endif
 
-public struct SwipeCALayer: SwipeCALayerProtocol {
+public struct SwipeCALayer {
     let scene:SwipeScene
     let useSwipeAnimation:Bool
     init(scene:SwipeScene) {
