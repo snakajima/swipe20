@@ -11,6 +11,7 @@ public class SwipeAnimation {
     /// Specifies the type of animation
     public enum Style: String {
         case normal = "normal"
+        case leap = "leap"
         case bounce = "bounce"
         case jump = "jump"
     }

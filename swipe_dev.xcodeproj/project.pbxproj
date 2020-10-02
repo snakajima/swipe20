@@ -21,6 +21,7 @@
 		742A09772519BC0300862F36 /* kodim03.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A09762519BC0300862F36 /* kodim03.png */; };
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
+		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
 		74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7AA2E251BA51E00495568 /* Playground2.swift */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
@@ -62,6 +63,7 @@
 		742A09762519BC0300862F36 /* kodim03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim03.png; sourceTree = "<group>"; };
 		742A097D2519BC1C00862F36 /* kodim17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim17.png; sourceTree = "<group>"; };
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
+		746E661E2527C6640041AEE0 /* Leap.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Leap.swipe; sourceTree = "<group>"; };
 		74B7AA2E251BA51E00495568 /* Playground2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground2.swift; sourceTree = "<group>"; };
 		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				74BD7111251AC0CB00F41F3D /* Rotation.swipe */,
 				74FAC284251D5CEE00DD29EF /* Bounce.swipe */,
 				742DFB0E25224E2F00A39C80 /* Jump.swipe */,
+				746E661E2527C6640041AEE0 /* Leap.swipe */,
 				74FAC304251E480200DD29EF /* Slides.swipe */,
 				74FAC266251CC09400DD29EF /* AnchorPoint.swipe */,
 				74FAC263251CBDC600DD29EF /* Opacity.swipe */,
@@ -267,6 +270,7 @@
 				74FAC285251D5CEE00DD29EF /* Bounce.swipe in Resources */,
 				74FAC302251E46F600DD29EF /* Slide2.png in Resources */,
 				74FAC305251E480200DD29EF /* Slides.swipe in Resources */,
+				746E661F2527C6640041AEE0 /* Leap.swipe in Resources */,
 				74BD711A251B094100F41F3D /* Duration.swipe in Resources */,
 				74FAC20A251BC38900DD29EF /* Shapes.swipe in Resources */,
 				74FAC301251E46F600DD29EF /* Slide0.png in Resources */,
