@@ -94,16 +94,16 @@ extension SwipeRenderProperties {
             x = from.frame.minX
             y = from.frame.minY
             let r = CGFloat(sin(ratio * ratio / r0 / r0 * .pi))
-            xfNew = CATransform3DRotate(xf, -r * cos(dir), 1, 0, 0)
-            xfNew = CATransform3DRotate(xfNew, r * sin(dir), 0, 1, 0)
-            anchorPoint = CGPoint(x: 0, y: 1)
+            xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.8, 1, 0, 0)
+            xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.8, 0, 1, 0)
+            anchorPoint = CGPoint(x: dx > 0 ? 0 : 1, y: dy > 0 ? 0 : 1)
         case _ where ratio > (1 - r2):
             x = frame.minX
             y = frame.minY
             let r = CGFloat(sin((1 - ratio) / r2 * .pi))
-            xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.5, 1, 0, 0)
-            xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.5, 0, 1, 0)
-            anchorPoint = CGPoint(x: 1, y: 1)
+            xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.4, 1, 0, 0)
+            xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.4, 0, 1, 0)
+            anchorPoint = CGPoint(x: dx > 0 ? 1 : 0, y: dy > 0 ? 1 : 0)
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)

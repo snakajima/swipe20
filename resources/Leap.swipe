@@ -35,5 +35,29 @@
                 "style":"leap"
             },
         }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":420, "y":40,
+            "animation": {
+                "style":"leap"
+            },
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":340, "y":340,
+            "animation": {
+                "style":"leap"
+            },
+        }]
+    },{
+        "elements":[{
+            "id":"id0",
+            "x":20, "y":140,
+            "animation": {
+                "style":"leap"
+            },
+        }]
     }]
 }
