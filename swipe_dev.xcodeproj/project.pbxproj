@@ -22,6 +22,7 @@
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
 		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
+		746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
 		74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7AA2E251BA51E00495568 /* Playground2.swift */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
@@ -64,6 +65,7 @@
 		742A097D2519BC1C00862F36 /* kodim17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim17.png; sourceTree = "<group>"; };
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
 		746E661E2527C6640041AEE0 /* Leap.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Leap.swipe; sourceTree = "<group>"; };
+		746E66222528C6510041AEE0 /* SwipeCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCanvas.swift; sourceTree = "<group>"; };
 		74B7AA2E251BA51E00495568 /* Playground2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground2.swift; sourceTree = "<group>"; };
 		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
@@ -177,11 +179,20 @@
 		74360A052520C0CA009EDBAF /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				746E66212528C6330041AEE0 /* studio */,
 				742DFAE52522109A00A39C80 /* layer */,
 				742DFAE42522100400A39C80 /* macOS */,
 				742A095B2518639C00862F36 /* core */,
 			);
 			path = swipe;
+			sourceTree = "<group>";
+		};
+		746E66212528C6330041AEE0 /* studio */ = {
+			isa = PBXGroup;
+			children = (
+				746E66222528C6510041AEE0 /* SwipeCanvas.swift */,
+			);
+			path = studio;
 			sourceTree = "<group>";
 		};
 		74BD7108251A6CDF00F41F3D /* resources */ = {
@@ -297,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */,
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
 				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
 				74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */,
