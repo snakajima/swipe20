@@ -33,7 +33,12 @@ public struct SwipeCanvas: View {
     @State var frameIndex = 0
     let scene = SwipeScene(s_script)
     public var body: some View {
-        SwipeView(scene: scene, frameIndex: $frameIndex)
+        let tap = TapGesture().onEnded { _ in
+            print("tapped")
+        }
+        return ZStack {
+            SwipeView(scene: scene, frameIndex: $frameIndex)
+        }.gesture(tap)
     }
 }
 
