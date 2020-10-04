@@ -36,14 +36,14 @@ public struct SwipeCanvas: View {
     @State var frameIndex = 0
     @State var scene = SwipeScene(s_script)
     @State var selectedElement:SwipeElement?
-    @State var rect:CGRect = .zero
+    @State var cursorRect:CGRect = .zero
     public var body: some View {
         return GeometryReader { geometry in
             ZStack {
                 SwipeView(scene: scene, frameIndex: $frameIndex)
                 if let _ = self.selectedElement {
                     Path() { path in
-                        var frame = self.rect
+                        var frame = self.cursorRect
                         frame.origin.y = geometry.size.height - frame.origin.y - frame.height
                         path.addRect(frame)
                     }
@@ -55,18 +55,17 @@ public struct SwipeCanvas: View {
                 startLocation.y = geometry.size.height - startLocation.y
                 if selectedElement == nil {
                     selectedElement = scene.hitTest(point: startLocation, frameIndex: frameIndex)
-                    print("onBegan")
                 }
                 if let element = selectedElement {
                     var frame = element.frame
                     //frame.origin.y = geometry.size.height - frame.origin.y
                     frame.origin.x += value.location.x - value.startLocation.x
                     frame.origin.y -= value.location.y - value.startLocation.y
-                    self.rect = frame
+                    self.cursorRect = frame
                 }
             }.onEnded({ value in
                 if let element = selectedElement {
-                    let updatedElement = element.updated(frame: self.rect)
+                    let updatedElement = element.updated(frame: self.cursorRect)
                     if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
                         self.scene = updatedScene
                     }

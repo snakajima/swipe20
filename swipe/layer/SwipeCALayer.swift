@@ -24,10 +24,10 @@ public struct SwipeCALayer {
     }
     
     public func makeLayer() -> CALayer {
-        let layer = scene.makeLayer(useSwipeAnimation:useSwipeAnimation)
+        let layer = scene.makeLayer()
         if let frame = scene.firstFrame {
             layer.sublayers = frame.ids.map {
-                frame.elements[$0]!.makeLayer(useSwipeAnimation:useSwipeAnimation)
+                frame.elements[$0]!.makeLayer()
             }
         }
         if useSwipeAnimation {
@@ -83,7 +83,7 @@ public struct SwipeCALayer {
 }
 
 private extension SwipeScene {
-    func makeLayer(useSwipeAnimation:Bool) -> CALayer {
+    func makeLayer() -> CALayer {
         let layer = CALayer()
         if let color = self.backgroundColor {
             layer.backgroundColor = color
@@ -117,7 +117,7 @@ private extension SwipeFrame {
 }
 
 private extension SwipeElement {
-    func makeLayer(useSwipeAnimation:Bool) -> CALayer {
+    func makeLayer() -> CALayer {
         let layer:CALayer
         if let text = script["text"] as? String {
             let textLayer = CATextLayer()
@@ -145,7 +145,7 @@ private extension SwipeElement {
         layer.name = id
 
         layer.sublayers = subElementIds.map {
-            subElements[$0]!.makeLayer(useSwipeAnimation:useSwipeAnimation)
+            subElements[$0]!.makeLayer()
         }
         
         apply(to: layer, duration:1e-10, transition: .initial, base:nil)
