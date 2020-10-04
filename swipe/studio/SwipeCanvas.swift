@@ -37,11 +37,12 @@ public struct SwipeCanvas: View {
     @State var scene = SwipeScene(s_script)
     @State var selectedElement:SwipeElement?
     @State var cursorRect:CGRect = .zero
+    @State var isDragging = false
     public var body: some View {
         return GeometryReader { geometry in
             ZStack {
                 SwipeView(scene: scene, frameIndex: $frameIndex)
-                if let _ = self.selectedElement {
+                if self.isDragging {
                     Path() { path in
                         var frame = self.cursorRect
                         frame.origin.y = geometry.size.height - frame.origin.y - frame.height
@@ -51,14 +52,14 @@ public struct SwipeCanvas: View {
                     .foregroundColor(.blue)
                 }
             }.gesture(DragGesture().onChanged { value in
-                var startLocation = value.startLocation
-                startLocation.y = geometry.size.height - startLocation.y
-                if selectedElement == nil {
+                if !self.isDragging {
+                    var startLocation = value.startLocation
+                    startLocation.y = geometry.size.height - startLocation.y
                     selectedElement = scene.hitTest(point: startLocation, frameIndex: frameIndex)
+                    self.isDragging = true
                 }
                 if let element = selectedElement {
                     var frame = element.frame
-                    //frame.origin.y = geometry.size.height - frame.origin.y
                     frame.origin.x += value.location.x - value.startLocation.x
                     frame.origin.y -= value.location.y - value.startLocation.y
                     self.cursorRect = frame
@@ -69,7 +70,8 @@ public struct SwipeCanvas: View {
                     if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
                         self.scene = updatedScene
                     }
-                self.selectedElement = nil
+                    self.selectedElement = nil
+                    self.isDragging = false
                 }
             }))
         }
