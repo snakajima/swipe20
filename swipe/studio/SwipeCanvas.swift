@@ -48,7 +48,7 @@ public struct SwipeCanvas: View {
             HStack {
                 ForEach(0..<scene.frameCount) { index in
                     ZStack {
-                        SwipePreview(scene: scene, frameIndex: index)
+                        SwipePreview(scene: scene, scale:0.3, frameIndex: index)
                         if index == frameIndex {
                             Rectangle()
                                 .stroke(lineWidth: 1.0)

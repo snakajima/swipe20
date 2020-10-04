@@ -9,10 +9,12 @@ import SwiftUI
 #if os(macOS)
 public struct SwipePreview: NSViewRepresentable {
     let scene:SwipeScene
+    let scale:CGFloat
     let frameIndex: Int
     
-    public init(scene:SwipeScene, frameIndex:Int) {
+    public init(scene:SwipeScene, scale:CGFloat, frameIndex:Int) {
         self.scene = scene
+        self.scale = scale
         self.frameIndex = frameIndex
     }
     
@@ -24,7 +26,7 @@ public struct SwipePreview: NSViewRepresentable {
         let nsView = NSView()
         let layer = CALayer()
         let swipeLayer = context.coordinator.makeLayer()
-        swipeLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
+        swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1.0)
         layer.addSublayer(swipeLayer)
         nsView.layer = layer
         return nsView
