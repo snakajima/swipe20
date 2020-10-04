@@ -32,7 +32,7 @@ public struct SwipeFrame {
     }
     
     func hitTest(point:CGPoint) -> SwipeElement? {
-        for id in ids {
+        for id in ids.reversed() {
             if let element = elements[id],
                element.hitTest(point: point) {
                 return element
