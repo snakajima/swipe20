@@ -29,6 +29,11 @@ private let s_script:[String:Any] = [
             "backgroundColor":"red",
             "cornerRadius": 20
         ]]
+    ],[
+        "elements":[[
+            "id":"id0",
+            "y":100
+        ]]
     ]]
 ]
 
@@ -40,7 +45,11 @@ public struct SwipeCanvas: View {
     @State var isDragging = false
     public var body: some View {
         return VStack {
-            SwipePreview(scene: scene, frameIndex: 0)
+            HStack {
+                ForEach(0..<scene.frameCount) { index in
+                    SwipePreview(scene: scene, frameIndex: index)
+                }
+            }.frame(height:120)
             GeometryReader { geometry in
                 ZStack {
                     SwipeView(scene: scene, frameIndex: $frameIndex)
