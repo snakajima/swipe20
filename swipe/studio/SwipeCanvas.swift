@@ -41,7 +41,7 @@ public struct SwipeCanvas: View {
         return GeometryReader { geometry in
             ZStack {
                 SwipeView(scene: scene, frameIndex: $frameIndex)
-                if let rect = self.rect {
+                if let _ = self.selectedElement {
                     Path() { path in
                         path.addRect(rect)
                     }
