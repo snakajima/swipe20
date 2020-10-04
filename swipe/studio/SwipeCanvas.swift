@@ -51,6 +51,11 @@ public struct SwipeCanvas: View {
                     var location = value.location
                     location.y = geometry.size.height - location.y
                     var frame = element.frame
+                    
+                    let dx = location.x - startLocation.x
+                    let dy = location.y - startLocation.y
+                    print(dx, dy, frame.origin.x)
+                    
                     frame.origin.x += location.x - startLocation.x
                     frame.origin.y += location.y - startLocation.y
                     let updatedElement = element.updated(frame: frame)
