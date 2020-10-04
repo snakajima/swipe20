@@ -42,13 +42,15 @@ public struct SwipeCanvas: View {
                 var startLocation = value.startLocation
                 startLocation.y = geometry.size.height - startLocation.y
 
-                if var element = scene.hitTest(point: startLocation, frameIndex: frameIndex) {
+                if let element = scene.hitTest(point: startLocation, frameIndex: frameIndex) {
                     print("tap", element.id)
                     var frame = element.frame
                     frame.origin.x += location.x - startLocation.x
                     frame.origin.y += location.y - startLocation.y
-                    element.update(frame: frame)
-                    scene.update(element: element, frameIndex: frameIndex)
+                    let updatedElement = element.updated(frame: frame)
+                    if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
+                        self.scene = updatedScene
+                    }
                 }
             })
         }

@@ -45,9 +45,11 @@ public struct SwipeView: NSViewRepresentable {
         }
         
         func move(scene:SwipeScene, to frameIndex:Int, layer:CALayer?) {
-            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, updateFrameIndex: { newIndex in
-                    self.view.frameIndex = newIndex
-            })
+            //if scene == renderer.scene {
+                renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, updateFrameIndex: { newIndex in
+                        self.view.frameIndex = newIndex
+                })
+            //}
             lastIndex = frameIndex
         }
     }

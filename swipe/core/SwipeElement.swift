@@ -114,9 +114,10 @@ public struct SwipeElement {
         return frame.contains(point)
     }
 
-    // for canvas
-    mutating func update(frame:CGRect) {
-        self.frame = frame
+    func updated(frame:CGRect) -> SwipeElement {
+        var element = self
+        element.frame = frame
+        return element
     }
 }
 

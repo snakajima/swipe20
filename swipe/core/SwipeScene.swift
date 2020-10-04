@@ -100,10 +100,12 @@ public struct SwipeScene {
         return frames[frameIndex].hitTest(point: point)
     }
 
-    mutating func update(element:SwipeElement, frameIndex:Int) {
+    func updated(element:SwipeElement, frameIndex:Int) -> SwipeScene? {
         guard frameIndex >= 0 && frameIndex < frameCount else {
-            return
+            return nil
         }
-        return frames[frameIndex].update(element: element)
+        var scene = self
+        scene.frames[frameIndex] = scene.frames[frameIndex].updated(element: element)
+        return scene
     }
 }

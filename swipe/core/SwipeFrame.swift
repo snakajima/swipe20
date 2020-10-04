@@ -41,7 +41,9 @@ public struct SwipeFrame {
         return nil
     }
     
-    mutating func update(element:SwipeElement) {
-        elements[element.id] = element
+    func updated(element:SwipeElement) -> SwipeFrame {
+        var frame = self
+        frame.elements[element.id] = element
+        return frame
     }
 }
