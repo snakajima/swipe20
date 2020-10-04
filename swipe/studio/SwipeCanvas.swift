@@ -39,41 +39,45 @@ public struct SwipeCanvas: View {
     @State var cursorRect:CGRect = .zero
     @State var isDragging = false
     public var body: some View {
-        return GeometryReader { geometry in
-            ZStack {
-                SwipeView(scene: scene, frameIndex: $frameIndex)
-                if self.isDragging {
-                    Path() { path in
-                        var frame = self.cursorRect
-                        frame.origin.y = geometry.size.height - frame.origin.y - frame.height
-                        path.addRect(frame)
+        return VStack {
+            SwipeView(scene: scene, frameIndex: $frameIndex)
+            GeometryReader { geometry in
+                ZStack {
+                    SwipeView(scene: scene, frameIndex: $frameIndex)
+                    if self.isDragging {
+                        Path() { path in
+                            var frame = self.cursorRect
+                            frame.origin.y = geometry.size.height - frame.origin.y - frame.height
+                            path.addRect(frame)
+                        }
+                        .stroke(lineWidth: 1.0)
+                        .foregroundColor(.blue)
                     }
-                    .stroke(lineWidth: 1.0)
-                    .foregroundColor(.blue)
-                }
-            }.gesture(DragGesture().onChanged { value in
-                if !self.isDragging {
-                    var startLocation = value.startLocation
-                    startLocation.y = geometry.size.height - startLocation.y
-                    selectedElement = scene.hitTest(point: startLocation, frameIndex: frameIndex)
-                    self.isDragging = true
-                }
-                if let element = selectedElement {
-                    var frame = element.frame
-                    frame.origin.x += value.location.x - value.startLocation.x
-                    frame.origin.y -= value.location.y - value.startLocation.y
-                    self.cursorRect = frame
-                }
-            }.onEnded({ value in
-                if let element = selectedElement {
-                    let updatedElement = element.updated(frame: self.cursorRect)
-                    if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
-                        self.scene = updatedScene
+                }.gesture(DragGesture().onChanged { value in
+                    if !self.isDragging {
+                        var startLocation = value.startLocation
+                        startLocation.y = geometry.size.height - startLocation.y
+                        selectedElement = scene.hitTest(point: startLocation, frameIndex: frameIndex)
+                        self.isDragging = true
+                    
                     }
-                    self.selectedElement = nil
-                    self.isDragging = false
-                }
-            }))
+                    if let element = selectedElement {
+                        var frame = element.frame
+                        frame.origin.x += value.location.x - value.startLocation.x
+                        frame.origin.y -= value.location.y - value.startLocation.y
+                        self.cursorRect = frame
+                    }
+                }.onEnded({ value in
+                    if let element = selectedElement {
+                        let updatedElement = element.updated(frame: self.cursorRect)
+                        if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
+                            self.scene = updatedScene
+                        }
+                        self.selectedElement = nil
+                        self.isDragging = false
+                    }
+                }))
+            }
         }
     }
 }
