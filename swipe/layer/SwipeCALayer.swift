@@ -27,7 +27,7 @@ public struct SwipeCALayer {
         let layer = scene.makeLayer(useSwipeAnimation:useSwipeAnimation)
         if let frame = scene.firstFrame {
             layer.sublayers = frame.ids.map {
-                frame.elements[$0]!.makeLayer()
+                frame.elements[$0]!.makeLayer(useSwipeAnimation:useSwipeAnimation)
             }
         }
         if useSwipeAnimation {
