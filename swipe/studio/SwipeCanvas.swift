@@ -29,11 +29,6 @@ private let s_script:[String:Any] = [
             "backgroundColor":"red",
             "cornerRadius": 20
         ]]
-    ],[
-        "elements":[[
-            "id":"id0",
-            "y":100
-        ]]
     ]]
 ]
 
@@ -46,21 +41,24 @@ public struct SwipeCanvas: View {
     public var body: some View {
         return VStack {
             HStack {
-                ForEach(0..<scene.frameCount) { index in
-                    ZStack {
-                        SwipePreview(scene: scene, scale:0.3, frameIndex: index)
-                        if index == frameIndex {
-                            Rectangle()
-                                .stroke(lineWidth: 1.0)
-                                .foregroundColor(.blue)
+                ForEach(0..<scene.frameCount, id:\.self) { index in
+                    HStack {
+                        ZStack {
+                            SwipePreview(scene: scene, scale:0.3, frameIndex: index)
+                            if index == frameIndex {
+                                Rectangle()
+                                    .stroke(lineWidth: 1.0)
+                                    .foregroundColor(.blue)
+                            }
                         }
-                    }
-                    .frame(width:180)
-                    .gesture(TapGesture().onEnded() {
-                        frameIndex = index
-                    })
-                    Button("+") {
-                        print("plus")
+                        .frame(width:180)
+                        .gesture(TapGesture().onEnded() {
+                            frameIndex = index
+                        })
+                        Button("+") {
+                            print("plus")
+                            self.scene = scene.frameDuplicated(atIndex: index)
+                        }
                     }
                 }
             }.frame(height:120)

@@ -42,7 +42,7 @@ public struct SwipeScene {
         case cont = "continue"
     }
     
-    private var frames:[SwipeFrame]
+    private(set) var frames:[SwipeFrame]
     let script:[String:Any]?
     let backgroundColor:CGColor?
     let duration:Double
@@ -116,9 +116,9 @@ public struct SwipeScene {
         return scene
     }
     
-    func frameDuplicated(atIndex frameIndex:Int) -> SwipeScene? {
+    func frameDuplicated(atIndex frameIndex:Int) -> SwipeScene {
         guard frameIndex >= 0 && frameIndex < frameCount else {
-            return nil
+            return self
         }
         var scene = self.cloned()
         var frames = scene.frames
