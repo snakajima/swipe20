@@ -42,7 +42,7 @@ public struct SwipeScene {
         case cont = "continue"
     }
     
-    private let frames:[SwipeFrame]
+    private var frames:[SwipeFrame]
     let script:[String:Any]?
     let backgroundColor:CGColor?
     let duration:Double
@@ -98,5 +98,12 @@ public struct SwipeScene {
             return nil
         }
         return frames[frameIndex].hitTest(point: point)
+    }
+
+    mutating func update(element:SwipeElement, frameIndex:Int) {
+        guard frameIndex >= 0 && frameIndex < frameCount else {
+            return
+        }
+        return frames[frameIndex].update(element: element)
     }
 }

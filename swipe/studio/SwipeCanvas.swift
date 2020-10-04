@@ -31,7 +31,7 @@ private let s_script:[String:Any] = [
 
 public struct SwipeCanvas: View {
     @State var frameIndex = 0
-    let scene = SwipeScene(s_script)
+    @State var scene = SwipeScene(s_script)
     public var body: some View {
         return GeometryReader { geometry in
             ZStack {
@@ -42,8 +42,13 @@ public struct SwipeCanvas: View {
                 var startLocation = value.startLocation
                 startLocation.y = geometry.size.height - startLocation.y
 
-                if let element = scene.hitTest(point: startLocation, frameIndex: frameIndex) {
+                if var element = scene.hitTest(point: startLocation, frameIndex: frameIndex) {
                     print("tap", element.id)
+                    var frame = element.frame
+                    frame.origin.x += location.x - startLocation.x
+                    frame.origin.y += location.y - startLocation.y
+                    element.update(frame: frame)
+                    scene.update(element: element, frameIndex: frameIndex)
                 }
             })
         }

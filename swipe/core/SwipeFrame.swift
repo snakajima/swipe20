@@ -10,7 +10,7 @@ import Foundation
 public struct SwipeFrame {
     private let script:[String:Any]
     let ids:[String]
-    let elements:[String:SwipeElement]
+    private(set) var elements:[String:SwipeElement]
     let duration:Double?
     var name:String? { script["name"] as? String } // name is optional
 
@@ -39,5 +39,9 @@ public struct SwipeFrame {
             }
         }
         return nil
+    }
+    
+    mutating func update(element:SwipeElement) {
+        elements[element.id] = element
     }
 }
