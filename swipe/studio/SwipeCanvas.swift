@@ -93,9 +93,7 @@ public struct SwipeCanvas: View {
                 }.onEnded({ value in
                     if let element = selectedElement {
                         let updatedElement = element.updated(frame: self.cursorRect)
-                        if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
-                            self.scene = updatedScene
-                        }
+                        self.scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
                         self.selectedElement = nil
                         self.isDragging = false
                     }
