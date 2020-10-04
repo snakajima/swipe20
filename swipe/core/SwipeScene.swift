@@ -47,6 +47,7 @@ public struct SwipeScene {
     let backgroundColor:CGColor?
     let duration:Double
     let playMode:PlayMode
+    var uuid = UUID()
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
 
@@ -105,6 +106,7 @@ public struct SwipeScene {
             return nil
         }
         var scene = self
+        scene.uuid = UUID()
         scene.frames[frameIndex] = scene.frames[frameIndex].updated(element: element)
         return scene
     }
