@@ -36,10 +36,18 @@ public struct SwipeCanvas: View {
     @State var frameIndex = 0
     @State var scene = SwipeScene(s_script)
     @State var selectedElement:SwipeElement?
+    @State var rect:CGRect = .zero
     public var body: some View {
         return GeometryReader { geometry in
             ZStack {
                 SwipeView(scene: scene, frameIndex: $frameIndex)
+                if let rect = self.rect {
+                    Path() { path in
+                        path.addRect(rect)
+                    }
+                    .stroke(lineWidth: 1.0)
+                    .foregroundColor(.blue)
+                }
             }.gesture(DragGesture().onChanged { value in
                 var startLocation = value.startLocation
                 startLocation.y = geometry.size.height - startLocation.y
@@ -48,23 +56,20 @@ public struct SwipeCanvas: View {
                     print("onBegan")
                 }
                 if let element = selectedElement {
-                    var location = value.location
-                    location.y = geometry.size.height - location.y
                     var frame = element.frame
-                    
-                    let dx = location.x - startLocation.x
-                    let dy = location.y - startLocation.y
-                    print(dx, dy, frame.origin.x)
-                    
-                    frame.origin.x += location.x - startLocation.x
-                    frame.origin.y += location.y - startLocation.y
-                    let updatedElement = element.updated(frame: frame)
+                    //frame.origin.y = geometry.size.height - frame.origin.y
+                    frame.origin.x += value.location.x - value.startLocation.x
+                    frame.origin.y -= value.location.y - value.startLocation.y
+                    self.rect = frame
+                }
+            }.onEnded({ value in
+                if let element = selectedElement {
+                    let updatedElement = element.updated(frame: self.rect)
                     if let updatedScene = scene.updated(element: updatedElement, frameIndex: frameIndex) {
                         self.scene = updatedScene
                     }
-                }
-            }.onEnded({ value in
                 self.selectedElement = nil
+                }
             }))
         }
     }
