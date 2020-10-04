@@ -9,6 +9,9 @@ import SwiftUI
 
 private let s_script:[String:Any] = [
     "backgroundColor":"#FFFFCC",
+    "animation": [
+        "engine":"swipe"
+    ],
     "frames":[[
         "elements":[[
             "id":"id0",
