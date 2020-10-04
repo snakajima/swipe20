@@ -59,6 +59,9 @@ public struct SwipeCanvas: View {
                     .gesture(TapGesture().onEnded() {
                         frameIndex = index
                     })
+                    Button("+") {
+                        print("plus")
+                    }
                 }
             }.frame(height:120)
             GeometryReader { geometry in
