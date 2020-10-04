@@ -40,7 +40,7 @@ public struct SwipeCanvas: View {
     @State var isDragging = false
     public var body: some View {
         return VStack {
-            SwipeView(scene: scene, frameIndex: $frameIndex)
+            SwipePreview(scene: scene, frameIndex: 0)
             GeometryReader { geometry in
                 ZStack {
                     SwipeView(scene: scene, frameIndex: $frameIndex)

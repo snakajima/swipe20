@@ -1,0 +1,54 @@
+//
+//  SwipePreview.swift
+//  swipe20
+//
+//  Created by SATOSHI NAKAJIMA on 10/4/20.
+//
+import SwiftUI
+
+#if os(macOS)
+public struct SwipePreview: NSViewRepresentable {
+    let scene:SwipeScene
+    let frameIndex: Int
+    
+    public init(scene:SwipeScene, frameIndex:Int) {
+        self.scene = scene
+        self.frameIndex = frameIndex
+    }
+    
+    public func makeCoordinator() -> Coordinator {
+        return Coordinator(self, scene:scene)
+    }
+    
+    public func makeNSView(context: Context) -> some NSView {
+        let nsView = NSView()
+        nsView.layer = context.coordinator.makeLayer()
+        return nsView
+    }
+    
+    public func updateNSView(_ nsView: NSViewType, context: Context) {
+        context.coordinator.move(scene:scene, to: frameIndex, layer:nsView.layer)
+    }
+
+    public class Coordinator: NSObject {
+        let view: SwipePreview
+        var renderer:SwipeCALayer
+        
+        init(_ view: SwipePreview, scene:SwipeScene) {
+            self.view = view
+            self.renderer = SwipeCALayer(scene: scene)
+        }
+        
+        func makeLayer() -> CALayer {
+            renderer.makeLayer()
+        }
+        
+        func move(scene:SwipeScene, to frameIndex:Int, layer:CALayer?) {
+            if scene.uuid != renderer.scene.uuid {
+                self.renderer = SwipeCALayer(scene: scene)
+            }
+            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:nil, updateFrameIndex: { _ in })
+        }
+    }
+}
+#endif
