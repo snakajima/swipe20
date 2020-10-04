@@ -43,7 +43,9 @@ public struct SwipeCanvas: View {
                 SwipeView(scene: scene, frameIndex: $frameIndex)
                 if let _ = self.selectedElement {
                     Path() { path in
-                        path.addRect(rect)
+                        var frame = self.rect
+                        frame.origin.y = geometry.size.height - frame.origin.y - frame.height
+                        path.addRect(frame)
                     }
                     .stroke(lineWidth: 1.0)
                     .foregroundColor(.blue)
