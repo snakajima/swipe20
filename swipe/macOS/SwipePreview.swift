@@ -22,12 +22,21 @@ public struct SwipePreview: NSViewRepresentable {
     
     public func makeNSView(context: Context) -> some NSView {
         let nsView = NSView()
-        nsView.layer = context.coordinator.makeLayer()
+        let layer = CALayer()
+        let swipeLayer = context.coordinator.makeLayer()
+        swipeLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
+        layer.addSublayer(swipeLayer)
+        nsView.layer = layer
         return nsView
     }
     
     public func updateNSView(_ nsView: NSViewType, context: Context) {
-        context.coordinator.move(scene:scene, to: frameIndex, layer:nsView.layer)
+        if let layer = nsView.layer,
+           let swipeLayer = layer.sublayers?.first {
+            context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
+            // HACK: Work-around
+            layer.backgroundColor = swipeLayer.backgroundColor
+        }
     }
 
     public class Coordinator: NSObject {
