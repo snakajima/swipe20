@@ -92,4 +92,11 @@ public struct SwipeScene {
         let frame = frames[frameIndex]
         return frame.name ?? "frame #\(frameIndex)"
     }
+    
+    func hitTest(point:CGPoint, frameIndex:Int) -> String? {
+        guard frameIndex >= 0 && frameIndex < frameCount else {
+            return nil
+        }
+        return frames[frameIndex].hitTest(point: point)
+    }
 }

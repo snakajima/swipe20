@@ -33,12 +33,17 @@ public struct SwipeCanvas: View {
     @State var frameIndex = 0
     let scene = SwipeScene(s_script)
     public var body: some View {
-        let tap = TapGesture().onEnded { _ in
-            print("tapped")
-        }
-        return ZStack {
+        return
+            GeometryReader { geometry in
+            ZStack {
             SwipeView(scene: scene, frameIndex: $frameIndex)
-        }.gesture(tap)
+        }.gesture(DragGesture().onEnded { value in
+            var location = value.location
+            location.y = geometry.size.height - location.y
+            let elementId = scene.hitTest(point: location, frameIndex: frameIndex)
+            print("tapped", elementId ?? "none", location)
+        })
+            }
     }
 }
 

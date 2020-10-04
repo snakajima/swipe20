@@ -30,4 +30,14 @@ public struct SwipeFrame {
         self.ids = base?.ids ?? ids
         self.elements = elements
     }
+    
+    func hitTest(point:CGPoint) -> String? {
+        for id in ids {
+            if let element = elements[id],
+               element.hitTest(point: point) {
+                return id
+            }
+        }
+        return nil
+    }
 }

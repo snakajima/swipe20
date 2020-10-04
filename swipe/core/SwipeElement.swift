@@ -109,6 +109,10 @@ public struct SwipeElement {
         }
         self.animationStyle = style
     }
+    
+    func hitTest(point:CGPoint) -> Bool {
+        return frame.contains(point)
+    }
 }
 
 extension SwipeElement : SwipeRenderProperties {
