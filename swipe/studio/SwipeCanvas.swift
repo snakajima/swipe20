@@ -47,8 +47,13 @@ public struct SwipeCanvas: View {
         return VStack {
             HStack {
                 ForEach(0..<scene.frameCount) { index in
-                    VStack {
+                    ZStack {
                         SwipePreview(scene: scene, frameIndex: index)
+                        if index == frameIndex {
+                            Rectangle()
+                                .stroke(lineWidth: 1.0)
+                                .foregroundColor(.blue)
+                        }
                     }
                     .frame(width:180)
                     .gesture(TapGesture().onEnded() {
