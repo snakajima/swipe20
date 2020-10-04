@@ -142,7 +142,7 @@ private extension SwipeElement {
                 layer.filters = [filter]
             }
         }
-        layer.name = name
+        layer.name = id
 
         layer.sublayers = subElementIds.map {
             subElements[$0]!.makeLayer()

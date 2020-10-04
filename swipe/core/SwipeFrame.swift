@@ -24,7 +24,7 @@ public struct SwipeFrame {
         for elementScript in elementScripts {
             if let id = elementScript["id"] as? String {
                 ids.append(id)
-                elements[id] = SwipeElement(elementScript, base:base?.elements[id])
+                elements[id] = SwipeElement(elementScript, id:id, base:base?.elements[id])
             }
         }
         self.ids = base?.ids ?? ids
