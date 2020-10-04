@@ -42,8 +42,8 @@ public struct SwipeCanvas: View {
                 var startLocation = value.startLocation
                 startLocation.y = geometry.size.height - startLocation.y
 
-                if let elementId = scene.hitTest(point: startLocation, frameIndex: frameIndex) {
-                    print("tap", elementId)
+                if let element = scene.hitTest(point: startLocation, frameIndex: frameIndex) {
+                    print("tap", element.id)
                 }
             })
         }

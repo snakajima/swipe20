@@ -31,11 +31,11 @@ public struct SwipeFrame {
         self.elements = elements
     }
     
-    func hitTest(point:CGPoint) -> String? {
+    func hitTest(point:CGPoint) -> SwipeElement? {
         for id in ids {
             if let element = elements[id],
                element.hitTest(point: point) {
-                return id
+                return element
             }
         }
         return nil
