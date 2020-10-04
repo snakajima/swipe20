@@ -113,6 +113,11 @@ public struct SwipeElement {
     func hitTest(point:CGPoint) -> Bool {
         return frame.contains(point)
     }
+
+    // for canvas
+    mutating func update(frame:CGRect) {
+        self.frame = frame
+    }
 }
 
 extension SwipeElement : SwipeRenderProperties {
