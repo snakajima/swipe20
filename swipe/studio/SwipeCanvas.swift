@@ -47,7 +47,13 @@ public struct SwipeCanvas: View {
         return VStack {
             HStack {
                 ForEach(0..<scene.frameCount) { index in
-                    SwipePreview(scene: scene, frameIndex: index)
+                    VStack {
+                        SwipePreview(scene: scene, frameIndex: index)
+                    }
+                    .frame(width:180)
+                    .gesture(TapGesture().onEnded() {
+                        frameIndex = index
+                    })
                 }
             }.frame(height:120)
             GeometryReader { geometry in
