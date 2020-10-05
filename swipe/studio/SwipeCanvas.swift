@@ -31,7 +31,10 @@ private let s_script:[String:Any] = [
             "id":"id2",
             "x":220, "y":100, "w":80, "h":80,
             "backgroundColor":"red",
-            "cornerRadius": 20
+            "cornerRadius": 20,
+            "animation": [
+                "style":"leap"
+            ],
         ]]
     ]]
 ]
