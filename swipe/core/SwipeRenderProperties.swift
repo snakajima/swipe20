@@ -30,24 +30,27 @@ extension SwipeRenderProperties {
         target.opacity = from.opacity.mix(opacity, ratio)
         
         var xf = CATransform3DIdentity
-        var newFrame = CGRect(x: from.frame.minX.mix(frame.minX, ratio),
-                              y: from.frame.minY.mix(frame.minY, ratio),
-                              width: from.frame.width.mix(frame.width, ratio),
-                              height: from.frame.height.mix(frame.height, ratio))
         
-        switch(animationStyle) {
-        case .bounce:
-            (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
-        case .jump:
-            (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
-        case .leap:
-            var ac:CGPoint
-            (newFrame, xf, ac) = leap(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
-            target.anchorPoint = ac
-        default:
-            break
+        if self.frame != from.frame {
+            var newFrame = CGRect(x: from.frame.minX.mix(frame.minX, ratio),
+                                  y: from.frame.minY.mix(frame.minY, ratio),
+                                  width: from.frame.width.mix(frame.width, ratio),
+                                  height: from.frame.height.mix(frame.height, ratio))
+            
+            switch(animationStyle) {
+            case .bounce:
+                (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+            case .jump:
+                (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+            case .leap:
+                var ac:CGPoint
+                (newFrame, xf, ac) = leap(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+                target.anchorPoint = ac
+            default:
+                break
+            }
+            target.frame = newFrame
         }
-        target.frame = newFrame
         
         let rotX = from.rotX.mix(self.rotX, ratio)
         let rotY = from.rotY.mix(self.rotY, ratio)
