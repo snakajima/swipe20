@@ -9,6 +9,7 @@ import SwiftUI
 
 private let s_script:[String:Any] = [
     "backgroundColor":"#FFFFCC",
+    "duration": 1,
     "animation": [
         "engine":"swipe"
     ],
@@ -22,7 +23,10 @@ private let s_script:[String:Any] = [
             "id":"id1",
             "img":"pngwave.png",
             "x":20, "y":20, "w":180, "h":180,
-            "anchorPoint":[0.5,0]
+            "anchorPoint":[0.5,0],
+            "animation": [
+                "style":"jump"
+            ],
         ],[
             "id":"id2",
             "x":220, "y":100, "w":80, "h":80,
