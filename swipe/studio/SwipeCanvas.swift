@@ -9,7 +9,7 @@ import SwiftUI
 
 private let s_script:[String:Any] = [
     "backgroundColor":"#FFFFCC",
-    "duration": 1,
+    "duration": Double(1.0),
     "animation": [
         "engine":"swipe"
     ],
