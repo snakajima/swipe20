@@ -19,6 +19,7 @@ let s_samples = [
     Sample(title: "Nested", filename: "Nested"),
     Sample(title: "Duration", filename: "Duration"),
     Sample(title: "Shapes", filename: "Shapes"),
+    Sample(title: "SVGIcons", filename: "SVGIcons"),
     Sample(title: "Sample 2", filename: "sample1"),
     Sample(title: "Slides", filename: "Slides"),
     Sample(title: "Bounce", filename: "Bounce"),

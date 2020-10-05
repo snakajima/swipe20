@@ -61,6 +61,10 @@
 		746E6669252AC66E0041AEE0 /* Opacity.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC263251CBDC600DD29EF /* Opacity.swipe */; };
 		746E666A252AC66E0041AEE0 /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
 		746E666B252AC66E0041AEE0 /* HelloWorld.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD710D251ABCE800F41F3D /* HelloWorld.swipe */; };
+		746E6671252ADE610041AEE0 /* SVGIcons.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E6670252ADE600041AEE0 /* SVGIcons.swipe */; };
+		746E6672252ADE610041AEE0 /* SVGIcons.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E6670252ADE600041AEE0 /* SVGIcons.swipe */; };
+		746E6677252AE4970041AEE0 /* SwipeSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6676252AE4970041AEE0 /* SwipeSymbol.swift */; };
+		746E6678252AE4970041AEE0 /* SwipeSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6676252AE4970041AEE0 /* SwipeSymbol.swift */; };
 		74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7AA2E251BA51E00495568 /* Playground2.swift */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
@@ -114,6 +118,8 @@
 		746E663C252AC61B0041AEE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		746E663E252AC61B0041AEE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746E663F252AC61B0041AEE0 /* SwipeStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwipeStudio.entitlements; sourceTree = "<group>"; };
+		746E6670252ADE600041AEE0 /* SVGIcons.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SVGIcons.swipe; sourceTree = "<group>"; };
+		746E6676252AE4970041AEE0 /* SwipeSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSymbol.swift; sourceTree = "<group>"; };
 		74B7AA2E251BA51E00495568 /* Playground2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground2.swift; sourceTree = "<group>"; };
 		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
@@ -237,6 +243,7 @@
 		74360A052520C0CA009EDBAF /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				746E6675252AE47D0041AEE0 /* util */,
 				746E66212528C6330041AEE0 /* studio */,
 				742DFAE52522109A00A39C80 /* layer */,
 				742DFAE42522100400A39C80 /* macOS */,
@@ -276,6 +283,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		746E6675252AE47D0041AEE0 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				746E6676252AE4970041AEE0 /* SwipeSymbol.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		74BD7108251A6CDF00F41F3D /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +300,7 @@
 				74BD7102251A62CD00F41F3D /* sample1.swipe */,
 				74BD710D251ABCE800F41F3D /* HelloWorld.swipe */,
 				74FAC209251BC38900DD29EF /* Shapes.swipe */,
+				746E6670252ADE600041AEE0 /* SVGIcons.swipe */,
 				74BD7114251AC9CE00F41F3D /* Nested.swipe */,
 				74BD7111251AC0CB00F41F3D /* Rotation.swipe */,
 				74FAC284251D5CEE00DD29EF /* Bounce.swipe */,
@@ -389,6 +405,7 @@
 				74FAC301251E46F600DD29EF /* Slide0.png in Resources */,
 				742A09522518633100862F36 /* Main.storyboard in Resources */,
 				742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */,
+				746E6671252ADE610041AEE0 /* SVGIcons.swipe in Resources */,
 				742A097E2519BC1C00862F36 /* kodim17.png in Resources */,
 				742A094F2518633100862F36 /* Preview Assets.xcassets in Resources */,
 				74FAC267251CC09400DD29EF /* AnchorPoint.swipe in Resources */,
@@ -417,6 +434,7 @@
 				746E665A252AC66E0041AEE0 /* Leap.swipe in Resources */,
 				746E666B252AC66E0041AEE0 /* HelloWorld.swipe in Resources */,
 				746E6664252AC66E0041AEE0 /* Jump.swipe in Resources */,
+				746E6672252ADE610041AEE0 /* SVGIcons.swipe in Resources */,
 				746E6663252AC66E0041AEE0 /* Rotation.swipe in Resources */,
 				746E665C252AC66E0041AEE0 /* Nested.swipe in Resources */,
 				746E6668252AC66E0041AEE0 /* Duration.swipe in Resources */,
@@ -438,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746E6677252AE4970041AEE0 /* SwipeSymbol.swift in Sources */,
 				746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */,
 				746E6627252A7B4C0041AEE0 /* SwipePreview.swift in Sources */,
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
@@ -478,6 +497,7 @@
 				746E6648252AC6530041AEE0 /* SwipeCALayer.swift in Sources */,
 				746E6650252AC6670041AEE0 /* SwipeElement.swift in Sources */,
 				746E664B252AC6620041AEE0 /* SwipePreview.swift in Sources */,
+				746E6678252AE4970041AEE0 /* SwipeSymbol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
