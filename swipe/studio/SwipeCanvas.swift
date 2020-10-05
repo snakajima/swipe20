@@ -81,11 +81,10 @@ public struct SwipeCanvas: View {
                                 }
                             }
                             Button(action:{
-                                print("plus")
                                 self.scene = scene.frameDuplicated(atIndex: index)
                                 frameIndex = index + 1
                             }) {
-                                Text("+")
+                                SwipeSymbol.plus.frame(width:20, height:20)
                             }
                         }
                     }
