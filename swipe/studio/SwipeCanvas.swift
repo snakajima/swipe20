@@ -40,29 +40,31 @@ public struct SwipeCanvas: View {
     @State var isDragging = false
     public var body: some View {
         return VStack {
-            HStack {
-                ForEach(0..<scene.frameCount, id:\.self) { index in
-                    HStack {
-                        ZStack {
-                            SwipePreview(scene: scene, scale:0.3, frameIndex: index)
-                            if index == frameIndex {
-                                Rectangle()
-                                    .stroke(lineWidth: 1.0)
-                                    .foregroundColor(.blue)
+            ScrollView (.horizontal, showsIndicators: true) {
+                HStack {
+                    ForEach(0..<scene.frameCount, id:\.self) { index in
+                        HStack {
+                            ZStack {
+                                SwipePreview(scene: scene, scale:0.3, frameIndex: index)
+                                if index == frameIndex {
+                                    Rectangle()
+                                        .stroke(lineWidth: 1.0)
+                                        .foregroundColor(.blue)
+                                }
+                            }
+                            .frame(width:180)
+                            .gesture(TapGesture().onEnded() {
+                                frameIndex = index
+                            })
+                            Button("+") {
+                                print("plus")
+                                self.scene = scene.frameDuplicated(atIndex: index)
+                                frameIndex = index + 1
                             }
                         }
-                        .frame(width:180)
-                        .gesture(TapGesture().onEnded() {
-                            frameIndex = index
-                        })
-                        Button("+") {
-                            print("plus")
-                            self.scene = scene.frameDuplicated(atIndex: index)
-                            frameIndex = index + 1
-                        }
                     }
-                }
-            }.frame(height:120)
+                }.frame(height:120)
+            }
             GeometryReader { geometry in
                 ZStack {
                     SwipeView(scene: scene, frameIndex: $frameIndex)
