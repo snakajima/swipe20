@@ -29,7 +29,7 @@ struct SwipeSymbol: View {
         bound = path.boundingBoxOfPath
     }
     func path(geometry:GeometryProxy) -> CGPath {
-        let ratio = geometry.size.height / bound.height
+        let ratio = min(geometry.size.height / bound.height, geometry.size.width / bound.width)
         var xf = CGAffineTransform(scaleX: ratio, y: ratio)
         return path.copy(using: &xf) ?? Self.emtyPath
     }
