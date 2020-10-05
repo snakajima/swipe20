@@ -76,7 +76,7 @@ public struct SwipeCanvas: View {
                                     Button(action: {
                                         print("star")
                                     }) {
-                                        Text("*")
+                                        SwipeSymbol.gearshape.frame(width:20, height:20)
                                     }
                                 }
                             }
