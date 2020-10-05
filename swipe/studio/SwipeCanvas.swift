@@ -46,23 +46,36 @@ public struct SwipeCanvas: View {
     @State var cursorRect:CGRect = .zero
     @State var isDragging = false
     public var body: some View {
-        return VStack {
+        return VStack(spacing:1) {
             ScrollView (.horizontal, showsIndicators: true) {
-                HStack {
+                HStack(spacing:1) {
                     ForEach(0..<scene.frameCount, id:\.self) { index in
-                        HStack {
-                            ZStack {
-                                SwipePreview(scene: scene, scale:0.3, frameIndex: index)
-                                if index == frameIndex {
-                                    Rectangle()
-                                        .stroke(lineWidth: 1.0)
-                                        .foregroundColor(.blue)
+                        HStack(spacing:1) {
+                            VStack(spacing:1) {
+                                ZStack {
+                                    SwipePreview(scene: scene, scale:0.3, frameIndex: index)
+                                    if index == frameIndex {
+                                        Rectangle()
+                                            .stroke(lineWidth: 1.0)
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                                .frame(width:180)
+                                .gesture(TapGesture().onEnded() {
+                                    frameIndex = index
+                                })
+                                HStack(spacing:4) {
+                                    if index > 0 {
+                                        Button("-") {
+                                            print("minus")
+                                        }
+                                    }
+                                    Spacer()
+                                    Button("*") {
+                                        print("star")
+                                    }
                                 }
                             }
-                            .frame(width:180)
-                            .gesture(TapGesture().onEnded() {
-                                frameIndex = index
-                            })
                             Button("+") {
                                 print("plus")
                                 self.scene = scene.frameDuplicated(atIndex: index)
