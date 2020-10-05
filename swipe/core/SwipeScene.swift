@@ -126,4 +126,16 @@ public struct SwipeScene {
         scene.frames = frames
         return scene
     }
+
+    func frameDeleted(atIndex frameIndex:Int) -> SwipeScene {
+        guard frameIndex > 0 && frameIndex < frameCount else {
+            return self
+        }
+        var scene = self.cloned()
+        var frames = scene.frames
+        frames.remove(at: frameIndex)
+        scene.frames = frames
+        return scene
+    }
+
 }

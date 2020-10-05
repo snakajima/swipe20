@@ -67,7 +67,7 @@ public struct SwipeCanvas: View {
                                 HStack(spacing:4) {
                                     if index > 0 {
                                         Button("-") {
-                                            print("minus")
+                                            scene = scene.frameDeleted(atIndex: index)
                                         }
                                     }
                                     Spacer()
