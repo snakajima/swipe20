@@ -29,16 +29,15 @@ struct SwipeSymbol: View {
         bound = path.boundingBoxOfPath
     }
     func path(geometry:GeometryProxy) -> CGPath {
-        let ratio = geometry.size.height * 0.8 / bound.maxX
-        var xf = CGAffineTransform.init(translationX: 0, y: geometry.size.height / 2)
-        xf = xf.scaledBy(x: ratio, y: ratio)
+        let ratio = geometry.size.height / bound.height
+        var xf = CGAffineTransform(scaleX: ratio, y: ratio)
         return path.copy(using: &xf) ?? Self.emtyPath
     }
     public var body: some View {
         GeometryReader { geometry in
             Path(path(geometry: geometry))
         }.alignmentGuide(.firstTextBaseline, computeValue: { d in
-            return d.height / 2
+            return 0
         })
     }
 }
