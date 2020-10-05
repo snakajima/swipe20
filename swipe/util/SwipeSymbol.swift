@@ -20,21 +20,26 @@ let s_trash:[String:Any] = [
 ]
 
 struct SwipeSymbol: View {
-    let script:[String:Any]
-    func path(geometry:GeometryProxy) -> CGPath? {
-        guard let path = SwipePath.parse(script["path"]) else {
-            return nil
-        }
-        let bound = path.boundingBoxOfPath
-        let ratio = geometry.size.height / 2 / bound.maxX
+    //let script:[String:Any]
+    let path:CGPath
+    let bound:CGRect
+    static let emtyPath = CGPath(rect: .zero, transform: nil)
+    init(script:[String:Any]) {
+        path = SwipePath.parse(script["path"]) ?? Self.emtyPath
+        bound = path.boundingBoxOfPath
+    }
+    func path(geometry:GeometryProxy) -> CGPath {
+        let ratio = geometry.size.height * 0.8 / bound.maxX
         var xf = CGAffineTransform.init(translationX: 0, y: geometry.size.height / 2)
         xf = xf.scaledBy(x: ratio, y: ratio)
-        return path.copy(using: &xf)
+        return path.copy(using: &xf) ?? Self.emtyPath
     }
     public var body: some View {
         GeometryReader { geometry in
-            Path(path(geometry: geometry) ?? CGPath(rect: .zero, transform: nil))
-        }
+            Path(path(geometry: geometry))
+        }.alignmentGuide(.firstTextBaseline, computeValue: { d in
+            return d.height / 2
+        })
     }
 }
 
@@ -46,7 +51,7 @@ struct SwipeSymbol_Previews: PreviewProvider {
             Text("Hello")
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text("Hello")
-                SwipeSymbol(script:s_trash).frame(width:50, height:50)
+                SwipeSymbol(script:s_trash).frame(width:70, height:70)
                 Text("Hello").font(Font(bigFont))
                 Text("Hello")
             }
