@@ -27,12 +27,12 @@ public struct SwipeView: NSViewRepresentable {
     }
     
     public func updateNSView(_ nsView: NSViewType, context: Context) {
-        context.coordinator.move(to: frameIndex, layer:nsView.layer)
+        context.coordinator.move(scene:scene, to: frameIndex, layer:nsView.layer)
     }
 
     public class Coordinator: NSObject {
         let view: SwipeView
-        let renderer:SwipeCALayer
+        var renderer:SwipeCALayer
         private var lastIndex:Int? = nil
         
         init(_ view: SwipeView, scene:SwipeScene) {
@@ -44,7 +44,11 @@ public struct SwipeView: NSViewRepresentable {
             renderer.makeLayer()
         }
         
-        func move(to frameIndex:Int, layer:CALayer?) {
+        func move(scene:SwipeScene, to frameIndex:Int, layer:CALayer?) {
+            if scene.uuid != renderer.scene.uuid {
+                self.renderer = SwipeCALayer(scene: scene)
+                self.lastIndex = nil
+            }
             renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, updateFrameIndex: { newIndex in
                     self.view.frameIndex = newIndex
             })

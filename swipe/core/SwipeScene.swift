@@ -42,11 +42,12 @@ public struct SwipeScene {
         case cont = "continue"
     }
     
-    private let frames:[SwipeFrame]
+    private(set) var frames:[SwipeFrame]
     let script:[String:Any]?
     let backgroundColor:CGColor?
     let duration:Double
     let playMode:PlayMode
+    var uuid = UUID()
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
 
@@ -91,5 +92,38 @@ public struct SwipeScene {
         }
         let frame = frames[frameIndex]
         return frame.name ?? "frame #\(frameIndex)"
+    }
+    
+    func hitTest(point:CGPoint, frameIndex:Int) -> SwipeElement? {
+        guard frameIndex >= 0 && frameIndex < frameCount else {
+            return nil
+        }
+        return frames[frameIndex].hitTest(point: point)
+    }
+    
+    func cloned() -> SwipeScene {
+        var scene = self
+        scene.uuid = UUID()
+        return scene
+    }
+
+    func updated(element:SwipeElement, frameIndex:Int) -> SwipeScene {
+        guard frameIndex >= 0 && frameIndex < frameCount else {
+            return self
+        }
+        var scene = self.cloned()
+        scene.frames[frameIndex] = scene.frames[frameIndex].updated(element: element)
+        return scene
+    }
+    
+    func frameDuplicated(atIndex frameIndex:Int) -> SwipeScene {
+        guard frameIndex >= 0 && frameIndex < frameCount else {
+            return self
+        }
+        var scene = self.cloned()
+        var frames = scene.frames
+        frames.insert(frames[frameIndex], at: frameIndex)
+        scene.frames = frames
+        return scene
     }
 }

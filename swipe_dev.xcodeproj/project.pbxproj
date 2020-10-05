@@ -22,6 +22,45 @@
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
 		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
+		746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
+		746E6627252A7B4C0041AEE0 /* SwipePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6626252A7B4B0041AEE0 /* SwipePreview.swift */; };
+		746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E662F252AC6180041AEE0 /* AppDelegate.swift */; };
+		746E6632252AC6180041AEE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6631252AC6180041AEE0 /* ContentView.swift */; };
+		746E6635252AC6180041AEE0 /* SwipeStudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 746E6633252AC6180041AEE0 /* SwipeStudio.xcdatamodeld */; };
+		746E6637252AC61B0041AEE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746E6636252AC61B0041AEE0 /* Assets.xcassets */; };
+		746E663A252AC61B0041AEE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746E6639252AC61B0041AEE0 /* Preview Assets.xcassets */; };
+		746E663D252AC61B0041AEE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746E663B252AC61B0041AEE0 /* Main.storyboard */; };
+		746E6645252AC64A0041AEE0 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
+		746E6648252AC6530041AEE0 /* SwipeCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */; };
+		746E664B252AC6620041AEE0 /* SwipePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6626252A7B4B0041AEE0 /* SwipePreview.swift */; };
+		746E664C252AC6620041AEE0 /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
+		746E664D252AC6620041AEE0 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A095C251863FF00862F36 /* SwipeView.swift */; };
+		746E6650252AC6670041AEE0 /* SwipeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096625186B1D00862F36 /* SwipeElement.swift */; };
+		746E6651252AC6670041AEE0 /* SwipeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096025186A9800862F36 /* SwipeScene.swift */; };
+		746E6652252AC6670041AEE0 /* SwipeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096325186ADB00862F36 /* SwipeFrame.swift */; };
+		746E6653252AC6670041AEE0 /* SwipeRenderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC287251D604900DD29EF /* SwipeRenderProperties.swift */; };
+		746E6654252AC6670041AEE0 /* SwipeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27B251D102900DD29EF /* SwipeAnimation.swift */; };
+		746E6655252AC6670041AEE0 /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
+		746E6656252AC6670041AEE0 /* SwipeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09692518D72700862F36 /* SwipeParser.swift */; };
+		746E6657252AC6670041AEE0 /* SwipeRenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27E251D3D0E00DD29EF /* SwipeRenderLayer.swift */; };
+		746E665A252AC66E0041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
+		746E665B252AC66E0041AEE0 /* Slide1.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FD251E46F600DD29EF /* Slide1.png */; };
+		746E665C252AC66E0041AEE0 /* Nested.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7114251AC9CE00F41F3D /* Nested.swipe */; };
+		746E665D252AC66E0041AEE0 /* pngwave.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FA251DBA8E00DD29EF /* pngwave.png */; };
+		746E665E252AC66E0041AEE0 /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
+		746E665F252AC66E0041AEE0 /* Slides.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC304251E480200DD29EF /* Slides.swipe */; };
+		746E6660252AC66E0041AEE0 /* Slide0.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FE251E46F600DD29EF /* Slide0.png */; };
+		746E6661252AC66E0041AEE0 /* AnchorPoint.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC266251CC09400DD29EF /* AnchorPoint.swipe */; };
+		746E6662252AC66E0041AEE0 /* kodim03.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A09762519BC0300862F36 /* kodim03.png */; };
+		746E6663252AC66E0041AEE0 /* Rotation.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7111251AC0CB00F41F3D /* Rotation.swipe */; };
+		746E6664252AC66E0041AEE0 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
+		746E6665252AC66E0041AEE0 /* Bounce.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC284251D5CEE00DD29EF /* Bounce.swipe */; };
+		746E6666252AC66E0041AEE0 /* Slide2.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FF251E46F600DD29EF /* Slide2.png */; };
+		746E6667252AC66E0041AEE0 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
+		746E6668252AC66E0041AEE0 /* Duration.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7119251B094100F41F3D /* Duration.swipe */; };
+		746E6669252AC66E0041AEE0 /* Opacity.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC263251CBDC600DD29EF /* Opacity.swipe */; };
+		746E666A252AC66E0041AEE0 /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
+		746E666B252AC66E0041AEE0 /* HelloWorld.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD710D251ABCE800F41F3D /* HelloWorld.swipe */; };
 		74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7AA2E251BA51E00495568 /* Playground2.swift */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
@@ -64,6 +103,17 @@
 		742A097D2519BC1C00862F36 /* kodim17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim17.png; sourceTree = "<group>"; };
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
 		746E661E2527C6640041AEE0 /* Leap.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Leap.swipe; sourceTree = "<group>"; };
+		746E66222528C6510041AEE0 /* SwipeCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCanvas.swift; sourceTree = "<group>"; };
+		746E6626252A7B4B0041AEE0 /* SwipePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePreview.swift; sourceTree = "<group>"; };
+		746E662D252AC6180041AEE0 /* SwipeStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		746E662F252AC6180041AEE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		746E6631252AC6180041AEE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		746E6634252AC6180041AEE0 /* SwipeStudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwipeStudio.xcdatamodel; sourceTree = "<group>"; };
+		746E6636252AC61B0041AEE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		746E6639252AC61B0041AEE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		746E663C252AC61B0041AEE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		746E663E252AC61B0041AEE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		746E663F252AC61B0041AEE0 /* SwipeStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwipeStudio.entitlements; sourceTree = "<group>"; };
 		74B7AA2E251BA51E00495568 /* Playground2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground2.swift; sourceTree = "<group>"; };
 		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
@@ -96,6 +146,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		746E662A252AC6180041AEE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,6 +163,7 @@
 				74BD710A251A718A00F41F3D /* README.md */,
 				74BD7108251A6CDF00F41F3D /* resources */,
 				742A09462518632F00862F36 /* swipe20 */,
+				746E662E252AC6180041AEE0 /* SwipeStudio */,
 				742A09452518632F00862F36 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				742A09442518632F00862F36 /* swipe20.app */,
+				746E662D252AC6180041AEE0 /* SwipeStudio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				742A095C251863FF00862F36 /* SwipeView.swift */,
+				746E6626252A7B4B0041AEE0 /* SwipePreview.swift */,
 				74BD7105251A691500F41F3D /* SwipeFileView.swift */,
 			);
 			path = macOS;
@@ -177,11 +237,43 @@
 		74360A052520C0CA009EDBAF /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				746E66212528C6330041AEE0 /* studio */,
 				742DFAE52522109A00A39C80 /* layer */,
 				742DFAE42522100400A39C80 /* macOS */,
 				742A095B2518639C00862F36 /* core */,
 			);
 			path = swipe;
+			sourceTree = "<group>";
+		};
+		746E66212528C6330041AEE0 /* studio */ = {
+			isa = PBXGroup;
+			children = (
+				746E66222528C6510041AEE0 /* SwipeCanvas.swift */,
+			);
+			path = studio;
+			sourceTree = "<group>";
+		};
+		746E662E252AC6180041AEE0 /* SwipeStudio */ = {
+			isa = PBXGroup;
+			children = (
+				746E662F252AC6180041AEE0 /* AppDelegate.swift */,
+				746E6631252AC6180041AEE0 /* ContentView.swift */,
+				746E6636252AC61B0041AEE0 /* Assets.xcassets */,
+				746E663B252AC61B0041AEE0 /* Main.storyboard */,
+				746E663E252AC61B0041AEE0 /* Info.plist */,
+				746E663F252AC61B0041AEE0 /* SwipeStudio.entitlements */,
+				746E6633252AC6180041AEE0 /* SwipeStudio.xcdatamodeld */,
+				746E6638252AC61B0041AEE0 /* Preview Content */,
+			);
+			path = SwipeStudio;
+			sourceTree = "<group>";
+		};
+		746E6638252AC61B0041AEE0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				746E6639252AC61B0041AEE0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		74BD7108251A6CDF00F41F3D /* resources */ = {
@@ -229,6 +321,23 @@
 			productReference = 742A09442518632F00862F36 /* swipe20.app */;
 			productType = "com.apple.product-type.application";
 		};
+		746E662C252AC6180041AEE0 /* SwipeStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 746E6640252AC61B0041AEE0 /* Build configuration list for PBXNativeTarget "SwipeStudio" */;
+			buildPhases = (
+				746E6629252AC6180041AEE0 /* Sources */,
+				746E662A252AC6180041AEE0 /* Frameworks */,
+				746E662B252AC6180041AEE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeStudio;
+			productName = SwipeStudio;
+			productReference = 746E662D252AC6180041AEE0 /* SwipeStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -239,6 +348,9 @@
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					742A09432518632F00862F36 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					746E662C252AC6180041AEE0 = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -257,6 +369,7 @@
 			projectRoot = "";
 			targets = (
 				742A09432518632F00862F36 /* swipe20 */,
+				746E662C252AC6180041AEE0 /* SwipeStudio */,
 			);
 		};
 /* End PBXProject section */
@@ -290,6 +403,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		746E662B252AC6180041AEE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				746E6666252AC66E0041AEE0 /* Slide2.png in Resources */,
+				746E663D252AC61B0041AEE0 /* Main.storyboard in Resources */,
+				746E666A252AC66E0041AEE0 /* Shapes.swipe in Resources */,
+				746E6665252AC66E0041AEE0 /* Bounce.swipe in Resources */,
+				746E6667252AC66E0041AEE0 /* kodim17.png in Resources */,
+				746E663A252AC61B0041AEE0 /* Preview Assets.xcassets in Resources */,
+				746E665F252AC66E0041AEE0 /* Slides.swipe in Resources */,
+				746E665A252AC66E0041AEE0 /* Leap.swipe in Resources */,
+				746E666B252AC66E0041AEE0 /* HelloWorld.swipe in Resources */,
+				746E6664252AC66E0041AEE0 /* Jump.swipe in Resources */,
+				746E6663252AC66E0041AEE0 /* Rotation.swipe in Resources */,
+				746E665C252AC66E0041AEE0 /* Nested.swipe in Resources */,
+				746E6668252AC66E0041AEE0 /* Duration.swipe in Resources */,
+				746E6662252AC66E0041AEE0 /* kodim03.png in Resources */,
+				746E665D252AC66E0041AEE0 /* pngwave.png in Resources */,
+				746E665B252AC66E0041AEE0 /* Slide1.png in Resources */,
+				746E665E252AC66E0041AEE0 /* sample1.swipe in Resources */,
+				746E6661252AC66E0041AEE0 /* AnchorPoint.swipe in Resources */,
+				746E6669252AC66E0041AEE0 /* Opacity.swipe in Resources */,
+				746E6660252AC66E0041AEE0 /* Slide0.png in Resources */,
+				746E6637252AC61B0041AEE0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,6 +438,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */,
+				746E6627252A7B4C0041AEE0 /* SwipePreview.swift in Sources */,
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
 				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
 				74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */,
@@ -315,6 +458,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		746E6629252AC6180041AEE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				746E6654252AC6670041AEE0 /* SwipeAnimation.swift in Sources */,
+				746E6655252AC6670041AEE0 /* SwipePath.swift in Sources */,
+				746E6645252AC64A0041AEE0 /* SwipeCanvas.swift in Sources */,
+				746E6632252AC6180041AEE0 /* ContentView.swift in Sources */,
+				746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */,
+				746E6656252AC6670041AEE0 /* SwipeParser.swift in Sources */,
+				746E6657252AC6670041AEE0 /* SwipeRenderLayer.swift in Sources */,
+				746E6653252AC6670041AEE0 /* SwipeRenderProperties.swift in Sources */,
+				746E6651252AC6670041AEE0 /* SwipeScene.swift in Sources */,
+				746E664C252AC6620041AEE0 /* SwipeFileView.swift in Sources */,
+				746E6652252AC6670041AEE0 /* SwipeFrame.swift in Sources */,
+				746E6635252AC6180041AEE0 /* SwipeStudio.xcdatamodeld in Sources */,
+				746E664D252AC6620041AEE0 /* SwipeView.swift in Sources */,
+				746E6648252AC6530041AEE0 /* SwipeCALayer.swift in Sources */,
+				746E6650252AC6670041AEE0 /* SwipeElement.swift in Sources */,
+				746E664B252AC6620041AEE0 /* SwipePreview.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -322,6 +488,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				742A09512518633100862F36 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		746E663B252AC61B0041AEE0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				746E663C252AC61B0041AEE0 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -492,6 +666,54 @@
 			};
 			name = Release;
 		};
+		746E6641252AC61B0041AEE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwipeStudio/SwipeStudio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"SwipeStudio/Preview Content\"";
+				DEVELOPMENT_TEAM = H34BY2CCCD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SwipeStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = org.singularitysociety.SwipeStudio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		746E6642252AC61B0041AEE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwipeStudio/SwipeStudio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"SwipeStudio/Preview Content\"";
+				DEVELOPMENT_TEAM = H34BY2CCCD;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SwipeStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = org.singularitysociety.SwipeStudio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -513,7 +735,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		746E6640252AC61B0041AEE0 /* Build configuration list for PBXNativeTarget "SwipeStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				746E6641252AC61B0041AEE0 /* Debug */,
+				746E6642252AC61B0041AEE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		746E6633252AC6180041AEE0 /* SwipeStudio.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				746E6634252AC6180041AEE0 /* SwipeStudio.xcdatamodel */,
+			);
+			currentVersion = 746E6634252AC6180041AEE0 /* SwipeStudio.xcdatamodel */;
+			path = SwipeStudio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 742A093C2518632F00862F36 /* Project object */;
 }
