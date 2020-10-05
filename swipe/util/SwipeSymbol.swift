@@ -29,7 +29,7 @@ struct SwipeSymbol: View {
         bound = path.boundingBoxOfPath
     }
     func scaleToFit(_ size:CGSize) -> CGFloat {
-        return min(size.height / bound.height, size.width / bound.width)
+        return min(size.height / bound.height, size.width / bound.width) * 0.8
     }
     public var body: some View {
         GeometryReader { geometry in
@@ -59,11 +59,19 @@ struct SwipeSymbol_Previews: PreviewProvider {
             Text("Hello")
             HStack(alignment: .center, spacing: 0) {
                 Text("Hello")
+                Rectangle().frame(width:70, height:70)
                 SwipeSymbol.trash.frame(width:70, height:70)
                 Text("Hello").font(Font(bigFont))
             }
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text("Hello")
+                Rectangle().frame(width:70, height:70)
+                SwipeSymbol.trash.frame(width:70, height:70)
+                Text("Hello").font(Font(bigFont))
+            }
+            HStack(alignment: .bottom, spacing: 0) {
+                Text("Hello")
+                Rectangle().frame(width:70, height:70)
                 SwipeSymbol.trash.frame(width:70, height:70)
                 Text("Hello").font(Font(bigFont))
             }

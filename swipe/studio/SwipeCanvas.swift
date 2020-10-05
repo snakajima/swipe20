@@ -69,18 +69,14 @@ public struct SwipeCanvas: View {
                                         Button(action: {
                                             scene = scene.frameDeleted(atIndex: index)
                                         }) {
-                                            HStack(alignment:.firstTextBaseline , spacing: 0) {
-                                                SwipeSymbol.trash.frame(width:20, height:20)
-                                            }.frame(height:30)
+                                            SwipeSymbol.trash.frame(width:20, height:20)
                                         }
                                     }
                                     Spacer()
                                     Button(action: {
                                         print("star")
                                     }) {
-                                        HStack(alignment:.firstTextBaseline , spacing: 0) {
-                                            SwipeSymbol.trash.frame(width:20, height:20)
-                                        }.frame(height:30)
+                                        Text("*")
                                     }
                                 }
                             }
