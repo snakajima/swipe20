@@ -46,7 +46,7 @@ struct SwipeSymbol: View {
 }
 
 extension SwipeSymbol {
-    static func trash() -> SwipeSymbol {
+    static var trash:SwipeSymbol {
         return SwipeSymbol(script: s_trash)
     }
 }
@@ -59,12 +59,12 @@ struct SwipeSymbol_Previews: PreviewProvider {
             Text("Hello")
             HStack(alignment: .center, spacing: 0) {
                 Text("Hello")
-                SwipeSymbol.trash().frame(width:70, height:70)
+                SwipeSymbol.trash.frame(width:70, height:70)
                 Text("Hello").font(Font(bigFont))
             }
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text("Hello")
-                SwipeSymbol(script:s_trash).frame(width:70, height:70)
+                SwipeSymbol.trash.frame(width:70, height:70)
                 Text("Hello").font(Font(bigFont))
             }
             Text("Hello")
