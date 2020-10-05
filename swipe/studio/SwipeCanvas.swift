@@ -65,13 +65,11 @@ public struct SwipeCanvas: View {
                                     frameIndex = index
                                 })
                                 HStack(spacing:4) {
-                                    if index > 0 {
-                                        Button(action: {
-                                            scene = scene.frameDeleted(atIndex: index)
-                                        }) {
-                                            SwipeSymbol.trash.frame(width:20, height:20)
-                                        }
-                                    }
+                                    Button(action: {
+                                        scene = scene.frameDeleted(atIndex: index)
+                                    }) {
+                                        SwipeSymbol.trash.frame(width:20, height:20)
+                                    }.disabled(scene.frameCount == 1)
                                     Spacer()
                                     Button(action: {
                                         print("star")

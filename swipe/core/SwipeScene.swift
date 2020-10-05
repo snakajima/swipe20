@@ -128,7 +128,7 @@ public struct SwipeScene {
     }
 
     func frameDeleted(atIndex frameIndex:Int) -> SwipeScene {
-        guard frameIndex > 0 && frameIndex < frameCount else {
+        guard frameIndex >= 0 && frameIndex < frameCount && frameCount > 0 else {
             return self
         }
         var scene = self.cloned()
