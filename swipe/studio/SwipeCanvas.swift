@@ -58,6 +58,7 @@ public struct SwipeCanvas: View {
                         Button("+") {
                             print("plus")
                             self.scene = scene.frameDuplicated(atIndex: index)
+                            frameIndex = index + 1
                         }
                     }
                 }
