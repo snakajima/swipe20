@@ -28,15 +28,20 @@ struct SwipeSymbol: View {
         path = SwipePath.parse(script["path"]) ?? Self.emtyPath
         bound = path.boundingBoxOfPath
     }
+    func scaleToFit(dimension:CGSize) -> CGFloat {
+        return min(dimension.height / bound.height, dimension.width / bound.width)
+    }
     func path(geometry:GeometryProxy) -> CGPath {
-        let ratio = min(geometry.size.height / bound.height, geometry.size.width / bound.width)
-        var xf = CGAffineTransform(scaleX: ratio, y: ratio)
+        let scale = scaleToFit(dimension: geometry.size)
+        var xf = CGAffineTransform(scaleX: scale, y: scale)
         return path.copy(using: &xf) ?? Self.emtyPath
     }
     public var body: some View {
         GeometryReader { geometry in
             Path(path(geometry: geometry))
         }.alignmentGuide(.firstTextBaseline, computeValue: { d in
+            return 0
+        }).alignmentGuide(VerticalAlignment.center, computeValue: { d in
             return 0
         })
     }
@@ -48,7 +53,7 @@ struct SwipeSymbol_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("Hello")
-            HStack(alignment: .firstTextBaseline, spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
                 Text("Hello")
                 SwipeSymbol(script:s_trash).frame(width:70, height:70)
                 Text("Hello").font(Font(bigFont))
