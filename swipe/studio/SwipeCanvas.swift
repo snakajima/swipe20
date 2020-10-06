@@ -148,11 +148,22 @@ struct SwipeCursor: View {
             .stroke(lineWidth: 1.0)
             .foregroundColor(.blue)
             if !model.isDragging {
+                let center = model.cursorCenter
                 Rectangle()
-                    .frame(width:10, height:10)
+                    .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
                     .foregroundColor(.blue)
                     .gesture(dragGesture(geometry: geometry, sx:nil, sy:nil))
+                Rectangle()
+                    .frame(width:14, height:14)
+                    .position(CGPoint(x: center.x, y: rect.maxY))
+                    .foregroundColor(.blue)
+                    .gesture(dragGesture(geometry: geometry, sx:1, sy:nil))
+                Rectangle()
+                    .frame(width:14, height:14)
+                    .position(CGPoint(x: rect.maxX, y: center.y))
+                    .foregroundColor(.blue)
+                    .gesture(dragGesture(geometry: geometry, sx:nil, sy:1))
             }
         }
     }
