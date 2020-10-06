@@ -41,8 +41,8 @@ private let s_script:[String:Any] = [
         ],[
             "id":"id3",
             "x":220, "y":200, "w":80, "h":80,
-            "backgroundColor":"blue",
-            "cornerRadius": 20,
+            "img":"pngwave.png",
+            "rotate": 60,
         ]]
     ]]
 ]
