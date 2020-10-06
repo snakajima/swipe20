@@ -11,7 +11,7 @@ struct SwipeCursor: View {
     @ObservedObject var model:SwipeCanvasModel
     var geometry:GeometryProxy
     
-    func resizeGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> _EndedGesture<_ChangedGesture<DragGesture>> {
+    func resizeGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> some Gesture {
         return DragGesture().onChanged() { value in
             let center = model.cursorCenter
             let d0 = center.distance(value.startLocation)
