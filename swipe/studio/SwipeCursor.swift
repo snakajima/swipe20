@@ -11,7 +11,7 @@ struct SwipeCursor: View {
     @ObservedObject var model:SwipeCanvasModel
     var geometry:GeometryProxy
     
-    func dragGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> _EndedGesture<_ChangedGesture<DragGesture>> {
+    func resizeGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> _EndedGesture<_ChangedGesture<DragGesture>> {
         return DragGesture().onChanged() { value in
             let center = model.cursorCenter
             let d0 = center.distance(value.startLocation)
@@ -40,17 +40,21 @@ struct SwipeCursor: View {
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
                     .foregroundColor(.blue)
-                    .gesture(dragGesture(geometry: geometry, sx:nil, sy:nil))
+                    .gesture(resizeGesture(geometry: geometry, sx:nil, sy:nil))
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: center.x, y: rect.maxY))
                     .foregroundColor(.blue)
-                    .gesture(dragGesture(geometry: geometry, sx:1, sy:nil))
+                    .gesture(resizeGesture(geometry: geometry, sx:1, sy:nil))
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: center.y))
                     .foregroundColor(.blue)
-                    .gesture(dragGesture(geometry: geometry, sx:nil, sy:1))
+                    .gesture(resizeGesture(geometry: geometry, sx:nil, sy:1))
+                Circle()
+                    .frame(width:14, height:14)
+                    .position(CGPoint(x: center.x, y: rect.minY))
+                    .foregroundColor(.blue)
             }
         }
     }
