@@ -14,6 +14,7 @@ public class SwipeAnimation {
         case leap = "leap"
         case bounce = "bounce"
         case jump = "jump"
+        case summersault = "summersault"
     }
     
     private let duration:Double

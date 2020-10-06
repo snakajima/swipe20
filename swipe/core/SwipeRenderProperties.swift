@@ -41,7 +41,9 @@ extension SwipeRenderProperties {
             case .bounce:
                 (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
             case .jump:
-                (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+                (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf, flip:false)
+            case .summersault:
+                (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf, flip:true)
             case .leap:
                 var ac:CGPoint
                 (newFrame, xf, ac) = leap(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
@@ -116,7 +118,7 @@ extension SwipeRenderProperties {
         return (CGRect(origin: CGPoint(x: x, y: y), size: newFrame.size), xfNew, anchorPoint)
     }
 
-    func jump(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D) {
+    func jump(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D, flip:Bool) -> (CGRect, CATransform3D) {
         var xfNew = xf
         let x, y:CGFloat
         let r0 = 0.5 // anticipate
@@ -138,6 +140,9 @@ extension SwipeRenderProperties {
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
             y = from.frame.minY.mix(frame.minY, r) + height * CGFloat(1 - 4 * (r - 0.5) * (r - 0.5))
+            if (flip) {
+                xfNew = CATransform3DRotate(xf, -.pi * 2 * CGFloat(r), 0, 0, 1)
+            }
         }
             
         return (CGRect(origin: CGPoint(x: x, y: y), size: newFrame.size), xfNew)

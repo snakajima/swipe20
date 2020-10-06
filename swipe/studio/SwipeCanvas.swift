@@ -19,6 +19,9 @@ private let s_script:[String:Any] = [
             "text":"Hello World",
             "foregroundColor":"gray",
             "x":200, "y":0, "w":300, "h":80,
+            "animation": [
+                "style":"summersault"
+            ],
         ],[
             "id":"id1",
             "img":"pngwave.png",
