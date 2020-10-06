@@ -56,7 +56,7 @@ public struct SwipeCanvas: View {
                         HStack(spacing:1) {
                             VStack(spacing:1) {
                                 ZStack {
-                                    SwipePreview(scene: scene, scale:0.3, frameIndex: index)
+                                    SwipePreview(scene: scene, scale:0.2, frameIndex: index)
                                     if index == frameIndex {
                                         Rectangle()
                                             .stroke(lineWidth: 1.0)
