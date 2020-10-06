@@ -63,7 +63,7 @@ public struct SwipeCanvas: View {
                         .stroke(lineWidth: 1.0)
                         .foregroundColor(.blue)
                     }
-                }.gesture(DragGesture().onChanged { value in
+                }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !self.isDragging {
                         var startLocation = value.startLocation
                         startLocation.y = geometry.size.height - startLocation.y
