@@ -50,47 +50,7 @@ public struct SwipeCanvas: View {
     @State var isDragging = false
     public var body: some View {
         return VStack(spacing:1) {
-            ScrollView (.horizontal, showsIndicators: true) {
-                HStack(spacing:1) {
-                    ForEach(0..<scene.frameCount, id:\.self) { index in
-                        HStack(spacing:1) {
-                            VStack(spacing:1) {
-                                ZStack {
-                                    SwipePreview(scene: scene, scale:0.2, frameIndex: index)
-                                    if index == frameIndex {
-                                        Rectangle()
-                                            .stroke(lineWidth: 1.0)
-                                            .foregroundColor(.blue)
-                                    }
-                                }
-                                .frame(width:180)
-                                .gesture(TapGesture().onEnded() {
-                                    frameIndex = index
-                                })
-                                HStack(spacing:4) {
-                                    Button(action: {
-                                        scene = scene.frameDeleted(atIndex: index)
-                                    }) {
-                                        SwipeSymbol.trash.frame(width:20, height:20)
-                                    }.disabled(scene.frameCount == 1)
-                                    Spacer()
-                                    Button(action: {
-                                        print("star")
-                                    }) {
-                                        SwipeSymbol.gearshape.frame(width:20, height:20)
-                                    }
-                                }
-                            }
-                            Button(action:{
-                                self.scene = scene.frameDuplicated(atIndex: index)
-                                frameIndex = index + 1
-                            }) {
-                                SwipeSymbol.plus.frame(width:20, height:20)
-                            }
-                        }
-                    }
-                }.frame(height:120)
-            }
+            SwipeSceneList(scene: $scene, frameIndex: $frameIndex)
             GeometryReader { geometry in
                 ZStack {
                     SwipeView(scene: scene, frameIndex: $frameIndex)
@@ -133,5 +93,53 @@ public struct SwipeCanvas: View {
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
         SwipeCanvas()
+    }
+}
+
+struct SwipeSceneList: View {
+    @Binding var scene:SwipeScene
+    @Binding var frameIndex:Int
+    var body: some View {
+        ScrollView (.horizontal, showsIndicators: true) {
+            HStack(spacing:1) {
+                ForEach(0..<scene.frameCount, id:\.self) { index in
+                    HStack(spacing:1) {
+                        VStack(spacing:1) {
+                            ZStack {
+                                SwipePreview(scene: scene, scale:0.2, frameIndex: index)
+                                if index == frameIndex {
+                                    Rectangle()
+                                        .stroke(lineWidth: 1.0)
+                                        .foregroundColor(.blue)
+                                }
+                            }
+                            .frame(width:180)
+                            .gesture(TapGesture().onEnded() {
+                                frameIndex = index
+                            })
+                            HStack(spacing:4) {
+                                Button(action: {
+                                    scene = scene.frameDeleted(atIndex: index)
+                                }) {
+                                    SwipeSymbol.trash.frame(width:20, height:20)
+                                }.disabled(scene.frameCount == 1)
+                                Spacer()
+                                Button(action: {
+                                    print("star")
+                                }) {
+                                    SwipeSymbol.gearshape.frame(width:20, height:20)
+                                }
+                            }
+                        }
+                        Button(action:{
+                            self.scene = scene.frameDuplicated(atIndex: index)
+                            frameIndex = index + 1
+                        }) {
+                            SwipeSymbol.plus.frame(width:20, height:20)
+                        }
+                    }
+                }
+            }.frame(height:120)
+        }
     }
 }
