@@ -54,7 +54,7 @@ public struct SwipeCanvas: View {
             GeometryReader { geometry in
                 ZStack {
                     SwipeView(scene: scene, frameIndex: $frameIndex)
-                    if self.isDragging {
+                    if let _ = selectedElement {
                         Path() { path in
                             var frame = self.cursorRect
                             frame.origin.y = geometry.size.height - frame.origin.y - frame.height
