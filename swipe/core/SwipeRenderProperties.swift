@@ -141,7 +141,8 @@ extension SwipeRenderProperties {
             x = from.frame.minX.mix(frame.minX, r)
             y = from.frame.minY.mix(frame.minY, r) + height * CGFloat(1 - 4 * (r - 0.5) * (r - 0.5))
             if (flip) {
-                xfNew = CATransform3DRotate(xf, -.pi * 2 * CGFloat(r), 0, 0, 1)
+                let dir:CGFloat = from.frame.minX < frame.minX ? -1 : 1
+                xfNew = CATransform3DRotate(xf, dir * .pi * 2 * CGFloat(r), 0, 0, 1)
             }
         }
             
