@@ -26,6 +26,23 @@ struct SwipeCursor: View {
             model.scale = CGPoint(x: 1, y: 1)
         }
     }
+    
+    func rotateGesture(geometry:GeometryProxy) -> some Gesture {
+        return DragGesture().onChanged() { value in
+            let center = model.cursorCenter
+            let d0 = center.distance(value.startLocation)
+            let d1 = center.distance(value.location)
+            let scale = d1 / d0
+            model.scale = CGPoint(x: scale , y: scale)
+        }.onEnded() { value in
+            var rect = model.scaledCursor
+            rect.origin.y = geometry.size.height - rect.origin.y - rect.height
+            model.updateElementFrame(frame: rect)
+            model.cursorRect = model.scaledCursor
+            model.scale = CGPoint(x: 1, y: 1)
+        }
+    }
+    
     var body: some View {
         Group {
             let rect = model.scaledCursor
@@ -55,6 +72,7 @@ struct SwipeCursor: View {
                     .frame(width:14, height:14)
                     .position(CGPoint(x: center.x, y: rect.minY))
                     .foregroundColor(.blue)
+                    .gesture(rotateGesture(geometry: geometry))
             }
         }
     }
