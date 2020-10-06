@@ -160,13 +160,19 @@ struct SwipeCursor: View {
     var geometry:GeometryProxy
     var body: some View {
         Group {
-                var frame = model.cursorRect
-                Path() { path in
-                    frame.origin.y = geometry.size.height - frame.origin.y - frame.height
-                    path.addRect(frame)
-                }
-                .stroke(lineWidth: 1.0)
-                .foregroundColor(.blue)
+            var frame = model.cursorRect
+            Path() { path in
+                frame.origin.y = geometry.size.height - frame.origin.y - frame.height
+                path.addRect(frame)
+            }
+            .stroke(lineWidth: 1.0)
+            .foregroundColor(.blue)
+            if !model.isDragging {
+                Rectangle()
+                    .frame(width:10, height:10)
+                    .position(CGPoint(x: frame.maxX, y: frame.minY))
+                    .foregroundColor(.blue)
+            }
         }
     }
 }
