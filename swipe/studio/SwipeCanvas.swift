@@ -124,13 +124,13 @@ struct SwipeCursor: View {
     @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script))
     var geometry:GeometryProxy
     
-    func dragGesture(geometry:GeometryProxy) -> _EndedGesture<_ChangedGesture<DragGesture>> {
+    func dragGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> _EndedGesture<_ChangedGesture<DragGesture>> {
         return DragGesture().onChanged() { value in
             let center = model.cursorCenter
             let d0 = center.distance(value.startLocation)
             let d1 = center.distance(value.location)
             let scale = d1 / d0
-            model.scale = CGPoint(x: scale, y: scale)
+            model.scale = CGPoint(x: sx ?? scale , y: sy ?? scale)
         }.onEnded() { value in
             var rect = model.scaledCursor
             rect.origin.y = geometry.size.height - rect.origin.y - rect.height
@@ -152,7 +152,7 @@ struct SwipeCursor: View {
                     .frame(width:10, height:10)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
                     .foregroundColor(.blue)
-                    .gesture(dragGesture(geometry: geometry))
+                    .gesture(dragGesture(geometry: geometry, sx:nil, sy:nil))
             }
         }
     }
