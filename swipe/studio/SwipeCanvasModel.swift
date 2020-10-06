@@ -16,6 +16,7 @@ class SwipeCanvasModel: ObservableObject {
     @Published var selectedElement:SwipeElement?
     @Published var cursorRect:CGRect = .zero
     @Published var scale = CGPoint(x: 1, y: 1)
+    @Published var rotY = CGFloat(0)
     @Published var isDragging = false
     @Published var scene:SwipeScene
     init(scene:SwipeScene) {
@@ -33,6 +34,16 @@ class SwipeCanvasModel: ObservableObject {
         xf = xf.scaledBy(x: scale.x, y: scale.y)
         xf = xf.translatedBy(x: -center.x, y: -center.y)
         return cursorRect.applying(xf)
+    }
+    
+    var cursorPath:CGPath {
+        let path = CGMutablePath()
+        path.addRect(cursorRect)
+        let center = cursorCenter
+        var xf = CGAffineTransform(translationX: center.x, y: center.y)
+        xf = xf.scaledBy(x: scale.x, y: scale.y)
+        xf = xf.translatedBy(x: -center.x, y: -center.y)
+        return path.copy(using: &xf) ?? path
     }
     
     func updateElementFrame(frame:CGRect) {

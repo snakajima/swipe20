@@ -45,13 +45,11 @@ struct SwipeCursor: View {
     
     var body: some View {
         Group {
-            let rect = model.scaledCursor
-            Path() { path in
-                path.addRect(rect)
-            }
+            Path(model.cursorPath)
             .stroke(lineWidth: 1.0)
             .foregroundColor(.blue)
             if !model.isDragging {
+                let rect = model.scaledCursor
                 let center = model.cursorCenter
                 Rectangle()
                     .frame(width:14, height:14)
