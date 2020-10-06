@@ -54,8 +54,7 @@ public struct SwipeCALayer {
         }
         
         if (useSwipeAnimation) {
-            let animation = SwipeAnimation(duration: duration ?? scene.duration)
-            animation.start { (ratio) in
+            func apply(ratio:Double) {
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
                 frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
@@ -67,10 +66,16 @@ public struct SwipeCALayer {
                          .cont where transition != .initial:
                             self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex, updateFrameIndex: updateFrameIndex)
                             updateFrameIndex(frameIndex + 1)
-                        default:
-                            break
+                    default:
+                        break
                     }
                 }
+            }
+            if lastIndex == nil {
+                apply(ratio: 1.0)
+            } else {
+                let animation = SwipeAnimation(duration: duration ?? scene.duration)
+                animation.start(callback: apply)
             }
         } else {
             CATransaction.begin()
