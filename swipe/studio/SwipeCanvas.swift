@@ -50,6 +50,13 @@ class SwipeCanvasModel: ObservableObject {
     }
     @Published var selectedElement:SwipeElement?
     @Published var cursorRect:CGRect = .zero
+    var cursorCenter:CGPoint {
+        CGPoint(x: cursorRect.origin.x + cursorRect.width / 2, y: cursorRect.origin.y + cursorRect.height)
+    }
+    @Published var scale = CGPoint(x: 1, y: 1)
+    var scaledCursor:CGRect {
+        cursorRect.applying(CGAffineTransform(scaleX: scale.x, y: scale.y))
+    }
     @Published var isDragging = false
     @Published var scene:SwipeScene
     init(scene:SwipeScene) {
@@ -163,23 +170,35 @@ struct SwipeCursor: View {
     var geometry:GeometryProxy
     var body: some View {
         Group {
-            var frame = model.cursorRect
+            let rect = model.scaledCursor
             Path() { path in
-                path.addRect(frame)
+                path.addRect(rect)
             }
             .stroke(lineWidth: 1.0)
             .foregroundColor(.blue)
             if !model.isDragging {
                 Rectangle()
                     .frame(width:10, height:10)
-                    .position(CGPoint(x: frame.maxX, y: frame.minY))
+                    .position(CGPoint(x: rect.maxX, y: rect.maxY))
                     .foregroundColor(.blue)
                     .gesture(DragGesture().onChanged() { value in
-                        print("changed", value.location)
+                        let center = model.cursorCenter
+                        let d0 = center.distance(value.startLocation)
+                        let d1 = center.distance(value.location)
+                        let scale = d1 / d0
+                        model.scale = CGPoint(x: scale, y: scale)
                     }.onEnded() { value in
-                        print("ended", value.location)
+                        model.scale = CGPoint(x: 1, y: 1)
                     })
             }
         }
+    }
+}
+
+private extension CGPoint {
+    func distance(_ to:CGPoint) -> CGFloat {
+        let dx = to.x - x
+        let dy = to.y - y
+        return sqrt(dx * dx + dy * dy)
     }
 }
