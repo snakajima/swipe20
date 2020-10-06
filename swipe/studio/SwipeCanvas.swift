@@ -51,17 +51,20 @@ class SwipeCanvasModel: ObservableObject {
     @Published var selectedElement:SwipeElement?
     @Published var cursorRect:CGRect = .zero
     @Published var isDragging = false
+    @Published var scene:SwipeScene
+    init(scene:SwipeScene) {
+        self.scene = scene
+    }
 }
 
 public struct SwipeCanvas: View {
-    @ObservedObject var model = SwipeCanvasModel()
-    @State var scene = SwipeScene(s_script)
+    @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script))
     public var body: some View {
         return VStack(spacing:1) {
-            SwipeSceneList(scene: $scene, frameIndex: $model.frameIndex)
+            SwipeSceneList(scene: $model.scene, frameIndex: $model.frameIndex)
             GeometryReader { geometry in
                 ZStack {
-                    SwipeView(scene: scene, frameIndex: $model.frameIndex)
+                    SwipeView(scene: model.scene, frameIndex: $model.frameIndex)
                     if let _ = model.selectedElement {
                         Path() { path in
                             var frame = model.cursorRect
@@ -75,7 +78,7 @@ public struct SwipeCanvas: View {
                     if !model.isDragging {
                         var startLocation = value.startLocation
                         startLocation.y = geometry.size.height - startLocation.y
-                        model.selectedElement = scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
+                        model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
                         model.isDragging = true
                     }
                     if let element = model.selectedElement {
@@ -87,7 +90,7 @@ public struct SwipeCanvas: View {
                 }.onEnded({ value in
                     if let element = model.selectedElement {
                         let updatedElement = element.updated(frame: model.cursorRect)
-                        self.scene = scene.updated(element: updatedElement, frameIndex: model.frameIndex)
+                        model.scene = model.scene.updated(element: updatedElement, frameIndex: model.frameIndex)
                     }
                     model.isDragging = false
                 }))
