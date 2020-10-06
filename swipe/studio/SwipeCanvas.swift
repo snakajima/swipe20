@@ -79,11 +79,14 @@ public struct SwipeCanvas: View {
                         var frame = element.frame
                         frame.origin.x += value.location.x - value.startLocation.x
                         frame.origin.y -= value.location.y - value.startLocation.y
+                        frame.origin.y = geometry.size.height - frame.origin.y - frame.height
                         model.cursorRect = frame
                     }
                 }.onEnded({ value in
+                    var rect = model.cursorRect
+                    rect.origin.y = geometry.size.height - rect.origin.y - rect.height
                     if let element = model.selectedElement {
-                        let updatedElement = element.updated(frame: model.cursorRect)
+                        let updatedElement = element.updated(frame: rect)
                         model.scene = model.scene.updated(element: updatedElement, frameIndex: model.frameIndex)
                     }
                     model.isDragging = false
@@ -162,7 +165,6 @@ struct SwipeCursor: View {
         Group {
             var frame = model.cursorRect
             Path() { path in
-                frame.origin.y = geometry.size.height - frame.origin.y - frame.height
                 path.addRect(frame)
             }
             .stroke(lineWidth: 1.0)
