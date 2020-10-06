@@ -56,7 +56,7 @@ class SwipeCanvasModel: ObservableObject {
     
     func updateElement(rotZ:CGFloat) {
         if let element = selectedElement {
-            let updatedElement = element.updated(rotZ: rotZ)
+            let updatedElement = element.updated(rotZ: -rotZ / .pi * 180)
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
         }
     }
