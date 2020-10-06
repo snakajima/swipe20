@@ -50,17 +50,23 @@ class SwipeCanvasModel: ObservableObject {
     }
     @Published var selectedElement:SwipeElement?
     @Published var cursorRect:CGRect = .zero
-    var cursorCenter:CGPoint {
-        CGPoint(x: cursorRect.origin.x + cursorRect.width / 2, y: cursorRect.origin.y + cursorRect.height)
-    }
     @Published var scale = CGPoint(x: 1, y: 1)
-    var scaledCursor:CGRect {
-        cursorRect.applying(CGAffineTransform(scaleX: scale.x, y: scale.y))
-    }
     @Published var isDragging = false
     @Published var scene:SwipeScene
     init(scene:SwipeScene) {
         self.scene = scene
+    }
+
+    var cursorCenter:CGPoint {
+        CGPoint(x: cursorRect.origin.x + cursorRect.width / 2, y: cursorRect.origin.y + cursorRect.height)
+    }
+    
+    var scaledCursor:CGRect {
+        let center = cursorCenter
+        var xf = CGAffineTransform(translationX: center.x, y: center.y)
+        xf = xf.scaledBy(x: scale.x, y: scale.y)
+        xf = xf.translatedBy(x: -center.x, y: -center.y)
+        return cursorRect.applying(xf)
     }
 }
 
