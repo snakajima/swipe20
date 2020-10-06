@@ -58,7 +58,8 @@ class SwipeCanvasModel: ObservableObject {
     }
 
     var cursorCenter:CGPoint {
-        CGPoint(x: cursorRect.origin.x + cursorRect.width / 2, y: cursorRect.origin.y + cursorRect.height)
+        CGPoint(x: cursorRect.origin.x + cursorRect.width / 2,
+                y: cursorRect.origin.y + cursorRect.height / 2)
     }
     
     var scaledCursor:CGRect {
