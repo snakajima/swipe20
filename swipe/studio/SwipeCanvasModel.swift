@@ -51,6 +51,7 @@ class SwipeCanvasModel: ObservableObject {
         if let element = selectedElement {
             let updatedElement = element.updated(frame: frame)
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
+            selectedElement = updatedElement
         }
     }
     
@@ -58,6 +59,7 @@ class SwipeCanvasModel: ObservableObject {
         if let element = selectedElement {
             let updatedElement = element.updated(rotZ: -rotZ / .pi * 180)
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
+            selectedElement = updatedElement
         }
     }
 }
