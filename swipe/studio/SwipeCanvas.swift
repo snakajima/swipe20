@@ -49,13 +49,13 @@ class SwipeCanvasModel: ObservableObject {
         }
     }
     @Published var selectedElement:SwipeElement?
+    @Published var cursorRect:CGRect = .zero
+    @Published var isDragging = false
 }
 
 public struct SwipeCanvas: View {
     @ObservedObject var model = SwipeCanvasModel()
     @State var scene = SwipeScene(s_script)
-    @State var cursorRect:CGRect = .zero
-    @State var isDragging = false
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(scene: $scene, frameIndex: $model.frameIndex)
@@ -64,7 +64,7 @@ public struct SwipeCanvas: View {
                     SwipeView(scene: scene, frameIndex: $model.frameIndex)
                     if let _ = model.selectedElement {
                         Path() { path in
-                            var frame = self.cursorRect
+                            var frame = model.cursorRect
                             frame.origin.y = geometry.size.height - frame.origin.y - frame.height
                             path.addRect(frame)
                         }
@@ -72,24 +72,24 @@ public struct SwipeCanvas: View {
                         .foregroundColor(.blue)
                     }
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
-                    if !self.isDragging {
+                    if !model.isDragging {
                         var startLocation = value.startLocation
                         startLocation.y = geometry.size.height - startLocation.y
                         model.selectedElement = scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
-                        self.isDragging = true
+                        model.isDragging = true
                     }
                     if let element = model.selectedElement {
                         var frame = element.frame
                         frame.origin.x += value.location.x - value.startLocation.x
                         frame.origin.y -= value.location.y - value.startLocation.y
-                        self.cursorRect = frame
+                        model.cursorRect = frame
                     }
                 }.onEnded({ value in
                     if let element = model.selectedElement {
-                        let updatedElement = element.updated(frame: self.cursorRect)
+                        let updatedElement = element.updated(frame: model.cursorRect)
                         self.scene = scene.updated(element: updatedElement, frameIndex: model.frameIndex)
                     }
-                    self.isDragging = false
+                    model.isDragging = false
                 }))
             }
         }
