@@ -16,7 +16,7 @@ class SwipeCanvasModel: ObservableObject {
     @Published var selectedElement:SwipeElement?
     @Published var cursorRect:CGRect = .zero
     @Published var scale = CGPoint(x: 1, y: 1)
-    @Published var rotY = CGFloat(0)
+    @Published var rotZ = CGFloat(0)
     @Published var isDragging = false
     @Published var scene:SwipeScene
     init(scene:SwipeScene) {
@@ -42,6 +42,7 @@ class SwipeCanvasModel: ObservableObject {
         let center = cursorCenter
         var xf = CGAffineTransform(translationX: center.x, y: center.y)
         xf = xf.scaledBy(x: scale.x, y: scale.y)
+        xf = xf.rotated(by: rotZ)
         xf = xf.translatedBy(x: -center.x, y: -center.y)
         return path.copy(using: &xf) ?? path
     }

@@ -30,16 +30,15 @@ struct SwipeCursor: View {
     func rotateGesture(geometry:GeometryProxy) -> some Gesture {
         return DragGesture().onChanged() { value in
             let center = model.cursorCenter
-            let d0 = center.distance(value.startLocation)
-            let d1 = center.distance(value.location)
-            let scale = d1 / d0
-            model.scale = CGPoint(x: scale , y: scale)
+            let a0 = center.angle(value.startLocation)
+            let a1 = center.angle(value.location)
+            model.rotZ = a0 - a1
         }.onEnded() { value in
             var rect = model.scaledCursor
             rect.origin.y = geometry.size.height - rect.origin.y - rect.height
             model.updateElementFrame(frame: rect)
             model.cursorRect = model.scaledCursor
-            model.scale = CGPoint(x: 1, y: 1)
+            model.rotZ = 0
         }
     }
     
@@ -81,6 +80,12 @@ private extension CGPoint {
         let dx = to.x - x
         let dy = to.y - y
         return sqrt(dx * dx + dy * dy)
+    }
+    
+    func angle(_ to:CGPoint) -> CGFloat {
+        let dx = to.x - x
+        let dy = to.y - y
+        return atan2(dx, dy)
     }
 }
 
