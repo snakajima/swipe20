@@ -105,7 +105,7 @@ struct SwipeSceneList: View {
         ScrollView (.horizontal, showsIndicators: true) {
             HStack(spacing:1) {
                 ForEach(0..<model.scene.frameCount, id:\.self) { index in
-                    SwipeSceneItem(index: index, scene: $model.scene, frameIndex: $model.frameIndex)
+                    SwipeSceneItem(model:model, index: index)
                 }
             }.frame(height:120)
         }
@@ -113,15 +113,14 @@ struct SwipeSceneList: View {
 }
 
 struct SwipeSceneItem: View {
+    @ObservedObject var model:SwipeCanvasModel
     let index:Int
-    @Binding var scene:SwipeScene
-    @Binding var frameIndex:Int
     var body: some View {
         HStack(spacing:1) {
             VStack(spacing:1) {
                 ZStack {
-                    SwipePreview(scene: scene, scale:0.2, frameIndex: index)
-                    if index == frameIndex {
+                    SwipePreview(scene: model.scene, scale:0.2, frameIndex: index)
+                    if index == model.frameIndex {
                         Rectangle()
                             .stroke(lineWidth: 1.0)
                             .foregroundColor(.blue)
@@ -129,14 +128,14 @@ struct SwipeSceneItem: View {
                 }
                 .frame(width:180)
                 .gesture(TapGesture().onEnded() {
-                    frameIndex = index
+                    model.frameIndex = index
                 })
                 HStack(spacing:4) {
                     Button(action: {
-                        scene = scene.frameDeleted(atIndex: index)
+                        model.scene = model.scene.frameDeleted(atIndex: index)
                     }) {
                         SwipeSymbol.trash.frame(width:20, height:20)
-                    }.disabled(scene.frameCount == 1)
+                    }.disabled(model.scene.frameCount == 1)
                     Spacer()
                     Button(action: {
                         print("star")
@@ -146,8 +145,8 @@ struct SwipeSceneItem: View {
                 }
             }
             Button(action:{
-                self.scene = scene.frameDuplicated(atIndex: index)
-                frameIndex = index + 1
+                model.scene = model.scene.frameDuplicated(atIndex: index)
+                model.frameIndex = index + 1
             }) {
                 SwipeSymbol.plus.frame(width:20, height:20)
             }
