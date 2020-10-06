@@ -61,7 +61,7 @@ public struct SwipeCanvas: View {
     @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script))
     public var body: some View {
         return VStack(spacing:1) {
-            SwipeSceneList(scene: $model.scene, frameIndex: $model.frameIndex)
+            SwipeSceneList(model: model)
             GeometryReader { geometry in
                 ZStack {
                     SwipeView(scene: model.scene, frameIndex: $model.frameIndex)
@@ -100,13 +100,12 @@ public struct SwipeCanvas: View {
 }
 
 struct SwipeSceneList: View {
-    @Binding var scene:SwipeScene
-    @Binding var frameIndex:Int
+    @ObservedObject var model:SwipeCanvasModel
     var body: some View {
         ScrollView (.horizontal, showsIndicators: true) {
             HStack(spacing:1) {
-                ForEach(0..<scene.frameCount, id:\.self) { index in
-                    SwipeSceneItem(index: index, scene: $scene, frameIndex: $frameIndex)
+                ForEach(0..<model.scene.frameCount, id:\.self) { index in
+                    SwipeSceneItem(index: index, scene: $model.scene, frameIndex: $model.frameIndex)
                 }
             }.frame(height:120)
         }
