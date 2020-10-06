@@ -38,6 +38,11 @@ private let s_script:[String:Any] = [
             "animation": [
                 "style":"leap"
             ],
+        ],[
+            "id":"id3",
+            "x":220, "y":200, "w":80, "h":80,
+            "backgroundColor":"blue",
+            "cornerRadius": 20,
         ]]
     ]]
 ]

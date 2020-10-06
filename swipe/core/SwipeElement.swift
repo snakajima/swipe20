@@ -29,7 +29,7 @@ public struct SwipeElement {
     let strokeColor:CGColor?
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
-    public let rotX, rotY, rotZ:CGFloat
+    public var rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
     let subElements:[String:SwipeElement]
@@ -117,6 +117,12 @@ public struct SwipeElement {
     func updated(frame:CGRect) -> SwipeElement {
         var element = self
         element.frame = frame
+        return element
+    }
+
+    func updated(rotZ:CGFloat) -> SwipeElement {
+        var element = self
+        element.rotZ = rotZ
         return element
     }
 }

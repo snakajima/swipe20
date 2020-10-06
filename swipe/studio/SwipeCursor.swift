@@ -34,10 +34,7 @@ struct SwipeCursor: View {
             let a1 = center.angle(value.location)
             model.rotZ = a0 - a1
         }.onEnded() { value in
-            var rect = model.scaledCursor
-            rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-            model.updateElementFrame(frame: rect)
-            model.cursorRect = model.scaledCursor
+            model.updateElement(rotZ: model.rotZ)
             model.rotZ = 0
         }
     }
