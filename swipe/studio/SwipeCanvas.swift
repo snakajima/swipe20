@@ -172,6 +172,11 @@ struct SwipeCursor: View {
                     .frame(width:10, height:10)
                     .position(CGPoint(x: frame.maxX, y: frame.minY))
                     .foregroundColor(.blue)
+                    .gesture(DragGesture().onChanged() { value in
+                        print("changed", value.location)
+                    }.onEnded() { value in
+                        print("ended", value.location)
+                    })
             }
         }
     }
