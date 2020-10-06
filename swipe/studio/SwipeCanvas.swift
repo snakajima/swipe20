@@ -47,8 +47,23 @@ private let s_script:[String:Any] = [
     ]]
 ]
 
+private let s_script2:[String:Any] = [
+    "backgroundColor":"#FFFFCC",
+    "duration": Double(1.0),
+    "animation": [
+        "engine":"swipe"
+    ],
+    "frames":[[
+        "elements":[[
+            "id":"id0",
+            "x":220, "y":200, "w":80, "h":80,
+            "img":"pngwave.png"
+        ]]
+    ]]
+]
+
 public struct SwipeCanvas: View {
-    @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script))
+    @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script2))
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(model: model)

@@ -48,6 +48,7 @@ public struct SwipeView: NSViewRepresentable {
             if scene.uuid != renderer.scene.uuid {
                 self.renderer = SwipeCALayer(scene: scene)
                 self.lastIndex = nil
+                print("move", scene.frames[frameIndex].elements["id0"]!.rotZ)
             }
             renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, updateFrameIndex: { newIndex in
                     self.view.frameIndex = newIndex
