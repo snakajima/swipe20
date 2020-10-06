@@ -66,13 +66,7 @@ public struct SwipeCanvas: View {
                 ZStack {
                     SwipeView(scene: model.scene, frameIndex: $model.frameIndex)
                     if let _ = model.selectedElement {
-                        Path() { path in
-                            var frame = model.cursorRect
-                            frame.origin.y = geometry.size.height - frame.origin.y - frame.height
-                            path.addRect(frame)
-                        }
-                        .stroke(lineWidth: 1.0)
-                        .foregroundColor(.blue)
+                        SwipeCursor(model:model, geometry:geometry)
                     }
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !model.isDragging {
@@ -160,3 +154,19 @@ struct SwipeCanvas_Previews: PreviewProvider {
     }
 }
 
+
+struct SwipeCursor: View {
+    @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script))
+    var geometry:GeometryProxy
+    var body: some View {
+        Group {
+                var frame = model.cursorRect
+                Path() { path in
+                    frame.origin.y = geometry.size.height - frame.origin.y - frame.height
+                    path.addRect(frame)
+                }
+                .stroke(lineWidth: 1.0)
+                .foregroundColor(.blue)
+        }
+    }
+}
