@@ -143,6 +143,10 @@ struct SwipeCursor: View {
                         let scale = d1 / d0
                         model.scale = CGPoint(x: scale, y: scale)
                     }.onEnded() { value in
+                        var rect = model.scaledCursor
+                        rect.origin.y = geometry.size.height - rect.origin.y - rect.height
+                        model.updateElementFrame(frame: rect)
+                        model.cursorRect = model.scaledCursor
                         model.scale = CGPoint(x: 1, y: 1)
                     })
             }
