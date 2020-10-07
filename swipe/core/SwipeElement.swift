@@ -120,9 +120,14 @@ public struct SwipeElement {
         return element
     }
 
-    func updated(rotZ:CGFloat) -> SwipeElement {
+    func updated(rotZ rotZinput:CGFloat) -> SwipeElement {
+        var rotZ = rotZinput
+        while (rotZ < 0) {
+            rotZ += 360
+        }
         var element = self
-        element.rotZ = rotZ
+        print("rotX", rotZ)
+        element.rotZ += rotZ > 180 ? rotZ - 360 : rotZ
         return element
     }
 }
