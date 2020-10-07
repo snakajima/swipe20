@@ -135,7 +135,7 @@ private extension SwipeElement {
             layer = CALayer()
             if let image = self.image {
                 layer.contents = image
-                layer.contentsGravity = .resizeAspectFill
+                layer.contentsGravity = .resize
                 layer.masksToBounds = true
             }
         }
