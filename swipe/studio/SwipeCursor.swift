@@ -30,7 +30,6 @@ struct SwipeCursor: View {
     func rotateGesture(geometry:GeometryProxy) -> some Gesture {
         return DragGesture().onChanged() { value in
             let center = model.cursorCenter
-            //let a0 = center.angle(value.startLocation.applying(model.cursorTransform.inverted()))
             let a1 = center.angle(value.location.applying(model.cursorTransform))
             model.rotZ = .pi - a1 + (model.selectedElement?.rotZ ?? 0)
         }.onEnded() { value in
