@@ -90,7 +90,7 @@ public struct SwipeCanvas: View {
                 }.onEnded({ value in
                     var rect = model.cursorRect
                     rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-                    model.updateElemen(frame: rect)
+                    model.updateElement(frame: rect)
                     model.isDragging = false
                 }))
             }

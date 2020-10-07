@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwipeCursor: View {
+    let color = Color(.green)
     @ObservedObject var model:SwipeCanvasModel
     var geometry:GeometryProxy
     
@@ -21,7 +22,7 @@ struct SwipeCursor: View {
         }.onEnded() { value in
             var rect = model.scaledCursor
             rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-            model.updateElemen(frame: rect)
+            model.updateElement(frame: rect)
             model.cursorRect = model.scaledCursor
             model.scale = CGPoint(x: 1, y: 1)
         }
@@ -43,28 +44,28 @@ struct SwipeCursor: View {
             let rect = model.scaledCursor
             Path(CGPath(rect: rect, transform: nil))
             .stroke(lineWidth: 1.0)
-            .foregroundColor(.blue)
+            .foregroundColor(color)
             if !model.isDragging {
                 let center = model.cursorCenter
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
                     .gesture(resizeGesture(geometry: geometry, sx:nil, sy:nil))
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: center.x, y: rect.maxY))
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
                     .gesture(resizeGesture(geometry: geometry, sx:1, sy:nil))
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: center.y))
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
                     .gesture(resizeGesture(geometry: geometry, sx:nil, sy:1))
                 Circle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: center.x, y: rect.minY))
-                    .foregroundColor(.blue)
+                    .foregroundColor(color)
                     .gesture(rotateGesture(geometry: geometry))
             }
         }.transformEffect(model.cursorTransform)

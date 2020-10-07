@@ -50,7 +50,7 @@ class SwipeCanvasModel: ObservableObject {
         return xf
     }
     
-    func updateElemen(frame:CGRect) {
+    func updateElement(frame:CGRect) {
         if let element = selectedElement {
             let updatedElement = element.updated(frame: frame)
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
