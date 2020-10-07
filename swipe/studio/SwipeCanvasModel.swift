@@ -42,10 +42,6 @@ class SwipeCanvasModel: ObservableObject {
         return cursorRect.applying(xf)
     }
     
-    var cursorPath:CGPath {
-        return CGPath(rect: scaledCursor, transform: nil)
-    }
-
     var cursorTransform:CGAffineTransform {
         let center = cursorCenter
         var xf = CGAffineTransform(translationX: center.x, y: center.y)
