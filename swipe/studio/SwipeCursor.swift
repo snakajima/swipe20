@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SwipeCursor: View {
-    let color = Color(.green)
+    let color = Color(red: 0, green: 0, blue: 1, opacity: 0.8)
     @ObservedObject var model:SwipeCanvasModel
     var geometry:GeometryProxy
     
