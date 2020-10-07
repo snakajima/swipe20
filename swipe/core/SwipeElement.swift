@@ -62,11 +62,11 @@ public struct SwipeElement {
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
             self.rotX = 0
             self.rotY = 0
-            self.rotZ = rot
+            self.rotZ = rot / 180 * .pi
         } else if let rots = SwipeParser.asCGFloats(script["rotate"]), rots.count == 3 {
-            self.rotX = rots[0]
-            self.rotY = rots[1]
-            self.rotZ = rots[2]
+            self.rotX = rots[0] / 180 * .pi
+            self.rotY = rots[1] / 180 * .pi
+            self.rotZ = rots[2] / 180 * .pi
         } else {
             self.rotX = 0
             self.rotY = 0
