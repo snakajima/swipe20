@@ -27,10 +27,9 @@ extension SwipeRenderProperties {
             target.opacity = opacity
             target.frame = frame
             xf.m34 = -1.0/500; // add the perspective
-            let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
-            xf = CATransform3DRotate(xf, rotX * m, 1, 0, 0)
-            xf = CATransform3DRotate(xf, rotY * m, 0, 1, 0)
-            xf = CATransform3DRotate(xf, rotZ * m, 0, 0, 1)
+            xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
+            xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
+            xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
             target.transform = xf
             return
         }
@@ -66,10 +65,9 @@ extension SwipeRenderProperties {
         let rotZ = from.rotZ.mix(self.rotZ, ratio)
 
         xf.m34 = -1.0/500; // add the perspective
-        let m = CGFloat(CGFloat.pi / 180.0) // LATER: static
-        xf = CATransform3DRotate(xf, rotX * m, 1, 0, 0)
-        xf = CATransform3DRotate(xf, rotY * m, 0, 1, 0)
-        xf = CATransform3DRotate(xf, rotZ * m, 0, 0, 1)
+        xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
+        xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
+        xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
         target.transform = xf
     }
     

@@ -123,11 +123,11 @@ public struct SwipeElement {
     func updated(rotZ rotZinput:CGFloat) -> SwipeElement {
         var rotZ = rotZinput
         while (rotZ < 0) {
-            rotZ += 360
+            rotZ += 2 * .pi
         }
         var element = self
         print("rotX", rotZ)
-        element.rotZ += rotZ > 180 ? rotZ - 360 : rotZ
+        element.rotZ += rotZ > .pi ? rotZ - 2 * .pi : rotZ
         return element
     }
 }
