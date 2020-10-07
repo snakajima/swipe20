@@ -68,7 +68,7 @@ struct SwipeCursor: View {
                     .foregroundColor(.blue)
                     .gesture(rotateGesture(geometry: geometry))
             }
-        }
+        } //.transformEffect(model.cursorTransform)
     }
 }
 

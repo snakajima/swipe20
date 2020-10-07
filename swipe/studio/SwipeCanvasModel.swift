@@ -42,14 +42,19 @@ class SwipeCanvasModel: ObservableObject {
         return cursorRect.applying(xf)
     }
     
-    var cursorPath:CGPath {
-        let path = CGMutablePath()
-        path.addRect(cursorRect)
+    var cursorTransform:CGAffineTransform {
         let center = cursorCenter
         var xf = CGAffineTransform(translationX: center.x, y: center.y)
         xf = xf.scaledBy(x: scale.x, y: scale.y)
-        xf = xf.rotated(by: rotZ + (selectedElement?.rotZ ?? 0))
+        xf = xf.rotated(by: rotZ + (selectedElement?.rotZ ?? 0) / 180 * .pi)
         xf = xf.translatedBy(x: -center.x, y: -center.y)
+        return xf
+    }
+    
+    var cursorPath:CGPath {
+        let path = CGMutablePath()
+        path.addRect(cursorRect)
+        var xf = cursorTransform
         return path.copy(using: &xf) ?? path
     }
     
