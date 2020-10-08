@@ -11,7 +11,7 @@ import Cocoa
 #endif
 
 public struct SwipeCALayer {
-    let scene:SwipeScene
+    var scene:SwipeScene
     let useSwipeAnimation:Bool
     init(scene:SwipeScene) {
         self.scene = scene
