@@ -8,7 +8,6 @@ import QuartzCore
 
 /// Protocol to control animatable elements
 public protocol SwipeRenderLayer: NSObjectProtocol {
-    var id:Any? { get set }
     var frame:CGRect { get set }
     var opacity:Float { get set }
     var transform:CATransform3D { get set }
