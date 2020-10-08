@@ -7,63 +7,8 @@
 
 import SwiftUI
 
-private let s_script:[String:Any] = [
-    "backgroundColor":"#FFFFCC",
-    "duration": Double(1.0),
-    "animation": [
-        "engine":"swipe"
-    ],
-    "frames":[[
-        "elements":[[
-            "id":"id0",
-            "text":"Hello World",
-            "foregroundColor":"gray",
-            "x":200, "y":0, "w":300, "h":80,
-            "animation": [
-                "style":"summersault"
-            ],
-        ],[
-            "id":"id1",
-            "img":"pngwave.png",
-            "x":20, "y":20, "w":180, "h":180,
-            "anchorPoint":[0.5,0],
-            "animation": [
-                "style":"jump"
-            ],
-        ],[
-            "id":"id2",
-            "x":220, "y":100, "w":80, "h":80,
-            "backgroundColor":"red",
-            "cornerRadius": 20,
-            "animation": [
-                "style":"leap"
-            ],
-        ],[
-            "id":"id3",
-            "x":220, "y":200, "w":80, "h":80,
-            "img":"pngwave.png",
-            "rotate": 60,
-        ]]
-    ]]
-]
-
-private let s_script2:[String:Any] = [
-    "backgroundColor":"#FFFFCC",
-    "duration": Double(1.0),
-    "animation": [
-        "engine":"swipe"
-    ],
-    "frames":[[
-        "elements":[[
-            "id":"id0",
-            "x":220, "y":200, "w":80, "h":80,
-            "img":"pngwave.png"
-        ]]
-    ]]
-]
-
 public struct SwipeCanvas: View {
-    @ObservedObject var model = SwipeCanvasModel(scene:SwipeScene(s_script2))
+    @ObservedObject var model: SwipeCanvasModel
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(model: model)
@@ -98,9 +43,24 @@ public struct SwipeCanvas: View {
     }
 }
 
+private let s_script:[String:Any] = [
+    "backgroundColor":"#FFFFCC",
+    "duration": Double(1.0),
+    "animation": [
+        "engine":"swipe"
+    ],
+    "frames":[[
+        "elements":[[
+            "id":"id0",
+            "x":220, "y":200, "w":80, "h":80,
+            "img":"pngwave.png"
+        ]]
+    ]]
+]
+
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeCanvas()
+        SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)))
     }
 }
 
