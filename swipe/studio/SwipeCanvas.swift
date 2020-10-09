@@ -9,14 +9,15 @@ import SwiftUI
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
+    let scale = CGFloat(0.5)
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(model: model)
             GeometryReader { geometry in
                 ZStack {
-                    SwipeView(scene: model.scene, frameIndex: $model.frameIndex)
+                    SwipeView(scene: model.scene, frameIndex: $model.frameIndex, scale:scale)
                     if let _ = model.selectedElement {
-                        SwipeCursor(model:model, geometry:geometry)
+                        SwipeCursor(model:model, scale:scale, geometry:geometry)
                     }
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !model.isDragging {

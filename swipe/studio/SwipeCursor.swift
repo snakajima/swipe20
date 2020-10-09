@@ -10,11 +10,12 @@ import SwiftUI
 struct SwipeCursor: View {
     let color = Color(red: 0, green: 0, blue: 1, opacity: 0.8)
     @ObservedObject var model:SwipeCanvasModel
+    let scale:CGFloat
     var geometry:GeometryProxy
     
     func resizeGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> some Gesture {
         return DragGesture().onChanged() { value in
-            let center = model.cursorCenter
+            let center = scaled(point:model.cursorCenter)
             let d0 = center.distance(value.startLocation)
             let d1 = center.distance(value.location)
             let scale = d1 / d0
@@ -30,7 +31,7 @@ struct SwipeCursor: View {
     
     func rotateGesture(geometry:GeometryProxy) -> some Gesture {
         return DragGesture().onChanged() { value in
-            let center = model.cursorCenter
+            let center = scaled(point:model.cursorCenter)
             let a1 = center.angle(value.location.applying(model.cursorTransform))
             model.rotZ = .pi - a1 + (model.selectedElement?.rotZ ?? 0)
         }.onEnded() { value in
@@ -39,14 +40,32 @@ struct SwipeCursor: View {
         }
     }
     
+    func scaledPoint(x:CGFloat, y:CGFloat) -> CGPoint {
+        let scaledX = x * scale
+        let scaledY = geometry.size.height - (geometry.size.height - y) * scale
+        return CGPoint(x: scaledX, y: scaledY)
+    }
+    
+    func scaled(point:CGPoint) -> CGPoint {
+        return scaledPoint(x: point.x, y: point.y)
+    }
+    
+    func scaledCursor() -> CGRect {
+        var rect = model.scaledCursor
+        rect.origin = scaled(point:rect.origin)
+        rect.size.width *= scale
+        rect.size.height *= scale
+        return rect
+    }
+    
     var body: some View {
         Group {
-            let rect = model.scaledCursor
+            let rect = scaledCursor()
             Path(CGPath(rect: rect, transform: nil))
             .stroke(lineWidth: 1.0)
             .foregroundColor(color)
             if !model.isDragging {
-                let center = model.cursorCenter
+                let center = scaled(point:model.cursorCenter)
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
