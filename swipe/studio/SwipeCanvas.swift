@@ -9,7 +9,12 @@ import SwiftUI
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
-    let scale = CGFloat(0.5)
+    let scale:CGFloat
+    
+    init(model:SwipeCanvasModel, scale:CGFloat = 1.0) {
+        self.model = model
+        self.scale = scale
+    }
 
     func scaled(point:CGPoint, geometry:GeometryProxy) -> CGPoint {
         let scaledX = point.x / scale
