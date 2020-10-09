@@ -10,6 +10,13 @@ import SwiftUI
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
     let scale = CGFloat(0.5)
+
+    func scaled(point:CGPoint, geometry:GeometryProxy) -> CGPoint {
+        let scaledX = point.x / scale
+        let scaledY = (geometry.size.height - (geometry.size.height - point.y)) / scale
+        return CGPoint(x: scaledX, y: scaledY)
+    }
+
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(model: model)
@@ -23,13 +30,14 @@ public struct SwipeCanvas: View {
                     if !model.isDragging {
                         var startLocation = value.startLocation
                         startLocation.y = geometry.size.height - startLocation.y
+                        startLocation = scaled(point: startLocation, geometry: geometry)
                         model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
                         model.isDragging = true
                     }
                     if let element = model.selectedElement {
                         var frame = element.frame
-                        frame.origin.x += value.location.x - value.startLocation.x
-                        frame.origin.y -= value.location.y - value.startLocation.y
+                        frame.origin.x += (value.location.x - value.startLocation.x) / scale
+                        frame.origin.y -= (value.location.y - value.startLocation.y) / scale
                         frame.origin.y = geometry.size.height - frame.origin.y - frame.height
                         model.cursorRect = frame
                     }

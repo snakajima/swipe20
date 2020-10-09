@@ -36,7 +36,7 @@ extension SwipeRenderProperties {
             xf.m34 = -1.0/500; // add the perspective
             xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
             xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
-            xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
+            xf = CATransform3DRotate(xf, flipped == nil ? rotZ : -rotZ, 0, 0, 1)
             target.transform = xf
             return
         }
@@ -74,7 +74,7 @@ extension SwipeRenderProperties {
         xf.m34 = -1.0/500; // add the perspective
         xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
         xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
-        xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
+        xf = CATransform3DRotate(xf, flipped==nil ? rotZ : -rotZ, 0, 0, 1)
         target.transform = xf
     }
     
