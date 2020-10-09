@@ -44,6 +44,7 @@ public struct SwipeScene {
     
     private(set) var frames:[SwipeFrame]
     let script:[String:Any]?
+    let dimension:CGSize
     let backgroundColor:CGColor?
     let duration:Double
     let playMode:PlayMode
@@ -56,6 +57,14 @@ public struct SwipeScene {
         self.script = script
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         var base:SwipeFrame? = nil
+        
+        if let dimension = SwipeParser.asCGFloats(script?["dimension"]),
+           dimension.count == 2 {
+            self.dimension = CGSize(width: dimension[0], height: dimension[1])
+        } else {
+            self.dimension = CGSize(width: 1920, height: 1080)
+        }
+        
         self.frames = scriptFrames.map {
             let frame = SwipeFrame($0, base:base)
             base = frame

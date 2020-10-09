@@ -82,7 +82,6 @@ public struct SwipeElement {
             self.image = NSImage(named: imageName)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
             #endif
             filePath = Bundle.main.path(forResource: imageName, ofType: nil)
-            print(filePath)
         } else {
             self.image = nil
         }
