@@ -10,10 +10,12 @@ import SwiftUI
 public struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
     @Binding var frameIndex: Int
+    let scale:CGFloat
     
-    public init(scene:SwipeScene, frameIndex:Binding<Int>) {
+    public init(scene:SwipeScene, frameIndex:Binding<Int>, scale:CGFloat = 1.0) {
         self.scene = scene
         self._frameIndex = frameIndex
+        self.scale = scale
     }
     
     public func makeCoordinator() -> Coordinator {
@@ -22,13 +24,17 @@ public struct SwipeView: NSViewRepresentable {
     
     public func makeNSView(context: Context) -> some NSView {
         let swipeLayer = context.coordinator.makeLayer()
+        let layer = CALayer()
+        layer.addSublayer(swipeLayer)
+        swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
+        swipeLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
         let nsView = NSView()
-        nsView.layer = swipeLayer
+        nsView.layer = layer
         return nsView
     }
     
     public func updateNSView(_ nsView: NSViewType, context: Context) {
-        let swipeLayer = nsView.layer
+        let swipeLayer = nsView.layer?.sublayers?[0]
         context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
     }
 
