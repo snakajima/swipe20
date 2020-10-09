@@ -30,6 +30,7 @@ public struct SwipeElement {
     let strokeColor:CGColor?
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
+    let src:[String:Any]?
     public var rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
@@ -55,6 +56,7 @@ public struct SwipeElement {
         self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
         self.opacity = SwipeParser.asFloat(script["opacity"]) ?? base?.opacity ?? 1.0
+        self.src = script["src"] as? [String:Any]
         // anchorPoint is no longer configurable in the script, which allows us to manipulate during the animation
         /*
         if let points = SwipeParser.asCGFloats(script["anchorPoint"]), points.count == 2 {
