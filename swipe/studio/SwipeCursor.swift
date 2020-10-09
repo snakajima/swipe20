@@ -32,7 +32,7 @@ struct SwipeCursor: View {
     func rotateGesture(geometry:GeometryProxy) -> some Gesture {
         return DragGesture().onChanged() { value in
             let center = scaled(point:model.cursorCenter)
-            let a1 = center.angle(value.location.applying(model.cursorTransform))
+            let a1 = center.angle(value.location.applying(model.cursorTransform(center: center)))
             model.rotZ = .pi - a1 + (model.selectedElement?.rotZ ?? 0)
         }.onEnded() { value in
             model.updateElement(rotZ: model.rotZ)
@@ -59,13 +59,13 @@ struct SwipeCursor: View {
     }
     
     var body: some View {
-        Group {
+        let center = scaled(point:model.cursorCenter)
+        return Group {
             let rect = scaledCursor()
             Path(CGPath(rect: rect, transform: nil))
             .stroke(lineWidth: 1.0)
             .foregroundColor(color)
             if !model.isDragging {
-                let center = scaled(point:model.cursorCenter)
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
@@ -87,7 +87,7 @@ struct SwipeCursor: View {
                     .foregroundColor(color)
                     .gesture(rotateGesture(geometry: geometry))
             }
-        }.transformEffect(model.cursorTransform)
+        }.transformEffect(model.cursorTransform(center: center))
     }
 }
 
