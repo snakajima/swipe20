@@ -27,7 +27,7 @@ struct SwipeSceneItem: View {
         HStack(spacing:1) {
             VStack(spacing:1) {
                 ZStack {
-                    SwipePreview(scene: model.scene, scale:0.2, frameIndex: index)
+                    SwipePreview(scene: model.scene, scale:0.1, frameIndex: index)
                     if index == model.frameIndex {
                         Rectangle()
                             .stroke(lineWidth: 1.0)
