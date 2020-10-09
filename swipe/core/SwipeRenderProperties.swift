@@ -49,14 +49,18 @@ extension SwipeRenderProperties {
                                   y: from.frame.minY.mix(frame.minY, ratio),
                                   width: from.frame.width.mix(frame.width, ratio),
                                   height: from.frame.height.mix(frame.height, ratio))
+            let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : flipped == nil ? 0.0 : 1.0)
             
             switch(animationStyle) {
             case .bounce:
                 (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+                target.anchorPoint = bottomAC
             case .jump:
                 (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf, flip:false)
+                target.anchorPoint = bottomAC
             case .summersault:
                 (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf, flip:true)
+                target.anchorPoint = bottomAC
             case .leap:
                 var ac:CGPoint
                 (newFrame, xf, ac) = leap(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
