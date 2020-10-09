@@ -48,8 +48,9 @@ private let s_script:[String:Any] = [
 ]
 
 struct ContentView: View {
+    let scene = SwipeScene(s_script)
     var body: some View {
-        SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)))
+        SwipeCanvas(model:SwipeCanvasModel(scene:scene), scale: 0.5)
     }
 }
 

@@ -34,8 +34,10 @@ public struct SwipeView: NSViewRepresentable {
     }
     
     public func updateNSView(_ nsView: NSViewType, context: Context) {
-        let swipeLayer = nsView.layer?.sublayers?[0]
-        context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
+        if let layer = nsView.layer,
+           let swipeLayer = layer.sublayers?[0] {
+            context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
+        }
     }
 
     public class Coordinator: NSObject {
