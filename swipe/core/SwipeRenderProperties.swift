@@ -19,13 +19,20 @@ public protocol SwipeRenderProperties {
 }
 
 extension SwipeRenderProperties {
+    func convert(frame:CGRect, flipped:CGFloat?) -> CGRect {
+        if let flipped = flipped {
+            return CGRect(x: frame.minX, y: flipped - frame.minY - frame.height, width: frame.width, height: frame.height)
+        }
+        return frame
+    }
+    
     /// Applies tween properties to the element
-    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?) {
+    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?, flipped:CGFloat? = nil) {
         var xf = CATransform3DIdentity
         
         guard let from = from else {
             target.opacity = opacity
-            target.frame = frame
+            target.frame = convert(frame:frame, flipped: flipped)
             xf.m34 = -1.0/500; // add the perspective
             xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
             xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
@@ -57,7 +64,7 @@ extension SwipeRenderProperties {
             default:
                 break
             }
-            target.frame = newFrame
+            target.frame = convert(frame:newFrame, flipped: flipped)
         }
         
         let rotX = from.rotX.mix(self.rotX, ratio)
