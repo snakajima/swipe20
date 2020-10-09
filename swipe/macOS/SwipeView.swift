@@ -21,13 +21,15 @@ public struct SwipeView: NSViewRepresentable {
     }
     
     public func makeNSView(context: Context) -> some NSView {
+        let swipeLayer = context.coordinator.makeLayer()
         let nsView = NSView()
-        nsView.layer = context.coordinator.makeLayer()
+        nsView.layer = swipeLayer
         return nsView
     }
     
     public func updateNSView(_ nsView: NSViewType, context: Context) {
-        context.coordinator.move(scene:scene, to: frameIndex, layer:nsView.layer)
+        let swipeLayer = nsView.layer
+        context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
     }
 
     public class Coordinator: NSObject {
