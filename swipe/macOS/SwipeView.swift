@@ -7,6 +7,9 @@
 import SwiftUI
 
 #if os(macOS)
+class FlippedView : NSView {
+    override var isFlipped: Bool { true }
+}
 public struct SwipeView: NSViewRepresentable {
     let scene:SwipeScene
     @Binding var frameIndex: Int
@@ -28,7 +31,7 @@ public struct SwipeView: NSViewRepresentable {
         layer.addSublayer(swipeLayer)
         swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
         swipeLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
-        let nsView = NSView()
+        let nsView = FlippedView()
         nsView.layer = layer
         return nsView
     }
