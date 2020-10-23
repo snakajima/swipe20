@@ -21,9 +21,7 @@ struct SwipeCursor: View {
             let scale = d1 / d0
             model.scale = CGPoint(x: sx ?? scale , y: sy ?? scale)
         }.onEnded() { value in
-            var rect = model.scaledCursor
-            rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-            model.updateElement(frame: rect)
+            model.updateElement(frame: model.scaledCursor)
             model.cursorRect = model.scaledCursor
             model.scale = CGPoint(x: 1, y: 1)
         }
@@ -42,7 +40,7 @@ struct SwipeCursor: View {
     
     func scaledPoint(x:CGFloat, y:CGFloat) -> CGPoint {
         let scaledX = x * scale
-        let scaledY = geometry.size.height - (geometry.size.height - y) * scale
+        let scaledY = y * scale
         return CGPoint(x: scaledX, y: scaledY)
     }
     

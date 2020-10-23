@@ -34,7 +34,6 @@ public struct SwipeCanvas: View {
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !model.isDragging {
                         var startLocation = value.startLocation
-                        startLocation.y = geometry.size.height - startLocation.y
                         startLocation = scaled(point: startLocation, geometry: geometry)
                         model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
                         model.isDragging = true
@@ -42,14 +41,11 @@ public struct SwipeCanvas: View {
                     if let element = model.selectedElement {
                         var frame = element.frame
                         frame.origin.x += (value.location.x - value.startLocation.x) / scale
-                        frame.origin.y -= (value.location.y - value.startLocation.y) / scale
-                        frame.origin.y = geometry.size.height - frame.origin.y - frame.height
+                        frame.origin.y += (value.location.y - value.startLocation.y) / scale
                         model.cursorRect = frame
                     }
                 }.onEnded({ value in
-                    var rect = model.cursorRect
-                    rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-                    model.updateElement(frame: rect)
+                    model.updateElement(frame: model.cursorRect)
                     model.isDragging = false
                 }))
             }
