@@ -31,7 +31,7 @@ struct SwipeCursor: View {
         return DragGesture().onChanged() { value in
             let center = scaled(point:model.cursorCenter)
             let a1 = center.angle(value.location.applying(model.cursorTransform(center: center)))
-            model.rotZ = .pi - a1 + (model.selectedElement?.rotZ ?? 0)
+            model.rotZ = .pi + a1 + (model.selectedElement?.rotZ ?? 0)
         }.onEnded() { value in
             model.updateElement(rotZ: model.rotZ)
             model.rotZ = 0
