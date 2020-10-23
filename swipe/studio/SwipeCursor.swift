@@ -38,14 +38,8 @@ struct SwipeCursor: View {
         }
     }
     
-    func scaledPoint(x:CGFloat, y:CGFloat) -> CGPoint {
-        let scaledX = x * scale
-        let scaledY = y * scale
-        return CGPoint(x: scaledX, y: scaledY)
-    }
-    
     func scaled(point:CGPoint) -> CGPoint {
-        return scaledPoint(x: point.x, y: point.y)
+        return CGPoint(x: point.x * scale, y: point.y * scale)
     }
     
     func scaledCursor() -> CGRect {

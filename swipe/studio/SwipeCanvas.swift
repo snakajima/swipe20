@@ -16,10 +16,8 @@ public struct SwipeCanvas: View {
         self.scale = scale
     }
 
-    func scaled(point:CGPoint, geometry:GeometryProxy) -> CGPoint {
-        let scaledX = point.x / scale
-        let scaledY = (geometry.size.height - (geometry.size.height - point.y)) / scale
-        return CGPoint(x: scaledX, y: scaledY)
+    func scaled(point:CGPoint) -> CGPoint {
+        return CGPoint(x: point.x / scale, y: point.y / scale)
     }
 
     public var body: some View {
@@ -34,7 +32,7 @@ public struct SwipeCanvas: View {
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !model.isDragging {
                         var startLocation = value.startLocation
-                        startLocation = scaled(point: startLocation, geometry: geometry)
+                        startLocation = scaled(point: startLocation)
                         model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
                         model.isDragging = true
                     }
