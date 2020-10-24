@@ -49,7 +49,7 @@ extension SwipeRenderProperties {
                                   y: from.frame.minY.mix(frame.minY, ratio),
                                   width: from.frame.width.mix(frame.width, ratio),
                                   height: from.frame.height.mix(frame.height, ratio))
-            let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : flipped == nil ? 0.0 : 1.0)
+            let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : flipped == nil ? 1.0 : 0.0)
             
             switch(animationStyle) {
             case .bounce:
@@ -155,7 +155,7 @@ extension SwipeRenderProperties {
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
-            y = from.frame.minY.mix(frame.minY, r) + height * CGFloat(1 - 4 * (r - 0.5) * (r - 0.5))
+            y = from.frame.minY.mix(frame.minY, r) - height * CGFloat(1 - 4 * (r - 0.5) * (r - 0.5))
             if (flip) {
                 let dir:CGFloat = from.frame.minX < frame.minX ? -1 : 1
                 xfNew = CATransform3DRotate(xf, dir * .pi * 2 * CGFloat(r), 0, 0, 1)
