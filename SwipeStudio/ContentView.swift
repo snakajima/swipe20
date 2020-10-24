@@ -23,20 +23,20 @@ private let s_script:[String:Any] = [
                 "style":"summersault"
             ],
         ],[
+            "id":"id2",
+            "x":20, "y":500, "w":180, "h":180,
+            "backgroundColor":"red",
+            "cornerRadius": 20,
+            "animation": [
+                "style":"leap"
+            ],
+        ],[
             "id":"id1",
             "img":"pngwave.png",
             "x":20, "y":500, "w":180, "h":180,
             "anchorPoint":[0.5,0],
             "animation": [
                 "style":"jump"
-            ],
-        ],[
-            "id":"id2",
-            "x":20, "y":100, "w":80, "h":80,
-            "backgroundColor":"red",
-            "cornerRadius": 20,
-            "animation": [
-                "style":"leap"
             ],
         ],[
             "id":"id3",

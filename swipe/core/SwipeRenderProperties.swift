@@ -68,6 +68,9 @@ extension SwipeRenderProperties {
             default:
                 break
             }
+            if ratio == 1.0 || ratio == 0.0 {
+                target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            }
             target.frame = convert(frame:newFrame, flipped: flipped)
         }
         
