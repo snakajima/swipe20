@@ -18,21 +18,21 @@ private let s_script:[String:Any] = [
             "id":"id0",
             "text":"Hello World",
             "foregroundColor":"gray",
-            "x":200, "y":0, "w":300, "h":80,
+            "x":20, "y":350, "w":300, "h":80,
             "animation": [
                 "style":"summersault"
             ],
         ],[
             "id":"id1",
             "img":"pngwave.png",
-            "x":20, "y":20, "w":180, "h":180,
+            "x":20, "y":500, "w":180, "h":180,
             "anchorPoint":[0.5,0],
             "animation": [
                 "style":"jump"
             ],
         ],[
             "id":"id2",
-            "x":220, "y":100, "w":80, "h":80,
+            "x":20, "y":100, "w":80, "h":80,
             "backgroundColor":"red",
             "cornerRadius": 20,
             "animation": [
@@ -40,9 +40,11 @@ private let s_script:[String:Any] = [
             ],
         ],[
             "id":"id3",
-            "x":220, "y":200, "w":80, "h":80,
+            "x":20, "y":200, "w":150, "h":150,
             "img":"pngwave.png",
-            "rotate": 60,
+            "animation": [
+                "style":"bounce"
+            ],
         ]]
     ]]
 ]
