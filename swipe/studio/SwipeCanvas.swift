@@ -16,10 +16,8 @@ public struct SwipeCanvas: View {
         self.scale = scale
     }
 
-    func scaled(point:CGPoint, geometry:GeometryProxy) -> CGPoint {
-        let scaledX = point.x / scale
-        let scaledY = (geometry.size.height - (geometry.size.height - point.y)) / scale
-        return CGPoint(x: scaledX, y: scaledY)
+    func scaled(point:CGPoint) -> CGPoint {
+        return CGPoint(x: point.x / scale, y: point.y / scale)
     }
 
     public var body: some View {
@@ -34,22 +32,18 @@ public struct SwipeCanvas: View {
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !model.isDragging {
                         var startLocation = value.startLocation
-                        startLocation.y = geometry.size.height - startLocation.y
-                        startLocation = scaled(point: startLocation, geometry: geometry)
+                        startLocation = scaled(point: startLocation)
                         model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
                         model.isDragging = true
                     }
                     if let element = model.selectedElement {
                         var frame = element.frame
                         frame.origin.x += (value.location.x - value.startLocation.x) / scale
-                        frame.origin.y -= (value.location.y - value.startLocation.y) / scale
-                        frame.origin.y = geometry.size.height - frame.origin.y - frame.height
+                        frame.origin.y += (value.location.y - value.startLocation.y) / scale
                         model.cursorRect = frame
                     }
                 }.onEnded({ value in
-                    var rect = model.cursorRect
-                    rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-                    model.updateElement(frame: rect)
+                    model.updateElement(frame: model.cursorRect)
                     model.isDragging = false
                 }))
             }

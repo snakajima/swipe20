@@ -21,9 +21,7 @@ struct SwipeCursor: View {
             let scale = d1 / d0
             model.scale = CGPoint(x: sx ?? scale , y: sy ?? scale)
         }.onEnded() { value in
-            var rect = model.scaledCursor
-            rect.origin.y = geometry.size.height - rect.origin.y - rect.height
-            model.updateElement(frame: rect)
+            model.updateElement(frame: model.scaledCursor)
             model.cursorRect = model.scaledCursor
             model.scale = CGPoint(x: 1, y: 1)
         }
@@ -33,21 +31,15 @@ struct SwipeCursor: View {
         return DragGesture().onChanged() { value in
             let center = scaled(point:model.cursorCenter)
             let a1 = center.angle(value.location.applying(model.cursorTransform(center: center)))
-            model.rotZ = .pi - a1 + (model.selectedElement?.rotZ ?? 0)
+            model.rotZ = .pi + a1 + (model.selectedElement?.rotZ ?? 0)
         }.onEnded() { value in
             model.updateElement(rotZ: model.rotZ)
             model.rotZ = 0
         }
     }
     
-    func scaledPoint(x:CGFloat, y:CGFloat) -> CGPoint {
-        let scaledX = x * scale
-        let scaledY = geometry.size.height - (geometry.size.height - y) * scale
-        return CGPoint(x: scaledX, y: scaledY)
-    }
-    
     func scaled(point:CGPoint) -> CGPoint {
-        return scaledPoint(x: point.x, y: point.y)
+        return CGPoint(x: point.x * scale, y: point.y * scale)
     }
     
     func scaledCursor() -> CGRect {

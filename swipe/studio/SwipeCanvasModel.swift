@@ -44,7 +44,7 @@ class SwipeCanvasModel: ObservableObject {
     
     func cursorTransform(center:CGPoint) -> CGAffineTransform {
         var xf = CGAffineTransform(translationX: center.x, y: center.y)
-        xf = xf.rotated(by: rotZ + -(selectedElement?.rotZ ?? 0))
+        xf = xf.rotated(by: -rotZ + (selectedElement?.rotZ ?? 0))
         xf = xf.translatedBy(x: -center.x, y: -center.y)
         return xf
     }

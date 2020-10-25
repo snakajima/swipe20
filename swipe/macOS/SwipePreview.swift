@@ -23,7 +23,7 @@ public struct SwipePreview: NSViewRepresentable {
     }
     
     public func makeNSView(context: Context) -> some NSView {
-        let nsView = NSView()
+        let nsView = FlippedView()
         let layer = CALayer()
         let swipeLayer = context.coordinator.makeLayer()
         swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1.0)
