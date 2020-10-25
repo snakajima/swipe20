@@ -26,18 +26,22 @@ struct SwipeSceneItem: View {
     var body: some View {
         HStack(spacing:1) {
             VStack(spacing:1) {
-                ZStack {
-                    SwipePreview(scene: model.scene, scale:0.1, frameIndex: index)
-                    if index == model.frameIndex {
-                        Rectangle()
-                            .stroke(lineWidth: 1.0)
-                            .foregroundColor(.blue)
+                GeometryReader { geometry in
+                    let scale = geometry.size.height / model.scene.dimension.height
+                    let _ = print("*** scale", scale)
+                    ZStack {
+                        SwipePreview(scene: model.scene, scale:scale, frameIndex: index)
+                        if index == model.frameIndex {
+                            Rectangle()
+                                .stroke(lineWidth: 1.0)
+                                .foregroundColor(.blue)
+                        }
                     }
+                    .frame(width: model.scene.dimension.width * scale)
+                    .gesture(TapGesture().onEnded() {
+                        model.frameIndex = index
+                    })
                 }
-                .frame(width:180)
-                .gesture(TapGesture().onEnded() {
-                    model.frameIndex = index
-                })
                 HStack(spacing:4) {
                     Button(action: {
                         model.scene = model.scene.frameDeleted(atIndex: index)
