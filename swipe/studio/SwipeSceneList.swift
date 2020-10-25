@@ -15,7 +15,7 @@ struct SwipeSceneList: View {
                 ForEach(0..<model.scene.frameCount, id:\.self) { index in
                     SwipeSceneItem(model:model, index: index)
                 }
-            }.frame(height:120)
+            }
         }
     }
 }
@@ -23,18 +23,20 @@ struct SwipeSceneList: View {
 struct SwipeSceneItem: View {
     @ObservedObject var model:SwipeCanvasModel
     let index:Int
+    let height:CGFloat = 150
     var body: some View {
         HStack(spacing:1) {
             VStack(spacing:1) {
+                let scale = height / model.scene.dimension.height
                 ZStack {
-                    SwipePreview(scene: model.scene, scale:0.1, frameIndex: index)
+                    SwipePreview(scene: model.scene, scale:scale, frameIndex: index)
                     if index == model.frameIndex {
                         Rectangle()
                             .stroke(lineWidth: 1.0)
                             .foregroundColor(.blue)
                     }
                 }
-                .frame(width:180)
+                .frame(width:model.scene.dimension.width * scale, height:height)
                 .gesture(TapGesture().onEnded() {
                     model.frameIndex = index
                 })
