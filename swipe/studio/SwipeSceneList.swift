@@ -22,14 +22,14 @@ struct SwipeSceneList: View {
 
 struct SwipeSceneItem: View {
     @ObservedObject var model:SwipeCanvasModel
-    let index:Int
+    @State var index:Int
     let height:CGFloat = 150
     var body: some View {
         HStack(spacing:1) {
             VStack(spacing:1) {
                 let scale = height / model.scene.dimension.height
                 ZStack {
-                    SwipePreview(scene: model.scene, scale:scale, frameIndex: index)
+                    SwipeView(scene: model.scene, frameIndex: $index, scale:scale)
                     if index == model.frameIndex {
                         Rectangle()
                             .stroke(lineWidth: 1.0)

@@ -23,7 +23,6 @@
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
 		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
 		746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
-		746E6627252A7B4C0041AEE0 /* SwipePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6626252A7B4B0041AEE0 /* SwipePreview.swift */; };
 		746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E662F252AC6180041AEE0 /* AppDelegate.swift */; };
 		746E6632252AC6180041AEE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6631252AC6180041AEE0 /* ContentView.swift */; };
 		746E6635252AC6180041AEE0 /* SwipeStudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 746E6633252AC6180041AEE0 /* SwipeStudio.xcdatamodeld */; };
@@ -32,7 +31,6 @@
 		746E663D252AC61B0041AEE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746E663B252AC61B0041AEE0 /* Main.storyboard */; };
 		746E6645252AC64A0041AEE0 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
 		746E6648252AC6530041AEE0 /* SwipeCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */; };
-		746E664B252AC6620041AEE0 /* SwipePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6626252A7B4B0041AEE0 /* SwipePreview.swift */; };
 		746E664C252AC6620041AEE0 /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
 		746E664D252AC6620041AEE0 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A095C251863FF00862F36 /* SwipeView.swift */; };
 		746E6650252AC6670041AEE0 /* SwipeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096625186B1D00862F36 /* SwipeElement.swift */; };
@@ -114,7 +112,6 @@
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
 		746E661E2527C6640041AEE0 /* Leap.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Leap.swipe; sourceTree = "<group>"; };
 		746E66222528C6510041AEE0 /* SwipeCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCanvas.swift; sourceTree = "<group>"; };
-		746E6626252A7B4B0041AEE0 /* SwipePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePreview.swift; sourceTree = "<group>"; };
 		746E662D252AC6180041AEE0 /* SwipeStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746E662F252AC6180041AEE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		746E6631252AC6180041AEE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				742A095C251863FF00862F36 /* SwipeView.swift */,
-				746E6626252A7B4B0041AEE0 /* SwipePreview.swift */,
 				74BD7105251A691500F41F3D /* SwipeFileView.swift */,
 			);
 			path = macOS;
@@ -473,7 +469,6 @@
 				746E66A5252CDD980041AEE0 /* SwipeSceneList.swift in Sources */,
 				746E66AA252D019F0041AEE0 /* SwipeCursor.swift in Sources */,
 				746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */,
-				746E6627252A7B4C0041AEE0 /* SwipePreview.swift in Sources */,
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
 				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
 				74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */,
@@ -512,7 +507,6 @@
 				746E664D252AC6620041AEE0 /* SwipeView.swift in Sources */,
 				746E6648252AC6530041AEE0 /* SwipeCALayer.swift in Sources */,
 				746E6650252AC6670041AEE0 /* SwipeElement.swift in Sources */,
-				746E664B252AC6620041AEE0 /* SwipePreview.swift in Sources */,
 				746E6678252AE4970041AEE0 /* SwipeSymbol.swift in Sources */,
 				746E66B0252D06EB0041AEE0 /* SwipeCanvasModel.swift in Sources */,
 				746E66AB252D019F0041AEE0 /* SwipeCursor.swift in Sources */,
