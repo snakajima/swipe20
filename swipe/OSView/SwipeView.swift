@@ -87,11 +87,7 @@ public struct SwipeView: OSViewRepresentable {
         }
         
         func makeLayer(scene:SwipeScene) -> CALayer {
-            let layer = renderer.makeLayer()
-            layer.anchorPoint = .zero
-            layer.frame = CGRect(origin: .zero, size: scene.dimension)
-            layer.backgroundColor = CGColor(red: 1, green: 1, blue: 0.8, alpha: 1)
-            return layer
+            renderer.makeLayer()
         }
         
         func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer?) {

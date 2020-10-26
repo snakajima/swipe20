@@ -8,7 +8,7 @@
 import SwiftUI
 
 let s_scriptSample:[String:Any] = [
-    "backgroundColor":"#FFFFCC",
+    //"backgroundColor":"#FFFFDD",
     "duration": Double(1.0),
     "animation": [
         "engine":"swipe"

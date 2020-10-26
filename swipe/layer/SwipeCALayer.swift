@@ -90,9 +90,9 @@ public struct SwipeCALayer {
 private extension SwipeScene {
     func makeLayer() -> CALayer {
         let layer = CALayer()
-        if let color = self.backgroundColor {
-            layer.backgroundColor = color
-        }
+        layer.anchorPoint = .zero
+        layer.frame = CGRect(origin: .zero, size: dimension)
+        layer.backgroundColor = self.backgroundColor ?? CGColor(red: 1, green: 1, blue: 1.0, alpha: 1)
         return layer
     }
 }
