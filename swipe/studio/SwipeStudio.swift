@@ -59,20 +59,27 @@ public struct SwipeStudio: View {
         #endif
         NavigationView {
             let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
-            NavigationLink(
-                destination:
-                    SwipeCanvas(model: model, previewHeight: previewHeight)
-                    .navigationTitle("Swipe Studio")
+#if os(macOS)
+            NavigationLink(destination:
+                SwipeCanvas(model: model, previewHeight: previewHeight)
+            ) {
+                Text("Sample")
+            }
+#else
+            NavigationLink(destination:
+                SwipeCanvas(model: model, previewHeight: previewHeight)
+                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        ToolbarItem {
+                        ToolbarItem(placement: .bottomBar) {
                             Button("Presse Me") {
                                 print("pressed")
                             }
                         }
-                    },
-                label: {
-                    Text("Sample")
-                })
+                    }
+            ) {
+                Text("Sample")
+            }
+#endif
         }
     }
 }
