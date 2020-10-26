@@ -9,18 +9,17 @@ import SwiftUI
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
-    let scale:CGFloat
     
-    init(model:SwipeCanvasModel, scale:CGFloat = 1.0) {
+    init(model:SwipeCanvasModel) {
         self.model = model
-        self.scale = scale
     }
 
-    func scaled(point:CGPoint) -> CGPoint {
+    func scaled(_ point:CGPoint, scale:CGFloat) -> CGPoint {
         return CGPoint(x: point.x / scale, y: point.y / scale)
     }
 
     public var body: some View {
+        let scale:CGFloat = 0.5
         return VStack(spacing:1) {
             SwipeSceneList(model: model)
             GeometryReader { geometry in
@@ -32,7 +31,7 @@ public struct SwipeCanvas: View {
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                     if !model.isDragging {
                         var startLocation = value.startLocation
-                        startLocation = scaled(point: startLocation)
+                        startLocation = scaled(startLocation, scale:scale)
                         model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
                         model.isDragging = true
                     }
