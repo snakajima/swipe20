@@ -69,7 +69,9 @@ private let s_script:[String:Any] = [
 
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)))
+        NavigationView {
+            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)))
+        }
     }
 }
 

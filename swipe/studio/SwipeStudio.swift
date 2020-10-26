@@ -13,7 +13,16 @@ public struct SwipeStudio: View {
         NavigationView {
             let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
             NavigationLink(
-                destination: SwipeCanvas(model: model),
+                destination:
+                    SwipeCanvas(model: model)
+                    .navigationTitle("Swipe Studio")
+                    .toolbar {
+                        ToolbarItem {
+                            Button("Presse Me") {
+                                print("pressed")
+                            }
+                        }
+                    },
                 label: {
                     Text("Sample")
                 })

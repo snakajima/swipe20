@@ -21,10 +21,8 @@
 		742A09772519BC0300862F36 /* kodim03.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A09762519BC0300862F36 /* kodim03.png */; };
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
-		7465DEF22547248E000E8D74 /* SwipeStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DEF12547248E000E8D74 /* SwipeStudio.swift */; };
 		7465DEF32547248E000E8D74 /* SwipeStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DEF12547248E000E8D74 /* SwipeStudio.swift */; };
 		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
-		746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
 		746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E662F252AC6180041AEE0 /* AppDelegate.swift */; };
 		746E6632252AC6180041AEE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6631252AC6180041AEE0 /* ContentView.swift */; };
 		746E6635252AC6180041AEE0 /* SwipeStudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 746E6633252AC6180041AEE0 /* SwipeStudio.xcdatamodeld */; };
@@ -65,11 +63,8 @@
 		746E6672252ADE610041AEE0 /* SVGIcons.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E6670252ADE600041AEE0 /* SVGIcons.swipe */; };
 		746E6677252AE4970041AEE0 /* SwipeSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6676252AE4970041AEE0 /* SwipeSymbol.swift */; };
 		746E6678252AE4970041AEE0 /* SwipeSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6676252AE4970041AEE0 /* SwipeSymbol.swift */; };
-		746E66A5252CDD980041AEE0 /* SwipeSceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */; };
 		746E66A6252CDD990041AEE0 /* SwipeSceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */; };
-		746E66AA252D019F0041AEE0 /* SwipeCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A9252D019F0041AEE0 /* SwipeCursor.swift */; };
 		746E66AB252D019F0041AEE0 /* SwipeCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A9252D019F0041AEE0 /* SwipeCursor.swift */; };
-		746E66AF252D06EB0041AEE0 /* SwipeCanvasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */; };
 		746E66B0252D06EB0041AEE0 /* SwipeCanvasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */; };
 		74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7AA2E251BA51E00495568 /* Playground2.swift */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
@@ -468,12 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				746E66AF252D06EB0041AEE0 /* SwipeCanvasModel.swift in Sources */,
 				746E6677252AE4970041AEE0 /* SwipeSymbol.swift in Sources */,
-				746E66A5252CDD980041AEE0 /* SwipeSceneList.swift in Sources */,
-				746E66AA252D019F0041AEE0 /* SwipeCursor.swift in Sources */,
-				7465DEF22547248E000E8D74 /* SwipeStudio.swift in Sources */,
-				746E66232528C6510041AEE0 /* SwipeCanvas.swift in Sources */,
 				742A096E2519124C00862F36 /* Playground.swift in Sources */,
 				742A095D251863FF00862F36 /* SwipeView.swift in Sources */,
 				74FAC26B251CC5CC00DD29EF /* SwipeCALayer.swift in Sources */,
@@ -721,7 +711,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.singularitysociety.SwipeStudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -745,7 +735,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.singularitysociety.SwipeStudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
