@@ -22,6 +22,29 @@
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
 		7465DEF32547248E000E8D74 /* SwipeStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DEF12547248E000E8D74 /* SwipeStudio.swift */; };
+		7465DF0925472CF4000E8D74 /* SwipeStudio_LiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */; };
+		7465DF0D25472CF5000E8D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7465DF0C25472CF5000E8D74 /* Assets.xcassets */; };
+		7465DF1025472CF5000E8D74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7465DF0F25472CF5000E8D74 /* Preview Assets.xcassets */; };
+		7465DF1225472CF5000E8D74 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF1125472CF5000E8D74 /* Persistence.swift */; };
+		7465DF1525472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF1325472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld */; };
+		7465DF2025472DB2000E8D74 /* SwipeSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6676252AE4970041AEE0 /* SwipeSymbol.swift */; };
+		7465DF2425472DBA000E8D74 /* SwipeStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DEF12547248E000E8D74 /* SwipeStudio.swift */; };
+		7465DF2525472DBA000E8D74 /* SwipeCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A9252D019F0041AEE0 /* SwipeCursor.swift */; };
+		7465DF2625472DBB000E8D74 /* SwipeCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66222528C6510041AEE0 /* SwipeCanvas.swift */; };
+		7465DF2725472DBB000E8D74 /* SwipeSceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */; };
+		7465DF2825472DBB000E8D74 /* SwipeCanvasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */; };
+		7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC26A251CC5CC00DD29EF /* SwipeCALayer.swift */; };
+		7465DF3025472DC5000E8D74 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A095C251863FF00862F36 /* SwipeView.swift */; };
+		7465DF3125472DC5000E8D74 /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
+		7465DF3525472DCA000E8D74 /* SwipeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096625186B1D00862F36 /* SwipeElement.swift */; };
+		7465DF3625472DCA000E8D74 /* SwipeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27B251D102900DD29EF /* SwipeAnimation.swift */; };
+		7465DF3725472DCA000E8D74 /* SwipeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096325186ADB00862F36 /* SwipeFrame.swift */; };
+		7465DF3825472DCA000E8D74 /* SwipeRenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC27E251D3D0E00DD29EF /* SwipeRenderLayer.swift */; };
+		7465DF3925472DCA000E8D74 /* SwipeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09692518D72700862F36 /* SwipeParser.swift */; };
+		7465DF3A25472DCA000E8D74 /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
+		7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096025186A9800862F36 /* SwipeScene.swift */; };
+		7465DF3C25472DCA000E8D74 /* SwipeRenderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC287251D604900DD29EF /* SwipeRenderProperties.swift */; };
+		7465DF4025472E20000E8D74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF0A25472CF4000E8D74 /* ContentView.swift */; };
 		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
 		746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E662F252AC6180041AEE0 /* AppDelegate.swift */; };
 		746E6632252AC6180041AEE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6631252AC6180041AEE0 /* ContentView.swift */; };
@@ -108,6 +131,14 @@
 		742A097D2519BC1C00862F36 /* kodim17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim17.png; sourceTree = "<group>"; };
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
 		7465DEF12547248E000E8D74 /* SwipeStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStudio.swift; sourceTree = "<group>"; };
+		7465DF0625472CF4000E8D74 /* SwipeStudio Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwipeStudio Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStudio_LiteApp.swift; sourceTree = "<group>"; };
+		7465DF0A25472CF4000E8D74 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7465DF0C25472CF5000E8D74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7465DF0F25472CF5000E8D74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7465DF1125472CF5000E8D74 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		7465DF1425472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwipeStudio_Lite.xcdatamodel; sourceTree = "<group>"; };
+		7465DF1625472CF5000E8D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746E661E2527C6640041AEE0 /* Leap.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Leap.swipe; sourceTree = "<group>"; };
 		746E66222528C6510041AEE0 /* SwipeCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCanvas.swift; sourceTree = "<group>"; };
 		746E662D252AC6180041AEE0 /* SwipeStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +187,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7465DF0325472CF4000E8D74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		746E662A252AC6180041AEE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,6 +212,7 @@
 				74BD7108251A6CDF00F41F3D /* resources */,
 				742A09462518632F00862F36 /* swipe20 */,
 				746E662E252AC6180041AEE0 /* SwipeStudio */,
+				7465DF0725472CF4000E8D74 /* SwipeStudio Lite */,
 				742A09452518632F00862F36 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -183,6 +222,7 @@
 			children = (
 				742A09442518632F00862F36 /* swipe20.app */,
 				746E662D252AC6180041AEE0 /* SwipeStudio.app */,
+				7465DF0625472CF4000E8D74 /* SwipeStudio Lite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,11 +295,33 @@
 			path = swipe;
 			sourceTree = "<group>";
 		};
+		7465DF0725472CF4000E8D74 /* SwipeStudio Lite */ = {
+			isa = PBXGroup;
+			children = (
+				7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */,
+				7465DF0A25472CF4000E8D74 /* ContentView.swift */,
+				7465DF0C25472CF5000E8D74 /* Assets.xcassets */,
+				7465DF1125472CF5000E8D74 /* Persistence.swift */,
+				7465DF1625472CF5000E8D74 /* Info.plist */,
+				7465DF1325472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld */,
+				7465DF0E25472CF5000E8D74 /* Preview Content */,
+			);
+			path = "SwipeStudio Lite";
+			sourceTree = "<group>";
+		};
+		7465DF0E25472CF5000E8D74 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7465DF0F25472CF5000E8D74 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		746E66212528C6330041AEE0 /* studio */ = {
 			isa = PBXGroup;
 			children = (
-				746E66222528C6510041AEE0 /* SwipeCanvas.swift */,
 				7465DEF12547248E000E8D74 /* SwipeStudio.swift */,
+				746E66222528C6510041AEE0 /* SwipeCanvas.swift */,
 				746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */,
 				746E66A9252D019F0041AEE0 /* SwipeCursor.swift */,
 				746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */,
@@ -344,6 +406,23 @@
 			productReference = 742A09442518632F00862F36 /* swipe20.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7465DF0525472CF4000E8D74 /* SwipeStudio Lite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7465DF1725472CF5000E8D74 /* Build configuration list for PBXNativeTarget "SwipeStudio Lite" */;
+			buildPhases = (
+				7465DF0225472CF4000E8D74 /* Sources */,
+				7465DF0325472CF4000E8D74 /* Frameworks */,
+				7465DF0425472CF4000E8D74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwipeStudio Lite";
+			productName = "SwipeStudio Lite";
+			productReference = 7465DF0625472CF4000E8D74 /* SwipeStudio Lite.app */;
+			productType = "com.apple.product-type.application";
+		};
 		746E662C252AC6180041AEE0 /* SwipeStudio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 746E6640252AC61B0041AEE0 /* Build configuration list for PBXNativeTarget "SwipeStudio" */;
@@ -367,11 +446,14 @@
 		742A093C2518632F00862F36 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					742A09432518632F00862F36 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					7465DF0525472CF4000E8D74 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 					746E662C252AC6180041AEE0 = {
 						CreatedOnToolsVersion = 12.0;
@@ -393,6 +475,7 @@
 			targets = (
 				742A09432518632F00862F36 /* swipe20 */,
 				746E662C252AC6180041AEE0 /* SwipeStudio */,
+				7465DF0525472CF4000E8D74 /* SwipeStudio Lite */,
 			);
 		};
 /* End PBXProject section */
@@ -424,6 +507,15 @@
 				74BD710E251ABCE800F41F3D /* HelloWorld.swipe in Resources */,
 				74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */,
 				74FAC300251E46F600DD29EF /* Slide1.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7465DF0425472CF4000E8D74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7465DF1025472CF5000E8D74 /* Preview Assets.xcassets in Resources */,
+				7465DF0D25472CF5000E8D74 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +571,34 @@
 				742A096425186ADB00862F36 /* SwipeFrame.swift in Sources */,
 				742A09482518632F00862F36 /* AppDelegate.swift in Sources */,
 				74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7465DF0225472CF4000E8D74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7465DF1225472CF5000E8D74 /* Persistence.swift in Sources */,
+				7465DF3725472DCA000E8D74 /* SwipeFrame.swift in Sources */,
+				7465DF4025472E20000E8D74 /* ContentView.swift in Sources */,
+				7465DF3925472DCA000E8D74 /* SwipeParser.swift in Sources */,
+				7465DF3C25472DCA000E8D74 /* SwipeRenderProperties.swift in Sources */,
+				7465DF2725472DBB000E8D74 /* SwipeSceneList.swift in Sources */,
+				7465DF3025472DC5000E8D74 /* SwipeView.swift in Sources */,
+				7465DF3625472DCA000E8D74 /* SwipeAnimation.swift in Sources */,
+				7465DF2425472DBA000E8D74 /* SwipeStudio.swift in Sources */,
+				7465DF3825472DCA000E8D74 /* SwipeRenderLayer.swift in Sources */,
+				7465DF2625472DBB000E8D74 /* SwipeCanvas.swift in Sources */,
+				7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */,
+				7465DF3125472DC5000E8D74 /* SwipeFileView.swift in Sources */,
+				7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */,
+				7465DF1525472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld in Sources */,
+				7465DF2025472DB2000E8D74 /* SwipeSymbol.swift in Sources */,
+				7465DF3525472DCA000E8D74 /* SwipeElement.swift in Sources */,
+				7465DF2825472DBB000E8D74 /* SwipeCanvasModel.swift in Sources */,
+				7465DF3A25472DCA000E8D74 /* SwipePath.swift in Sources */,
+				7465DF2525472DBA000E8D74 /* SwipeCursor.swift in Sources */,
+				7465DF0925472CF4000E8D74 /* SwipeStudio_LiteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +814,53 @@
 			};
 			name = Release;
 		};
+		7465DF1825472CF5000E8D74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SwipeStudio Lite/Preview Content\"";
+				DEVELOPMENT_TEAM = H34BY2CCCD;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SwipeStudio Lite/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.singularitysociety.SwipeStudio-Lite";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7465DF1925472CF5000E8D74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SwipeStudio Lite/Preview Content\"";
+				DEVELOPMENT_TEAM = H34BY2CCCD;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SwipeStudio Lite/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.singularitysociety.SwipeStudio-Lite";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		746E6641252AC61B0041AEE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -763,6 +930,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		7465DF1725472CF5000E8D74 /* Build configuration list for PBXNativeTarget "SwipeStudio Lite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7465DF1825472CF5000E8D74 /* Debug */,
+				7465DF1925472CF5000E8D74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		746E6640252AC61B0041AEE0 /* Build configuration list for PBXNativeTarget "SwipeStudio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -775,6 +951,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		7465DF1325472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7465DF1425472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodel */,
+			);
+			currentVersion = 7465DF1425472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodel */;
+			path = SwipeStudio_Lite.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		746E6633252AC6180041AEE0 /* SwipeStudio.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

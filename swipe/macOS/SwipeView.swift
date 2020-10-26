@@ -7,10 +7,18 @@
 import SwiftUI
 
 #if os(macOS)
+typealias OSViewRepresentable = NSViewRepresentable
+#else
+typealias OSViewRepresentable = UIViewRepresentable
+#endif
+
+#if os(macOS)
 class FlippedView : NSView {
     override var isFlipped: Bool { true }
 }
-public struct SwipeView: NSViewRepresentable {
+#endif
+
+public struct SwipeView: OSViewRepresentable {
     let scene:SwipeScene
     @Binding var frameIndex: Int
     let scale:CGFloat
@@ -25,6 +33,7 @@ public struct SwipeView: NSViewRepresentable {
         return Coordinator(self, scene:scene)
     }
     
+    #if os(macOS)
     public func makeNSView(context: Context) -> some NSView {
         let layer = CALayer()
         let swipeLayer = context.coordinator.makeLayer()
@@ -47,6 +56,28 @@ public struct SwipeView: NSViewRepresentable {
             context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer)
         }
     }
+    #else
+    public func makeUIView(context: Context) -> some UIView {
+        let swipeLayer = context.coordinator.makeLayer()
+        swipeLayer.anchorPoint = .zero
+        //swipeLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
+        let uiView = UIView()
+        uiView.layer.addSublayer(swipeLayer)
+        return uiView
+    }
+    
+    public func updateUIView(_ nsView: UIViewType, context: Context) {
+        let layer = nsView.layer
+        if let swipeLayer = layer.sublayers?[0] {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
+            CATransaction.commit()
+            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer)
+        }
+    }
+    #endif
+    
 
     public class Coordinator: NSObject {
         let view: SwipeView
@@ -101,5 +132,3 @@ struct SwipeView_Previews: PreviewProvider {
         }
     }
 }
-
-#endif

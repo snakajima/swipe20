@@ -4,7 +4,7 @@
 //
 //  Created by SATOSHI NAKAJIMA on 9/20/20.
 //
-import Foundation
+import CoreGraphics
 
 /// A structure that describes a frame, which consists of a collection of elements
 public struct SwipeFrame {
