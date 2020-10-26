@@ -26,11 +26,12 @@ public struct SwipeView: NSViewRepresentable {
     }
     
     public func makeNSView(context: Context) -> some NSView {
-        let swipeLayer = context.coordinator.makeLayer()
         let layer = CALayer()
-        layer.addSublayer(swipeLayer)
-        swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
+        let swipeLayer = context.coordinator.makeLayer()
+        swipeLayer.anchorPoint = .zero
         swipeLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
+        layer.addSublayer(swipeLayer)
+
         let nsView = FlippedView()
         nsView.layer = layer
         return nsView
@@ -39,6 +40,7 @@ public struct SwipeView: NSViewRepresentable {
     public func updateNSView(_ nsView: NSViewType, context: Context) {
         if let layer = nsView.layer,
            let swipeLayer = layer.sublayers?[0] {
+            swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
             context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
         }
     }
