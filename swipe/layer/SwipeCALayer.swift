@@ -123,7 +123,7 @@ private extension SwipeFrame {
 private extension SwipeElement {
     func makeLayer() -> CALayer {
         let layer:CALayer
-        if let text = script["text"] as? String {
+        if let text = self.text {
             let textLayer = CATextLayer()
             textLayer.string = text
             layer = textLayer
@@ -139,7 +139,7 @@ private extension SwipeElement {
             }
         }
         
-        if let filterInfo = script["filter"] as? [String:Any],
+        if let filterInfo = self.filter,
            let filterName = filterInfo["name"] as? String {
             if let filter = CIFilter(name: filterName) {
                 filter.name = "f0"
@@ -214,7 +214,7 @@ private extension SwipeElement {
         xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
         layer.transform = xf
 
-        if let filterInfo = script["filter"] as? [String:Any],
+        if let filterInfo = self.filter,
            let params = filterInfo["params"] as? [String:Any] {
             for (key, value) in params {
                 layer.setValue(value, forKeyPath: "filters.f0.\(key)")

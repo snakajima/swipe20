@@ -14,7 +14,6 @@ import Cocoa
 
 /// A structure that describes an element to be displayed on a scene
 public struct SwipeElement {
-    let script:[String:Any]
     let id:String
     let image:CGImage?
     let filePath:String?
@@ -31,6 +30,8 @@ public struct SwipeElement {
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
     let src:[String:Any]?
+    let text:String?
+    let filter:[String:Any]?
     public var rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
@@ -38,9 +39,9 @@ public struct SwipeElement {
 
     /// Initializes an element with specified description. base is an element on the previous frame with the same id
     init(_ script:[String:Any], id:String, base:SwipeElement?) {
-        self.script = script
         self.id = id
-
+        self.text = script["text"] as? String
+        self.filter = script["filter"] as? [String:Any]
         var filePath:String? = nil
         let origin = base?.frame.origin ?? CGPoint.zero
         let size = base?.frame.size ?? CGSize(width: 100, height: 100)
