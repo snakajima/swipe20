@@ -8,9 +8,10 @@
 import SwiftUI
 
 public struct SwipeStudio: View {
-    let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
+    
     public var body: some View {
         NavigationView {
+            let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
             NavigationLink(
                 destination: SwipeCanvas(model: model),
                 label: {
