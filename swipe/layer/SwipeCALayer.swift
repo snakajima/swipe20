@@ -47,7 +47,7 @@ public struct SwipeCALayer {
         if transition == .same {
             return
         }
-
+        
         var duration = frame.duration
         if transition == .prev {
             duration = scene.frameAt(index:lastIndex!)?.duration

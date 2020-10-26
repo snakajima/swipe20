@@ -36,8 +36,7 @@ public struct SwipeView: OSViewRepresentable {
     #if os(macOS)
     public func makeNSView(context: Context) -> some NSView {
         let layer = CALayer()
-        let swipeLayer = context.coordinator.makeLayer()
-        swipeLayer.anchorPoint = .zero
+        let swipeLayer = context.coordinator.makeLayer(scene:scene)
         swipeLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
         layer.addSublayer(swipeLayer)
 
@@ -58,9 +57,7 @@ public struct SwipeView: OSViewRepresentable {
     }
     #else
     public func makeUIView(context: Context) -> some UIView {
-        let swipeLayer = context.coordinator.makeLayer()
-        swipeLayer.anchorPoint = .zero
-        //swipeLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
+        let swipeLayer = context.coordinator.makeLayer(scene:scene)
         let uiView = UIView()
         uiView.layer.addSublayer(swipeLayer)
         return uiView
@@ -89,8 +86,12 @@ public struct SwipeView: OSViewRepresentable {
             self.renderer = SwipeCALayer(scene: scene)
         }
         
-        func makeLayer() -> CALayer {
-            renderer.makeLayer()
+        func makeLayer(scene:SwipeScene) -> CALayer {
+            let layer = renderer.makeLayer()
+            layer.anchorPoint = .zero
+            layer.frame = CGRect(origin: .zero, size: scene.dimension)
+            layer.backgroundColor = CGColor(red: 1, green: 1, blue: 0.8, alpha: 1)
+            return layer
         }
         
         func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer?) {

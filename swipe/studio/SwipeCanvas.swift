@@ -49,6 +49,7 @@ public struct SwipeCanvas: View {
                 }))
             }
         }
+        .background(Color.gray)
     }
 }
 
