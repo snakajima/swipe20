@@ -142,7 +142,25 @@ public struct SwipeElement {
     }
     
     var script:[String:Any] {
-        return [:]
+        var script:[String:Any] = [
+            "x":frame.minX,
+            "y":frame.minY,
+            "w":frame.width,
+            "h":frame.height
+        ]
+        if let text = self.text {
+            script["text"] = text
+        }
+        if let filter = self.filter {
+            script["filter"] = filter
+        }
+        if let lineWidth = self.lineWidth {
+            script["lineWidth"] = lineWidth
+        }
+        if let cornerRadius = self.cornerRadius {
+            script["cornerRadius"] = cornerRadius
+        }
+        return script
     }
 }
 
