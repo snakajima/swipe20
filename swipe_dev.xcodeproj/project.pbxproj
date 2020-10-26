@@ -285,13 +285,12 @@
 			path = core;
 			sourceTree = "<group>";
 		};
-		742DFAE42522100400A39C80 /* macOS */ = {
+		742DFAE42522100400A39C80 /* OSView */ = {
 			isa = PBXGroup;
 			children = (
 				742A095C251863FF00862F36 /* SwipeView.swift */,
-				74BD7105251A691500F41F3D /* SwipeFileView.swift */,
 			);
-			path = macOS;
+			path = OSView;
 			sourceTree = "<group>";
 		};
 		742DFAE52522109A00A39C80 /* layer */ = {
@@ -305,10 +304,11 @@
 		74360A052520C0CA009EDBAF /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				7465DF60254735BB000E8D74 /* etc */,
 				746E6675252AE47D0041AEE0 /* util */,
 				746E66212528C6330041AEE0 /* studio */,
 				742DFAE52522109A00A39C80 /* layer */,
-				742DFAE42522100400A39C80 /* macOS */,
+				742DFAE42522100400A39C80 /* OSView */,
 				742A095B2518639C00862F36 /* core */,
 			);
 			path = swipe;
@@ -334,6 +334,14 @@
 				7465DF0F25472CF5000E8D74 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7465DF60254735BB000E8D74 /* etc */ = {
+			isa = PBXGroup;
+			children = (
+				74BD7105251A691500F41F3D /* SwipeFileView.swift */,
+			);
+			path = etc;
 			sourceTree = "<group>";
 		};
 		746E66212528C6330041AEE0 /* studio */ = {
