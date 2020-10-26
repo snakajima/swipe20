@@ -19,24 +19,17 @@ public protocol SwipeRenderProperties {
 }
 
 extension SwipeRenderProperties {
-    func convert(frame:CGRect, flipped:CGFloat?) -> CGRect {
-        if let flipped = flipped {
-            return CGRect(x: frame.minX, y: flipped - frame.minY - frame.height, width: frame.width, height: frame.height)
-        }
-        return frame
-    }
-    
     /// Applies tween properties to the element
-    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?, flipped:CGFloat? = nil) {
+    func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?) {
         var xf = CATransform3DIdentity
         
         guard let from = from else {
             target.opacity = opacity
-            target.frame = convert(frame:frame, flipped: flipped)
+            target.frame = frame
             xf.m34 = -1.0/500; // add the perspective
             xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
             xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
-            xf = CATransform3DRotate(xf, flipped == nil ? rotZ : -rotZ, 0, 0, 1)
+            xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
             target.transform = xf
             return
         }
@@ -49,7 +42,7 @@ extension SwipeRenderProperties {
                                   y: from.frame.minY.mix(frame.minY, ratio),
                                   width: from.frame.width.mix(frame.width, ratio),
                                   height: from.frame.height.mix(frame.height, ratio))
-            let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : flipped == nil ? 1.0 : 0.0)
+            let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : 1.0)
             
             switch(animationStyle) {
             case .bounce:
@@ -71,7 +64,7 @@ extension SwipeRenderProperties {
             if ratio == 1.0 || ratio == 0.0 {
                 target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             }
-            target.frame = convert(frame:newFrame, flipped: flipped)
+            target.frame = newFrame
         }
         
         let rotX = from.rotX.mix(self.rotX, ratio)
@@ -81,7 +74,7 @@ extension SwipeRenderProperties {
         xf.m34 = -1.0/500; // add the perspective
         xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
         xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
-        xf = CATransform3DRotate(xf, flipped==nil ? rotZ : -rotZ, 0, 0, 1)
+        xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
         target.transform = xf
     }
     
