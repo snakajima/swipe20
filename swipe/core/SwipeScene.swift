@@ -43,18 +43,18 @@ public struct SwipeScene {
     }
     
     private(set) var frames:[SwipeFrame]
-    let script:[String:Any]?
     let dimension:CGSize
     let backgroundColor:CGColor?
     let duration:Double
     let playMode:PlayMode
+    let animation:[String:Any]?
     var uuid = UUID()
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
 
     /// Initializes a scene with specified description (in Swipe script)
     public init(_ script:[String:Any]?) {
-        self.script = script
+        self.animation = script?["animation"] as? [String:Any]
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         var base:SwipeFrame? = nil
         

@@ -15,8 +15,7 @@ public struct SwipeCALayer {
     let useSwipeAnimation:Bool
     init(scene:SwipeScene) {
         self.scene = scene
-        if let animation = scene.script?["animation"] as? [String:Any],
-           let engine = animation["engine"] as? String, engine == "swipe" {
+        if let engine = scene.animation?["engine"] as? String, engine == "swipe" {
             self.useSwipeAnimation = true
         } else {
             self.useSwipeAnimation = false
