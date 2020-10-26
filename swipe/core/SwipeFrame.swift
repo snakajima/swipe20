@@ -49,6 +49,10 @@ public struct SwipeFrame {
     }
     
     var script:[String:Any] {
-        return [:]
+        return [
+            "elements": ids.map {
+                elements[$0]!.script
+            }
+        ]
     }
 }

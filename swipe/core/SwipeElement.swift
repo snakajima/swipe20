@@ -140,6 +140,10 @@ public struct SwipeElement {
         element.rotZ += rotZ > .pi ? rotZ - 2 * .pi : rotZ
         return element
     }
+    
+    var script:[String:Any] {
+        return [:]
+    }
 }
 
 extension SwipeElement : SwipeRenderProperties {
