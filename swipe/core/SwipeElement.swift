@@ -161,6 +161,14 @@ public struct SwipeElement {
         if let cornerRadius = self.cornerRadius {
             script["cornerRadius"] = cornerRadius
         }
+        if let backgroundColor = self.backgroundColor,
+           let components = backgroundColor.components, components.count == 4 {
+            script["backgroundColor"] = components
+        }
+        if let foregroundColor = self.foregroundColor,
+           let components = foregroundColor.components, components.count == 4 {
+            script["foregroundColor"] = components
+        }
         return script
     }
 }
