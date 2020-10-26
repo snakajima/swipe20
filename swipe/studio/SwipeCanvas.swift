@@ -19,10 +19,10 @@ public struct SwipeCanvas: View {
     }
 
     public var body: some View {
-        let scale:CGFloat = 0.5
         return VStack(spacing:1) {
             SwipeSceneList(model: model)
             GeometryReader { geometry in
+                let scale:CGFloat = geometry.size.height / model.scene.dimension.height
                 ZStack {
                     SwipeView(scene: model.scene, frameIndex: $model.frameIndex, scale:scale)
                     if let _ = model.selectedElement {

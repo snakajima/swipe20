@@ -40,7 +40,10 @@ public struct SwipeView: NSViewRepresentable {
     public func updateNSView(_ nsView: NSViewType, context: Context) {
         if let layer = nsView.layer,
            let swipeLayer = layer.sublayers?[0] {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
             swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
+            CATransaction.commit()
             context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer)
         }
     }
