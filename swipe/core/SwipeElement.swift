@@ -143,6 +143,7 @@ public struct SwipeElement {
     
     var script:[String:Any] {
         var script:[String:Any] = [
+            "id":id,
             "x":frame.minX,
             "y":frame.minY,
             "w":frame.width,
