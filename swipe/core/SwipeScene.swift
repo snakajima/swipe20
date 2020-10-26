@@ -151,10 +151,15 @@ public struct SwipeScene {
         var script:[String:Any] = [
             "dimansion":[dimension.width, dimension.height],
             "duration":duration,
+            // TODO: backgroundColor
         ]
+        if playMode != .none {
+            script["playmode"] = playMode.rawValue
+        }
         if let animation = self.animation {
             script["animation"] = animation
         }
+        
         return script
     }
 }
