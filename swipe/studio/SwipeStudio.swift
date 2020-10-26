@@ -73,7 +73,10 @@ public struct SwipeStudio: View {
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button("Presse Me") {
-                                print("pressed", scene.script)
+                                let script = scene.script
+                                let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
+                                let str = String(bytes: data!, encoding: .utf8)
+                                print("pressed", str ?? "#ERR")
                             }
                         }
                     }
