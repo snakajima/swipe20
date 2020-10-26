@@ -58,7 +58,8 @@ public struct SwipeStudio: View {
         let previewHeight:CGFloat = 100
         #endif
         NavigationView {
-            let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
+            let scene = SwipeScene(s_scriptSample)
+            let model = SwipeCanvasModel(scene:scene)
 #if os(macOS)
             NavigationLink(destination:
                 SwipeCanvas(model: model, previewHeight: previewHeight)
@@ -72,7 +73,7 @@ public struct SwipeStudio: View {
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button("Presse Me") {
-                                print("pressed")
+                                print("pressed", scene.script)
                             }
                         }
                     }

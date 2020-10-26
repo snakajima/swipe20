@@ -147,4 +147,14 @@ public struct SwipeScene {
         return scene
     }
 
+    var script:[String:Any] {
+        var script:[String:Any] = [
+            "dimansion":[dimension.width, dimension.height],
+            "duration":duration,
+        ]
+        if let animation = self.animation {
+            script["animation"] = animation
+        }
+        return script
+    }
 }
