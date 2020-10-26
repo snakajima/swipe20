@@ -58,8 +58,7 @@ public struct SwipeStudio: View {
         let previewHeight:CGFloat = 100
         #endif
         NavigationView {
-            let scene = SwipeScene(s_scriptSample)
-            let model = SwipeCanvasModel(scene:scene)
+            let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
 #if os(macOS)
             NavigationLink(destination:
                 SwipeCanvas(model: model, previewHeight: previewHeight)
@@ -73,7 +72,7 @@ public struct SwipeStudio: View {
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             Button("Presse Me") {
-                                let script = scene.script
+                                let script = model.scene.script
                                 let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
                                 let str = String(bytes: data!, encoding: .utf8)
                                 print("pressed", str ?? "#ERR")
