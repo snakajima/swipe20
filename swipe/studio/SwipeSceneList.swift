@@ -9,11 +9,12 @@ import SwiftUI
 
 struct SwipeSceneList: View {
     @ObservedObject var model:SwipeCanvasModel
+    let previewHeight:CGFloat
     var body: some View {
         ScrollView (.horizontal, showsIndicators: true) {
             HStack(spacing:1) {
                 ForEach(0..<model.scene.frameCount, id:\.self) { index in
-                    SwipeSceneItem(model:model, index: index)
+                    SwipeSceneItem(model:model, index: index, previewHeight: previewHeight)
                 }
             }
         }
@@ -23,11 +24,11 @@ struct SwipeSceneList: View {
 struct SwipeSceneItem: View {
     @ObservedObject var model:SwipeCanvasModel
     @State var index:Int
-    let height:CGFloat = 150
+    let previewHeight:CGFloat
     var body: some View {
         HStack(spacing:1) {
             VStack(spacing:1) {
-                let scale = height / model.scene.dimension.height
+                let scale = previewHeight / model.scene.dimension.height
                 ZStack {
                     SwipeView(scene: model.scene, frameIndex: $index, scale:scale)
                     if index == model.frameIndex {
@@ -36,7 +37,7 @@ struct SwipeSceneItem: View {
                             .foregroundColor(.blue)
                     }
                 }
-                .frame(width:model.scene.dimension.width * scale, height:height)
+                .frame(width:model.scene.dimension.width * scale, height:previewHeight)
                 .gesture(TapGesture().onEnded() {
                     model.frameIndex = index
                 })

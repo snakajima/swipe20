@@ -9,9 +9,11 @@ import SwiftUI
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
+    let previewHeight:CGFloat
     
-    init(model:SwipeCanvasModel) {
+    init(model:SwipeCanvasModel, previewHeight:CGFloat = 150) {
         self.model = model
+        self.previewHeight = previewHeight
     }
 
     func scaled(_ point:CGPoint, scale:CGFloat) -> CGPoint {
@@ -20,7 +22,7 @@ public struct SwipeCanvas: View {
 
     public var body: some View {
         return VStack(spacing:1) {
-            SwipeSceneList(model: model)
+            SwipeSceneList(model: model, previewHeight: previewHeight)
             GeometryReader { geometry in
                 let scale:CGFloat = geometry.size.height / model.scene.dimension.height
                 ZStack {
