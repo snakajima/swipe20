@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-private let s_script:[String:Any] = [
+let s_scriptSample:[String:Any] = [
     "backgroundColor":"#FFFFCC",
     "duration": Double(1.0),
     "animation": [
@@ -50,9 +50,8 @@ private let s_script:[String:Any] = [
 ]
 
 struct ContentView: View {
-    let scene = SwipeScene(s_script)
     var body: some View {
-        SwipeCanvas(model:SwipeCanvasModel(scene:scene))
+        SwipeStudio()
     }
 }
 
