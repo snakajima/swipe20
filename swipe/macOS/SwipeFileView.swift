@@ -24,7 +24,7 @@ public struct SwipeFileView: View {
 
     public var body: some View {
         VStack {
-            SwipeView(scene:scene, frameIndex:$frameIndex)
+            SwipeView(scene:scene, frameIndex:$frameIndex, scale:1.0)
             HStack {
                 Button("Prev") {
                     self.frameIndex -= 1

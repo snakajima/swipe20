@@ -15,7 +15,7 @@ public struct SwipeView: NSViewRepresentable {
     @Binding var frameIndex: Int
     let scale:CGFloat
     
-    public init(scene:SwipeScene, frameIndex:Binding<Int>, scale:CGFloat = 1.0) {
+    public init(scene:SwipeScene, frameIndex:Binding<Int>, scale:CGFloat) {
         self.scene = scene
         self._frameIndex = frameIndex
         self.scale = scale
@@ -41,7 +41,7 @@ public struct SwipeView: NSViewRepresentable {
         if let layer = nsView.layer,
            let swipeLayer = layer.sublayers?[0] {
             swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
-            context.coordinator.move(scene:scene, to: frameIndex, layer:swipeLayer)
+            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer)
         }
     }
 
@@ -59,7 +59,7 @@ public struct SwipeView: NSViewRepresentable {
             renderer.makeLayer()
         }
         
-        func move(scene:SwipeScene, to frameIndex:Int, layer:CALayer?) {
+        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer?) {
             if scene.uuid != renderer.scene.uuid {
                 self.renderer.scene = scene
                 self.lastIndex = nil
@@ -94,7 +94,7 @@ struct SwipeView_Previews: PreviewProvider {
     @State static var frameIndex = 0
     static var previews: some View {
         VStack {
-            SwipeView(scene:s_scene, frameIndex:$frameIndex)
+            SwipeView(scene:s_scene, frameIndex:$frameIndex, scale:1.0)
         }
     }
 }
