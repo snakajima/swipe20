@@ -45,6 +45,25 @@
 		7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A096025186A9800862F36 /* SwipeScene.swift */; };
 		7465DF3C25472DCA000E8D74 /* SwipeRenderProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC287251D604900DD29EF /* SwipeRenderProperties.swift */; };
 		7465DF4025472E20000E8D74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF0A25472CF4000E8D74 /* ContentView.swift */; };
+		7465DF4725473148000E8D74 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
+		7465DF4825473148000E8D74 /* Slides.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC304251E480200DD29EF /* Slides.swipe */; };
+		7465DF4925473148000E8D74 /* kodim03.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A09762519BC0300862F36 /* kodim03.png */; };
+		7465DF4A25473148000E8D74 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
+		7465DF4B25473148000E8D74 /* Rotation.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7111251AC0CB00F41F3D /* Rotation.swipe */; };
+		7465DF4C25473148000E8D74 /* HelloWorld.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD710D251ABCE800F41F3D /* HelloWorld.swipe */; };
+		7465DF4D25473148000E8D74 /* AnchorPoint.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC266251CC09400DD29EF /* AnchorPoint.swipe */; };
+		7465DF4E25473148000E8D74 /* Bounce.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC284251D5CEE00DD29EF /* Bounce.swipe */; };
+		7465DF4F25473148000E8D74 /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
+		7465DF5025473148000E8D74 /* pngwave.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FA251DBA8E00DD29EF /* pngwave.png */; };
+		7465DF5125473148000E8D74 /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
+		7465DF5225473148000E8D74 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
+		7465DF5325473148000E8D74 /* Duration.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7119251B094100F41F3D /* Duration.swipe */; };
+		7465DF5425473148000E8D74 /* Slide0.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FE251E46F600DD29EF /* Slide0.png */; };
+		7465DF5525473148000E8D74 /* Nested.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7114251AC9CE00F41F3D /* Nested.swipe */; };
+		7465DF5625473148000E8D74 /* Slide2.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FF251E46F600DD29EF /* Slide2.png */; };
+		7465DF5725473148000E8D74 /* Opacity.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC263251CBDC600DD29EF /* Opacity.swipe */; };
+		7465DF5825473148000E8D74 /* SVGIcons.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E6670252ADE600041AEE0 /* SVGIcons.swipe */; };
+		7465DF5925473148000E8D74 /* Slide1.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC2FD251E46F600DD29EF /* Slide1.png */; };
 		746E661F2527C6640041AEE0 /* Leap.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 746E661E2527C6640041AEE0 /* Leap.swipe */; };
 		746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E662F252AC6180041AEE0 /* AppDelegate.swift */; };
 		746E6632252AC6180041AEE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E6631252AC6180041AEE0 /* ContentView.swift */; };
@@ -514,7 +533,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7465DF4B25473148000E8D74 /* Rotation.swipe in Resources */,
+				7465DF4F25473148000E8D74 /* Shapes.swipe in Resources */,
+				7465DF5625473148000E8D74 /* Slide2.png in Resources */,
+				7465DF5025473148000E8D74 /* pngwave.png in Resources */,
 				7465DF1025472CF5000E8D74 /* Preview Assets.xcassets in Resources */,
+				7465DF5525473148000E8D74 /* Nested.swipe in Resources */,
+				7465DF5225473148000E8D74 /* Leap.swipe in Resources */,
+				7465DF4C25473148000E8D74 /* HelloWorld.swipe in Resources */,
+				7465DF4725473148000E8D74 /* Jump.swipe in Resources */,
+				7465DF4D25473148000E8D74 /* AnchorPoint.swipe in Resources */,
+				7465DF4A25473148000E8D74 /* kodim17.png in Resources */,
+				7465DF4E25473148000E8D74 /* Bounce.swipe in Resources */,
+				7465DF5825473148000E8D74 /* SVGIcons.swipe in Resources */,
+				7465DF5325473148000E8D74 /* Duration.swipe in Resources */,
+				7465DF5125473148000E8D74 /* sample1.swipe in Resources */,
+				7465DF5925473148000E8D74 /* Slide1.png in Resources */,
+				7465DF4825473148000E8D74 /* Slides.swipe in Resources */,
+				7465DF4925473148000E8D74 /* kodim03.png in Resources */,
+				7465DF5725473148000E8D74 /* Opacity.swipe in Resources */,
+				7465DF5425473148000E8D74 /* Slide0.png in Resources */,
 				7465DF0D25472CF5000E8D74 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
