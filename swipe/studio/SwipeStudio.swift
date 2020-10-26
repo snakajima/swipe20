@@ -52,11 +52,16 @@ let s_scriptSample:[String:Any] = [
 public struct SwipeStudio: View {
     
     public var body: some View {
+        #if os(macOS)
+        let previewHeight:CGFloat = 150
+        #else
+        let previewHeight:CGFloat = 100
+        #endif
         NavigationView {
             let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
             NavigationLink(
                 destination:
-                    SwipeCanvas(model: model)
+                    SwipeCanvas(model: model, previewHeight: previewHeight)
                     .navigationTitle("Swipe Studio")
                     .toolbar {
                         ToolbarItem {

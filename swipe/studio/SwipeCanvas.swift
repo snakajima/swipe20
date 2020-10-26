@@ -11,7 +11,7 @@ public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
     let previewHeight:CGFloat
     
-    init(model:SwipeCanvasModel, previewHeight:CGFloat = 150) {
+    init(model:SwipeCanvasModel, previewHeight:CGFloat) {
         self.model = model
         self.previewHeight = previewHeight
     }
@@ -70,7 +70,7 @@ private let s_script:[String:Any] = [
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)))
+            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)), previewHeight: 150)
         }
     }
 }
