@@ -152,6 +152,7 @@ public struct SwipeScene {
             "dimansion":[dimension.width, dimension.height],
             "duration":duration,
             // TODO: backgroundColor
+            "frame": frames.map { $0.script }
         ]
         if playMode != .none {
             script["playmode"] = playMode.rawValue
