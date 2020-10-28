@@ -83,7 +83,7 @@ public struct SwipeStudio: View {
                                     let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
                                     let str = String(bytes: data!, encoding: .utf8)
                                     print("pressed", str ?? "#ERR")
-                                    //self.scenes[index] = SwipeScene(script)
+                                    self.scenes[index] = SwipeScene(script)
                                 }
                             }
                         }
