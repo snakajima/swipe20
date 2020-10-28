@@ -16,7 +16,7 @@ import Cocoa
 public struct SwipeElement {
     let id:String
     let image:CGImage?
-    let filePath:String?
+    private let imagePath:String?
     let path:CGPath?
     
     private(set) public var frame:CGRect
@@ -42,7 +42,7 @@ public struct SwipeElement {
         self.id = id
         self.text = script["text"] as? String
         self.filter = script["filter"] as? [String:Any]
-        var filePath:String? = nil
+        var imagePath:String? = nil
         let origin = base?.frame.origin ?? CGPoint.zero
         let size = base?.frame.size ?? CGSize(width: 100, height: 100)
         self.frame = CGRect(x: SwipeParser.asCGFloat(script["x"]) ?? origin.x,
@@ -87,11 +87,11 @@ public struct SwipeElement {
             #elseif os(macOS)
             self.image = NSImage(named: imageName)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
             #endif
-            filePath = Bundle.main.path(forResource: imageName, ofType: nil)
+            imagePath = Bundle.main.path(forResource: imageName, ofType: nil)
         } else {
             self.image = nil
         }
-        self.filePath = filePath
+        self.imagePath = imagePath
         //
         // NOTE: In order to eliminate unnecessary computation, we don't inherit path prop
         // from the base element.
@@ -151,6 +151,9 @@ public struct SwipeElement {
         ]
         if let text = self.text {
             script["text"] = text
+        }
+        if let imagePath = self.imagePath {
+            script["img"] = imagePath
         }
         if let filter = self.filter {
             script["filter"] = filter
