@@ -57,8 +57,14 @@ public struct SwipeStudio: View {
         #else
         let previewHeight:CGFloat = 100
         #endif
+        
+        let scenes = [
+            SwipeScene(s_scriptSample),
+            SwipeScene(s_scriptSample),
+            SwipeScene(s_scriptSample),
+        ]
+        let model = SwipeCanvasModel(scene:scenes[0])
         NavigationView {
-            let model = SwipeCanvasModel(scene:SwipeScene(s_scriptSample))
 #if os(macOS)
             NavigationLink(destination:
                 SwipeCanvas(model: model, previewHeight: previewHeight)
