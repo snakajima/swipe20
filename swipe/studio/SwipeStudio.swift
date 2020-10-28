@@ -63,32 +63,34 @@ public struct SwipeStudio: View {
             SwipeScene(s_scriptSample),
             SwipeScene(s_scriptSample),
         ]
-        let model = SwipeCanvasModel(scene:scenes[0])
         NavigationView {
+            List(scenes) { scene in
+                let model = SwipeCanvasModel(scene:scene)
 #if os(macOS)
-            NavigationLink(destination:
-                SwipeCanvas(model: model, previewHeight: previewHeight)
-            ) {
-                Text("Sample")
-            }
+                NavigationLink(destination:
+                    SwipeCanvas(model: model, previewHeight: previewHeight)
+                ) {
+                    Text("Sample")
+                }
 #else
-            NavigationLink(destination:
-                SwipeCanvas(model: model, previewHeight: previewHeight)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                            Button("Presse Me") {
-                                let script = model.scene.script
-                                let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
-                                let str = String(bytes: data!, encoding: .utf8)
-                                print("pressed", str ?? "#ERR")
+                NavigationLink(destination:
+                    SwipeCanvas(model: model, previewHeight: previewHeight)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .bottomBar) {
+                                Button("Presse Me") {
+                                    let script = model.scene.script
+                                    let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
+                                    let str = String(bytes: data!, encoding: .utf8)
+                                    print("pressed", str ?? "#ERR")
+                                }
                             }
                         }
-                    }
-            ) {
-                Text("Sample")
-            }
+                ) {
+                    Text("Sample")
+                }
 #endif
+            }
         }
     }
 }

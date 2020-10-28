@@ -91,7 +91,7 @@ public struct SwipeView: OSViewRepresentable {
         }
         
         func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer?) {
-            if scene.uuid != renderer.scene.uuid {
+            if scene.id != renderer.scene.id {
                 self.renderer.scene = scene
                 self.lastIndex = nil
             }

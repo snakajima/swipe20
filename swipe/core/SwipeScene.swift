@@ -31,7 +31,7 @@ public enum SwipeTransition {
 }
 
 /// A structure that describes a series of frames to be presented animted between
-public struct SwipeScene {
+public struct SwipeScene: Identifiable {
     /// It controls the auto-play behavior
     enum PlayMode :String {
         /// It does not auto-play
@@ -48,7 +48,7 @@ public struct SwipeScene {
     let duration:Double
     let playMode:PlayMode
     let animation:[String:Any]?
-    var uuid = UUID()
+    public var id = UUID()
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
 
@@ -112,7 +112,7 @@ public struct SwipeScene {
     
     func cloned() -> SwipeScene {
         var scene = self
-        scene.uuid = UUID()
+        scene.id = UUID()
         return scene
     }
 
