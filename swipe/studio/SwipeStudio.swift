@@ -50,7 +50,12 @@ let s_scriptSample:[String:Any] = [
 ]
 
 public struct SwipeStudio: View {
-    
+    @State private var scenes = [
+        SwipeScene(s_scriptSample),
+        SwipeScene(s_scriptSample),
+        SwipeScene(s_scriptSample),
+    ]
+
     public var body: some View {
         #if os(macOS)
         let previewHeight:CGFloat = 150
@@ -58,14 +63,9 @@ public struct SwipeStudio: View {
         let previewHeight:CGFloat = 100
         #endif
         
-        let scenes = [
-            SwipeScene(s_scriptSample),
-            SwipeScene(s_scriptSample),
-            SwipeScene(s_scriptSample),
-        ]
         NavigationView {
-            List(scenes) { scene in
-                let model = SwipeCanvasModel(scene:scene)
+            List(scenes.indices) { index in
+                let model = SwipeCanvasModel(scene:scenes[index])
 #if os(macOS)
                 NavigationLink(destination:
                     SwipeCanvas(model: model, previewHeight: previewHeight)
@@ -83,6 +83,7 @@ public struct SwipeStudio: View {
                                     let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
                                     let str = String(bytes: data!, encoding: .utf8)
                                     print("pressed", str ?? "#ERR")
+                                    //self.scenes[index] = SwipeScene(script)
                                 }
                             }
                         }
