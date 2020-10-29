@@ -180,6 +180,10 @@ public struct SwipeElement {
            let components = foregroundColor.components, components.count == 4 {
             script["foregroundColor"] = components
         }
+        if let fillColor = self.fillColor,
+           let components = fillColor.components, components.count == 4 {
+            script["fillColor"] = components
+        }
         return script
     }
 }

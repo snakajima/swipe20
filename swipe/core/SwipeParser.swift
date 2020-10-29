@@ -71,7 +71,9 @@ public struct SwipeParser {
     ]
     
     static func parseColor(_ value:Any?) -> CGColor? {
-        if let rgba = value as? [String: Any] {
+        if let components = value as? [CGFloat], components.count == 4 {
+            return OSColor(red: components[0], green: components[1], blue: components[2], alpha: components[3]).cgColor
+        } else if let rgba = value as? [String: Any] {
             var red:CGFloat = 0.0, blue:CGFloat = 0.0, green:CGFloat = 0.0
             var alpha:CGFloat = 1.0
             if let v = rgba["r"] as? CGFloat {
