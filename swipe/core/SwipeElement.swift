@@ -17,6 +17,7 @@ public struct SwipeElement {
     let id:String
     let image:CGImage?
     private let imagePath:String?
+    private let animation:[String:Any]?
     let path:CGPath?
     
     private(set) public var frame:CGRect
@@ -113,9 +114,13 @@ public struct SwipeElement {
         self.subElements = elements
 
         var style = SwipeAnimation.Style.normal
-        if let animation = script["animation"] as? [String:Any],
-           let rawValue = animation["style"] as? String {
+        if let animation = script["animation"] as? [String:Any] {
+            self.animation = animation
+           if let rawValue = animation["style"] as? String {
             style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal
+           }
+        } else {
+            self.animation = nil
         }
         self.animationStyle = style
     }
@@ -154,6 +159,9 @@ public struct SwipeElement {
         }
         if let imagePath = self.imagePath {
             script["img"] = imagePath
+        }
+        if let animation = self.animation {
+            script["animation"] = animation
         }
         if let filter = self.filter {
             script["filter"] = filter
