@@ -108,6 +108,7 @@
 		746E66A6252CDD990041AEE0 /* SwipeSceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */; };
 		746E66AB252D019F0041AEE0 /* SwipeCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66A9252D019F0041AEE0 /* SwipeCursor.swift */; };
 		746E66B0252D06EB0041AEE0 /* SwipeCanvasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */; };
+		74742FA2254C5EA800AF0362 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74742FA1254C5EA800AF0362 /* Playground.swift */; };
 		74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7AA2E251BA51E00495568 /* Playground2.swift */; };
 		74BD7103251A62CD00F41F3D /* sample1.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7102251A62CD00F41F3D /* sample1.swipe */; };
 		74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BD7105251A691500F41F3D /* SwipeFileView.swift */; };
@@ -174,6 +175,7 @@
 		746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeSceneList.swift; sourceTree = "<group>"; };
 		746E66A9252D019F0041AEE0 /* SwipeCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCursor.swift; sourceTree = "<group>"; };
 		746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCanvasModel.swift; sourceTree = "<group>"; };
+		74742FA1254C5EA800AF0362 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		74B7AA2E251BA51E00495568 /* Playground2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground2.swift; sourceTree = "<group>"; };
 		74BD7102251A62CD00F41F3D /* sample1.swipe */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample1.swipe; sourceTree = "<group>"; };
 		74BD7105251A691500F41F3D /* SwipeFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFileView.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				7465DF1625472CF5000E8D74 /* Info.plist */,
 				7465DF1325472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld */,
 				7465DF0E25472CF5000E8D74 /* Preview Content */,
+				74742FA1254C5EA800AF0362 /* Playground.swift */,
 			);
 			path = "SwipeStudio Lite";
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */,
 				7465DF3125472DC5000E8D74 /* SwipeFileView.swift in Sources */,
 				7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */,
+				74742FA2254C5EA800AF0362 /* Playground.swift in Sources */,
 				7465DF1525472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld in Sources */,
 				7465DF2025472DB2000E8D74 /* SwipeSymbol.swift in Sources */,
 				7465DF3525472DCA000E8D74 /* SwipeElement.swift in Sources */,
