@@ -24,12 +24,12 @@ struct Playground: View {
             List(numbers.indices) { index in
                 let number = numbers[index]
                 NavigationLink(destination: VStack {
-                    Text("Hello \(number.value)")
+                    Text("Number \(number.value)")
                     Button("Increment") {
                         numbers[index] = NumberHolder(value: number.value + 1)
                     }
                 } ) {
-                    Text("Hello \(number.value)")
+                    Text("Number \(number.value)")
                 }
             }
         }
