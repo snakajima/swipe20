@@ -56,7 +56,6 @@ public struct SwipeScene: Identifiable {
     public init(_ script:[String:Any]?) {
         self.animation = script?["animation"] as? [String:Any]
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
-        var base:SwipeFrame? = nil
         
         if let dimension = SwipeParser.asCGFloats(script?["dimension"]),
            dimension.count == 2 {
@@ -65,6 +64,7 @@ public struct SwipeScene: Identifiable {
             self.dimension = CGSize(width: 1920, height: 1080)
         }
         
+        var base:SwipeFrame? = nil
         self.frames = scriptFrames.map {
             let frame = SwipeFrame($0, base:base)
             base = frame

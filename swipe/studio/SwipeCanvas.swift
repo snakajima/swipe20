@@ -58,6 +58,29 @@ let s_scriptSample:[String:Any] = [
     ]]
 ]
 
+let s_scriptText:[String:Any] = [
+    //"backgroundColor":"#FFFFDD",
+    "duration": Double(1.0),
+    "animation": [
+        "engine":"swipe"
+    ],
+    "frames":[[
+        "elements":[[
+            "id":"id0",
+            "text":"Hello World",
+            "foregroundColor":"gray",
+            "x":20, "y":350, "w":300, "h":80,
+            "animation": [
+                "style":"summersault"
+            ],
+        ]]
+    ],[
+        "elements":[[
+            "id":"id0",
+            "x":120
+        ]]
+    ]]
+]
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
