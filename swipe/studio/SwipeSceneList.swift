@@ -42,16 +42,20 @@ struct SwipeSceneItem: View {
                     model.frameIndex = index
                 })
                 HStack(spacing:4) {
-                    Button(action: {
-                        model.scene = model.scene.frameDeleted(atIndex: index)
-                    }) {
-                        SwipeSymbol.trash.frame(width:20, height:20)
-                    }.disabled(model.scene.frameCount == 1)
+                    if model.scene.frameCount > 1 {
+                        Button(action: {
+                            model.scene = model.scene.frameDeleted(atIndex: index)
+                        }) {
+                            SwipeSymbol.trash.frame(width:20, height:20)
+                                .foregroundColor(.blue)
+                        }
+                    }
                     Spacer()
                     Button(action: {
                         print("star")
                     }) {
                         SwipeSymbol.gearshape.frame(width:20, height:20)
+                            .foregroundColor(.blue)
                     }
                 }
             }
@@ -60,6 +64,7 @@ struct SwipeSceneItem: View {
                 model.frameIndex = index + 1
             }) {
                 SwipeSymbol.plus.frame(width:20, height:20)
+                    .foregroundColor(.blue)
             }
         }
     }

@@ -48,6 +48,12 @@ public struct SwipeCanvas: View {
                     model.isDragging = false
                 }))
             }
+            HStack {
+                Button("Foo") {
+                    print("foo")
+                }
+                Spacer()
+            }
         }
         .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
     }

@@ -65,18 +65,16 @@ public struct SwipeStudio: View {
 
     public var body: some View {
         let previewHeight:CGFloat = s_previewHeight
-        
-        NavigationView {
+        return NavigationView {
             List(scenes.indices) { index in
                 let model = SwipeCanvasModel(scene:scenes[index])
-#if os(macOS)
                 NavigationLink(destination:
                     SwipeCanvas(model: model, previewHeight: previewHeight)
                 ) {
                     Text("Sample")
                 }
-#else
-                NavigationLink(destination:
+/*
+ NavigationLink(destination:
                     SwipeCanvas(model: model, previewHeight: previewHeight)
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
@@ -93,7 +91,7 @@ public struct SwipeStudio: View {
                 ) {
                     Text("Sample")
                 }
-#endif
+*/
             }
         }
     }
