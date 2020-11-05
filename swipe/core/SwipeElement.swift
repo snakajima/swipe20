@@ -114,7 +114,7 @@ public struct SwipeElement {
         self.subElements = elements
 
         var style = SwipeAnimation.Style.normal
-        if let animation = script["animation"] as? [String:Any] {
+        if let animation = script["animation"] as? [String:Any] ?? base?.animation {
             self.animation = animation
            if let rawValue = animation["style"] as? String {
             style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal

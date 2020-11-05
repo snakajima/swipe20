@@ -14,53 +14,6 @@ let s_previewHeight:CGFloat = 100
 #endif
 
 
-let s_scriptSample:[String:Any] = [
-    //"backgroundColor":"#FFFFDD",
-    "duration": Double(1.0),
-    "animation": [
-        "engine":"swipe"
-    ],
-    "frames":[[
-        "elements":[[
-            "id":"id0",
-            "text":"Hello World",
-            "foregroundColor":"gray",
-            "x":20, "y":350, "w":300, "h":80,
-            "animation": [
-                "style":"summersault"
-            ],
-        ],[
-            "id":"id2",
-            "x":20, "y":500, "w":180, "h":180,
-            "backgroundColor":"red",
-            "cornerRadius": 20,
-            "animation": [
-                "style":"leap"
-            ],
-        ],[
-            "id":"id1",
-            "img":"pngwave.png",
-            "x":20, "y":500, "w":180, "h":180,
-            "anchorPoint":[0.5,0],
-            "animation": [
-                "style":"jump"
-            ],
-        ],[
-            "id":"id3",
-            "x":20, "y":200, "w":150, "h":150,
-            "img":"pngwave.png",
-            "animation": [
-                "style":"bounce"
-            ],
-        ]]
-    ],[
-        "elements":[[
-            "id":"id1",
-            "x":400
-        ]]
-    ]]
-]
-
 public struct SwipeStudio: View {
     @State private var scenes = [
         SwipeScene(s_scriptSample),
