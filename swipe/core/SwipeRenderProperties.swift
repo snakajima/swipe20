@@ -137,17 +137,20 @@ extension SwipeRenderProperties {
         let r2 = 0.25 // squeezing
         let r1 = 1.0 - r0 - r2 // jump
         let height = CGFloat(360.0)
+        let size:CGSize
         switch(ratio) {
         case _ where ratio < r0:
             x = from.frame.minX
             y = from.frame.minY
             let r = CGFloat(sin(ratio * ratio / r0 / r0 * .pi))
             xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
+            size = from.frame.size
         case _ where ratio > (1 - r2):
             x = frame.minX
             y = frame.minY
             let r = CGFloat(sin((1 - ratio) / r2 * .pi))
             xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
+            size = frame.size
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
@@ -156,9 +159,11 @@ extension SwipeRenderProperties {
                 let dir:CGFloat = from.frame.minX < frame.minX ? 1 : -1
                 xfNew = CATransform3DRotate(xf, dir * .pi * 2 * CGFloat(r), 0, 0, 1)
             }
+            size = CGSize(width:from.frame.width.mix(frame.width, r),
+                          height:from.frame.height.mix(frame.height, r))
         }
             
-        return (CGRect(origin: CGPoint(x: x, y: y), size: newFrame.size), xfNew)
+        return (CGRect(origin: CGPoint(x: x, y: y), size: size), xfNew)
     }
 
 }
