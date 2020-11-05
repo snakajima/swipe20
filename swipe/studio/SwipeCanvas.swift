@@ -137,14 +137,16 @@ public struct SwipeCanvas: View {
                     model.undo()
                 }) {
                     SwipeSymbol.backward.frame(width:24, height:24)
-                        .foregroundColor(.blue)
+                        .foregroundColor(model.undoable ? .blue: .gray)
                 }
+                .disabled(!model.undoable)
                 Button(action: {
                     model.redo()
                 }) {
                     SwipeSymbol.forward.frame(width:24, height:24)
-                        .foregroundColor(.blue)
+                        .foregroundColor(model.redoable ? .blue: .gray)
                 }
+                .disabled(!model.redoable)
                 Spacer()
             }
             .frame(height:32, alignment: .bottom)

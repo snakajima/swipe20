@@ -20,13 +20,13 @@ class SwipeCanvasModel: ObservableObject {
     @Published var isDragging = false
     @Published var isSelecting = false
 
-    private var skipUndo = false
+    private var isUndoing = false
     private var undoCursor:Int {
         didSet {
-            skipUndo = true
+            isUndoing = true
             self.scene = undoStack[undoCursor-1]
+            isUndoing = false
             selectedElement = nil
-            skipUndo = false
         }
     }
     private var undoStack:[SwipeScene]
@@ -38,7 +38,7 @@ class SwipeCanvasModel: ObservableObject {
             if frameIndex >= scene.frameCount - 1 {
                 frameIndex = scene.frameCount - 1
             }
-            if !skipUndo {
+            if !isUndoing {
                 while(redoable) {
                     undoStack.removeLast()
                 }
@@ -51,7 +51,7 @@ class SwipeCanvasModel: ObservableObject {
     init(scene:SwipeScene) {
         self.scene = scene
         self.undoStack = [scene]
-        self.undoCursor = 1
+        self.undoCursor = undoStack.count
     }
     
     func updateUndoState() {
