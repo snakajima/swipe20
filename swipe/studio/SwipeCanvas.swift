@@ -10,7 +10,7 @@ import SwiftUI
 
 let s_scriptSample:[String:Any] = [
     //"backgroundColor":"#FFFFDD",
-    "duration": Double(1.0),
+    "duration": Double(0.7),
     "animation": [
         "engine":"swipe"
     ],
@@ -50,10 +50,14 @@ let s_scriptSample:[String:Any] = [
     ],[
         "elements":[[
             "id":"id1",
-            "x":400
+            "x":500
         ],[
             "id":"id0",
             "x":120
+        ],[
+            "id":"id2",
+            "x":500,
+            "y":800
         ]]
     ]]
 ]
