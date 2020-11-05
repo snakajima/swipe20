@@ -133,11 +133,15 @@ public struct SwipeCanvas: View {
                 }))
             }
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    model.undo()
+                }) {
                     SwipeSymbol.backward.frame(width:24, height:24)
                         .foregroundColor(.blue)
                 }
-                Button(action: {}) {
+                Button(action: {
+                    model.redo()
+                }) {
                     SwipeSymbol.forward.frame(width:24, height:24)
                         .foregroundColor(.blue)
                 }
