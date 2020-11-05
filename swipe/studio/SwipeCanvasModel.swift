@@ -39,7 +39,7 @@ class SwipeCanvasModel: ObservableObject {
                 frameIndex = scene.frameCount - 1
             }
             if !isUndoing {
-                while(redoable) {
+                while(undoCursor < undoStack.count) {
                     undoStack.removeLast()
                 }
                 undoStack.append(scene)
