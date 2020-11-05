@@ -49,14 +49,14 @@ extension SwipeRenderProperties {
                 (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
                 target.anchorPoint = bottomAC
             case .jump:
-                (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf, flip:false)
+                (newFrame, xf) = jump(ratio: ratio, from: from, xf: xf, flip:false)
                 target.anchorPoint = bottomAC
             case .summersault:
-                (newFrame, xf) = jump(ratio: ratio, from: from, newFrame: newFrame, xf: xf, flip:true)
+                (newFrame, xf) = jump(ratio: ratio, from: from, xf: xf, flip:true)
                 target.anchorPoint = bottomAC
             case .leap:
                 var ac:CGPoint
-                (newFrame, xf, ac) = leap(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+                (newFrame, xf, ac) = leap(ratio: ratio, from: from, xf: xf)
                 target.anchorPoint = ac
             default:
                 break
@@ -96,7 +96,7 @@ extension SwipeRenderProperties {
         return (CGRect(origin: CGPoint(x: newFrame.origin.x, y: y), size: newFrame.size), xfNew)
     }
     
-    func leap(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D, CGPoint) {
+    func leap(ratio:Double, from:SwipeRenderProperties, xf:CATransform3D) -> (CGRect, CATransform3D, CGPoint) {
         var xfNew = xf
         let x, y:CGFloat
         let r0 = 0.4 // anticipate
@@ -106,6 +106,7 @@ extension SwipeRenderProperties {
         let dy = frame.minY - from.frame.minY
         let dir = atan2(dx, dy)
         var anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        let size:CGSize
         switch(ratio) {
         case _ where ratio < r0:
             x = from.frame.minX
@@ -114,6 +115,7 @@ extension SwipeRenderProperties {
             xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.8, 1, 0, 0)
             xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.8, 0, 1, 0)
             anchorPoint = CGPoint(x: dx > 0 ? 0 : 1, y: dy > 0 ? 0 : 1)
+            size = from.frame.size
         case _ where ratio > (1 - r2):
             x = frame.minX
             y = frame.minY
@@ -121,16 +123,19 @@ extension SwipeRenderProperties {
             xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.8, 1, 0, 0)
             xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.8, 0, 1, 0)
             anchorPoint = CGPoint(x: dx > 0 ? 1 : 0, y: dy > 0 ? 1 : 0)
+            size = frame.size
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
             y = from.frame.minY.mix(frame.minY, r)
+            size = CGSize(width:from.frame.width.mix(frame.width, r),
+                          height:from.frame.height.mix(frame.height, r))
         }
             
-        return (CGRect(origin: CGPoint(x: x, y: y), size: newFrame.size), xfNew, anchorPoint)
+        return (CGRect(origin: CGPoint(x: x, y: y), size: size), xfNew, anchorPoint)
     }
 
-    func jump(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D, flip:Bool) -> (CGRect, CATransform3D) {
+    func jump(ratio:Double, from:SwipeRenderProperties, xf:CATransform3D, flip:Bool) -> (CGRect, CATransform3D) {
         var xfNew = xf
         let x, y:CGFloat
         let r0 = 0.25 // anticipate
