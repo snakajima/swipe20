@@ -67,3 +67,10 @@ struct SwipeSceneItem: View {
         }
     }
 }
+
+struct SwipeSceneList_Previews: PreviewProvider {
+    static var previews: some View {
+        SwipeSceneList( model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), previewHeight: 180)
+        .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
+    }
+}

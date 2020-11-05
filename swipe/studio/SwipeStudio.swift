@@ -53,6 +53,11 @@ let s_scriptSample:[String:Any] = [
                 "style":"bounce"
             ],
         ]]
+    ],[
+        "elements":[[
+            "id":"id1",
+            "x":400
+        ]]
     ]]
 ]
 

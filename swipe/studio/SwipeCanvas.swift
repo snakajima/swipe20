@@ -70,25 +70,10 @@ public struct SwipeCanvas: View {
     }
 }
 
-private let s_script:[String:Any] = [
-    "backgroundColor":"#FFFFCC",
-    "duration": Double(1.0),
-    "animation": [
-        "engine":"swipe"
-    ],
-    "frames":[[
-        "elements":[[
-            "id":"id0",
-            "x":220, "y":200, "w":80, "h":80,
-            "img":"pngwave.png"
-        ]]
-    ]]
-]
-
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_script)), previewHeight: 150)
+            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), previewHeight: 150)
         }
     }
 }
