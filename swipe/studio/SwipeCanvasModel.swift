@@ -27,8 +27,8 @@ class SwipeCanvasModel: ObservableObject {
         }
     }
     var undoStack:[SwipeScene]
-    var undoable:Bool { undoCursor > 1 }
-    var redoable:Bool { undoCursor < undoStack.count }
+    @Published var undoable = false
+    @Published var redoable = false
     @Published var scene:SwipeScene {
         didSet {
             if frameIndex >= scene.frameCount - 1 {
@@ -41,12 +41,18 @@ class SwipeCanvasModel: ObservableObject {
                 undoStack.append(scene)
                 undoCursor = undoStack.count
             }
+            updateUndoState()
         }
     }
     init(scene:SwipeScene) {
         self.scene = scene
         self.undoStack = [scene]
         self.undoCursor = 1
+    }
+    
+    func updateUndoState() {
+        undoable = undoCursor > 1
+        redoable = undoCursor < undoStack.count
     }
 
     func undo() {
@@ -67,8 +73,8 @@ class SwipeCanvasModel: ObservableObject {
             return
         }
         skipUndo = true
-        self.scene = undoStack[undoCursor]
         undoCursor += 1
+        self.scene = undoStack[undoCursor-1]
         skipUndo = false
         selectedElement = nil
     }
