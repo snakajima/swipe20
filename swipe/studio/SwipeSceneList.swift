@@ -46,7 +46,7 @@ struct SwipeSceneItem: View {
                         Button(action: {
                             model.scene = model.scene.frameDeleted(atIndex: index)
                         }) {
-                            SwipeSymbol.trash.frame(width:20, height:20)
+                            SwipeSymbol.trash.frame(width:32, height:32)
                                 .foregroundColor(.blue)
                         }
                     }
@@ -54,7 +54,7 @@ struct SwipeSceneItem: View {
                     Button(action: {
                         print("star")
                     }) {
-                        SwipeSymbol.gearshape.frame(width:20, height:20)
+                        SwipeSymbol.gearshape.frame(width:32, height:32)
                             .foregroundColor(.blue)
                     }
                 }
@@ -63,7 +63,7 @@ struct SwipeSceneItem: View {
                 model.scene = model.scene.frameDuplicated(atIndex: index)
                 model.frameIndex = index + 1
             }) {
-                SwipeSymbol.plus.frame(width:20, height:20)
+                SwipeSymbol.plus.frame(width:32, height:32)
                     .foregroundColor(.blue)
             }
         }

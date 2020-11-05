@@ -49,8 +49,13 @@ public struct SwipeCanvas: View {
                 }))
             }
             HStack {
-                Button("Foo") {
-                    print("foo")
+                Button(action: {}) {
+                    SwipeSymbol.backward.frame(width:32, height:32)
+                        .foregroundColor(.blue)
+                }
+                Button(action: {}) {
+                    SwipeSymbol.forward.frame(width:32, height:32)
+                        .foregroundColor(.blue)
                 }
                 Spacer()
             }
