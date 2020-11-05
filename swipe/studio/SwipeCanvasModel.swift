@@ -20,13 +20,17 @@ class SwipeCanvasModel: ObservableObject {
     @Published var isDragging = false
     @Published var isSelecting = false
 
-    var skipUndo = false
-    var undoCursor:Int {
+    private var skipUndo = false
+    private var undoCursor:Int {
         didSet {
-            print("undoCursor", undoCursor)
+            skipUndo = true
+            self.scene = undoStack[undoCursor-1]
+            selectedElement = nil
+            skipUndo = false
         }
     }
-    var undoStack:[SwipeScene]
+    private var undoStack:[SwipeScene]
+
     @Published var undoable = false
     @Published var redoable = false
     @Published var scene:SwipeScene {
@@ -56,27 +60,15 @@ class SwipeCanvasModel: ObservableObject {
     }
 
     func undo() {
-        guard undoable else {
-            print("not undoable")
-            return
+        if undoable {
+            undoCursor -= 1
         }
-        skipUndo = true
-        undoCursor -= 1
-        self.scene = undoStack[undoCursor-1]
-        skipUndo = false
-        selectedElement = nil
     }
     
     func redo() {
-        guard redoable else {
-            print("not redoable")
-            return
+        if redoable {
+            undoCursor += 1
         }
-        skipUndo = true
-        undoCursor += 1
-        self.scene = undoStack[undoCursor-1]
-        skipUndo = false
-        selectedElement = nil
     }
 
     var cursorCenter:CGPoint {
