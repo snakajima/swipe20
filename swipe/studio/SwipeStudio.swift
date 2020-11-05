@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+#if os(macOS)
+let s_previewHeight:CGFloat = 150
+#else
+let s_previewHeight:CGFloat = 100
+#endif
+
+
 let s_scriptSample:[String:Any] = [
     //"backgroundColor":"#FFFFDD",
     "duration": Double(1.0),
@@ -57,11 +64,7 @@ public struct SwipeStudio: View {
     ]
 
     public var body: some View {
-        #if os(macOS)
-        let previewHeight:CGFloat = 150
-        #else
-        let previewHeight:CGFloat = 100
-        #endif
+        let previewHeight:CGFloat = s_previewHeight
         
         NavigationView {
             List(scenes.indices) { index in
