@@ -18,8 +18,6 @@ public protocol SwipeRenderProperties {
     var animationStyle: SwipeAnimation.Style { get }
 }
 
-private let s_anticipationRatio = 1.0/4.0
-
 extension SwipeRenderProperties {
     /// Applies tween properties to the element
     func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?) {
@@ -101,8 +99,8 @@ extension SwipeRenderProperties {
     func leap(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D, CGPoint) {
         var xfNew = xf
         let x, y:CGFloat
-        let r0 = s_anticipationRatio // anticipate
-        let r2 = s_anticipationRatio // squeezing
+        let r0 = 0.4 // anticipate
+        let r2 = 0.4 // squeezing
         let r1 = 1.0 - r0 - r2 // jump
         let dx = frame.minX - from.frame.minX
         let dy = frame.minY - from.frame.minY
@@ -135,8 +133,8 @@ extension SwipeRenderProperties {
     func jump(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D, flip:Bool) -> (CGRect, CATransform3D) {
         var xfNew = xf
         let x, y:CGFloat
-        let r0 = s_anticipationRatio // anticipate
-        let r2 = s_anticipationRatio // squeezing
+        let r0 = 0.25 // anticipate
+        let r2 = 0.25 // squeezing
         let r1 = 1.0 - r0 - r2 // jump
         let height = CGFloat(360.0)
         switch(ratio) {
