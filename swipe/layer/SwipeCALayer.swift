@@ -121,6 +121,7 @@ private extension SwipeFrame {
 }
 
 private extension SwipeElement {
+    // NOTE: We do not support the animation of "text" or "image" property itself. 
     func makeLayer() -> CALayer {
         let layer:CALayer
         if let text = self.text {

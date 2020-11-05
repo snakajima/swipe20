@@ -30,7 +30,6 @@ public struct SwipeElement {
     let strokeColor:CGColor?
     let lineWidth:CGFloat?
     let cornerRadius:CGFloat?
-    let src:[String:Any]?
     let text:String?
     let filter:[String:Any]?
     public var rotX, rotY, rotZ:CGFloat
@@ -41,9 +40,8 @@ public struct SwipeElement {
     /// Initializes an element with specified description. base is an element on the previous frame with the same id
     init(_ script:[String:Any], id:String, base:SwipeElement?) {
         self.id = id
-        self.text = script["text"] as? String
         self.filter = script["filter"] as? [String:Any]
-        var imagePath:String? = nil
+        
         let origin = base?.frame.origin ?? CGPoint.zero
         let size = base?.frame.size ?? CGSize(width: 100, height: 100)
         self.frame = CGRect(x: SwipeParser.asCGFloat(script["x"]) ?? origin.x,
@@ -58,16 +56,19 @@ public struct SwipeElement {
         self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
         self.opacity = SwipeParser.asFloat(script["opacity"]) ?? base?.opacity ?? 1.0
-        self.src = script["src"] as? [String:Any]
-        // anchorPoint is no longer configurable in the script, which allows us to manipulate during the animation
-        /*
-        if let points = SwipeParser.asCGFloats(script["anchorPoint"]), points.count == 2 {
-            self.anchorPoint = CGPoint(x: points[0], y: points[1])
-        } else {
-            self.anchorPoint = base?.anchorPoint ?? CGPoint(x: 0.5, y: 0.5)
-        }
-        */
  
+        var style = SwipeAnimation.Style.normal
+        if let animation = script["animation"] as? [String:Any] ?? base?.animation {
+            self.animation = animation
+           if let rawValue = animation["style"] as? String {
+            style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal
+           }
+        } else {
+            self.animation = nil
+        }
+        self.animationStyle = style
+
+        // NOTE: To be filled about the inheritance
         if let rot = SwipeParser.asCGFloat(script["rotate"]) {
             self.rotX = 0
             self.rotY = 0
@@ -81,7 +82,10 @@ public struct SwipeElement {
             self.rotY = 0
             self.rotZ = 0
         }
-        
+
+        // NOTE: "text" and "img" are not animatable. Therefore, we don't need to handle inhericance
+        self.text = script["text"] as? String
+        var imagePath:String? = nil
         if let imageName = script["img"] as? String {
             #if os(iOS) || os(watchOS) || os(tvOS)
             self.image = UIImage(named: imageName)?.cgImage
@@ -93,6 +97,7 @@ public struct SwipeElement {
             self.image = nil
         }
         self.imagePath = imagePath
+        
         //
         // NOTE: In order to eliminate unnecessary computation, we don't inherit path prop
         // from the base element.
@@ -112,17 +117,6 @@ public struct SwipeElement {
         }
         self.subElementIds = base?.subElementIds ?? ids
         self.subElements = elements
-
-        var style = SwipeAnimation.Style.normal
-        if let animation = script["animation"] as? [String:Any] ?? base?.animation {
-            self.animation = animation
-           if let rawValue = animation["style"] as? String {
-            style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal
-           }
-        } else {
-            self.animation = nil
-        }
-        self.animationStyle = style
     }
     
     func hitTest(point:CGPoint) -> Bool {
