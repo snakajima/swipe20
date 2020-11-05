@@ -31,10 +31,12 @@ public struct SwipeCanvas: View {
                         SwipeCursor(model:model, scale:scale, geometry:geometry)
                     }
                 }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
-                    if !model.isDragging {
+                    if !model.isSelecting {
                         var startLocation = value.startLocation
                         startLocation = scaled(startLocation, scale:scale)
                         model.selectedElement = model.scene.hitTest(point: startLocation, frameIndex: model.frameIndex)
+                        model.isSelecting = true
+                    } else {
                         model.isDragging = true
                     }
                     if let element = model.selectedElement {
@@ -44,8 +46,11 @@ public struct SwipeCanvas: View {
                         model.cursorRect = frame
                     }
                 }.onEnded({ value in
-                    model.updateElement(frame: model.cursorRect)
+                    if model.isDragging {
+                        model.updateElement(frame: model.cursorRect)
+                    }
                     model.isDragging = false
+                    model.isSelecting = false
                 }))
             }
             HStack {

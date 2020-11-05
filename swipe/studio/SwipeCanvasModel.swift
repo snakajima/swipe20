@@ -18,7 +18,11 @@ class SwipeCanvasModel: ObservableObject {
     @Published var scale = CGPoint(x: 1, y: 1)
     @Published var rotZ = CGFloat(0)
     @Published var isDragging = false
+    @Published var isSelecting = false
     @Published var scene:SwipeScene {
+        willSet {
+            print("willSet")
+        }
         didSet {
             if frameIndex >= scene.frameCount - 1 {
                 frameIndex = scene.frameCount - 1
