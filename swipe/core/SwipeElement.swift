@@ -16,7 +16,7 @@ import Cocoa
 public struct SwipeElement {
     let id:String
     let image:CGImage?
-    private let imagePath:String?
+    let imagePath:String?
     private let animation:[String:Any]?
     let path:CGPath?
     
@@ -32,6 +32,7 @@ public struct SwipeElement {
     let cornerRadius:CGFloat?
     let text:String?
     let filter:[String:Any]?
+    let src:[String:Any]?
     public var rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
@@ -41,6 +42,7 @@ public struct SwipeElement {
     init(_ script:[String:Any], id:String, base:SwipeElement?) {
         self.id = id
         self.filter = script["filter"] as? [String:Any]
+        self.src = script["src"] as? [String:Any]
         
         let origin = base?.frame.origin ?? CGPoint.zero
         let size = base?.frame.size ?? CGSize(width: 100, height: 100)
