@@ -44,7 +44,7 @@ let s_scriptSample:[String:Any] = [
             "x":20, "y":200, "w":150, "h":150,
             "img":"pngwave.png",
             "animation": [
-                "style":"bounce"
+                "style":"jump"
             ],
         ]]
     ],[
