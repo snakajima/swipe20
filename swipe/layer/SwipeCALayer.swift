@@ -35,7 +35,7 @@ public struct SwipeCALayer {
         return layer
     }
 
-    public func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, updateFrameIndex:@escaping (Int)->Void) {
+    public func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, base:SwipeScene?, updateFrameIndex:@escaping (Int)->Void) {
         guard let frame = scene.frameAt(index: frameIndex),
               let layer = layer,
               let sublayers = layer.sublayers else {
@@ -56,21 +56,21 @@ public struct SwipeCALayer {
             func apply(ratio:Double) {
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
-                frame.apply(to:sublayers, ratio:ratio, transition: transition, base:scene.frameAt(index: lastIndex))
+                frame.apply(to:sublayers, ratio:ratio, transition: transition, base:base?.frameAt(index:frameIndex) ?? scene.frameAt(index: lastIndex))
                 CATransaction.commit()
                 
                 if ratio == 1.0 && frameIndex < scene.frameCount - 1 && transition != .prev {
                     switch(scene.playMode) {
                     case .auto,
                          .cont where transition != .initial:
-                            self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex, updateFrameIndex: updateFrameIndex)
+                        self.apply(frameIndex: frameIndex + 1, to: layer, lastIndex: frameIndex, base:nil, updateFrameIndex: updateFrameIndex)
                             updateFrameIndex(frameIndex + 1)
                     default:
                         break
                     }
                 }
             }
-            if lastIndex == nil {
+            if lastIndex == nil && base == nil {
                 apply(ratio: 1.0)
             } else {
                 let animation = SwipeAnimation(duration: duration ?? scene.duration)
@@ -79,7 +79,7 @@ public struct SwipeCALayer {
         } else {
             CATransaction.begin()
             CATransaction.setAnimationDuration(duration ?? scene.duration)
-            frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:scene.frameAt(index: lastIndex))
+            frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:base?.frameAt(index:frameIndex) ?? scene.frameAt(index: lastIndex))
             CATransaction.commit()
         }
     }

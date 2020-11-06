@@ -91,11 +91,13 @@ public struct SwipeView: OSViewRepresentable {
         }
         
         func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer?) {
+            var base:SwipeScene? = nil
             if scene.id != renderer.scene.id {
+                base = renderer.scene
                 self.renderer.scene = scene
                 self.lastIndex = nil
             }
-            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, updateFrameIndex: { newIndex in
+            renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, base:base, updateFrameIndex: { newIndex in
                     self.view.frameIndex = newIndex
             })
             lastIndex = frameIndex
