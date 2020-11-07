@@ -16,18 +16,14 @@ class SwipeDrawModel: ObservableObject {
         currentStroke.points.append(location)
     }
     func onEnded(_ location:CGPoint) {
-        strokes.append(currentStroke)
         allStrokes = strokes
-        undoCursor = strokes.count
+        allStrokes.append(currentStroke)
+        undoCursor = allStrokes.count
         currentStroke = SwipeStroke()
-        updateUndoState()
     }
     
-    private var isUndoing = false
     private var undoCursor:Int = 0 {
         didSet {
-            isUndoing = true
-            isUndoing = false
             strokes = allStrokes
             while strokes.count > undoCursor {
                 strokes.removeLast()
