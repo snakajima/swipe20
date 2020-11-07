@@ -31,6 +31,7 @@ struct SwipeDraw: View {
                     stroke.append(to: &$0)
                 }
                 .stroke(style:self.markerStyle)
+                .fill(self.markerColor)
             }
             Path {
                 self.currentStroke.append(to: &$0)
