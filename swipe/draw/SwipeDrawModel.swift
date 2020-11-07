@@ -8,36 +8,31 @@
 import SwiftUI
 
 class SwipeDrawModel: ObservableObject {
-    @Published var currentStroke = SwipeStroke()
     private var allStrokes = [SwipeStroke]()
     @Published var strokes = [SwipeStroke]()
-
-    func onChanged(_ location:CGPoint) {
-        currentStroke.points.append(location)
-    }
-    func onEnded(_ location:CGPoint) {
-        allStrokes = strokes
-        allStrokes.append(currentStroke)
-        undoCursor = allStrokes.count
-        currentStroke = SwipeStroke()
-    }
-    
+    @Published var currentStroke = SwipeStroke()
+    @Published var undoable = false
+    @Published var redoable = false
     private var undoCursor:Int = 0 {
         didSet {
             strokes = allStrokes
             while strokes.count > undoCursor {
                 strokes.removeLast()
             }
-            updateUndoState()
+            undoable = undoCursor > 0
+            redoable = undoCursor < allStrokes.count
         }
     }
 
-    @Published var undoable = false
-    @Published var redoable = false
+    func onChanged(_ location:CGPoint) {
+        currentStroke.points.append(location)
+    }
     
-    func updateUndoState() {
-        undoable = undoCursor > 0
-        redoable = undoCursor < allStrokes.count
+    func onEnded(_ location:CGPoint) {
+        allStrokes = strokes
+        allStrokes.append(currentStroke)
+        undoCursor = allStrokes.count
+        currentStroke = SwipeStroke()
     }
 
     func undo() {
@@ -50,7 +45,8 @@ class SwipeDrawModel: ObservableObject {
         if redoable {
             undoCursor += 1
         }
-    }}
+    }
+}
 
 
 struct SwipeDrawModel_Previews: PreviewProvider {
