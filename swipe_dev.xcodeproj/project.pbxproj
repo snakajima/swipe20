@@ -118,6 +118,8 @@
 		74BD711A251B094100F41F3D /* Duration.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74BD7119251B094100F41F3D /* Duration.swipe */; };
 		74C934FF255707780042AA4C /* SwipeStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C934F7255707310042AA4C /* SwipeStroke.swift */; };
 		74C935062557077F0042AA4C /* SwipeStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C934F7255707310042AA4C /* SwipeStroke.swift */; };
+		74C9350B255709B00042AA4C /* SwipeDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C9350A255709B00042AA4C /* SwipeDraw.swift */; };
+		74C9350C255709B00042AA4C /* SwipeDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C9350A255709B00042AA4C /* SwipeDraw.swift */; };
 		74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
 		74FAC20A251BC38900DD29EF /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
 		74FAC264251CBDC600DD29EF /* Opacity.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC263251CBDC600DD29EF /* Opacity.swipe */; };
@@ -187,6 +189,7 @@
 		74BD7114251AC9CE00F41F3D /* Nested.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nested.swipe; sourceTree = "<group>"; };
 		74BD7119251B094100F41F3D /* Duration.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Duration.swipe; sourceTree = "<group>"; };
 		74C934F7255707310042AA4C /* SwipeStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStroke.swift; sourceTree = "<group>"; };
+		74C9350A255709B00042AA4C /* SwipeDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDraw.swift; sourceTree = "<group>"; };
 		74FAC206251BBFA700DD29EF /* SwipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
 		74FAC209251BC38900DD29EF /* Shapes.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shapes.swipe; sourceTree = "<group>"; };
 		74FAC263251CBDC600DD29EF /* Opacity.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Opacity.swipe; sourceTree = "<group>"; };
@@ -424,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				74C934F7255707310042AA4C /* SwipeStroke.swift */,
+				74C9350A255709B00042AA4C /* SwipeDraw.swift */,
 			);
 			path = draw;
 			sourceTree = "<group>";
@@ -655,6 +659,7 @@
 				7465DF3125472DC5000E8D74 /* SwipeFileView.swift in Sources */,
 				7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */,
 				74742FA2254C5EA800AF0362 /* Playground.swift in Sources */,
+				74C9350C255709B00042AA4C /* SwipeDraw.swift in Sources */,
 				7465DF1525472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld in Sources */,
 				7465DF2025472DB2000E8D74 /* SwipeSymbol.swift in Sources */,
 				7465DF3525472DCA000E8D74 /* SwipeElement.swift in Sources */,
@@ -673,6 +678,7 @@
 				746E6655252AC6670041AEE0 /* SwipePath.swift in Sources */,
 				746E6645252AC64A0041AEE0 /* SwipeCanvas.swift in Sources */,
 				746E6632252AC6180041AEE0 /* ContentView.swift in Sources */,
+				74C9350B255709B00042AA4C /* SwipeDraw.swift in Sources */,
 				746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */,
 				74C934FF255707780042AA4C /* SwipeStroke.swift in Sources */,
 				746E6656252AC6670041AEE0 /* SwipeParser.swift in Sources */,
