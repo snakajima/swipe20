@@ -120,6 +120,8 @@
 		74C935062557077F0042AA4C /* SwipeStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C934F7255707310042AA4C /* SwipeStroke.swift */; };
 		74C9350B255709B00042AA4C /* SwipeDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C9350A255709B00042AA4C /* SwipeDraw.swift */; };
 		74C9350C255709B00042AA4C /* SwipeDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C9350A255709B00042AA4C /* SwipeDraw.swift */; };
+		74E8A17025575D3300D5C98C /* SwipeDrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */; };
+		74E8A17125575D3300D5C98C /* SwipeDrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */; };
 		74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
 		74FAC20A251BC38900DD29EF /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
 		74FAC264251CBDC600DD29EF /* Opacity.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC263251CBDC600DD29EF /* Opacity.swipe */; };
@@ -190,6 +192,7 @@
 		74BD7119251B094100F41F3D /* Duration.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Duration.swipe; sourceTree = "<group>"; };
 		74C934F7255707310042AA4C /* SwipeStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStroke.swift; sourceTree = "<group>"; };
 		74C9350A255709B00042AA4C /* SwipeDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDraw.swift; sourceTree = "<group>"; };
+		74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDrawModel.swift; sourceTree = "<group>"; };
 		74FAC206251BBFA700DD29EF /* SwipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
 		74FAC209251BC38900DD29EF /* Shapes.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shapes.swipe; sourceTree = "<group>"; };
 		74FAC263251CBDC600DD29EF /* Opacity.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Opacity.swipe; sourceTree = "<group>"; };
@@ -428,6 +431,7 @@
 			children = (
 				74C934F7255707310042AA4C /* SwipeStroke.swift */,
 				74C9350A255709B00042AA4C /* SwipeDraw.swift */,
+				74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */,
 			);
 			path = draw;
 			sourceTree = "<group>";
@@ -644,6 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7465DF1225472CF5000E8D74 /* Persistence.swift in Sources */,
+				74E8A17125575D3300D5C98C /* SwipeDrawModel.swift in Sources */,
 				7465DF3725472DCA000E8D74 /* SwipeFrame.swift in Sources */,
 				7465DF4025472E20000E8D74 /* ContentView.swift in Sources */,
 				7465DF3925472DCA000E8D74 /* SwipeParser.swift in Sources */,
@@ -680,6 +685,7 @@
 				746E6632252AC6180041AEE0 /* ContentView.swift in Sources */,
 				74C9350B255709B00042AA4C /* SwipeDraw.swift in Sources */,
 				746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */,
+				74E8A17025575D3300D5C98C /* SwipeDrawModel.swift in Sources */,
 				74C934FF255707780042AA4C /* SwipeStroke.swift in Sources */,
 				746E6656252AC6670041AEE0 /* SwipeParser.swift in Sources */,
 				746E6657252AC6670041AEE0 /* SwipeRenderLayer.swift in Sources */,

@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-class SwipeDrawModel: ObservableObject {
-    @Published var currentStroke = SwipeStroke()
-    @Published var isDragging = false
-    @Published var location = CGPoint.zero
-    @Published var strokes = [SwipeStroke]()
-}
-
 struct SwipeDraw: View {
     @ObservedObject var model = SwipeDrawModel()
     

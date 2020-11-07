@@ -31,25 +31,6 @@ public struct SwipeStudio: View {
                 ) {
                     Text("Sample")
                 }
-/*
- NavigationLink(destination:
-                    SwipeCanvas(model: model, previewHeight: previewHeight)
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .bottomBar) {
-                                Button("Presse Me") {
-                                    let script = model.scene.script
-                                    let data = try? JSONSerialization.data(withJSONObject: script, options: JSONSerialization.WritingOptions.prettyPrinted)
-                                    let str = String(bytes: data!, encoding: .utf8)
-                                    print("pressed", str ?? "#ERR")
-                                    self.scenes[index] = SwipeScene(script)
-                                }
-                            }
-                        }
-                ) {
-                    Text("Sample")
-                }
-*/
             }
         }
     }
