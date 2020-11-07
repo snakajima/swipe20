@@ -11,7 +11,7 @@ struct SwipeDraw: View {
     @State var currentStroke = SwipeStroke()
     @State var isDragging = false
     @State var location = CGPoint.zero
-    @State var states = [SwipeStroke]()
+    @State var strokes = [SwipeStroke]()
 
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
@@ -22,7 +22,7 @@ struct SwipeDraw: View {
             })
             .onEnded({ value in
                 self.isDragging = false
-                states.append(currentStroke)
+                strokes.append(currentStroke)
                 currentStroke = SwipeStroke()
             })
         ZStack {
