@@ -26,13 +26,11 @@ struct SwipeDraw: View {
                 currentStroke = SwipeStroke()
             })
         ZStack {
-            GeometryReader { geometry in
-                Path {
-                    self.currentStroke.append(to: &$0)
-                }
-                .stroke(style:self.markerStyle)
-                .fill(self.markerColor)
+            Path {
+                self.currentStroke.append(to: &$0)
             }
+            .stroke(style:self.markerStyle)
+            .fill(self.markerColor)
             .background(Color(white: 0.95))
             .gesture(drag)
         }
