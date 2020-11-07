@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct SwipeStroke {
+struct SwipeStroke: Identifiable {
+    let id = UUID()
     var points = [CGPoint]()
     func append(to path:inout Path) {
         guard self.points.count > 0 else {

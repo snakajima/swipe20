@@ -19,7 +19,7 @@ struct ContentView: View {
     */
     
     var body: some View {
-        SwipeStudio()
+        SwipeDraw()
         /*
         List {
             ForEach(items) { item in
