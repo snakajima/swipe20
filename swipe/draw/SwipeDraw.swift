@@ -7,26 +7,30 @@
 
 import SwiftUI
 
-struct SwipeDraw: View {
-    @State var currentStroke = SwipeStroke()
-    @State var isDragging = false
-    @State var location = CGPoint.zero
-    @State var strokes = [SwipeStroke]()
+class SwipeDrawModel: ObservableObject {
+    @Published var currentStroke = SwipeStroke()
+    @Published var isDragging = false
+    @Published var location = CGPoint.zero
+    @Published var strokes = [SwipeStroke]()
+}
 
+struct SwipeDraw: View {
+    @ObservedObject var model = SwipeDrawModel()
+    
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
             .onChanged({ value in
-                self.isDragging = true
-                self.location = value.location
-                self.currentStroke.points.append(value.location)
+                model.isDragging = true
+                model.location = value.location
+                model.currentStroke.points.append(value.location)
             })
             .onEnded({ value in
-                self.isDragging = false
-                strokes.append(currentStroke)
-                currentStroke = SwipeStroke()
+                model.isDragging = false
+                model.strokes.append(model.currentStroke)
+                model.currentStroke = SwipeStroke()
             })
         ZStack {
-            ForEach(strokes) { stroke in
+            ForEach(model.strokes) { stroke in
                 Path {
                     stroke.append(to: &$0)
                 }
@@ -34,7 +38,7 @@ struct SwipeDraw: View {
                 .fill(self.markerColor)
             }
             Path {
-                self.currentStroke.append(to: &$0)
+                model.currentStroke.append(to: &$0)
             }
             .stroke(style:self.markerStyle)
             .fill(self.markerColor)
