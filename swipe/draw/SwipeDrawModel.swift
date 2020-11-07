@@ -10,9 +10,18 @@ import SwiftUI
 class SwipeDrawModel: ObservableObject {
     @Published var currentStroke = SwipeStroke()
     @Published var isDragging = false
-    @Published var location = CGPoint.zero
     @Published var strokes = [SwipeStroke]()
 
+    func onChanged(location:CGPoint) {
+        isDragging = true
+        currentStroke.points.append(location)
+    }
+    func onEnded(location:CGPoint) {
+        isDragging = false
+        strokes.append(currentStroke)
+        currentStroke = SwipeStroke()
+    }
+    
     private var isUndoing = false
     @Published var undoCursor:Int = 0 {
         didSet {

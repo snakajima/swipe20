@@ -13,14 +13,10 @@ struct SwipeDraw: View {
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
             .onChanged({ value in
-                model.isDragging = true
-                model.location = value.location
-                model.currentStroke.points.append(value.location)
+                model.onChanged(location: value.location)
             })
             .onEnded({ value in
-                model.isDragging = false
-                model.strokes.append(model.currentStroke)
-                model.currentStroke = SwipeStroke()
+                model.onEnded(location: value.location)
             })
         VStack {
             ZStack {
