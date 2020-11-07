@@ -25,17 +25,17 @@ struct SwipeDraw: View {
                 states.append(currentStroke)
                 currentStroke = SwipeStroke()
             })
-        return GeometryReader { geometry in
-            ZStack {
-                    Path {
-                        self.currentStroke.append(to: &$0)
-                    }
-                        .stroke(style:self.markerStyle)
-                        .fill(self.markerColor)
+        ZStack {
+            GeometryReader { geometry in
+                Path {
+                    self.currentStroke.append(to: &$0)
+                }
+                .stroke(style:self.markerStyle)
+                .fill(self.markerColor)
             }
+            .background(Color(white: 0.95))
+            .gesture(drag)
         }
-        .background(Color(white: 0.95))
-        .gesture(drag)
     }
     
     let markerStyle = StrokeStyle(lineWidth: 3.0, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 0.1, dash: [], dashPhase: 0)
