@@ -12,12 +12,8 @@ struct SwipeDraw: View {
     
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
-            .onChanged({ value in
-                model.onChanged(location: value.location)
-            })
-            .onEnded({ value in
-                model.onEnded(location: value.location)
-            })
+            .onChanged { model.onChanged($0.location) }
+            .onEnded { model.onEnded($0.location) }
         VStack {
             ZStack {
                 ForEach(model.strokes) { stroke in
@@ -62,16 +58,8 @@ struct SwipeDraw: View {
 
 struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
-        Canvas_Instance()
+        SwipeDraw()
     }
 }
 
-struct Canvas_Instance: View {
-    var body: some View {
-        VStack(alignment: .center) {
-            SwipeDraw()
-                .edgesIgnoringSafeArea(.all)
-        }
-    }
-}
 

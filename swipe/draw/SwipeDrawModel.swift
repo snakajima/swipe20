@@ -9,15 +9,12 @@ import SwiftUI
 
 class SwipeDrawModel: ObservableObject {
     @Published var currentStroke = SwipeStroke()
-    @Published var isDragging = false
     @Published var strokes = [SwipeStroke]()
 
-    func onChanged(location:CGPoint) {
-        isDragging = true
+    func onChanged(_ location:CGPoint) {
         currentStroke.points.append(location)
     }
-    func onEnded(location:CGPoint) {
-        isDragging = false
+    func onEnded(_ location:CGPoint) {
         strokes.append(currentStroke)
         currentStroke = SwipeStroke()
     }
@@ -50,3 +47,9 @@ class SwipeDrawModel: ObservableObject {
         }
     }}
 
+
+struct SwipeDrawModel_Previews: PreviewProvider {
+    static var previews: some View {
+        SwipeDraw()
+    }
+}
