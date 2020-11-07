@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct CanvasView: View {
+struct SwipeDraw: View {
     @State var currentStroke = SwipeStroke()
     @State var isDragging = false
     @State var location = CGPoint.zero
+    @State var states = [SwipeStroke]()
 
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
@@ -21,6 +22,8 @@ struct CanvasView: View {
             })
             .onEnded({ value in
                 self.isDragging = false
+                states.append(currentStroke)
+                currentStroke = SwipeStroke()
             })
         return GeometryReader { geometry in
             ZStack {
@@ -49,7 +52,7 @@ struct Canvas_Previews: PreviewProvider {
 struct Canvas_Instance: View {
     var body: some View {
         VStack(alignment: .center) {
-            CanvasView()
+            SwipeDraw()
                 .edgesIgnoringSafeArea(.all)
         }
     }
