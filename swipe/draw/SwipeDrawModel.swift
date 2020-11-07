@@ -9,6 +9,7 @@ import SwiftUI
 
 class SwipeDrawModel: ObservableObject {
     @Published var currentStroke = SwipeStroke()
+    private var allStrokes = [SwipeStroke]()
     @Published var strokes = [SwipeStroke]()
 
     func onChanged(_ location:CGPoint) {
@@ -16,14 +17,22 @@ class SwipeDrawModel: ObservableObject {
     }
     func onEnded(_ location:CGPoint) {
         strokes.append(currentStroke)
+        allStrokes = strokes
+        undoCursor = strokes.count
         currentStroke = SwipeStroke()
+        updateUndoState()
     }
     
     private var isUndoing = false
-    @Published var undoCursor:Int = 0 {
+    private var undoCursor:Int = 0 {
         didSet {
             isUndoing = true
             isUndoing = false
+            strokes = allStrokes
+            while strokes.count > undoCursor {
+                strokes.removeLast()
+            }
+            updateUndoState()
         }
     }
 
@@ -31,8 +40,8 @@ class SwipeDrawModel: ObservableObject {
     @Published var redoable = false
     
     func updateUndoState() {
-        undoable = undoCursor > 1
-        redoable = undoCursor < strokes.count
+        undoable = undoCursor > 0
+        redoable = undoCursor < allStrokes.count
     }
 
     func undo() {
