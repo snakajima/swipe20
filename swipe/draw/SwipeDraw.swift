@@ -26,12 +26,20 @@ struct SwipeDraw: View {
                 currentStroke = SwipeStroke()
             })
         ZStack {
+            ForEach(0..<strokes.count) { index in
+                Path {
+                    strokes[index].append(to: &$0)
+                }
+                .stroke(style:self.markerStyle)
+                .fill(self.markerColor)
+                .background(Color(white: 0.4))
+            }
             Path {
                 self.currentStroke.append(to: &$0)
             }
             .stroke(style:self.markerStyle)
             .fill(self.markerColor)
-            .background(Color(white: 0.95))
+            .background(Color(white: 0.01))
             .gesture(drag)
         }
     }
