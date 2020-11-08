@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SwipeDraw: View {
-    @ObservedObject var model = SwipeDrawModel()
+    @ObservedObject var model:SwipeDrawModel
     
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
@@ -47,6 +47,11 @@ struct SwipeDraw: View {
                 }
                 .disabled(!model.redoable)
                 Spacer()
+                Button(action: {
+                    model.isActive = false
+                }, label: {
+                    Text("Done")
+                })
             }
         }
     }
@@ -58,7 +63,7 @@ struct SwipeDraw: View {
 
 struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw()
+        SwipeDraw(model: SwipeDrawModel())
     }
 }
 

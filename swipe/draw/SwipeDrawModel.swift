@@ -13,6 +13,15 @@ class SwipeDrawModel: ObservableObject {
     @Published var currentStroke = SwipeStroke()
     @Published var undoable = false
     @Published var redoable = false
+    @Published var isActive = false {
+        didSet {
+            if isActive {
+                undoCursor = 0
+                allStrokes.removeAll()
+            }
+        }
+    }
+    
     private var undoCursor:Int = 0 {
         didSet {
             strokes = allStrokes
@@ -51,6 +60,6 @@ class SwipeDrawModel: ObservableObject {
 
 struct SwipeDrawModel_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw()
+        SwipeDraw(model: SwipeDrawModel())
     }
 }
