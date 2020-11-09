@@ -48,7 +48,7 @@ struct SwipeDraw: View {
                 .disabled(!model.redoable)
                 Spacer()
                 Button(action: {
-                    model.isActive = false
+                    model.done()
                 }, label: {
                     Text("Done")
                 })

@@ -55,6 +55,14 @@ class SwipeDrawModel: ObservableObject {
             undoCursor += 1
         }
     }
+    
+    func activate() {
+        isActive = true
+    }
+    
+    func done() {
+        isActive = false
+    }
 }
 
 

@@ -152,7 +152,8 @@ public struct SwipeCanvas: View {
                         .disabled(!model.redoable)
                         Spacer()
                         Button(action: {
-                            drawModel.isActive = true
+                            model.selectedElement = nil
+                            drawModel.activate()
                         }, label: {
                             Text("Pen")
                         })
