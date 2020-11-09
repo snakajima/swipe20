@@ -109,7 +109,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
 }
 
 extension SwipeCanvasModel : SwipeDrawModelDelegate {
-    func onComplete() {
+    func onComplete(drawModel: SwipeDrawModel) {
         print("onComplete")
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol SwipeDrawModelDelegate: NSObjectProtocol {
-    func onComplete()
+    func onComplete(drawModel:SwipeDrawModel)
 }
 
 class SwipeDrawModel: ObservableObject {
@@ -67,7 +67,7 @@ class SwipeDrawModel: ObservableObject {
     
     func done() {
         isActive = false
-        delegate?.onComplete()
+        delegate?.onComplete(drawModel: self)
     }
 }
 
