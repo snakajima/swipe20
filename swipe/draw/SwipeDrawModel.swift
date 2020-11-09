@@ -7,7 +7,12 @@
 
 import SwiftUI
 
+protocol SwipeDrawModelDelegate: NSObjectProtocol {
+    func onComplete()
+}
+
 class SwipeDrawModel: ObservableObject {
+    weak var delegate:SwipeDrawModelDelegate? = nil
     private var allStrokes = [SwipeStroke]()
     @Published var strokes = [SwipeStroke]()
     @Published var currentStroke = SwipeStroke()
@@ -62,6 +67,7 @@ class SwipeDrawModel: ObservableObject {
     
     func done() {
         isActive = false
+        delegate?.onComplete()
     }
 }
 

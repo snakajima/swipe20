@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class SwipeCanvasModel: ObservableObject {
+class SwipeCanvasModel: NSObject, ObservableObject {
     @Published var frameIndex = 0 {
         didSet {
             selectedElement = nil
@@ -105,5 +105,11 @@ class SwipeCanvasModel: ObservableObject {
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
             selectedElement = updatedElement
         }
+    }
+}
+
+extension SwipeCanvasModel : SwipeDrawModelDelegate {
+    func onComplete() {
+        print("onComplete")
     }
 }

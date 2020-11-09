@@ -94,6 +94,7 @@ public struct SwipeCanvas: View {
     init(model:SwipeCanvasModel, previewHeight:CGFloat) {
         self.model = model
         self.previewHeight = previewHeight
+        self.drawModel.delegate = self.model
     }
 
     func scaled(_ point:CGPoint, scale:CGFloat) -> CGPoint {
