@@ -110,6 +110,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
 
 extension SwipeCanvasModel : SwipeDrawModelDelegate {
     func onComplete(drawModel: SwipeDrawModel) {
-        print("onComplete")
+        let path = drawModel.path
+        print("onComplete", path)
     }
 }

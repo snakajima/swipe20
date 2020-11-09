@@ -69,6 +69,15 @@ class SwipeDrawModel: ObservableObject {
         isActive = false
         delegate?.onComplete(drawModel: self)
     }
+    
+    var path:Path {
+        var path = Path()
+        strokes.forEach {
+            $0.append(to: &path)
+            path.closeSubpath()
+        }
+        return path
+    }
 }
 
 
