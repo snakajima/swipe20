@@ -110,7 +110,22 @@ class SwipeCanvasModel: NSObject, ObservableObject {
 
 extension SwipeCanvasModel : SwipeDrawModelDelegate {
     func onComplete(drawModel: SwipeDrawModel) {
-        let path = drawModel.path
-        print("onComplete", path)
+        //let path = drawModel.path
+        //let frame = path.boundingRect
+        print("onComplete before", frameIndex, scene.frames[0].ids.count)
+        let script:[String:Any] = [
+            "x":220, "y":500, "w":180, "h":180,
+            "backgroundColor":"red",
+            "cornerRadius": 20,
+            /*
+            "id":UUID().uuidString,
+            "x":frame.minX, "y":frame.minY,
+            "w":frame.width, "h":frame.height,
+            "backgroundColor":"red"
+            */
+        ]
+        let element = SwipeElement(script, id: UUID().uuidString, base: nil)
+        scene = scene.updated(element: element, frameIndex: frameIndex)
+        print("onComplete after", frameIndex, scene.frames[0].ids.count)
     }
 }

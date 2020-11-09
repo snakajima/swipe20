@@ -9,7 +9,7 @@ import CoreGraphics
 /// A structure that describes a frame, which consists of a collection of elements
 public struct SwipeFrame {
     //private let script:[String:Any]
-    let ids:[String]
+    private(set) var ids:[String]
     private(set) var elements:[String:SwipeElement]
     let duration:Double?
     let name:String?
@@ -45,6 +45,12 @@ public struct SwipeFrame {
     func updated(element:SwipeElement) -> SwipeFrame {
         var frame = self
         frame.elements[element.id] = element
+        if ids.firstIndex(of: element.id) == nil {
+            print("appending", element.id)
+            var ids = frame.ids
+            ids.append(element.id)
+            frame.ids = ids
+        }
         return frame
     }
     
