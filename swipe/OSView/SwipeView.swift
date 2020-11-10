@@ -99,6 +99,7 @@ public struct SwipeView: OSViewRepresentable {
                 self.renderer.scene = scene
                 self.lastIndex = nil
                 if oldIDCount != scene.frames.first?.ids.count {
+                    print("SwipeView call makeSublalers", oldIDCount ?? -1, scene.frames.first?.ids.count ?? -1)
                     base = nil
                     renderer.makeSublayers(layer: layer)
                 }

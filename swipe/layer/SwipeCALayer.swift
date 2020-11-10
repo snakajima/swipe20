@@ -105,6 +105,7 @@ private extension SwipeScene {
 private extension SwipeFrame {
     // This method will be called only once when we use Core Animation
     func prepare(layers:[CALayer], duration:Double,  transition:SwipeTransition, base:SwipeFrame?) {
+        print("SwipeFrame prepare")
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
@@ -122,7 +123,7 @@ private extension SwipeFrame {
                 print("#Error: SwipeCALayer no element for name", layer.name ?? "n/a")
                 return
             }
-            print("SwipeFrame applyToLayer", name)
+            print("SwipeFrame applyToLayer", ratio, name)
             element.apply(to: layer, ratio:ratio, transition: transition, base:base?.elements[name])
         }
     }
@@ -131,6 +132,7 @@ private extension SwipeFrame {
 private extension SwipeElement {
     // NOTE: We do not support the animation of "text" or "image" property itself. 
     func makeLayer() -> CALayer {
+        print("SwipeElement makeLayer", id)
         let layer:CALayer
         if let text = self.text {
             let textLayer = CATextLayer()
@@ -181,6 +183,7 @@ private extension SwipeElement {
     }
 
     func prepare(layer:CALayer, duration:Double,  transition:SwipeTransition, base:SwipeElement?) {
+        print("SwipeElement prepare", id)
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
