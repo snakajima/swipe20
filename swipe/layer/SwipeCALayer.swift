@@ -40,6 +40,7 @@ public struct SwipeCALayer {
     }
 
     public func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, base:SwipeScene?, updateFrameIndex:@escaping (Int)->Void) {
+        print("SwipeCALayer apply")
         guard let frame = scene.frameAt(index: frameIndex),
               let layer = layer,
               let sublayers = layer.sublayers else {
@@ -58,6 +59,7 @@ public struct SwipeCALayer {
         
         if (useSwipeAnimation) {
             func apply(ratio:Double) {
+                print("SwipeCALayer applyRatio", ratio)
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
                 frame.apply(to:sublayers, ratio:ratio, transition: transition, base:base?.frameAt(index:frameIndex) ?? scene.frameAt(index: lastIndex))
@@ -83,7 +85,7 @@ public struct SwipeCALayer {
         } else {
             CATransaction.begin()
             CATransaction.setAnimationDuration(duration ?? scene.duration)
-            frame.apply(to:sublayers, duration:duration ?? scene.duration, transition: transition, base:base?.frameAt(index:frameIndex) ?? scene.frameAt(index: lastIndex))
+            frame.prepare(layers:sublayers, duration:duration ?? scene.duration, transition: transition, base:base?.frameAt(index:frameIndex) ?? scene.frameAt(index: lastIndex))
             CATransaction.commit()
         }
     }
@@ -102,13 +104,13 @@ private extension SwipeScene {
 
 private extension SwipeFrame {
     // This method will be called only once when we use Core Animation
-    func apply(to layers:[CALayer], duration:Double,  transition:SwipeTransition, base:SwipeFrame?) {
+    func prepare(layers:[CALayer], duration:Double,  transition:SwipeTransition, base:SwipeFrame?) {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
                 return
             }
-            element.apply(to: layer, duration:duration, transition: transition, base:base?.elements[name])
+            element.prepare(layer: layer, duration:duration, transition: transition, base:base?.elements[name])
         }
     }
 
@@ -117,8 +119,10 @@ private extension SwipeFrame {
         for layer in layers {
             guard let name = layer.name,
                   let element = elements[name] else {
+                print("#Error: SwipeCALayer no element for name", layer.name ?? "n/a")
                 return
             }
+            print("SwipeFrame applyToLayer", name)
             element.apply(to: layer, ratio:ratio, transition: transition, base:base?.elements[name])
         }
     }
@@ -157,7 +161,7 @@ private extension SwipeElement {
             subElements[$0]!.makeLayer()
         }
         
-        apply(to: layer, duration:1e-10, transition: .initial, base:nil)
+        prepare(layer:layer, duration:1e-10, transition: .initial, base:nil)
         return layer
     }
 
@@ -176,7 +180,7 @@ private extension SwipeElement {
         }
     }
 
-    func apply(to layer:CALayer, duration:Double,  transition:SwipeTransition, base:SwipeElement?) {
+    func prepare(layer:CALayer, duration:Double,  transition:SwipeTransition, base:SwipeElement?) {
         layer.transform = CATransform3DIdentity
         layer.frame = frame
         if let backgroundColor = self.backgroundColor {
@@ -228,7 +232,7 @@ private extension SwipeElement {
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,
                let element = subElements[name] {
-                element.apply(to: sublayer, duration:duration, transition: transition, base:base?.subElements[name])
+                element.prepare(layer: sublayer, duration:duration, transition: transition, base:base?.subElements[name])
             }
         }
     }

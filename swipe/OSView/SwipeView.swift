@@ -64,6 +64,7 @@ public struct SwipeView: OSViewRepresentable {
     }
     
     public func updateUIView(_ nsView: UIViewType, context: Context) {
+        print("SwipeView updateUIView")
         let layer = nsView.layer
         if let swipeLayer = layer.sublayers?[0] {
             CATransaction.begin()
@@ -90,12 +91,17 @@ public struct SwipeView: OSViewRepresentable {
             renderer.makeLayer()
         }
         
-        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer?) {
+        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer) {
             var base:SwipeScene? = nil
             if scene.id != renderer.scene.id {
+                let oldIDCount = renderer.scene.frames.first?.ids.count
                 base = renderer.scene
                 self.renderer.scene = scene
                 self.lastIndex = nil
+                if oldIDCount != scene.frames.first?.ids.count {
+                    base = nil
+                    renderer.makeSublayers(layer: layer)
+                }
             }
             renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, base:base, updateFrameIndex: { newIndex in
                     self.view.frameIndex = newIndex

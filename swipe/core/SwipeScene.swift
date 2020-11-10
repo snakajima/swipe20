@@ -126,6 +126,7 @@ public struct SwipeScene: Identifiable {
     }
 
     func inserted(element:SwipeElement, frameIndex:Int) -> SwipeScene {
+        print("SwipeScene inserted", element.id)
         guard frameIndex >= 0 && frameIndex < frameCount else {
             return self
         }
