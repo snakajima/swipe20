@@ -18,7 +18,7 @@ let s_scriptEmpty:[String:Any] = [
     ]]
 ]
 
-let s_scriptGen:[String:Any] = ["duration": 0.7, "animation": ["engine": "swipe"], "frames": [["elements": [["id": "FD8FF6B7-2CF4-4CAB-8DB7-88B770426D55", "h": 180.0, "cornerRadius": 20.0, "x": 220.0, "backgroundColor": [1.0, 0.0, 0.0, 1.0], "w": 180.0, "y": 500.0]]]], "dimansion": [1920.0, 1080.0]]
+let s_scriptGen:[String:Any] = ["dimension": [1920.0, 1080.0], "frames": [["elements": [["w": 180.0, "id": "id0", "x": 20.0, "cornerRadius": 20.0, "backgroundColor": [1.0, 0.0, 0.0, 1.0] as [CGFloat], "h": 180.0, "y": 500.0, "animation": ["style": "leap"]]]]], "animation": ["engine": "swipe"], "duration": 0.7]
 
 let s_scriptSample:[String:Any] = [
     //"backgroundColor":"#FFFFDD",
