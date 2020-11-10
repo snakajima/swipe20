@@ -24,15 +24,19 @@ public struct SwipeCALayer {
     
     public func makeLayer() -> CALayer {
         let layer = scene.makeLayer()
+        makeSublayers(layer: layer)
+        if useSwipeAnimation {
+            layer.speed = 0
+        }
+        return layer
+    }
+    
+    public func makeSublayers(layer:CALayer) {
         if let frame = scene.firstFrame {
             layer.sublayers = frame.ids.map {
                 frame.elements[$0]!.makeLayer()
             }
         }
-        if useSwipeAnimation {
-            layer.speed = 0
-        }
-        return layer
     }
 
     public func apply(frameIndex:Int, to layer:CALayer?, lastIndex:Int?, base:SwipeScene?, updateFrameIndex:@escaping (Int)->Void) {
