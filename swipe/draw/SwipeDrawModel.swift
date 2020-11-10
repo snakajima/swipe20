@@ -13,6 +13,7 @@ protocol SwipeDrawModelDelegate: NSObjectProtocol {
 
 class SwipeDrawModel: ObservableObject {
     weak var delegate:SwipeDrawModelDelegate? = nil
+    private var scale:CGFloat = 1.0
     private var allStrokes = [SwipeStroke]()
     @Published var strokes = [SwipeStroke]()
     @Published var currentStroke = SwipeStroke()
@@ -42,7 +43,8 @@ class SwipeDrawModel: ObservableObject {
         currentStroke.points.append(location)
     }
     
-    func onEnded(_ location:CGPoint) {
+    func onEnded(_ location:CGPoint, scale:CGFloat) {
+        self.scale = scale
         allStrokes = strokes
         allStrokes.append(currentStroke)
         undoCursor = allStrokes.count
@@ -70,13 +72,15 @@ class SwipeDrawModel: ObservableObject {
         delegate?.onComplete(drawModel: self)
     }
     
-    var path:Path {
+    var path:CGPath {
         var path = Path()
         strokes.forEach {
             $0.append(to: &path)
             path.closeSubpath()
         }
-        return path
+        let cgPath = path.cgPath
+        var xf = CGAffineTransform(scaleX: 1/scale, y: 1/scale)
+        return cgPath.copy(using: &xf)!
     }
 }
 

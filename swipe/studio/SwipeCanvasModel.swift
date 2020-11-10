@@ -111,7 +111,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
 extension SwipeCanvasModel : SwipeDrawModelDelegate {
     func onComplete(drawModel: SwipeDrawModel) {
         let path = drawModel.path
-        let frame = path.boundingRect
+        let frame = path.boundingBoxOfPath
         print("onComplete before", frameIndex, scene.frames[0].ids.count, scale)
         let script:[String:Any] = [
             "id":"id2",

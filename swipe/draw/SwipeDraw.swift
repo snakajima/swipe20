@@ -12,11 +12,11 @@ struct SwipeDraw: View {
     let dimension:CGSize
     
     var body: some View {
-        let drag = DragGesture(minimumDistance: 0.1)
-            .onChanged { model.onChanged($0.location) }
-            .onEnded { model.onEnded($0.location) }
         GeometryReader { geometry in
             let scale:CGFloat = geometry.size.height / dimension.height
+            let drag = DragGesture(minimumDistance: 0.1)
+                .onChanged { model.onChanged($0.location) }
+                .onEnded { model.onEnded($0.location, scale:scale) }
             VStack {
                 ZStack {
                     ForEach(model.strokes) { stroke in
