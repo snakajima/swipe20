@@ -112,12 +112,13 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
     func onComplete(drawModel: SwipeDrawModel) {
         let path = drawModel.path
         let frame = path.boundingBoxOfPath
+        var xf = CGAffineTransform(translationX: -frame.minX, y: -frame.minY)
         print("onComplete before", frameIndex, scene.frames[0].ids.count, scale)
         let script:[String:Any] = [
             "id":"id2",
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
-            "backgroundColor":"yellow",
+            //"backgroundColor":"yellow",
             "strokeColor":"blue",
             "lineWidth": 2,
             "fillColor": "yellow",
@@ -133,7 +134,7 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
             "backgroundColor":"red"
             */
         var element = SwipeElement(script, id: UUID().uuidString, base: nil)
-        element = element.elementWithPath(path: drawModel.path)
+        element = element.elementWithPath(path: path.copy(using: &xf)!)
         scene = scene.inserted(element: element, frameIndex: frameIndex)
         print("onComplete after", frameIndex, scene.frames[0].ids.count, scene.script)
     }
