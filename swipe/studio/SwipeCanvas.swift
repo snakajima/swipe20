@@ -174,7 +174,7 @@ public struct SwipeCanvas: View {
                     .frame(height:32, alignment: .bottom)
                 }
                 if drawModel.isActive {
-                    SwipeDraw(model: drawModel)
+                    SwipeDraw(model: drawModel, dimension: model.scene.dimension)
                 }
             }
         }

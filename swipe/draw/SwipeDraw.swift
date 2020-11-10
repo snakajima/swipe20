@@ -9,51 +9,55 @@ import SwiftUI
 
 struct SwipeDraw: View {
     @ObservedObject var model:SwipeDrawModel
+    let dimension:CGSize
     
     var body: some View {
         let drag = DragGesture(minimumDistance: 0.1)
             .onChanged { model.onChanged($0.location) }
             .onEnded { model.onEnded($0.location) }
-        VStack {
-            ZStack {
-                ForEach(model.strokes) { stroke in
+        GeometryReader { geometry in
+            let scale:CGFloat = geometry.size.height / dimension.height
+            VStack {
+                ZStack {
+                    ForEach(model.strokes) { stroke in
+                        Path {
+                            stroke.append(to: &$0)
+                        }
+                        .stroke(style:self.markerStyle)
+                        .fill(self.markerColor)
+                    }
                     Path {
-                        stroke.append(to: &$0)
+                        model.currentStroke.append(to: &$0)
                     }
                     .stroke(style:self.markerStyle)
                     .fill(self.markerColor)
+                    .background(Color(white: 1.0, opacity: 0.1))
+                    .gesture(drag)
                 }
-                Path {
-                    model.currentStroke.append(to: &$0)
+                HStack {
+                    Button(action: {
+                        model.undo()
+                    }) {
+                        SwipeSymbol.backward.frame(width:24, height:24)
+                            .foregroundColor(model.undoable ? .blue: .gray)
+                    }
+                    .disabled(!model.undoable)
+                    Button(action: {
+                        model.redo()
+                    }) {
+                        SwipeSymbol.forward.frame(width:24, height:24)
+                            .foregroundColor(model.redoable ? .blue: .gray)
+                    }
+                    .disabled(!model.redoable)
+                    Spacer()
+                    Button(action: {
+                        model.done()
+                    }, label: {
+                        Text("Done")
+                    })
                 }
-                .stroke(style:self.markerStyle)
-                .fill(self.markerColor)
-                .background(Color(white: 1.0, opacity: 0.1))
-                .gesture(drag)
+                .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
             }
-            HStack {
-                Button(action: {
-                    model.undo()
-                }) {
-                    SwipeSymbol.backward.frame(width:24, height:24)
-                        .foregroundColor(model.undoable ? .blue: .gray)
-                }
-                .disabled(!model.undoable)
-                Button(action: {
-                    model.redo()
-                }) {
-                    SwipeSymbol.forward.frame(width:24, height:24)
-                        .foregroundColor(model.redoable ? .blue: .gray)
-                }
-                .disabled(!model.redoable)
-                Spacer()
-                Button(action: {
-                    model.done()
-                }, label: {
-                    Text("Done")
-                })
-            }
-            .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
         }
     }
     
@@ -64,7 +68,7 @@ struct SwipeDraw: View {
 
 struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw(model: SwipeDrawModel())
+        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480))
     }
 }
 
