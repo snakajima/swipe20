@@ -110,16 +110,17 @@ class SwipeCanvasModel: NSObject, ObservableObject {
 
 extension SwipeCanvasModel : SwipeDrawModelDelegate {
     func onComplete(drawModel: SwipeDrawModel) {
-        //let path = drawModel.path
-        //let frame = path.boundingRect
-        print("onComplete before", frameIndex, scene.frames[0].ids.count)
+        let path = drawModel.path
+        let frame = path.boundingRect
+        print("onComplete before", frameIndex, scene.frames[0].ids.count, scale)
         let script:[String:Any] = [
             "id":"id2",
-            "x":20, "y":500, "w":180, "h":180,
-            "backgroundColor":"red",
+            "x":frame.minX, "y":frame.minY,
+            "w":frame.width, "h":frame.height,
+            "backgroundColor":"blue",
             "cornerRadius": 20,
             "animation": [
-                "style":"leap"
+                "style":"jump"
             ],
         ]
             /*
