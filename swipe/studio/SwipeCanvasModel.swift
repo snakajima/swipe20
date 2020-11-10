@@ -117,7 +117,10 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
             "id":"id2",
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
-            "backgroundColor":"blue",
+            "backgroundColor":"yellow",
+            "strokeColor":"blue",
+            "lineWidth": 2,
+            "fillColor": "yellow",
             "cornerRadius": 20,
             "animation": [
                 "style":"jump"
@@ -129,7 +132,8 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
             "w":frame.width, "h":frame.height,
             "backgroundColor":"red"
             */
-        let element = SwipeElement(script, id: UUID().uuidString, base: nil)
+        var element = SwipeElement(script, id: UUID().uuidString, base: nil)
+        element = element.elementWithPath(path: drawModel.path)
         scene = scene.inserted(element: element, frameIndex: frameIndex)
         print("onComplete after", frameIndex, scene.frames[0].ids.count, scene.script)
     }

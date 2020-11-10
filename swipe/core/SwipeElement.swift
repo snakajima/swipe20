@@ -18,7 +18,7 @@ public struct SwipeElement {
     let image:CGImage?
     let imagePath:String?
     private let animation:[String:Any]?
-    let path:CGPath?
+    private(set) var path:CGPath?
     
     private(set) public var frame:CGRect
     private(set) public var opacity:Float
@@ -139,6 +139,12 @@ public struct SwipeElement {
         var element = self
         print("rotX", rotZ)
         element.rotZ += rotZ > .pi ? rotZ - 2 * .pi : rotZ
+        return element
+    }
+    
+    func elementWithPath(path:CGPath) -> SwipeElement {
+        var element = self
+        element.path = path
         return element
     }
     
