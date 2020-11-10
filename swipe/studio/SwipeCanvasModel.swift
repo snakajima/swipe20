@@ -114,18 +114,22 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         //let frame = path.boundingRect
         print("onComplete before", frameIndex, scene.frames[0].ids.count)
         let script:[String:Any] = [
-            "x":220, "y":500, "w":180, "h":180,
+            "id":"id2",
+            "x":20, "y":500, "w":180, "h":180,
             "backgroundColor":"red",
             "cornerRadius": 20,
+            "animation": [
+                "style":"leap"
+            ],
+        ]
             /*
             "id":UUID().uuidString,
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
             "backgroundColor":"red"
             */
-        ]
         let element = SwipeElement(script, id: UUID().uuidString, base: nil)
         scene = scene.inserted(element: element, frameIndex: frameIndex)
-        print("onComplete after", frameIndex, scene.frames[0].ids.count)
+        print("onComplete after", frameIndex, scene.frames[0].ids.count, scene.script)
     }
 }

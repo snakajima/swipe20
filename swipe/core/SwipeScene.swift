@@ -158,7 +158,7 @@ public struct SwipeScene: Identifiable {
 
     var script:[String:Any] {
         var script:[String:Any] = [
-            "dimansion":[dimension.width, dimension.height],
+            "dimension":[dimension.width, dimension.height],
             "duration":duration,
             // TODO: backgroundColor
             "frames": frames.map { $0.script }

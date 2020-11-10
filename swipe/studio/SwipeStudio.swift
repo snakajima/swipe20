@@ -17,7 +17,7 @@ let s_previewHeight:CGFloat = 100
 public struct SwipeStudio: View {
     @State private var scenes = [
         SwipeScene(s_scriptEmpty),
-        SwipeScene(s_scriptSample),
+        SwipeScene(s_scriptGen),
         SwipeScene(s_scriptSample),
     ]
 
