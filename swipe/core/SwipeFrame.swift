@@ -45,12 +45,20 @@ public struct SwipeFrame {
     func updated(element:SwipeElement) -> SwipeFrame {
         var frame = self
         frame.elements[element.id] = element
-        if ids.firstIndex(of: element.id) == nil {
-            print("appending", element.id)
-            var ids = frame.ids
-            ids.append(element.id)
-            frame.ids = ids
+        return frame
+    }
+
+    func inserted(element:SwipeElement) -> SwipeFrame {
+        var frame = self
+        frame.elements[element.id] = element
+        guard ids.firstIndex(of: element.id) == nil else {
+            print("##ERROR## duplicate id", element.id)
+            return self
         }
+        print("appending", element.id)
+        var ids = frame.ids
+        ids.append(element.id)
+        frame.ids = ids
         return frame
     }
     
