@@ -57,6 +57,7 @@ struct SwipeDraw: View {
                     Text("Done")
                 })
             }
+            .frame(height:32, alignment: .bottom)
             .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
         }
     }
