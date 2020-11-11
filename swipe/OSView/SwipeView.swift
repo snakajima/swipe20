@@ -24,7 +24,7 @@ public struct SwipeView: OSViewRepresentable {
     let scale:CGFloat
     
     public init(scene:SwipeScene, frameIndex:Binding<Int>, scale:CGFloat) {
-        print("SwipeView init", scale)
+        // print("SwipeView init", scale)
         self.scene = scene
         self._frameIndex = frameIndex
         self.scale = scale

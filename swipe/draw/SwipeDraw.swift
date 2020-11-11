@@ -55,7 +55,8 @@ struct SwipeDraw: View {
                 Button(action: {
                     model.done()
                 }, label: {
-                    Text("Done")
+                    SwipeSymbol.checkmark.frame(width:24, height:24)
+                        .foregroundColor(.blue)
                 })
             }
             .frame(height:32, alignment: .bottom)

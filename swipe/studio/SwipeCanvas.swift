@@ -168,7 +168,8 @@ public struct SwipeCanvas: View {
                             model.selectedElement = nil
                             drawModel.activate()
                         }, label: {
-                            Text("Pen")
+                            SwipeSymbol.scribble.frame(width:24, height:24)
+                                .foregroundColor(.blue)
                         })
                     }
                     .frame(height:32, alignment: .bottom)
