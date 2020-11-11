@@ -101,7 +101,10 @@ public struct SwipeView: OSViewRepresentable {
                 if oldIDCount != scene.frames.first?.ids.count {
                     print("SwipeView call makeSublalers", oldIDCount ?? -1, scene.frames.first?.ids.count ?? -1)
                     base = nil
+                    CATransaction.begin()
+                    CATransaction.setDisableActions(true)
                     renderer.makeSublayers(layer: layer)
+                    CATransaction.commit()
                 }
             }
             renderer.apply(frameIndex: frameIndex, to: layer, lastIndex:lastIndex, base:base, updateFrameIndex: { newIndex in
