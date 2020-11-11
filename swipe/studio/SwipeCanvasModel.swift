@@ -135,7 +135,7 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
             */
         var element = SwipeElement(script, id: UUID().uuidString, base: nil)
         element = element.elementWithPath(path: path.copy(using: &xf)!)
-        scene = scene.inserted(element: element, frameIndex: frameIndex)
+        scene = scene.inserted(element: element)
         print("onComplete after", frameIndex, scene.frames[0].ids.count, scene.script)
     }
 }
