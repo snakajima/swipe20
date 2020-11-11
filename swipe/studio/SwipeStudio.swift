@@ -26,8 +26,9 @@ public struct SwipeStudio: View {
         return NavigationView {
             List(scenes.indices) { index in
                 let model = SwipeCanvasModel(scene:scenes[index])
+                let drawModel = SwipeDrawModel()
                 NavigationLink(destination:
-                    SwipeCanvas(model: model, previewHeight: previewHeight)
+                                SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight)
                 ) {
                     Text("Sample")
                 }

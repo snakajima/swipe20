@@ -100,11 +100,12 @@ let s_scriptText:[String:Any] = [
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
-    @ObservedObject var drawModel = SwipeDrawModel()
+    @ObservedObject var drawModel:SwipeDrawModel
     let previewHeight:CGFloat
     
-    init(model:SwipeCanvasModel, previewHeight:CGFloat) {
+    init(model:SwipeCanvasModel, drawModel:SwipeDrawModel, previewHeight:CGFloat) {
         self.model = model
+        self.drawModel = drawModel
         self.previewHeight = previewHeight
         self.drawModel.delegate = self.model
     }
@@ -186,7 +187,8 @@ public struct SwipeCanvas: View {
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), previewHeight: 150)
+            let drawModel = SwipeDrawModel()
+            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), drawModel:drawModel, previewHeight: 150)
         }
     }
 }
