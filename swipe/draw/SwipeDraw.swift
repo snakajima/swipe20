@@ -18,18 +18,19 @@ struct SwipeDraw: View {
                 let drag = DragGesture(minimumDistance: 0.1)
                     .onChanged { model.onChanged($0.location) }
                     .onEnded { model.onEnded($0.location, scale:scale) }
+                let style = markerStyle(scale: scale)
                 ZStack {
                     ForEach(model.strokes) { stroke in
                         Path {
                             stroke.append(to: &$0)
                         }
-                        .stroke(style:self.markerStyle)
+                        .stroke(style:style)
                         .fill(self.markerColor)
                     }
                     Path {
                         model.currentStroke.append(to: &$0)
                     }
-                    .stroke(style:self.markerStyle)
+                    .stroke(style:style)
                     .fill(self.markerColor)
                     .background(Color(white: 1.0, opacity: 0.1))
                     .gesture(drag)
@@ -62,7 +63,9 @@ struct SwipeDraw: View {
         }
     }
     
-    let markerStyle = StrokeStyle(lineWidth: 3.0, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 0.1, dash: [], dashPhase: 0)
+    func markerStyle(scale:CGFloat) -> StrokeStyle {
+        return StrokeStyle(lineWidth: 10.0 * scale, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 0.1, dash: [], dashPhase: 0)
+    }
     let markerColor = Color(.blue)
 }
 
