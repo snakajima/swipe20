@@ -72,11 +72,13 @@ class SwipeDrawModel: ObservableObject {
         delegate?.onComplete(drawModel: self)
     }
     
-    var path:CGPath {
+    var path:CGPath? {
+        guard strokes.count > 0 else {
+            return nil
+        }
         var path = Path()
         strokes.forEach {
             $0.append(to: &path)
-            //path.closeSubpath()
         }
         let cgPath = path.cgPath
         var xf = CGAffineTransform(scaleX: 1/scale, y: 1/scale)

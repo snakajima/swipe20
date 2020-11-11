@@ -110,7 +110,9 @@ class SwipeCanvasModel: NSObject, ObservableObject {
 
 extension SwipeCanvasModel : SwipeDrawModelDelegate {
     func onComplete(drawModel: SwipeDrawModel) {
-        let path = drawModel.path
+        guard let path = drawModel.path else {
+            return // empty
+        }
         let frame = path.boundingBoxOfPath
         var xf = CGAffineTransform(translationX: -frame.minX, y: -frame.minY)
         let script:[String:Any] = [
