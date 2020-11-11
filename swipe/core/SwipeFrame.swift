@@ -55,7 +55,7 @@ public struct SwipeFrame {
             print("##ERROR## duplicate id", element.id)
             return self
         }
-        print("appending", element.id)
+        //print("appending", element.id)
         var ids = frame.ids
         ids.append(element.id)
         frame.ids = ids

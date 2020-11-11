@@ -64,7 +64,7 @@ public struct SwipeView: OSViewRepresentable {
     }
     
     public func updateUIView(_ nsView: UIViewType, context: Context) {
-        print("SwipeView updateUIView")
+        //print("SwipeView updateUIView")
         let layer = nsView.layer
         if let swipeLayer = layer.sublayers?[0] {
             CATransaction.begin()
