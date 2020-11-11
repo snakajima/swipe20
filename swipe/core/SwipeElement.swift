@@ -55,7 +55,7 @@ public struct SwipeElement {
         self.foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
         self.fillColor = SwipeParser.parseColor(script["fillColor"]) ?? base?.fillColor
         self.strokeColor = SwipeParser.parseColor(script["strokeColor"]) ?? base?.strokeColor
-        self.lineWidth = script["lineWidth"] as? CGFloat ?? base?.lineWidth
+        self.lineWidth = SwipeParser.asCGFloat(script["lineWidth"]) ?? base?.lineWidth
         self.cornerRadius = SwipeParser.asCGFloat(script["cornerRadius"]) ?? base?.cornerRadius
         self.opacity = SwipeParser.asFloat(script["opacity"]) ?? base?.opacity ?? 1.0
  

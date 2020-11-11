@@ -113,29 +113,18 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         let path = drawModel.path
         let frame = path.boundingBoxOfPath
         var xf = CGAffineTransform(translationX: -frame.minX, y: -frame.minY)
-        print("onComplete before", frameIndex, scene.frames[0].ids.count, scale)
         let script:[String:Any] = [
-            "id":"id2",
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
-            //"backgroundColor":"yellow",
             "strokeColor":"blue",
-            "lineWidth": 2,
-            "fillColor": "yellow",
-            "cornerRadius": 20,
+            "fillColor": "clear",
+            "lineWidth": 10,
             "animation": [
                 "style":"jump"
             ],
         ]
-            /*
-            "id":UUID().uuidString,
-            "x":frame.minX, "y":frame.minY,
-            "w":frame.width, "h":frame.height,
-            "backgroundColor":"red"
-            */
         var element = SwipeElement(script, id: UUID().uuidString, base: nil)
         element = element.elementWithPath(path: path.copy(using: &xf)!)
         scene = scene.inserted(element: element)
-        print("onComplete after", frameIndex, scene.frames[0].ids.count, scene.script)
     }
 }
