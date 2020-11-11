@@ -44,6 +44,7 @@ class SwipeDrawModel: ObservableObject {
     }
     
     func onEnded(_ location:CGPoint, scale:CGFloat) {
+        print("SwipeDrawMode onEnded", scale)
         self.scale = scale
         allStrokes = strokes
         allStrokes.append(currentStroke)

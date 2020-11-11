@@ -12,12 +12,12 @@ struct SwipeDraw: View {
     let dimension:CGSize
     
     var body: some View {
-        GeometryReader { geometry in
-            let scale:CGFloat = geometry.size.height / dimension.height
-            let drag = DragGesture(minimumDistance: 0.1)
-                .onChanged { model.onChanged($0.location) }
-                .onEnded { model.onEnded($0.location, scale:scale) }
-            VStack {
+        VStack {
+            GeometryReader { geometry in
+                let scale:CGFloat = geometry.size.height / dimension.height
+                let drag = DragGesture(minimumDistance: 0.1)
+                    .onChanged { model.onChanged($0.location) }
+                    .onEnded { model.onEnded($0.location, scale:scale) }
                 ZStack {
                     ForEach(model.strokes) { stroke in
                         Path {
@@ -34,30 +34,30 @@ struct SwipeDraw: View {
                     .background(Color(white: 1.0, opacity: 0.1))
                     .gesture(drag)
                 }
-                HStack {
-                    Button(action: {
-                        model.undo()
-                    }) {
-                        SwipeSymbol.backward.frame(width:24, height:24)
-                            .foregroundColor(model.undoable ? .blue: .gray)
-                    }
-                    .disabled(!model.undoable)
-                    Button(action: {
-                        model.redo()
-                    }) {
-                        SwipeSymbol.forward.frame(width:24, height:24)
-                            .foregroundColor(model.redoable ? .blue: .gray)
-                    }
-                    .disabled(!model.redoable)
-                    Spacer()
-                    Button(action: {
-                        model.done()
-                    }, label: {
-                        Text("Done")
-                    })
-                }
-                .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
             }
+            HStack {
+                Button(action: {
+                    model.undo()
+                }) {
+                    SwipeSymbol.backward.frame(width:24, height:24)
+                        .foregroundColor(model.undoable ? .blue: .gray)
+                }
+                .disabled(!model.undoable)
+                Button(action: {
+                    model.redo()
+                }) {
+                    SwipeSymbol.forward.frame(width:24, height:24)
+                        .foregroundColor(model.redoable ? .blue: .gray)
+                }
+                .disabled(!model.redoable)
+                Spacer()
+                Button(action: {
+                    model.done()
+                }, label: {
+                    Text("Done")
+                })
+            }
+            .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
         }
     }
     
