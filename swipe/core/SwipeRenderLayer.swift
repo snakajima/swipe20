@@ -25,8 +25,6 @@ extension SwipeRenderLayer {
             } else {
                 print("SwipeRenderLayer: ###Error")
             }
-        } else {
-            print("no element.path")
         }
         self.frame = frame
     }

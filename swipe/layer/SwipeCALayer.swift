@@ -214,6 +214,9 @@ private extension SwipeElement {
             if let width = lineWidth {
                 shapeLayer.lineWidth = width
             }
+            shapeLayer.lineCap = .round
+            shapeLayer.lineJoin = .round
+            shapeLayer.miterLimit = 0.1
         }
         layer.cornerRadius = cornerRadius ?? 0
         layer.opacity = Float(opacity)
