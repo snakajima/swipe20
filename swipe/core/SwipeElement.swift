@@ -18,7 +18,13 @@ public struct SwipeElement {
     let image:CGImage?
     let imagePath:String?
     private let animation:[String:Any]?
-    private(set) var path:CGPath?
+    
+    private(set) var pathBox = CGRect.zero
+    private(set) var path:CGPath? {
+        didSet {
+            pathBox = path?.boundingBoxOfPath ?? .zero
+        }
+    }
     
     private(set) public var frame:CGRect
     private(set) public var opacity:Float
