@@ -245,6 +245,7 @@ private extension SwipeElement {
 }
 
 extension CALayer: SwipeRenderLayer {
+    /*
     public var id: Any? {
         get {
             return self.contents
@@ -253,4 +254,5 @@ extension CALayer: SwipeRenderLayer {
             self.contents = newValue
         }
     }
+     */
 }
