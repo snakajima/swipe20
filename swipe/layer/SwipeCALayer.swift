@@ -170,9 +170,9 @@ private extension SwipeElement {
     // This method will be called multiple times when we use Swipe Animation
     func apply(to layer:CALayer, ratio:Double, transition:SwipeTransition, base:SwipeElement?) {
         if transition == .prev, let base = base {
-            base.apply(target: layer, ratio: 1 - ratio, from: self)
+            base.apply(target: layer, ratio: 1 - ratio, from: self, element:self)
         } else {
-            self.apply(target: layer, ratio: ratio, from: base)
+            self.apply(target: layer, ratio: ratio, from: base, element:self)
         }
         for sublayer in layer.sublayers ?? [] {
             if let name = sublayer.name,

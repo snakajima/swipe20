@@ -133,6 +133,7 @@ public struct SwipeElement {
 
     func updated(frame:CGRect) -> SwipeElement {
         var element = self
+        /*
         if let path = element.path {
             if frame.width != element.frame.width || frame.height != element.frame.height {
                 let sx = frame.width / element.frame.width
@@ -143,6 +144,7 @@ public struct SwipeElement {
                 print("after", element.path!)
             }
         }
+        */
         element.frame = frame
         return element
     }
