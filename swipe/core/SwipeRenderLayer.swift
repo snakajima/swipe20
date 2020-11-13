@@ -30,14 +30,21 @@ extension SwipeRenderLayer {
                 let pathResized = path.copy(using: &xf)!
                 let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
                 let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-                guard let context = CGContext(data: nil, width: Int(frame.size.width), height: Int(frame.size.height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else { return }
+                let lineWidth = CGFloat(element.lineWidth ?? 10.0)
+                guard let context = CGContext(data: nil, width: Int(frame.size.width + lineWidth*2), height: Int(frame.size.height + lineWidth*2), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else { return }
 
+                context.translateBy(x: lineWidth, y: lineWidth)
                 context.addPath(pathResized)
-                context.setLineWidth(10.0)
+                context.setLineWidth(lineWidth)
                 context.setStrokeColor(OSColor.blue.cgColor)
+                context.setLineCap(.round)
+                context.setLineJoin(.round)
+                context.setMiterLimit(0.1)
                 context.strokePath()
                 let image = context.makeImage()
                 self.contents = image
+                self.frame = CGRect(origin: CGPoint(x: frame.minX - lineWidth, y: frame.minY - lineWidth), size: CGSize(width: frame.size.width + lineWidth, height: frame.size.height + lineWidth))
+                return
             }
         }
         self.frame = frame
