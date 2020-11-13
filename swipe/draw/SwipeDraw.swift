@@ -53,7 +53,13 @@ struct SwipeDraw: View {
                 .disabled(!model.redoable)
                 Spacer()
                 Button(action: {
-                    model.done()
+                    model.done(style:.jump)
+                }, label: {
+                    SwipeSymbol.checkmark.frame(width:24, height:24)
+                        .foregroundColor(.blue)
+                })
+                Button(action: {
+                    model.done(style:.leap)
                 }, label: {
                     SwipeSymbol.checkmark.frame(width:24, height:24)
                         .foregroundColor(.blue)

@@ -121,12 +121,10 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
             "strokeColor":"white",
             "fillColor": "clear",
             "lineWidth": 10,
-            "animation": [
-                "style":"jump"
-            ],
         ]
         var element = SwipeElement(script, id: UUID().uuidString, base: nil)
         element = element.elementWithPath(path: path.copy(using: &xf)!)
+        element = element.updated(animationStyle: drawModel.animationStyle)
         scene = scene.inserted(element: element)
     }
 }

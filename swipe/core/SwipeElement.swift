@@ -131,6 +131,12 @@ public struct SwipeElement {
         return frame.contains(point)
     }
 
+    func updated(animationStyle:SwipeAnimation.Style) -> SwipeElement {
+        var element = self
+        element.animationStyle = animationStyle
+        return element
+    }
+    
     func updated(frame:CGRect) -> SwipeElement {
         var element = self
         /*

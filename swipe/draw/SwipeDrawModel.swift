@@ -15,6 +15,7 @@ class SwipeDrawModel: ObservableObject {
     weak var delegate:SwipeDrawModelDelegate? = nil
     private var scale:CGFloat = 1.0
     private var allStrokes = [SwipeStroke]()
+    public var animationStyle = SwipeAnimation.Style.jump
     @Published var strokes = [SwipeStroke]()
     @Published var currentStroke = SwipeStroke()
     @Published var undoable = false
@@ -68,8 +69,9 @@ class SwipeDrawModel: ObservableObject {
         isActive = true
     }
     
-    func done() {
+    func done(style:SwipeAnimation.Style) {
         isActive = false
+        animationStyle = style
         delegate?.onComplete(drawModel: self)
     }
     
