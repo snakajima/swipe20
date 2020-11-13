@@ -115,11 +115,8 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         }
         let frame = path.boundingBoxOfPath
         var xf = CGAffineTransform(translationX: -frame.minX, y: -frame.minY)
-        let script:[String:Any] = [
-            "x":frame.minX, "y":frame.minY,
-            "w":frame.width, "h":frame.height,
-        ]
-        var element = SwipeElement(script, id: UUID().uuidString, base: nil)
+        var element = SwipeElement([:], id: UUID().uuidString, base: nil)
+        element = element.updated(frame: frame)
         element = element.updated(path: path.copy(using: &xf)!)
         element = element.updated(animationStyle: drawModel.animationStyle)
         element = element.updated(strokeColor: drawModel.strokeColor, lineWidth: drawModel.lineWidth)
