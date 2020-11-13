@@ -67,7 +67,7 @@ struct SwipeDraw: View {
     func markerStyle(scale:CGFloat) -> StrokeStyle {
         return StrokeStyle(lineWidth: 10.0 * scale, lineCap: CGLineCap.round, lineJoin: CGLineJoin.round, miterLimit: 0.1, dash: [], dashPhase: 0)
     }
-    let markerColor = Color(.blue)
+    let markerColor = Color(.white)
 }
 
 

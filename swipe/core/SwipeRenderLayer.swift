@@ -36,7 +36,7 @@ extension SwipeRenderLayer {
                 context.translateBy(x: lineWidth, y: lineWidth)
                 context.addPath(pathResized)
                 context.setLineWidth(lineWidth)
-                context.setStrokeColor(OSColor.blue.cgColor)
+                context.setStrokeColor(element.strokeColor ?? OSColor.blue.cgColor)
                 context.setLineCap(.round)
                 context.setLineJoin(.round)
                 context.setMiterLimit(0.1)

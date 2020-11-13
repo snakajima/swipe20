@@ -118,7 +118,7 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         let script:[String:Any] = [
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
-            "strokeColor":"blue",
+            "strokeColor":"white",
             "fillColor": "clear",
             "lineWidth": 10,
             "animation": [
