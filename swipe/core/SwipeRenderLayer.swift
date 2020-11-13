@@ -25,7 +25,7 @@ extension SwipeRenderLayer {
                 let pathResized = path.copy(using: &xf)!
                 shapeLayer.path = pathResized
             } else {
-                var xf = CGAffineTransform(translationX: 0, y: element.pathBox.size.height)
+                var xf = CGAffineTransform(translationX: 0, y: frame.size.height)
                 xf = xf.scaledBy(x: sx, y: -sy)
                 let pathResized = path.copy(using: &xf)!
                 let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
