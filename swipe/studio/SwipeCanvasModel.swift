@@ -118,13 +118,12 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         let script:[String:Any] = [
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
-            "strokeColor":"white",
             "fillColor": "clear",
-            "lineWidth": 10,
         ]
         var element = SwipeElement(script, id: UUID().uuidString, base: nil)
-        element = element.elementWithPath(path: path.copy(using: &xf)!)
+        element = element.updated(path: path.copy(using: &xf)!)
         element = element.updated(animationStyle: drawModel.animationStyle)
+        element = element.updated(strokeColor: drawModel.strokeColor, lineWidth: drawModel.lineWidth)
         scene = scene.inserted(element: element)
     }
 }

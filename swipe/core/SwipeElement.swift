@@ -33,8 +33,8 @@ public struct SwipeElement {
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
     let fillColor:CGColor?
-    let strokeColor:CGColor?
-    let lineWidth:CGFloat?
+    private(set) public var strokeColor:CGColor?
+    private(set) public var lineWidth:CGFloat?
     let cornerRadius:CGFloat?
     let text:String?
     let filter:[String:Any]?
@@ -139,19 +139,14 @@ public struct SwipeElement {
     
     func updated(frame:CGRect) -> SwipeElement {
         var element = self
-        /*
-        if let path = element.path {
-            if frame.width != element.frame.width || frame.height != element.frame.height {
-                let sx = frame.width / element.frame.width
-                let sy = frame.height / element.frame.height
-                var xf = CGAffineTransform(scaleX: sx , y: sy)
-                print("before", path)
-                element.path = path.copy(using: &xf)
-                print("after", element.path!)
-            }
-        }
-        */
         element.frame = frame
+        return element
+    }
+
+    func updated(strokeColor:CGColor, lineWidth:CGFloat) -> SwipeElement {
+        var element = self
+        element.strokeColor = strokeColor
+        element.lineWidth = lineWidth
         return element
     }
 
@@ -166,7 +161,7 @@ public struct SwipeElement {
         return element
     }
     
-    func elementWithPath(path:CGPath) -> SwipeElement {
+    func updated(path:CGPath) -> SwipeElement {
         var element = self
         element.path = path
         return element

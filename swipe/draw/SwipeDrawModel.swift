@@ -16,6 +16,8 @@ class SwipeDrawModel: ObservableObject {
     private var scale:CGFloat = 1.0
     private var allStrokes = [SwipeStroke]()
     public var animationStyle = SwipeAnimation.Style.jump
+    public var strokeColor = CGColor.white
+    public var lineWidth = CGFloat(40)
     @Published var strokes = [SwipeStroke]()
     @Published var currentStroke = SwipeStroke()
     @Published var undoable = false
