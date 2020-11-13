@@ -32,7 +32,7 @@ public struct SwipeElement {
     private(set) public var animationStyle:SwipeAnimation.Style
     let backgroundColor:CGColor?
     let foregroundColor:CGColor?
-    let fillColor:CGColor?
+    private(set) public var fillColor:CGColor?
     private(set) public var strokeColor:CGColor?
     private(set) public var lineWidth:CGFloat?
     let cornerRadius:CGFloat?
@@ -143,10 +143,11 @@ public struct SwipeElement {
         return element
     }
 
-    func updated(strokeColor:CGColor, lineWidth:CGFloat) -> SwipeElement {
+    func updated(strokeColor:CGColor, lineWidth:CGFloat, fillColor:CGColor = CGColor.clear) -> SwipeElement {
         var element = self
         element.strokeColor = strokeColor
         element.lineWidth = lineWidth
+        element.fillColor = fillColor
         return element
     }
 

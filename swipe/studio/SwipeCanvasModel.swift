@@ -118,7 +118,6 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         let script:[String:Any] = [
             "x":frame.minX, "y":frame.minY,
             "w":frame.width, "h":frame.height,
-            "fillColor": "clear",
         ]
         var element = SwipeElement(script, id: UUID().uuidString, base: nil)
         element = element.updated(path: path.copy(using: &xf)!)
