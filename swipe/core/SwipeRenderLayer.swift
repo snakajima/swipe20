@@ -20,11 +20,14 @@ extension SwipeRenderLayer {
         if let path = element.path {
             let sx = frame.size.width / element.pathBox.size.width
             let sy = frame.size.height / element.pathBox.size.height
-            var xf = CGAffineTransform(scaleX: sx, y: sy)
-            let pathResized = path.copy(using: &xf)!
             if let shapeLayer = self as? CAShapeLayer {
+                var xf = CGAffineTransform(scaleX: sx, y: sy)
+                let pathResized = path.copy(using: &xf)!
                 shapeLayer.path = pathResized
             } else {
+                var xf = CGAffineTransform(translationX: 0, y: element.pathBox.size.height)
+                xf = xf.scaledBy(x: sx, y: -sy)
+                let pathResized = path.copy(using: &xf)!
                 let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
                 let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
                 guard let context = CGContext(data: nil, width: Int(frame.size.width), height: Int(frame.size.height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else { return }
