@@ -143,7 +143,7 @@ public struct SwipeElement {
         return element
     }
 
-    func updated(strokeColor:CGColor, lineWidth:CGFloat, fillColor:CGColor = CGColor.clear) -> SwipeElement {
+    func updated(strokeColor:CGColor, lineWidth:CGFloat, fillColor:CGColor = OSColor.clear.cgColor) -> SwipeElement {
         var element = self
         element.strokeColor = strokeColor
         element.lineWidth = lineWidth

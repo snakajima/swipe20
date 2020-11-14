@@ -19,7 +19,11 @@ struct SwipeDraw: View {
                     .onChanged { model.onChanged($0.location) }
                     .onEnded { model.onEnded($0.location, scale:scale) }
                 let style = markerStyle(scale: scale)
+                #if os(macOS)
+                let markerColor = Color(OSColor(cgColor: model.strokeColor) ?? OSColor.white)
+                #else
                 let markerColor = Color(model.strokeColor)
+                #endif
                 ZStack {
                     ForEach(model.strokes) { stroke in
                         Path {
