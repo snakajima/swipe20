@@ -33,6 +33,7 @@ public struct SwipeStudio: View {
                     Text("Sample")
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
