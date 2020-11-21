@@ -12,7 +12,7 @@ struct SwipeSceneList: View {
     let previewHeight:CGFloat
     var body: some View {
         ScrollView (.horizontal, showsIndicators: true) {
-            HStack(spacing:8) {
+            HStack(spacing:1) {
                 ForEach(0..<model.scene.frameCount, id:\.self) { index in
                     SwipeSceneItem(model:model, index: index, previewHeight: previewHeight)
                 }
@@ -32,8 +32,9 @@ struct SwipeSceneItem: View {
                 SwipeView(scene: model.scene, frameIndex: $index, scale:scale)
                 if index == model.frameIndex {
                     Rectangle()
-                        .stroke(lineWidth: 1.0)
+                        .stroke(lineWidth: 3.0)
                         .foregroundColor(.blue)
+                        .padding(2.0)
                 }
             }
             .frame(width:model.scene.dimension.width * scale, height:previewHeight)
