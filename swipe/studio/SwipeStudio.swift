@@ -20,11 +20,24 @@ public struct SwipeStudio: View {
         SwipeScene(s_scriptGen),
         SwipeScene(s_scriptSample),
     ]
-    let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 1.0, green: 1.0, blue: 0.0, opacity: 0.8)
+    let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 0.8)
     let buttonColor = Color.blue
 
     public var body: some View {
         let previewHeight:CGFloat = s_previewHeight
+        #if os(macOS)
+        return NavigationView {
+            List(scenes.indices) { index in
+                let model = SwipeCanvasModel(scene:scenes[index])
+                let drawModel = SwipeDrawModel()
+                NavigationLink(destination:
+                                SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+                ) {
+                    Text("Sample")
+                }
+            }
+        }
+        #else
         return NavigationView {
             List(scenes.indices) { index in
                 let model = SwipeCanvasModel(scene:scenes[index])
@@ -37,6 +50,7 @@ public struct SwipeStudio: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
+        #endif
     }
 }
 
