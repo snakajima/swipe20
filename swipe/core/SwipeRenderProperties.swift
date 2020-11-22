@@ -36,8 +36,7 @@ extension SwipeRenderProperties {
         
         target.opacity = from.opacity.mix(opacity, ratio)
         
-        
-        if self.frame != from.frame {
+        if self.isAnimationRequired(other: from) {
             var newFrame = CGRect(x: from.frame.minX.mix(frame.minX, ratio),
                                   y: from.frame.minY.mix(frame.minY, ratio),
                                   width: from.frame.width.mix(frame.width, ratio),
@@ -171,6 +170,12 @@ extension SwipeRenderProperties {
         return (CGRect(origin: CGPoint(x: x, y: y), size: size), xfNew)
     }
 
+    func isAnimationRequired(other:SwipeRenderProperties) -> Bool {
+        return frame != other.frame
+            || rotX != other.rotX
+            || rotY != other.rotY
+            || rotZ != other.rotZ
+    }
 }
 
 private extension Float {
