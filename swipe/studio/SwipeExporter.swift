@@ -32,18 +32,33 @@ struct SwipeExporter: View {
         }
         let fileURL = folderURL.appendingPathComponent("swipeanime.gif")
         let fileProps = [kCGImagePropertyGIFLoopCount:0]
-        let frameProps = [kCGImagePropertyGIFDelayTime:0.1]
-        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 1, fileProps as CFDictionary) else {
+        let frameProps = [kCGImagePropertyGIFDelayTime:1.0/30.0]
+        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 10, fileProps as CFDictionary) else {
             print("### ERROR can't create destination")
             return
         }
         let renderer = SwipeCALayer(scene: scene)
         let layer = renderer.makeLayer()
+        guard let sublayers = layer.sublayers else {
+            print("### ERROR no sublayers")
+            return
+        }
         UIGraphicsBeginImageContext(scene.dimension)
         let ctx = UIGraphicsGetCurrentContext()!
         layer.render(in: ctx)
         let image = UIGraphicsGetImageFromCurrentImageContext()!.cgImage!
         CGImageDestinationAddImage(destination, image, frameProps as CFDictionary)
+        let frame = scene.frames[0]
+        let frameNext = scene.frames[1]
+        for index in 1..<30 {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            frameNext.apply(to: sublayers, ratio: Double(index) / 30.0, transition: .next, base: frame)
+            CATransaction.commit()
+            layer.render(in: ctx)
+            let image = UIGraphicsGetImageFromCurrentImageContext()!.cgImage!
+            CGImageDestinationAddImage(destination, image, frameProps as CFDictionary)
+        }
         UIGraphicsEndImageContext()
         
         CGImageDestinationFinalize(destination)

@@ -102,7 +102,7 @@ private extension SwipeScene {
     }
 }
 
-private extension SwipeFrame {
+extension SwipeFrame {
     // This method will be called only once when we use Core Animation
     func prepare(layers:[CALayer], duration:Double,  transition:SwipeTransition, base:SwipeFrame?) {
         //print("SwipeFrame prepare")
