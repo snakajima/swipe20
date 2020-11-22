@@ -122,6 +122,8 @@
 		74C9350C255709B00042AA4C /* SwipeDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C9350A255709B00042AA4C /* SwipeDraw.swift */; };
 		74E8A17025575D3300D5C98C /* SwipeDrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */; };
 		74E8A17125575D3300D5C98C /* SwipeDrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */; };
+		74F5A3E4256AA45A006A5EF4 /* SwipeExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F5A3E3256AA459006A5EF4 /* SwipeExporter.swift */; };
+		74F5A3E5256AA45A006A5EF4 /* SwipeExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F5A3E3256AA459006A5EF4 /* SwipeExporter.swift */; };
 		74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FAC206251BBFA700DD29EF /* SwipePath.swift */; };
 		74FAC20A251BC38900DD29EF /* Shapes.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC209251BC38900DD29EF /* Shapes.swipe */; };
 		74FAC264251CBDC600DD29EF /* Opacity.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 74FAC263251CBDC600DD29EF /* Opacity.swipe */; };
@@ -193,6 +195,7 @@
 		74C934F7255707310042AA4C /* SwipeStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStroke.swift; sourceTree = "<group>"; };
 		74C9350A255709B00042AA4C /* SwipeDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDraw.swift; sourceTree = "<group>"; };
 		74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDrawModel.swift; sourceTree = "<group>"; };
+		74F5A3E3256AA459006A5EF4 /* SwipeExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeExporter.swift; sourceTree = "<group>"; };
 		74FAC206251BBFA700DD29EF /* SwipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePath.swift; sourceTree = "<group>"; };
 		74FAC209251BC38900DD29EF /* Shapes.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shapes.swipe; sourceTree = "<group>"; };
 		74FAC263251CBDC600DD29EF /* Opacity.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Opacity.swipe; sourceTree = "<group>"; };
@@ -365,6 +368,7 @@
 				746E66AE252D06EB0041AEE0 /* SwipeCanvasModel.swift */,
 				746E66A9252D019F0041AEE0 /* SwipeCursor.swift */,
 				746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */,
+				74F5A3E3256AA459006A5EF4 /* SwipeExporter.swift */,
 			);
 			path = studio;
 			sourceTree = "<group>";
@@ -658,6 +662,7 @@
 				74C935062557077F0042AA4C /* SwipeStroke.swift in Sources */,
 				7465DF3625472DCA000E8D74 /* SwipeAnimation.swift in Sources */,
 				7465DF2425472DBA000E8D74 /* SwipeStudio.swift in Sources */,
+				74F5A3E5256AA45A006A5EF4 /* SwipeExporter.swift in Sources */,
 				7465DF3825472DCA000E8D74 /* SwipeRenderLayer.swift in Sources */,
 				7465DF2625472DBB000E8D74 /* SwipeCanvas.swift in Sources */,
 				7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */,
@@ -702,6 +707,7 @@
 				746E6678252AE4970041AEE0 /* SwipeSymbol.swift in Sources */,
 				746E66B0252D06EB0041AEE0 /* SwipeCanvasModel.swift in Sources */,
 				746E66AB252D019F0041AEE0 /* SwipeCursor.swift in Sources */,
+				74F5A3E4256AA45A006A5EF4 /* SwipeExporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
