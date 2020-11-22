@@ -61,7 +61,7 @@ extension SwipeRenderProperties {
             default:
                 break
             }
-            if r == 1.0 || r == 0.0 {
+            if ratio == 1.0 || ratio == 0.0 || (r < 1.0 && r > 0.0) {
                 target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             }
             target.updateFrame(frame: newFrame, element: element)
