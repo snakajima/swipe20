@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SwipeCursor: View {
-    let color = Color(red: 0, green: 0, blue: 1, opacity: 0.8)
     @ObservedObject var model:SwipeCanvasModel
     let scale:CGFloat
+    let selectionColor:Color
     var geometry:GeometryProxy
     
     func resizeGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> some Gesture {
@@ -56,27 +56,27 @@ struct SwipeCursor: View {
             let rect = scaledCursor()
             Path(CGPath(rect: rect, transform: nil))
             .stroke(lineWidth: 1.0)
-            .foregroundColor(color)
+            .foregroundColor(selectionColor)
             if !model.isDragging {
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: rect.maxY))
-                    .foregroundColor(color)
+                    .foregroundColor(selectionColor)
                     .gesture(resizeGesture(geometry: geometry, sx:nil, sy:nil))
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: center.x, y: rect.maxY))
-                    .foregroundColor(color)
+                    .foregroundColor(selectionColor)
                     .gesture(resizeGesture(geometry: geometry, sx:1, sy:nil))
                 Rectangle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: rect.maxX, y: center.y))
-                    .foregroundColor(color)
+                    .foregroundColor(selectionColor)
                     .gesture(resizeGesture(geometry: geometry, sx:nil, sy:1))
                 Circle()
                     .frame(width:14, height:14)
                     .position(CGPoint(x: center.x, y: rect.minY))
-                    .foregroundColor(color)
+                    .foregroundColor(selectionColor)
                     .gesture(rotateGesture(geometry: geometry))
             }
         }.transformEffect(model.cursorTransform(center: center))

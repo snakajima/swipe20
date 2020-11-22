@@ -103,11 +103,16 @@ public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
     @ObservedObject var drawModel:SwipeDrawModel
     let previewHeight:CGFloat
-    
-    init(model:SwipeCanvasModel, drawModel:SwipeDrawModel, previewHeight:CGFloat) {
+    let selectionColor:Color
+    let buttonColor:Color
+
+    init(model:SwipeCanvasModel, drawModel:SwipeDrawModel, previewHeight:CGFloat,
+         selectionColor:Color, buttonColor:Color) {
         self.model = model
         self.drawModel = drawModel
         self.previewHeight = previewHeight
+        self.selectionColor = selectionColor
+        self.buttonColor = buttonColor
         self.drawModel.delegate = self.model
     }
 
@@ -117,7 +122,8 @@ public struct SwipeCanvas: View {
 
     public var body: some View {
         return VStack(spacing:1) {
-            SwipeSceneList(model: model, previewHeight: previewHeight)
+            SwipeSceneList(model: model, previewHeight: previewHeight,
+                            selectionColor: selectionColor, buttonColor: buttonColor)
             ZStack {
                 VStack {
                     GeometryReader { geometry in
@@ -125,7 +131,7 @@ public struct SwipeCanvas: View {
                         ZStack {
                             SwipeView(scene: model.scene, frameIndex: $model.frameIndex, scale:scale)
                             if let _ = model.selectedElement {
-                                SwipeCursor(model:model, scale:scale, geometry:geometry)
+                                SwipeCursor(model:model, scale:scale, selectionColor:selectionColor, geometry:geometry)
                             }
                         }.gesture(DragGesture(minimumDistance: 0).onChanged { value in
                             if !model.isSelecting {
@@ -189,7 +195,8 @@ struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             let drawModel = SwipeDrawModel()
-            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), drawModel:drawModel, previewHeight: 150)
+            SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), drawModel:drawModel, previewHeight: 150,
+                        selectionColor: .blue, buttonColor: .blue)
         }
     }
 }
