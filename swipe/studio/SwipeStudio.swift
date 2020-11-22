@@ -20,7 +20,7 @@ public struct SwipeStudio: View {
         SwipeScene(s_scriptGen),
         SwipeScene(s_scriptSample),
     ]
-    let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 0.8)
+    let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 1.0)
     let buttonColor = Color.blue
 
     public var body: some View {

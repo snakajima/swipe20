@@ -52,7 +52,7 @@ struct SwipeCursor: View {
     
     var body: some View {
         let center = scaled(point:model.cursorCenter)
-        return Group {
+        return ZStack {
             let rect = scaledCursor()
             Path(CGPath(rect: rect, transform: nil))
             .stroke(lineWidth: 1.0)
@@ -79,7 +79,9 @@ struct SwipeCursor: View {
                     .foregroundColor(selectionColor)
                     .gesture(rotateGesture(geometry: geometry))
             }
-        }.transformEffect(model.cursorTransform(center: center))
+        }
+        .transformEffect(model.cursorTransform(center: center))
+        .contentShape(Rectangle())
     }
 }
 
