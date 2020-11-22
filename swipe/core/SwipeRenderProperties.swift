@@ -22,6 +22,7 @@ extension SwipeRenderProperties {
     /// Applies tween properties to the element
     func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?, element:SwipeElement) {
         var xf = CATransform3DIdentity
+        var r = ratio
         
         guard let from = from else {
             target.opacity = opacity
@@ -48,10 +49,10 @@ extension SwipeRenderProperties {
                 (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
                 target.anchorPoint = bottomAC
             case .jump:
-                (newFrame, xf) = jump(ratio: ratio, from: from, xf: xf, flip:false)
+                (newFrame, xf, r) = jump(ratio: ratio, from: from, xf: xf, flip:false)
                 target.anchorPoint = bottomAC
             case .summersault:
-                (newFrame, xf) = jump(ratio: ratio, from: from, xf: xf, flip:true)
+                (newFrame, xf, r) = jump(ratio: ratio, from: from, xf: xf, flip:true)
                 target.anchorPoint = bottomAC
             case .leap:
                 var ac:CGPoint
@@ -60,15 +61,15 @@ extension SwipeRenderProperties {
             default:
                 break
             }
-            if ratio == 1.0 || ratio == 0.0 {
+            if r == 1.0 || r == 0.0 {
                 target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             }
             target.updateFrame(frame: newFrame, element: element)
         }
         
-        let rotX = from.rotX.mix(self.rotX, ratio)
-        let rotY = from.rotY.mix(self.rotY, ratio)
-        let rotZ = from.rotZ.mix(self.rotZ, ratio)
+        let rotX = from.rotX.mix(self.rotX, r)
+        let rotY = from.rotY.mix(self.rotY, r)
+        let rotZ = from.rotZ.mix(self.rotZ, r)
 
         xf.m34 = -1.0/500; // add the perspective
         xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
@@ -134,7 +135,7 @@ extension SwipeRenderProperties {
         return (CGRect(origin: CGPoint(x: x, y: y), size: size), xfNew, anchorPoint)
     }
 
-    func jump(ratio:Double, from:SwipeRenderProperties, xf:CATransform3D, flip:Bool) -> (CGRect, CATransform3D) {
+    func jump(ratio:Double, from:SwipeRenderProperties, xf:CATransform3D, flip:Bool) -> (CGRect, CATransform3D, Double) {
         var xfNew = xf
         let x, y:CGFloat
         let r0 = 0.25 // anticipate
@@ -142,6 +143,7 @@ extension SwipeRenderProperties {
         let r1 = 1.0 - r0 - r2 // jump
         let height = CGFloat(360.0)
         let size:CGSize
+        let effectiveRatio:Double
         switch(ratio) {
         case _ where ratio < r0:
             x = from.frame.minX
@@ -149,12 +151,14 @@ extension SwipeRenderProperties {
             let r = CGFloat(sin(ratio * ratio / r0 / r0 * .pi))
             xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
             size = from.frame.size
+            effectiveRatio = 0
         case _ where ratio > (1 - r2):
             x = frame.minX
             y = frame.minY
             let r = CGFloat(sin((1 - ratio) / r2 * .pi))
             xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
             size = frame.size
+            effectiveRatio = 1.0
         default:
             let r = (ratio - r0) / r1
             x = from.frame.minX.mix(frame.minX, r)
@@ -165,9 +169,10 @@ extension SwipeRenderProperties {
             }
             size = CGSize(width:from.frame.width.mix(frame.width, r),
                           height:from.frame.height.mix(frame.height, r))
+            effectiveRatio = r
         }
             
-        return (CGRect(origin: CGPoint(x: x, y: y), size: size), xfNew)
+        return (CGRect(origin: CGPoint(x: x, y: y), size: size), xfNew, effectiveRatio)
     }
 
     func isAnimationRequired(other:SwipeRenderProperties) -> Bool {
