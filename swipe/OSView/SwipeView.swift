@@ -19,15 +19,22 @@ class FlippedView : NSView {
 #endif
 
 public struct SwipeView: OSViewRepresentable {
-    let scene:SwipeScene
+    public struct Snapshot {
+        let frameIndex: Int
+        let ratio: Double
+        let callback: (CALayer) -> (Void)
+    }
+    let scene: SwipeScene
     @Binding var frameIndex: Int
-    let scale:CGFloat
+    let scale: CGFloat
+    let previewInfo: Snapshot?
     
-    public init(scene:SwipeScene, frameIndex:Binding<Int>, scale:CGFloat) {
+    public init(scene: SwipeScene, frameIndex: Binding<Int>, scale: CGFloat, previewInfo: Snapshot? = nil) {
         // print("SwipeView init", scale)
         self.scene = scene
         self._frameIndex = frameIndex
         self.scale = scale
+        self.previewInfo = previewInfo
     }
     
     public func makeCoordinator() -> Coordinator {
