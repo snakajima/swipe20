@@ -101,6 +101,8 @@ public struct SwipeView: OSViewRepresentable {
         
         func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer, snapshot:Snapshot?) {
             if let snapshot = snapshot {
+                CATransaction.begin()
+                CATransaction.setDisableActions(true)
                 if snapshot.ratio == 0.0 {
                     renderer.apply(frameIndex: snapshot.frameIndex, to: layer, lastIndex: nil, base: nil) { _ in // do nothing
                     }
@@ -109,6 +111,8 @@ public struct SwipeView: OSViewRepresentable {
                     let frame = scene.frames[snapshot.frameIndex + 1]
                     frame.apply(to: layer.sublayers ?? [], ratio: snapshot.ratio, transition: .next, base: base)
                 }
+                CATransaction.commit()
+                snapshot.callback(layer)
                 return
             }
             

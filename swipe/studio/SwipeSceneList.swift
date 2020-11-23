@@ -12,6 +12,7 @@ struct SwipeSceneList: View {
     let previewHeight:CGFloat
     let selectionColor:Color
     let buttonColor:Color
+    @Binding var snapshot: SwipeView.Snapshot?
     var body: some View {
         ScrollView (.horizontal, showsIndicators: true) {
             HStack(spacing:1) {
@@ -22,7 +23,7 @@ struct SwipeSceneList: View {
                                    buttonColor: buttonColor)
                 }
                 if model.scene.frameCount > 1 {
-                    SwipeExporter(scene:model.scene)
+                    SwipeExporter(scene:model.scene, snapshot:$snapshot)
                 }
             }
         }
@@ -79,6 +80,7 @@ struct SwipeSceneItem: View {
     }
 }
 
+/*
 struct SwipeSceneList_Previews: PreviewProvider {
     static var previews: some View {
         SwipeSceneList( model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), previewHeight: 180,
@@ -86,3 +88,4 @@ struct SwipeSceneList_Previews: PreviewProvider {
         .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
     }
 }
+*/

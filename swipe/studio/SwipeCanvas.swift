@@ -105,7 +105,7 @@ public struct SwipeCanvas: View {
     let previewHeight:CGFloat
     let selectionColor:Color
     let buttonColor:Color
-    let snapshot: SwipeView.Snapshot? = nil
+    @State var snapshot: SwipeView.Snapshot? = nil
     
     init(model:SwipeCanvasModel, drawModel:SwipeDrawModel, previewHeight:CGFloat,
          selectionColor:Color, buttonColor:Color) {
@@ -124,13 +124,13 @@ public struct SwipeCanvas: View {
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(model: model, previewHeight: previewHeight,
-                            selectionColor: selectionColor, buttonColor: buttonColor)
+                           selectionColor: selectionColor, buttonColor: buttonColor, snapshot:$snapshot)
             ZStack {
                 VStack {
                     GeometryReader { geometry in
                         let scale:CGFloat = geometry.size.height / model.scene.dimension.height
                         ZStack {
-                            SwipeView(scene: model.scene, frameIndex: $model.frameIndex, scale:scale)
+                            SwipeView(scene: model.scene, frameIndex: $model.frameIndex, scale:scale, snapshot: snapshot)
                             if let _ = model.selectedElement {
                                 SwipeCursor(model:model, scale:scale, selectionColor:selectionColor, geometry:geometry)
                             }

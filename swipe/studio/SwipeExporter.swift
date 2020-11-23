@@ -10,7 +10,9 @@ import ImageIO
 import MobileCoreServices
 
 struct SwipeExporter: View {
-    let scene:SwipeScene
+    let scene: SwipeScene
+    @Binding var snapshot: SwipeView.Snapshot?
+    
     var body: some View {
         VStack {
             Spacer()
@@ -37,6 +39,21 @@ struct SwipeExporter: View {
             print("### ERROR can't create destination")
             return
         }
+        
+        func tick(step: Double) {
+            snapshot = SwipeView.Snapshot(frameIndex: 0, ratio: step / 30.0, callback: { (layer) in
+                print("callbacked", step)
+                DispatchQueue.main.async {
+                    if step < 30 {
+                        tick(step: step + 1)
+                    } else {
+                        snapshot = nil
+                    }
+                }
+            })
+        }
+        tick(step: 0)
+        /*
         let renderer = SwipeCALayer(scene: scene)
         let layer = renderer.makeLayer()
         guard let sublayers = layer.sublayers else {
@@ -62,6 +79,7 @@ struct SwipeExporter: View {
         UIGraphicsEndImageContext()
         
         CGImageDestinationFinalize(destination)
+        */
         print("fileURL", fileURL)
     }
 }
