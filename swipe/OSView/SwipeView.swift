@@ -22,19 +22,19 @@ public struct SwipeView: OSViewRepresentable {
     public struct Snapshot {
         let frameIndex: Int
         let ratio: Double
-        let callback: (CALayer) -> (Void)
+        let callback: (CALayer) -> Void
     }
     let scene: SwipeScene
     @Binding var frameIndex: Int
     let scale: CGFloat
-    let previewInfo: Snapshot?
+    let snapshot: Snapshot?
     
-    public init(scene: SwipeScene, frameIndex: Binding<Int>, scale: CGFloat, previewInfo: Snapshot? = nil) {
+    public init(scene: SwipeScene, frameIndex: Binding<Int>, scale: CGFloat, snapshot: Snapshot? = nil) {
         // print("SwipeView init", scale)
         self.scene = scene
         self._frameIndex = frameIndex
         self.scale = scale
-        self.previewInfo = previewInfo
+        self.snapshot = snapshot
     }
     
     public func makeCoordinator() -> Coordinator {
@@ -79,7 +79,7 @@ public struct SwipeView: OSViewRepresentable {
             CATransaction.setDisableActions(true)
             swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
             CATransaction.commit()
-            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer)
+            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer, snapshot:snapshot)
         }
     }
     #endif
@@ -99,7 +99,19 @@ public struct SwipeView: OSViewRepresentable {
             renderer.makeLayer()
         }
         
-        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer) {
+        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer, snapshot:Snapshot?) {
+            if let snapshot = snapshot {
+                if snapshot.ratio == 0.0 {
+                    renderer.apply(frameIndex: snapshot.frameIndex, to: layer, lastIndex: nil, base: nil) { _ in // do nothing
+                    }
+                } else {
+                    let base = scene.frames[snapshot.frameIndex]
+                    let frame = scene.frames[snapshot.frameIndex + 1]
+                    frame.apply(to: layer.sublayers ?? [], ratio: snapshot.ratio, transition: .next, base: base)
+                }
+                return
+            }
+            
             var base:SwipeScene? = nil
             if scene.id != renderer.scene.id {
                 let oldIDCount = renderer.scene.frames.first?.ids.count

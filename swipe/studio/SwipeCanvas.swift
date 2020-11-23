@@ -105,7 +105,8 @@ public struct SwipeCanvas: View {
     let previewHeight:CGFloat
     let selectionColor:Color
     let buttonColor:Color
-
+    let snapshot: SwipeView.Snapshot? = nil
+    
     init(model:SwipeCanvasModel, drawModel:SwipeDrawModel, previewHeight:CGFloat,
          selectionColor:Color, buttonColor:Color) {
         self.model = model
