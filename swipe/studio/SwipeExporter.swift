@@ -35,7 +35,7 @@ struct SwipeExporter: View {
         let fileURL = folderURL.appendingPathComponent("swipeanime.gif")
         let fileProps = [kCGImagePropertyGIFLoopCount:0]
         let frameProps = [kCGImagePropertyGIFDelayTime:1.0/30.0]
-        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 10, fileProps as CFDictionary) else {
+        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 30, fileProps as CFDictionary) else {
             print("### ERROR can't create destination")
             return
         }
@@ -44,10 +44,21 @@ struct SwipeExporter: View {
             snapshot = SwipeView.Snapshot(frameIndex: 0, ratio: step / 30.0, callback: { (layer) in
                 print("callbacked", step)
                 DispatchQueue.main.async {
+                    UIGraphicsBeginImageContext(scene.dimension)
+                    let ctx = UIGraphicsGetCurrentContext()!
+                    layer.presentation()?.render(in: ctx)
+                    let image = UIGraphicsGetImageFromCurrentImageContext()!.cgImage!
+                    CGImageDestinationAddImage(destination, image, frameProps as CFDictionary)
+                    UIGraphicsEndImageContext()
+
                     if step < 30 {
                         tick(step: step + 1)
                     } else {
                         snapshot = nil
+                        CGImageDestinationFinalize(destination)
+                        print("fileURL", fileURL)
+                        
+                        
                     }
                 }
             })

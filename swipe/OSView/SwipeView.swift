@@ -112,7 +112,7 @@ public struct SwipeView: OSViewRepresentable {
                     frame.apply(to: layer.sublayers ?? [], ratio: snapshot.ratio, transition: .next, base: base)
                 }
                 CATransaction.commit()
-                snapshot.callback(layer)
+                snapshot.callback(layer.superlayer!)
                 return
             }
             
