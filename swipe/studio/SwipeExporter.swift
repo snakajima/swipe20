@@ -13,6 +13,7 @@ import Photos
 struct SwipeExporter: View {
     let scene: SwipeScene
     @Binding var snapshot: SwipeView.Snapshot?
+    let fps = 30
     
     var body: some View {
         VStack {
@@ -35,15 +36,17 @@ struct SwipeExporter: View {
         }
         let fileURL = folderURL.appendingPathComponent("swipeanime.gif")
         let fileProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFLoopCount:0] as CFDictionary]
-        let frameProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFDelayTime:1.0/30.0] as CFDictionary]
-        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 31, fileProps as CFDictionary) else {
+        let frameProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFDelayTime:1.0/Double(fps)] as CFDictionary]
+        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, (scene.frameCount - 1) * fps + 1, fileProps as CFDictionary) else {
             print("### ERROR can't create destination")
             return
         }
         
-        func tick(step: Double) {
-            snapshot = SwipeView.Snapshot(frameIndex: 0, ratio: step / 30.0, callback: { (osView, layer) in
-                print("callbacked", step)
+        func tick(step: Int) {
+            let frameIndex = (step + fps + 1) / fps
+            let ratio = Double(step % fps) / Double(fps)
+            print("tick", step, frameIndex, ratio)
+            snapshot = SwipeView.Snapshot(frameIndex: frameIndex / fps, ratio: ratio, callback: { (osView, layer) in
                 DispatchQueue.main.async {
                     UIGraphicsBeginImageContext(osView.bounds.size)
                     //let ctx = UIGraphicsGetCurrentContext()!
@@ -53,7 +56,7 @@ struct SwipeExporter: View {
                     CGImageDestinationAddImage(destination, image, frameProps as CFDictionary)
                     UIGraphicsEndImageContext()
 
-                    if step < 30 {
+                    if step < (scene.frameCount - 1) * fps {
                         tick(step: step + 1)
                     } else {
                         snapshot = nil
@@ -98,6 +101,5 @@ struct SwipeExporter: View {
         
         CGImageDestinationFinalize(destination)
         */
-        print("fileURL", fileURL)
     }
 }
