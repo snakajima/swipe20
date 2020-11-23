@@ -8,6 +8,7 @@
 import SwiftUI
 import ImageIO
 import MobileCoreServices
+import Photos
 
 struct SwipeExporter: View {
     let scene: SwipeScene
@@ -58,7 +59,12 @@ struct SwipeExporter: View {
                         CGImageDestinationFinalize(destination)
                         print("fileURL", fileURL)
                         
-                        
+                        PHPhotoLibrary.shared().performChanges {
+                            PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: fileURL)
+                        } completionHandler: { (saved, error) in
+                            print("saved", saved)
+                        }
+
                     }
                 }
             })
