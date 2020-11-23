@@ -34,8 +34,8 @@ struct SwipeExporter: View {
             return
         }
         let fileURL = folderURL.appendingPathComponent("swipeanime.gif")
-        let fileProps = [kCGImagePropertyGIFLoopCount:0]
-        let frameProps = [kCGImagePropertyGIFDelayTime:1.0/30.0]
+        let fileProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFLoopCount:0] as CFDictionary]
+        let frameProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFDelayTime:1.0/30.0] as CFDictionary]
         guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 31, fileProps as CFDictionary) else {
             print("### ERROR can't create destination")
             return
