@@ -43,10 +43,10 @@ struct SwipeExporter: View {
         }
         
         func tick(step: Int) {
-            let frameIndex = (step + fps + 1) / fps
+            let frameIndex = step / fps
             let ratio = Double(step % fps) / Double(fps)
             print("tick", step, frameIndex, ratio)
-            snapshot = SwipeView.Snapshot(frameIndex: frameIndex / fps, ratio: ratio, callback: { (osView, layer) in
+            snapshot = SwipeView.Snapshot(frameIndex: frameIndex, ratio: ratio, callback: { (osView, layer) in
                 DispatchQueue.main.async {
                     UIGraphicsBeginImageContext(osView.bounds.size)
                     //let ctx = UIGraphicsGetCurrentContext()!
