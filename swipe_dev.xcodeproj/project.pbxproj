@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7426678C25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
+		7426678D25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
+		7426678E25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
 		742A09482518632F00862F36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09472518632F00862F36 /* AppDelegate.swift */; };
 		742A094A2518632F00862F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09492518632F00862F36 /* ContentView.swift */; };
 		742A094C2518633100862F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 742A094B2518633100862F36 /* Assets.xcassets */; };
@@ -141,6 +144,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7426678B25746C0500E47692 /* CGPath+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+extension.swift"; sourceTree = "<group>"; };
 		742A09442518632F00862F36 /* swipe20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swipe20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		742A09472518632F00862F36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		742A09492518632F00862F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -237,6 +241,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7426678A25746BE100E47692 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7426678B25746C0500E47692 /* CGPath+extension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		742A093B2518632F00862F36 = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +330,7 @@
 		74360A052520C0CA009EDBAF /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				7426678A25746BE100E47692 /* extensions */,
 				74C934F62557071C0042AA4C /* draw */,
 				7465DF60254735BB000E8D74 /* etc */,
 				746E6675252AE47D0041AEE0 /* util */,
@@ -642,6 +655,7 @@
 				74FAC288251D604900DD29EF /* SwipeRenderProperties.swift in Sources */,
 				742A096A2518D72700862F36 /* SwipeParser.swift in Sources */,
 				742A096425186ADB00862F36 /* SwipeFrame.swift in Sources */,
+				7426678C25746C0500E47692 /* CGPath+extension.swift in Sources */,
 				742A09482518632F00862F36 /* AppDelegate.swift in Sources */,
 				74BD7106251A691500F41F3D /* SwipeFileView.swift in Sources */,
 			);
@@ -670,6 +684,7 @@
 				7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */,
 				74742FA2254C5EA800AF0362 /* Playground.swift in Sources */,
 				74C9350C255709B00042AA4C /* SwipeDraw.swift in Sources */,
+				7426678E25746C0500E47692 /* CGPath+extension.swift in Sources */,
 				7465DF1525472CF5000E8D74 /* SwipeStudio_Lite.xcdatamodeld in Sources */,
 				7465DF2025472DB2000E8D74 /* SwipeSymbol.swift in Sources */,
 				7465DF3525472DCA000E8D74 /* SwipeElement.swift in Sources */,
@@ -692,6 +707,7 @@
 				746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */,
 				74E8A17025575D3300D5C98C /* SwipeDrawModel.swift in Sources */,
 				74C934FF255707780042AA4C /* SwipeStroke.swift in Sources */,
+				7426678D25746C0500E47692 /* CGPath+extension.swift in Sources */,
 				746E6656252AC6670041AEE0 /* SwipeParser.swift in Sources */,
 				746E6657252AC6670041AEE0 /* SwipeRenderLayer.swift in Sources */,
 				746E6653252AC6670041AEE0 /* SwipeRenderProperties.swift in Sources */,

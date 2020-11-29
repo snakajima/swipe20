@@ -21,39 +21,7 @@ public protocol SwipeRenderProperties {
 
 // https://stackoverflow.com/questions/24274913/equivalent-of-or-alternative-to-cgpathapply-in-swift
 // NOT https://stackoverflow.com/questions/3051760/how-to-get-a-list-of-points-from-a-uibezierpath/5714872#5714872
-private enum PathElement {
-    case moveToPoint(CGPoint)
-    case addLineToPoint(CGPoint)
-    case addQuadCurveToPoint(CGPoint, CGPoint)
-    case addCurveToPoint(CGPoint, CGPoint, CGPoint)
-    case closeSubpath
 
-    init(element: CGPathElement) {
-        switch element.type {
-        case .moveToPoint: self = .moveToPoint(element.points[0])
-        case .addLineToPoint: self = .addLineToPoint(element.points[0])
-        case .addQuadCurveToPoint: self = .addQuadCurveToPoint(element.points[0], element.points[1])
-        case .addCurveToPoint: self = .addCurveToPoint(element.points[0], element.points[1], element.points[2])
-        case .closeSubpath: self = .closeSubpath
-        @unknown default:
-            fatalError()
-        }
-    }
-}
-
-private extension CGPath {
-    var elements: [PathElement] {
-        var pathElements = [PathElement]()
-        withUnsafeMutablePointer(to: &pathElements) { elementsPointer in
-            apply(info: elementsPointer) { (userInfo, nextElementPointer) in
-                let nextElement = PathElement(element: nextElementPointer.pointee)
-                let elementsPointer = userInfo!.assumingMemoryBound(to: [PathElement].self)
-                elementsPointer.pointee.append(nextElement)
-            }
-        }
-        return pathElements
-    }
-}
 
 extension SwipeRenderProperties {
     /// Applies tween properties to the element
