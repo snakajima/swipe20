@@ -19,6 +19,42 @@ public protocol SwipeRenderProperties {
     var isHidden:Bool { get }
 }
 
+// https://stackoverflow.com/questions/24274913/equivalent-of-or-alternative-to-cgpathapply-in-swift
+// NOT https://stackoverflow.com/questions/3051760/how-to-get-a-list-of-points-from-a-uibezierpath/5714872#5714872
+private enum PathElement {
+    case moveToPoint(CGPoint)
+    case addLineToPoint(CGPoint)
+    case addQuadCurveToPoint(CGPoint, CGPoint)
+    case addCurveToPoint(CGPoint, CGPoint, CGPoint)
+    case closeSubpath
+
+    init(element: CGPathElement) {
+        switch element.type {
+        case .moveToPoint: self = .moveToPoint(element.points[0])
+        case .addLineToPoint: self = .addLineToPoint(element.points[0])
+        case .addQuadCurveToPoint: self = .addQuadCurveToPoint(element.points[0], element.points[1])
+        case .addCurveToPoint: self = .addCurveToPoint(element.points[0], element.points[1], element.points[2])
+        case .closeSubpath: self = .closeSubpath
+        @unknown default:
+            fatalError()
+        }
+    }
+}
+
+private extension CGPath {
+    var elements: [PathElement] {
+        var pathElements = [PathElement]()
+        withUnsafeMutablePointer(to: &pathElements) { elementsPointer in
+            apply(info: elementsPointer) { (userInfo, nextElementPointer) in
+                let nextElement = PathElement(element: nextElementPointer.pointee)
+                let elementsPointer = userInfo!.assumingMemoryBound(to: [PathElement].self)
+                elementsPointer.pointee.append(nextElement)
+            }
+        }
+        return pathElements
+    }
+}
+
 extension SwipeRenderProperties {
     /// Applies tween properties to the element
     func apply(target:SwipeRenderLayer, ratio:Double, from:SwipeRenderProperties?, element:SwipeElement) {
@@ -45,27 +81,55 @@ extension SwipeRenderProperties {
                                   height: from.frame.height.mix(frame.height, ratio))
             let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : 1.0)
             
-            switch(animationStyle) {
-            case .bounce:
-                (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
-                target.anchorPoint = bottomAC
-            case .jump:
-                (newFrame, xf, r) = jump(ratio: ratio, from: from, xf: xf, flip:false)
-                target.anchorPoint = bottomAC
-            case .summersault:
-                (newFrame, xf, r) = jump(ratio: ratio, from: from, xf: xf, flip:true)
-                target.anchorPoint = bottomAC
-            case .leap:
-                var ac:CGPoint
-                (newFrame, xf, ac, r) = leap(ratio: ratio, from: from, xf: xf)
-                target.anchorPoint = ac
-            default:
-                break
+            if !isHidden && from.isHidden {
+                // do something for path
+                if let path = element.path {
+                    let elements = path.elements
+                    let count = Int(Double(elements.count) * ratio)
+                    print("count", count)
+                    let partialPath = CGMutablePath()
+                    for index in 0..<count {
+                        let foo = elements[index]
+                        switch(foo) {
+                        case .moveToPoint(let pt):
+                            partialPath.move(to: pt)
+                        case .addQuadCurveToPoint(let ct, let pt):
+                            partialPath.addQuadCurve(to: pt, control: ct)
+                        case .addLineToPoint(let pt):
+                            partialPath.addLine(to: pt)
+                        case .addCurveToPoint(let pt, let ct1, let ct2):
+                            partialPath.addCurve(to: pt, control1: ct1, control2: ct2)
+                        case .closeSubpath:
+                            partialPath.closeSubpath()
+                        }
+                    }
+                    target.updatePath(path: partialPath)
+                } else {
+                    // TDB: for non-path element animation
+                }
+            } else {
+                switch(animationStyle) {
+                case .bounce:
+                    (newFrame, xf) = bounce(ratio: ratio, from: from, newFrame: newFrame, xf: xf)
+                    target.anchorPoint = bottomAC
+                case .jump:
+                    (newFrame, xf, r) = jump(ratio: ratio, from: from, xf: xf, flip:false)
+                    target.anchorPoint = bottomAC
+                case .summersault:
+                    (newFrame, xf, r) = jump(ratio: ratio, from: from, xf: xf, flip:true)
+                    target.anchorPoint = bottomAC
+                case .leap:
+                    var ac:CGPoint
+                    (newFrame, xf, ac, r) = leap(ratio: ratio, from: from, xf: xf)
+                    target.anchorPoint = ac
+                default:
+                    break
+                }
+                if ratio == 1.0 || ratio == 0.0 || (r < 1.0 && r > 0.0) {
+                    target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                }
+                target.updateFrame(frame: newFrame, element: element)
             }
-            if ratio == 1.0 || ratio == 0.0 || (r < 1.0 && r > 0.0) {
-                target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            }
-            target.updateFrame(frame: newFrame, element: element)
         }
         
         let rotX = from.rotX.mix(self.rotX, r)

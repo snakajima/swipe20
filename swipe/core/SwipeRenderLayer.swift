@@ -16,6 +16,12 @@ public protocol SwipeRenderLayer: NSObjectProtocol {
 }
 
 extension SwipeRenderLayer {
+    func updatePath(path:CGPath) {
+        if let shapeLayer = self as? CAShapeLayer {
+            shapeLayer.path = path
+        }
+    }
+    
     func updateFrame(frame:CGRect, element:SwipeElement) {
         if let path = element.path {
             let sx = frame.size.width / element.pathBox.size.width
