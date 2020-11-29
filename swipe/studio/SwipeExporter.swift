@@ -13,15 +13,14 @@ struct SwipeExporter: View {
     let scene:SwipeScene
     var body: some View {
         VStack {
-            Spacer()
             Button(action: {
                 export()
             }, label: {
-                Text("Export")
+                Text("Explort")
             })
-            Spacer()
             Rectangle()
-                .frame(height:32)
+                .fill(Color.clear)
+                .frame(height:16)
         }
     }
     func export() {
@@ -63,5 +62,16 @@ struct SwipeExporter: View {
         
         CGImageDestinationFinalize(destination)
         print("fileURL", fileURL)
+    }
+}
+
+struct SwipeExporter_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            SwipeExporter(scene: SwipeScene(s_scriptSample))
+                .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
+            Spacer()
+        }.background(Color(.sRGB, red: 1.0, green: 0.0, blue: 0.8, opacity: 1.0))
     }
 }
