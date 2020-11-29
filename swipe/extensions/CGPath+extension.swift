@@ -26,6 +26,21 @@ extension CGPath {
                 fatalError()
             }
         }
+        
+        func apply(path:CGMutablePath) {
+            switch(self) {
+            case .moveToPoint(let pt):
+                path.move(to: pt)
+            case .addQuadCurveToPoint(let ct, let pt):
+                path.addQuadCurve(to: pt, control: ct)
+            case .addLineToPoint(let pt):
+                path.addLine(to: pt)
+            case .addCurveToPoint(let pt, let ct1, let ct2):
+                path.addCurve(to: pt, control1: ct1, control2: ct2)
+            case .closeSubpath:
+                path.closeSubpath()
+            }
+        }
     }
     var elements: [CGPath.Element] {
         var pathElements = [CGPath.Element]()

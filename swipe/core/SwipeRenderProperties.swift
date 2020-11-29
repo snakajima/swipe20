@@ -57,19 +57,7 @@ extension SwipeRenderProperties {
                     print("count", count)
                     let partialPath = CGMutablePath()
                     for index in 0..<count {
-                        let foo = elements[index]
-                        switch(foo) {
-                        case .moveToPoint(let pt):
-                            partialPath.move(to: pt)
-                        case .addQuadCurveToPoint(let ct, let pt):
-                            partialPath.addQuadCurve(to: pt, control: ct)
-                        case .addLineToPoint(let pt):
-                            partialPath.addLine(to: pt)
-                        case .addCurveToPoint(let pt, let ct1, let ct2):
-                            partialPath.addCurve(to: pt, control1: ct1, control2: ct2)
-                        case .closeSubpath:
-                            partialPath.closeSubpath()
-                        }
+                        elements[index].apply(path: partialPath)
                     }
                     target.updatePath(path: partialPath)
                 } else {
