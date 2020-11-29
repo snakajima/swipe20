@@ -8,9 +8,13 @@
 import SwiftUI
 import ImageIO
 import MobileCoreServices
+import Photos
 
 struct SwipeExporter: View {
-    let scene:SwipeScene
+    let scene: SwipeScene
+    @Binding var snapshot: SwipeView.Snapshot?
+    let fps = 30
+    
     var body: some View {
         VStack {
             Spacer()
@@ -31,12 +35,46 @@ struct SwipeExporter: View {
             return
         }
         let fileURL = folderURL.appendingPathComponent("swipeanime.gif")
-        let fileProps = [kCGImagePropertyGIFLoopCount:0]
-        let frameProps = [kCGImagePropertyGIFDelayTime:1.0/30.0]
-        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, 10, fileProps as CFDictionary) else {
+        let fileProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFLoopCount:0] as CFDictionary]
+        let frameProps = [kCGImagePropertyGIFDictionary:[kCGImagePropertyGIFDelayTime:1.0/Double(fps)] as CFDictionary]
+        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, kUTTypeGIF, (scene.frameCount - 1) * fps + 1, fileProps as CFDictionary) else {
             print("### ERROR can't create destination")
             return
         }
+        
+        func tick(step: Int) {
+            let frameIndex = step / fps
+            let ratio = Double(step % fps) / Double(fps)
+            print("tick", step, frameIndex, ratio)
+            snapshot = SwipeView.Snapshot(frameIndex: frameIndex, ratio: ratio, callback: { (osView, layer) in
+                DispatchQueue.main.async {
+                    UIGraphicsBeginImageContext(osView.bounds.size)
+                    //let ctx = UIGraphicsGetCurrentContext()!
+                    //layer.presentation()?.render(in: ctx)
+                    osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
+                    let image = UIGraphicsGetImageFromCurrentImageContext()!.cgImage!
+                    CGImageDestinationAddImage(destination, image, frameProps as CFDictionary)
+                    UIGraphicsEndImageContext()
+
+                    if step < (scene.frameCount - 1) * fps {
+                        tick(step: step + 1)
+                    } else {
+                        snapshot = nil
+                        CGImageDestinationFinalize(destination)
+                        print("fileURL", fileURL)
+                        
+                        PHPhotoLibrary.shared().performChanges {
+                            PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: fileURL)
+                        } completionHandler: { (saved, error) in
+                            print("saved", saved)
+                        }
+
+                    }
+                }
+            })
+        }
+        tick(step: 0)
+        /*
         let renderer = SwipeCALayer(scene: scene)
         let layer = renderer.makeLayer()
         guard let sublayers = layer.sublayers else {
@@ -62,6 +100,6 @@ struct SwipeExporter: View {
         UIGraphicsEndImageContext()
         
         CGImageDestinationFinalize(destination)
-        print("fileURL", fileURL)
+        */
     }
 }
