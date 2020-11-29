@@ -125,9 +125,14 @@ public struct SwipeScene: Identifiable {
         return scene
     }
 
-    func inserted(element:SwipeElement) -> SwipeScene {
+    func inserted(element:SwipeElement, atFrameIndex frameIndex:Int) -> SwipeScene {
         var scene = self.cloned()
-        scene.frames = scene.frames.map { $0.inserted(element: element) }
+        let elementHidden = element.updated(isHidden: true)
+        //scene.frames = scene.frames.map { $0.inserted(element: element) }
+        scene.frames = scene.frames.indices.map({ (index) -> SwipeFrame in
+            let frame = frames[index]
+            return frame.inserted(element: index < frameIndex ? elementHidden : element)
+        })
         return scene
     }
 

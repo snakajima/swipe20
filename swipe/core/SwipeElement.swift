@@ -39,6 +39,7 @@ public struct SwipeElement {
     let text:String?
     let filter:[String:Any]?
     let src:[String:Any]?
+    public var isHidden:Bool
     public var rotX, rotY, rotZ:CGFloat
 
     let subElementIds:[String]
@@ -57,6 +58,7 @@ public struct SwipeElement {
                        width: SwipeParser.asCGFloat(script["w"]) ?? size.width,
                        height: SwipeParser.asCGFloat(script["h"]) ?? size.height)
 
+        self.isHidden = script["hidden"] as? Bool ?? false
         self.backgroundColor = SwipeParser.parseColor(script["backgroundColor"]) ?? base?.backgroundColor
         self.foregroundColor = SwipeParser.parseColor(script["foregroundColor"]) ?? base?.foregroundColor
         self.fillColor = SwipeParser.parseColor(script["fillColor"]) ?? base?.fillColor
@@ -168,6 +170,12 @@ public struct SwipeElement {
         return element
     }
     
+    func updated(isHidden:Bool) -> SwipeElement {
+        var element = self
+        element.isHidden = isHidden
+        return element
+    }
+    
     var script:[String:Any] {
         var script:[String:Any] = [
             "id":id,
@@ -181,6 +189,9 @@ public struct SwipeElement {
         }
         if let imagePath = self.imagePath {
             script["img"] = imagePath
+        }
+        if isHidden {
+            script["hidden"] = true
         }
         if let animation = self.animation {
             script["animation"] = animation

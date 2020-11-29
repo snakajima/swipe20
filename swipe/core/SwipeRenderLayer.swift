@@ -23,7 +23,7 @@ extension SwipeRenderLayer {
             if let shapeLayer = self as? CAShapeLayer {
                 var xf = CGAffineTransform(scaleX: sx, y: sy)
                 let pathResized = path.copy(using: &xf)!
-                shapeLayer.path = pathResized
+                shapeLayer.path = element.isHidden ? nil : pathResized
             } else {
                 var xf = CGAffineTransform(translationX: 0, y: frame.size.height)
                 xf = xf.scaledBy(x: sx, y: -sy)

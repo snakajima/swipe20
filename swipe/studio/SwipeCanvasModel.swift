@@ -120,6 +120,6 @@ extension SwipeCanvasModel : SwipeDrawModelDelegate {
         element = element.updated(path: path.copy(using: &xf)!)
         element = element.updated(animationStyle: drawModel.animationStyle)
         element = element.updated(strokeColor: drawModel.strokeColor, lineWidth: drawModel.lineWidth)
-        scene = scene.inserted(element: element)
+        scene = scene.inserted(element: element, atFrameIndex: frameIndex)
     }
 }

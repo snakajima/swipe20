@@ -186,6 +186,7 @@ private extension SwipeElement {
         //print("SwipeElement prepare", id)
         layer.transform = CATransform3DIdentity
         layer.frame = frame
+        
         if let backgroundColor = self.backgroundColor {
             layer.backgroundColor = backgroundColor
         }
@@ -203,7 +204,7 @@ private extension SwipeElement {
                 ani.duration = duration
                 ani.fillMode = .both
                 shapeLayer.add(ani, forKey: "path")
-                shapeLayer.path = path
+                shapeLayer.path = isHidden ? nil : path
             }
             if let color = fillColor {
                 shapeLayer.fillColor = color

@@ -16,6 +16,7 @@ public protocol SwipeRenderProperties {
     var rotZ:CGFloat { get }
     var anchorPoint:CGPoint { get }
     var animationStyle: SwipeAnimation.Style { get }
+    var isHidden:Bool { get }
 }
 
 extension SwipeRenderProperties {
@@ -184,6 +185,7 @@ extension SwipeRenderProperties {
             || rotX != other.rotX
             || rotY != other.rotY
             || rotZ != other.rotZ
+            || isHidden != other.isHidden
     }
 }
 
