@@ -50,9 +50,17 @@ extension SwipeRenderProperties {
             let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : 1.0)
             
             if !isHidden && from.isHidden {
-                // do something for path
-                if let path = element.path {
+                // Perform the drawing animation
+                if var path = element.path {
+                    let size = path.boundingBox.size
+                    let sx = frame.size.width / size.width
+                    let sy = frame.size.height / size.height
+                    if sx != 1.0 || sy != 1.0 {
+                        var xf = CGAffineTransform(scaleX: sx, y: sy)
+                        path = path.copy(using: &xf)!
+                    }
                     let elements = path.elements
+
                     let count = Int(Double(elements.count) * ratio)
                     target.updatePath(path: elements[0..<count].reduce(CGMutablePath(), { (path, element) -> CGMutablePath in
                         element.apply(path: path)
