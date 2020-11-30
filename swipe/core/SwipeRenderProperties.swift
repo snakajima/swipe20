@@ -54,12 +54,9 @@ extension SwipeRenderProperties {
                 if let path = element.path {
                     let elements = path.elements
                     let count = Int(Double(elements.count) * ratio)
-                    print("count", count)
-                    let partialPath = CGMutablePath()
-                    for index in 0..<count {
-                        elements[index].apply(path: partialPath)
-                    }
-                    target.updatePath(path: partialPath)
+                    target.updatePath(path: elements[0..<count].reduce(CGMutablePath(), { (path, element) -> CGMutablePath in
+                        element.apply(path: path)
+                    }))
                 } else {
                     // TDB: for non-path element animation
                 }

@@ -27,7 +27,7 @@ extension CGPath {
             }
         }
         
-        func apply(path:CGMutablePath) {
+        func apply(path:CGMutablePath) -> CGMutablePath {
             switch(self) {
             case .moveToPoint(let pt):
                 path.move(to: pt)
@@ -40,6 +40,7 @@ extension CGPath {
             case .closeSubpath:
                 path.closeSubpath()
             }
+            return path
         }
     }
     var elements: [CGPath.Element] {
