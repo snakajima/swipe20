@@ -39,14 +39,21 @@ public struct SwipeStudio: View {
         }
         #else
         return NavigationView {
-            List(scenes.indices) { index in
-                let model = SwipeCanvasModel(scene:scenes[index])
-                let drawModel = SwipeDrawModel()
-                NavigationLink(destination:
-                                SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
-                ) {
-                    Text("Sample")
+            List {
+                ForEach(scenes, id: \.id) { scene in
+                    let model = SwipeCanvasModel(scene:scene)
+                    let drawModel = SwipeDrawModel()
+                    NavigationLink(destination:
+                                    SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+                    ) {
+                        Text("Sample")
+                    }
                 }
+                Button(action: {
+                    scenes.append(SwipeScene(s_scriptEmpty))
+                }, label: {
+                    Text("Add New Scene")
+                })
             }
             .navigationBarTitleDisplayMode(.inline)
         }
