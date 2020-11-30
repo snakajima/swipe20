@@ -48,13 +48,14 @@ public struct SwipeScene: Identifiable {
     let duration:Double
     let playMode:PlayMode
     let animation:[String:Any]?
-    public let uuid = UUID() // uniquely identify a scene object (CoreData prop)
+    public let uuid:UUID // uniquely identify a scene object (CoreData prop)
     public var id = UUID() // changes each time when editted
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
 
     /// Initializes a scene with specified description (in Swipe script)
-    public init(_ script:[String:Any]?) {
+    public init(_ script:[String:Any]?, uuid:UUID? = nil) {
+        self.uuid = uuid ?? UUID()
         self.animation = script?["animation"] as? [String:Any]
         let scriptFrames = script?["frames"] as? [[String:Any]] ?? []
         

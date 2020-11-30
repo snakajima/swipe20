@@ -54,9 +54,9 @@ public struct SwipeStudio: View {
                 }
                 .onDelete(perform: { indexSet in
                     indexSet.forEach { index in
+                        let scene = scenes[index]
                         scenes.remove(at: index)
                         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
-                        let scene = scenes[index]
                         request.predicate = NSPredicate(format: "uuid = %@", argumentArray: [scene.uuid])
                         let sceneObjects = try? viewContext.fetch(request)
                         print("result", sceneObjects?.count ?? "N/A")

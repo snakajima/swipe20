@@ -16,7 +16,7 @@ struct ContentView: View {
         print("sceneObjects", sceneObjects.count)
         return sceneObjects.map({ (sceneObject) -> SwipeScene in
             let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
-            return SwipeScene(script as? [String:Any])
+            return SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
         })
     }
 
