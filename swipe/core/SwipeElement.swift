@@ -164,6 +164,18 @@ public struct SwipeElement {
         return element
     }
     
+    func updated(rotY:CGFloat) -> SwipeElement {
+        var element = self
+        element.rotY = rotY
+        return element
+    }
+
+    func updated(rotX:CGFloat) -> SwipeElement {
+        var element = self
+        element.rotX = rotX
+        return element
+    }
+
     func updated(path:CGPath) -> SwipeElement {
         var element = self
         element.path = path

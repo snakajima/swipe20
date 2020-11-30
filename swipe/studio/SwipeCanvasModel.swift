@@ -91,9 +91,15 @@ class SwipeCanvasModel: NSObject, ObservableObject {
         return xf
     }
     
-    func updateElement(frame:CGRect) {
+    func updateElement(frame:CGRect, flipX:Bool, flipY:Bool) {
         if let element = selectedElement {
-            let updatedElement = element.updated(frame: frame)
+            var updatedElement = element.updated(frame: frame)
+            if flipX {
+                updatedElement = updatedElement.updated(rotY: updatedElement.rotY + .pi)
+            }
+            if flipY {
+                updatedElement = updatedElement.updated(rotX: updatedElement.rotX + .pi)
+            }
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
             selectedElement = updatedElement
         }

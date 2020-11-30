@@ -22,7 +22,7 @@ struct SwipeCursor: View {
             model.scale = CGPoint(x: sx ?? (v0.dx * v1.dx > 0 ? scale : -scale) , y: sy ?? (v0.dy * v1.dy > 0 ? scale : -scale))
         }.onEnded() { value in
             print("scale", model.scale)
-            model.updateElement(frame: model.scaledCursor)
+            model.updateElement(frame: model.scaledCursor, flipX: model.scale.x < 0, flipY: model.scale.y < 0)
             model.cursorRect = model.scaledCursor
             model.scale = CGPoint(x: 1, y: 1)
         }

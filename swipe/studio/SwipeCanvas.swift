@@ -151,7 +151,7 @@ public struct SwipeCanvas: View {
                             }
                         }.onEnded({ value in
                             if model.isDragging {
-                                model.updateElement(frame: model.cursorRect)
+                                model.updateElement(frame: model.cursorRect, flipX: false, flipY: false)
                             }
                             model.isDragging = false
                             model.isSelecting = false
