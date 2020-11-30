@@ -164,11 +164,14 @@ public struct SwipeScene: Identifiable {
         var script:[String:Any] = [
             "dimension":[dimension.width, dimension.height],
             "duration":duration,
-            // TODO: backgroundColor
             "frames": frames.map { $0.script }
         ]
         if let components = backgroundColor?.components {
-            script["backgroundColor"] = components
+            if components.count == 4 {
+                script["backgroundColor"] = components
+            } else if components.count == 2 {
+                script["backgroundColor"] = [components[0], components[0], components[0], components[1]]
+            }
         }
         if playMode != .none {
             script["playmode"] = playMode.rawValue
