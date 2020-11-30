@@ -68,6 +68,15 @@ extension SwipeRenderProperties {
                 } else {
                     // TDB: for non-path element animation
                 }
+                let rotX = from.rotX.mix(self.rotX, 1)
+                let rotY = from.rotY.mix(self.rotY, 1)
+                let rotZ = from.rotZ.mix(self.rotZ, 1)
+
+                xf.m34 = -1.0/500; // add the perspective
+                xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
+                xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
+                xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
+                target.transform = xf
             } else {
                 switch(animationStyle) {
                 case .bounce:
@@ -90,18 +99,28 @@ extension SwipeRenderProperties {
                     target.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 }
                 target.updateFrame(frame: newFrame, element: element)
-            }
-        }
-        
-        let rotX = from.rotX.mix(self.rotX, r)
-        let rotY = from.rotY.mix(self.rotY, r)
-        let rotZ = from.rotZ.mix(self.rotZ, r)
+                
+                let rotX = from.rotX.mix(self.rotX, ratio)
+                let rotY = from.rotY.mix(self.rotY, ratio)
+                let rotZ = from.rotZ.mix(self.rotZ, ratio)
 
-        xf.m34 = -1.0/500; // add the perspective
-        xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
-        xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
-        xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
-        target.transform = xf
+                xf.m34 = -1.0/500; // add the perspective
+                xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
+                xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
+                xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
+                target.transform = xf
+            }
+        } else {
+            let rotX = from.rotX.mix(self.rotX, r)
+            let rotY = from.rotY.mix(self.rotY, r)
+            let rotZ = from.rotZ.mix(self.rotZ, r)
+
+            xf.m34 = -1.0/500; // add the perspective
+            xf = CATransform3DRotate(xf, rotX, 1, 0, 0)
+            xf = CATransform3DRotate(xf, rotY, 0, 1, 0)
+            xf = CATransform3DRotate(xf, rotZ, 0, 0, 1)
+            target.transform = xf
+        }
     }
     
     func bounce(ratio:Double, from:SwipeRenderProperties, newFrame:CGRect, xf:CATransform3D) -> (CGRect, CATransform3D) {
