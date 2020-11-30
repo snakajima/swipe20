@@ -31,6 +31,14 @@ public struct SwipeStudio: View {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
         let sceneObjects = (try? moc.fetch(request) as? [SceneObject]) ?? [SceneObject]()
         print("sceneObjects", sceneObjects.count)
+        let scenes = sceneObjects.map({ (sceneObject) -> SwipeScene in
+            let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
+            print(script as? [String:Any])
+            return SwipeScene(script as? [String:Any])
+        })
+        print(scenes.count)
+        self.scenes = scenes
+        print(self.scenes.count)
     }
     
     public var body: some View {
