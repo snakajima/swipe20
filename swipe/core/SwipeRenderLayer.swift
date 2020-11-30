@@ -23,7 +23,7 @@ extension SwipeRenderLayer {
     }
     
     func updateFrame(frame:CGRect, element:SwipeElement) {
-        if let path = element.path {
+        if let path = element.path, element.pathBox.size.width > 0, element.pathBox.size.height > 0 {
             let sx = frame.size.width / element.pathBox.size.width
             let sy = frame.size.height / element.pathBox.size.height
             if let shapeLayer = self as? CAShapeLayer {

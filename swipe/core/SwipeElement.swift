@@ -202,6 +202,9 @@ public struct SwipeElement {
         if let imagePath = self.imagePath {
             script["img"] = imagePath
         }
+        if let path = self.path {
+            script["path"] = path.svgPath
+        }
         if isHidden {
             script["hidden"] = true
         }
@@ -228,6 +231,9 @@ public struct SwipeElement {
         if let fillColor = self.fillColor,
            let components = fillColor.components, components.count == 4 {
             script["fillColor"] = components
+        }
+        if let components = SwipeParser.components(of: self.strokeColor) {
+            script["strokeColor"] = components
         }
         return script
     }

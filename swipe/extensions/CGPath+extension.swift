@@ -27,6 +27,21 @@ extension CGPath {
             }
         }
         
+        var svgPath:String {
+            switch(self) {
+            case .moveToPoint(let pt):
+                return "M \(pt.x),\(pt.y)"
+            case .addQuadCurveToPoint(let ct, let pt):
+                return "Q \(ct.x),\(ct.y),\(pt.x),\(pt.y)"
+            case .addLineToPoint(let pt):
+                return "L \(pt.x),\(pt.y)"
+            case .addCurveToPoint(let pt, let ct1, let ct2):
+                return "C \(ct1.x),\(ct1.y),\(ct2.x),\(ct2.y),\(pt.x),\(pt.y)"
+            case .closeSubpath:
+                return "Z"
+            }
+        }
+        
         func apply(path:CGMutablePath) -> CGMutablePath {
             switch(self) {
             case .moveToPoint(let pt):
@@ -53,5 +68,11 @@ extension CGPath {
             }
         }
         return pathElements
+    }
+    var svgPath: String {
+        let strs = self.elements.map { element -> String in
+            return element.svgPath
+        }
+        return strs.joined(separator: " ")
     }
 }
