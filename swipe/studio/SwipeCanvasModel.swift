@@ -79,7 +79,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
     var scaledCursor:CGRect {
         let center = cursorCenter
         var xf = CGAffineTransform(translationX: center.x, y: center.y)
-        xf = xf.scaledBy(x: scale.x, y: scale.y)
+        xf = xf.scaledBy(x: abs(scale.x), y: abs(scale.y))
         xf = xf.translatedBy(x: -center.x, y: -center.y)
         return cursorRect.applying(xf)
     }
@@ -101,7 +101,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
     
     func updateElement(rotZ:CGFloat) {
         if let element = selectedElement {
-            let updatedElement = element.updated(rotZ: -rotZ)
+            let updatedElement = element.updated(deltaRotZ: -rotZ)
             scene = scene.updated(element: updatedElement, frameIndex: frameIndex)
             selectedElement = updatedElement
         }

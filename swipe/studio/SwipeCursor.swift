@@ -16,11 +16,12 @@ struct SwipeCursor: View {
     func resizeGesture(geometry:GeometryProxy, sx:CGFloat?, sy:CGFloat?) -> some Gesture {
         return DragGesture().onChanged() { value in
             let center = scaled(point:model.cursorCenter)
-            let d0 = center.distance(value.startLocation)
-            let d1 = center.distance(value.location)
-            let scale = d1 / d0
-            model.scale = CGPoint(x: sx ?? scale , y: sy ?? scale)
+            let v0 = center.vector(value.startLocation)
+            let v1 = center.vector(value.location)
+            let scale = v1.distance / v0.distance
+            model.scale = CGPoint(x: sx ?? (v0.dx * v1.dx > 0 ? scale : -scale) , y: sy ?? (v0.dy * v1.dy > 0 ? scale : -scale))
         }.onEnded() { value in
+            print("scale", model.scale)
             model.updateElement(frame: model.scaledCursor)
             model.cursorRect = model.scaledCursor
             model.scale = CGPoint(x: 1, y: 1)
