@@ -56,19 +56,9 @@ public struct SwipeStudio: View {
                     indexSet.forEach { index in
                         let scene = scenes[index]
                         scenes.remove(at: index)
-                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
-                        request.predicate = NSPredicate(format: "uuid = %@", argumentArray: [scene.uuid])
-                        let sceneObjects = try? viewContext.fetch(request)
-                        print("result", sceneObjects?.count ?? "N/A")
-                        guard let sceneObject = sceneObjects?.first as? SceneObject else {
-                            print("### Error failed to fetch object with uuid")
-                            return
-                        }
-                        viewContext.delete(sceneObject)
-                        do {
-                            try viewContext.save()
-                        } catch {
-                            print("###ERROR failed to save", error)
+                        if let sceneObject = SceneObject.sceneObject(with: scene.uuid) {
+                            viewContext.delete(sceneObject)
+                            PersistenceController.shared.saveContext()
                         }
                     }
                 })
@@ -84,12 +74,7 @@ public struct SwipeStudio: View {
                     sceneObject.createdAt = Date()
                     sceneObject.updatedAt = sceneObject.createdAt
                     sceneObject.uuid = scene.uuid
-                    do {
-                        try viewContext.save()
-                    } catch {
-                        print("###ERROR failed to save", error)
-                    }
-                    
+                    PersistenceController.shared.saveContext()
                 }, label: {
                     Text("Add New Scene")
                 })
@@ -97,6 +82,20 @@ public struct SwipeStudio: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         #endif
+    }
+}
+
+extension SceneObject {
+    static func sceneObject(with uuid:UUID) -> SceneObject? {
+        let viewContext = PersistenceController.shared.container.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
+        request.predicate = NSPredicate(format: "uuid = %@", argumentArray: [uuid])
+        let sceneObjects = try? viewContext.fetch(request)
+        guard let sceneObject = sceneObjects?.first as? SceneObject else {
+            print("### Error failed to fetch object with uuid")
+            return nil
+        }
+        return sceneObject
     }
 }
 

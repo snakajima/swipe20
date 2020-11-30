@@ -52,4 +52,12 @@ struct PersistenceController {
             }
         })
     }
+    
+    func saveContext() {
+        do {
+            try container.viewContext.save()
+        } catch {
+            print("###ERROR saveContext", error)
+        }
+    }
 }
