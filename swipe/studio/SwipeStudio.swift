@@ -16,6 +16,7 @@ let s_previewHeight:CGFloat = 100
 
 
 public struct SwipeStudio: View {
+    let viewContext = PersistenceController.shared.container.viewContext
     @State var scenes:[SwipeScene]
     /*
         SwipeScene(s_scriptEmpty),
@@ -51,6 +52,25 @@ public struct SwipeStudio: View {
                         Text("Sample")
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    indexSet.forEach { index in
+                        let scene = scenes[index]
+                        scenes.remove(at: index)
+                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
+                        request.predicate = NSPredicate(format: "uuid == %@", scene.uuid as CVarArg)
+                        guard let sceneObjects = try? viewContext.fetch(request) as? [SceneObject],
+                              let sceneObject = sceneObjects.first else {
+                            print("### Error failed to fetch object with uuid")
+                            return
+                        }
+                        viewContext.delete(sceneObject)
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            print("###ERROR failed to save", error)
+                        }
+                    }
+                })
                 Button(action: {
                     let scene = SwipeScene(s_scriptEmpty)
                     scenes.append(scene)
@@ -58,14 +78,13 @@ public struct SwipeStudio: View {
                         print("###ERROR failed to serialize")
                         return
                     }
-                    let moc = PersistenceController.shared.container.viewContext
-                    let sceneObject = NSEntityDescription.insertNewObject(forEntityName: "SceneObject", into: moc) as! SceneObject
+                    let sceneObject = NSEntityDescription.insertNewObject(forEntityName: "SceneObject", into: viewContext) as! SceneObject
                     sceneObject.script = data
                     sceneObject.createdAt = Date()
                     sceneObject.updatedAt = sceneObject.createdAt
                     sceneObject.uuid = scene.uuid
                     do {
-                        try moc.save()
+                        try viewContext.save()
                     } catch {
                         print("###ERROR failed to save", error)
                     }
