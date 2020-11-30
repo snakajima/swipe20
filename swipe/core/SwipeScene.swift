@@ -167,6 +167,9 @@ public struct SwipeScene: Identifiable {
             // TODO: backgroundColor
             "frames": frames.map { $0.script }
         ]
+        if let components = backgroundColor?.components {
+            script["backgroundColor"] = components
+        }
         if playMode != .none {
             script["playmode"] = playMode.rawValue
         }
