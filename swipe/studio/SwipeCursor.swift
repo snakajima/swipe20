@@ -85,17 +85,3 @@ struct SwipeCursor: View {
     }
 }
 
-private extension CGPoint {
-    func distance(_ to:CGPoint) -> CGFloat {
-        let dx = to.x - x
-        let dy = to.y - y
-        return sqrt(dx * dx + dy * dy)
-    }
-    
-    func angle(_ to:CGPoint) -> CGFloat {
-        let dx = to.x - x
-        let dy = to.y - y
-        return atan2(dx, dy)
-    }
-}
-

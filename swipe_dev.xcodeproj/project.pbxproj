@@ -10,6 +10,12 @@
 		7426678C25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
 		7426678D25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
 		7426678E25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
+		7426679625747C4A00E47692 /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426679525747C4A00E47692 /* CGPoint+extension.swift */; };
+		7426679725747C4A00E47692 /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426679525747C4A00E47692 /* CGPoint+extension.swift */; };
+		7426679825747C4A00E47692 /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426679525747C4A00E47692 /* CGPoint+extension.swift */; };
+		7426679D25747D2F00E47692 /* CGVector+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426679C25747D2F00E47692 /* CGVector+extension.swift */; };
+		7426679E25747D2F00E47692 /* CGVector+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426679C25747D2F00E47692 /* CGVector+extension.swift */; };
+		7426679F25747D2F00E47692 /* CGVector+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426679C25747D2F00E47692 /* CGVector+extension.swift */; };
 		742A09482518632F00862F36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09472518632F00862F36 /* AppDelegate.swift */; };
 		742A094A2518632F00862F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A09492518632F00862F36 /* ContentView.swift */; };
 		742A094C2518633100862F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 742A094B2518633100862F36 /* Assets.xcassets */; };
@@ -145,6 +151,8 @@
 
 /* Begin PBXFileReference section */
 		7426678B25746C0500E47692 /* CGPath+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+extension.swift"; sourceTree = "<group>"; };
+		7426679525747C4A00E47692 /* CGPoint+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
+		7426679C25747D2F00E47692 /* CGVector+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+extension.swift"; sourceTree = "<group>"; };
 		742A09442518632F00862F36 /* swipe20.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swipe20.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		742A09472518632F00862F36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		742A09492518632F00862F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -245,6 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				7426678B25746C0500E47692 /* CGPath+extension.swift */,
+				7426679525747C4A00E47692 /* CGPoint+extension.swift */,
+				7426679C25747D2F00E47692 /* CGVector+extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -648,7 +658,9 @@
 				74FAC27C251D102900DD29EF /* SwipeAnimation.swift in Sources */,
 				74FAC207251BBFA700DD29EF /* SwipePath.swift in Sources */,
 				742A096725186B1D00862F36 /* SwipeElement.swift in Sources */,
+				7426679D25747D2F00E47692 /* CGVector+extension.swift in Sources */,
 				742A096125186A9900862F36 /* SwipeScene.swift in Sources */,
+				7426679625747C4A00E47692 /* CGPoint+extension.swift in Sources */,
 				742A094A2518632F00862F36 /* ContentView.swift in Sources */,
 				74B7AA2F251BA51E00495568 /* Playground2.swift in Sources */,
 				74FAC27F251D3D0E00DD29EF /* SwipeRenderLayer.swift in Sources */,
@@ -679,9 +691,11 @@
 				74F5A3E5256AA45A006A5EF4 /* SwipeExporter.swift in Sources */,
 				7465DF3825472DCA000E8D74 /* SwipeRenderLayer.swift in Sources */,
 				7465DF2625472DBB000E8D74 /* SwipeCanvas.swift in Sources */,
+				7426679825747C4A00E47692 /* CGPoint+extension.swift in Sources */,
 				7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */,
 				7465DF3125472DC5000E8D74 /* SwipeFileView.swift in Sources */,
 				7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */,
+				7426679F25747D2F00E47692 /* CGVector+extension.swift in Sources */,
 				74742FA2254C5EA800AF0362 /* Playground.swift in Sources */,
 				74C9350C255709B00042AA4C /* SwipeDraw.swift in Sources */,
 				7426678E25746C0500E47692 /* CGPath+extension.swift in Sources */,
@@ -701,6 +715,7 @@
 			files = (
 				746E6654252AC6670041AEE0 /* SwipeAnimation.swift in Sources */,
 				746E6655252AC6670041AEE0 /* SwipePath.swift in Sources */,
+				7426679725747C4A00E47692 /* CGPoint+extension.swift in Sources */,
 				746E6645252AC64A0041AEE0 /* SwipeCanvas.swift in Sources */,
 				746E6632252AC6180041AEE0 /* ContentView.swift in Sources */,
 				74C9350B255709B00042AA4C /* SwipeDraw.swift in Sources */,
@@ -708,6 +723,7 @@
 				74E8A17025575D3300D5C98C /* SwipeDrawModel.swift in Sources */,
 				74C934FF255707780042AA4C /* SwipeStroke.swift in Sources */,
 				7426678D25746C0500E47692 /* CGPath+extension.swift in Sources */,
+				7426679E25747D2F00E47692 /* CGVector+extension.swift in Sources */,
 				746E6656252AC6670041AEE0 /* SwipeParser.swift in Sources */,
 				746E6657252AC6670041AEE0 /* SwipeRenderLayer.swift in Sources */,
 				746E6653252AC6670041AEE0 /* SwipeRenderProperties.swift in Sources */,
