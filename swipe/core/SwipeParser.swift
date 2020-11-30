@@ -129,4 +129,15 @@ public struct SwipeParser {
         }
         return nil
     }
+    
+    static func components(of cgColor:CGColor?) -> [CGFloat]? {
+        if let components = cgColor?.components {
+            if components.count == 4 {
+                return components
+            } else if components.count == 2 {
+                return [components[0], components[0], components[0], components[1]]
+            }
+        }
+        return nil
+    }
 }

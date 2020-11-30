@@ -65,7 +65,7 @@ public struct SwipeStudio: View {
                 Button(action: {
                     let scene = SwipeScene(s_scriptEmpty)
                     scenes.append(scene)
-                    guard let data = try? JSONSerialization.data(withJSONObject: scene.script, options: []) else {
+                    guard let data = scene.scriptData else {
                         print("###ERROR failed to serialize")
                         return
                     }

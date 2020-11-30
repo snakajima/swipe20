@@ -46,6 +46,11 @@ class SwipeCanvasModel: NSObject, ObservableObject {
                 undoCursor = undoStack.count
             }
             updateUndoState()
+            
+            if let sceneObject = SceneObject.sceneObject(with: scene.uuid) {
+                sceneObject.script = scene.scriptData
+                PersistenceController.shared.saveContext()
+            }
         }
     }
     init(scene:SwipeScene) {

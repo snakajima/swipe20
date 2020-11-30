@@ -166,12 +166,8 @@ public struct SwipeScene: Identifiable {
             "duration":duration,
             "frames": frames.map { $0.script }
         ]
-        if let components = backgroundColor?.components {
-            if components.count == 4 {
-                script["backgroundColor"] = components
-            } else if components.count == 2 {
-                script["backgroundColor"] = [components[0], components[0], components[0], components[1]]
-            }
+        if let components = SwipeParser.components(of: backgroundColor) {
+            script["backgroundColor"] = components
         }
         if playMode != .none {
             script["playmode"] = playMode.rawValue
@@ -181,5 +177,9 @@ public struct SwipeScene: Identifiable {
         }
         
         return script
+    }
+    
+    var scriptData:Data? {
+        return try? JSONSerialization.data(withJSONObject: self.script, options: [])
     }
 }
