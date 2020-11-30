@@ -16,7 +16,7 @@ let s_previewHeight:CGFloat = 100
 
 
 public struct SwipeStudio: View {
-    @State private var scenes = [SwipeScene]()
+    @State var scenes:[SwipeScene]
     /*
         SwipeScene(s_scriptEmpty),
         SwipeScene(s_scriptGen),
@@ -25,22 +25,6 @@ public struct SwipeStudio: View {
     let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 1.0)
     let buttonColor = Color.blue
 
-    init() {
-        print("SwipeStudio init")
-        let moc = PersistenceController.shared.container.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
-        let sceneObjects = (try? moc.fetch(request) as? [SceneObject]) ?? [SceneObject]()
-        print("sceneObjects", sceneObjects.count)
-        let scenes = sceneObjects.map({ (sceneObject) -> SwipeScene in
-            let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
-            print(script as? [String:Any])
-            return SwipeScene(script as? [String:Any])
-        })
-        print(scenes.count)
-        self.scenes = scenes
-        print(self.scenes.count)
-    }
-    
     public var body: some View {
         let previewHeight:CGFloat = s_previewHeight
         #if os(macOS)
@@ -98,6 +82,6 @@ public struct SwipeStudio: View {
 
 struct SwipeStudio_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeStudio()
+        SwipeStudio(scenes:[])
     }
 }
