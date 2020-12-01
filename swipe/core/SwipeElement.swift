@@ -70,9 +70,9 @@ public struct SwipeElement {
         var style = SwipeAnimation.Style.normal
         if let animation = script["animation"] as? [String:Any] ?? base?.animation {
             self.animation = animation
-           if let rawValue = animation["style"] as? String {
-            style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal
-           }
+            if let rawValue = animation["style"] as? String {
+             style = SwipeAnimation.Style(rawValue: rawValue) ?? .normal
+            }
         } else {
             self.animation = nil
         }
@@ -220,20 +220,20 @@ public struct SwipeElement {
         if let cornerRadius = self.cornerRadius {
             script["cornerRadius"] = cornerRadius
         }
-        if let backgroundColor = self.backgroundColor,
-           let components = backgroundColor.components, components.count == 4 {
+        if let components = SwipeParser.components(of: self.backgroundColor) {
             script["backgroundColor"] = components
         }
-        if let foregroundColor = self.foregroundColor,
-           let components = foregroundColor.components, components.count == 4 {
+        if let components = SwipeParser.components(of: self.foregroundColor) {
             script["foregroundColor"] = components
         }
-        if let fillColor = self.fillColor,
-           let components = fillColor.components, components.count == 4 {
+        if let components = SwipeParser.components(of: self.fillColor) {
             script["fillColor"] = components
         }
         if let components = SwipeParser.components(of: self.strokeColor) {
             script["strokeColor"] = components
+        }
+        if self.animationStyle != .normal {
+            script["animation"] = ["style":self.animationStyle.rawValue]
         }
         return script
     }
