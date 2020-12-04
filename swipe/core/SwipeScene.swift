@@ -180,6 +180,6 @@ public struct SwipeScene: Identifiable {
     }
     
     var scriptData:Data? {
-        return try? JSONSerialization.data(withJSONObject: self.script, options: [])
+        return try? JSONSerialization.data(withJSONObject: self.script, options: [.prettyPrinted, .sortedKeys])
     }
 }

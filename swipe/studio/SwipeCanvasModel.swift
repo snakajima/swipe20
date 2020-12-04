@@ -49,6 +49,8 @@ class SwipeCanvasModel: NSObject, ObservableObject {
             
             if let sceneObject = SceneObject.sceneObject(with: scene.uuid) {
                 sceneObject.script = scene.scriptData
+                let str = String(bytes: sceneObject.script!, encoding: .utf8)
+                print(str!)
                 PersistenceController.shared.saveContext()
             }
         }
