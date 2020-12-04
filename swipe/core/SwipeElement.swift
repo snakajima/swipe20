@@ -19,7 +19,7 @@ public struct SwipeElement {
     let imagePath:String?
     private let animation:[String:Any]?
     
-    private(set) var pathBox = CGRect.zero
+    private(set) var pathBox:CGRect
     private(set) var path:CGPath? {
         didSet {
             pathBox = path?.boundingBoxOfPath ?? .zero
@@ -114,6 +114,7 @@ public struct SwipeElement {
         // As the side-effect, the path animation will happen at the different frame in reverse mode.
         //
         self.path = SwipePath.parse(script["path"]) // NOTE: no inheritance
+        self.pathBox = self.path?.boundingBoxOfPath ?? .zero
 
         // nested elements
         let elementScripts = script["elements"] as? [[String:Any]] ?? []
