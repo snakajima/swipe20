@@ -48,7 +48,7 @@ extension SwipeRenderProperties {
                                   width: from.frame.width.mix(frame.width, ratio),
                                   height: from.frame.height.mix(frame.height, ratio))
             
-            if !isHidden && from.isHidden {
+            if isHidden != from.isHidden {
                 // Perform the drawing animation
                 if var path = element.path {
                     let size = path.boundingBox.size
@@ -60,13 +60,16 @@ extension SwipeRenderProperties {
                     }
                     let elements = path.elements
 
-                    let count = Int(Double(elements.count) * ratio)
+                    let count = Int(Double(elements.count) * (isHidden ? 1 - ratio : ratio))
+                    print("count", count)
                     target.updatePath(path: elements[0..<count].reduce(CGMutablePath(), { (path, element) -> CGMutablePath in
                         element.apply(path: path)
                     }))
                 } else {
                     // TDB: for non-path element animation
                 }
+                target.updateFrame(frame: isHidden ? from.frame : frame, element: element)
+                
                 let rotX = from.rotX.mix(self.rotX, 1)
                 let rotY = from.rotY.mix(self.rotY, 1)
                 let rotZ = from.rotZ.mix(self.rotZ, 1)
