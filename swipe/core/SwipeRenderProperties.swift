@@ -62,7 +62,6 @@ extension SwipeRenderProperties {
                     let elements = path.elements
 
                     let count = Int(Double(elements.count) * (isHidden ? 1 - ratio : ratio))
-                    print("count", count)
                     target.updatePath(path: elements[0..<count].reduce(CGMutablePath(), { (path, element) -> CGMutablePath in
                         element.apply(path: path)
                     }))
