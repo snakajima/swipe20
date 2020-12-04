@@ -49,6 +49,7 @@ extension SwipeRenderProperties {
                                   height: from.frame.height.mix(frame.height, ratio))
             
             if isHidden != from.isHidden {
+                target.updateFrame(frame: isHidden ? from.frame : frame, element: element)
                 // Perform the drawing animation
                 if var path = element.path {
                     let size = path.boundingBox.size
@@ -68,7 +69,6 @@ extension SwipeRenderProperties {
                 } else {
                     // TDB: for non-path element animation
                 }
-                target.updateFrame(frame: isHidden ? from.frame : frame, element: element)
                 
                 let rotX = from.rotX.mix(self.rotX, 1)
                 let rotY = from.rotY.mix(self.rotY, 1)
