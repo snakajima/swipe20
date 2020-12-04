@@ -47,7 +47,6 @@ extension SwipeRenderProperties {
                                   y: from.frame.minY.mix(frame.minY, ratio),
                                   width: from.frame.width.mix(frame.width, ratio),
                                   height: from.frame.height.mix(frame.height, ratio))
-            let bottomAC = CGPoint(x: 0.5, y: ratio == 1.0 ? 0.5 : 1.0)
             
             if !isHidden && from.isHidden {
                 // Perform the drawing animation
