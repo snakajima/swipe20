@@ -62,7 +62,7 @@ public struct SwipeView: OSViewRepresentable {
             CATransaction.setDisableActions(true)
             swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
             CATransaction.commit()
-            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer)
+            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer, osView: nsView, snapshot: snapshot)
         }
     }
     #else
