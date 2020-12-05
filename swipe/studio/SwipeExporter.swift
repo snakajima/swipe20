@@ -7,7 +7,7 @@
 
 import SwiftUI
 import ImageIO
-import MobileCoreServices
+import CoreServices
 import Photos
 
 struct SwipeExporter: View {
