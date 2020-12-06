@@ -39,6 +39,7 @@ struct SwipeSceneItem: View {
     var body: some View {
         VStack(spacing:1) {
             let scale = previewHeight / model.scene.dimension.height
+            let width = model.scene.dimension.width * scale
             ZStack {
                 SwipeView(scene: model.scene, frameIndex: $index, scale:scale)
                 if index == model.frameIndex {
@@ -48,7 +49,7 @@ struct SwipeSceneItem: View {
                         .padding(2.0)
                 }
             }
-            .frame(width:model.scene.dimension.width * scale, height:previewHeight)
+            .frame(width:width, height:previewHeight)
             .gesture(TapGesture().onEnded() {
                 model.frameIndex = index
             })
@@ -57,25 +58,27 @@ struct SwipeSceneItem: View {
                     Button(action: {
                         model.scene = model.scene.frameDeleted(atIndex: index)
                     }) {
-                        SwipeSymbol.trash.frame(width:32, height:32)
+                        SwipeSymbol.trash.frame(width:32, height:44)
                             .foregroundColor(buttonColor)
-                    }.frame(height:32)
+                    }.frame(width:44, height:44)
                 }
                 Spacer()
+                /*
                 Button(action: {
                     print("star")
                 }) {
-                    SwipeSymbol.gearshape.frame(width:32, height:32)
+                    SwipeSymbol.gearshape.frame(width:32, height:44)
                         .foregroundColor(buttonColor)
-                }.frame(height:32)
+                }.frame(width:44, height:44)
+                */
                 Button(action:{
                     model.scene = model.scene.frameDuplicated(atIndex: index)
                     model.frameIndex = index + 1
                 }) {
-                    SwipeSymbol.duplicate.frame(width:32, height:32)
+                    SwipeSymbol.duplicate.frame(width:32, height:44)
                         .foregroundColor(buttonColor)
-                }.frame(height:32)
-            }.frame(height:32, alignment: .bottomLeading)
+                }.frame(width:44, height:44)
+            }.frame(width:width, height:44, alignment: .center)
         }
     }
 }
