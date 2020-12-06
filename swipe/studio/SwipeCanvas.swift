@@ -161,14 +161,14 @@ public struct SwipeCanvas: View {
                         Button(action: {
                             model.undo()
                         }) {
-                            SwipeSymbol.backward.frame(width:24, height:24)
+                            SwipeSymbol.backward.frame(width:32, height:32)
                                 .foregroundColor(model.undoable ? .blue: .gray)
                         }
                         .disabled(!model.undoable)
                         Button(action: {
                             model.redo()
                         }) {
-                            SwipeSymbol.forward.frame(width:24, height:24)
+                            SwipeSymbol.forward.frame(width:32, height:32)
                                 .foregroundColor(model.redoable ? .blue: .gray)
                         }
                         .disabled(!model.redoable)
@@ -177,7 +177,7 @@ public struct SwipeCanvas: View {
                             model.selectedElement = nil
                             drawModel.activate()
                         }, label: {
-                            SwipeSymbol.scribble.frame(width:24, height:24)
+                            SwipeSymbol.scribble.frame(width:32, height:32)
                                 .foregroundColor(.blue)
                         })
                     }
@@ -194,11 +194,9 @@ public struct SwipeCanvas: View {
 
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
             let drawModel = SwipeDrawModel()
             SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), drawModel:drawModel, previewHeight: 150,
                         selectionColor: .blue, buttonColor: .blue)
         }
-    }
 }
 

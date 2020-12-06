@@ -45,14 +45,14 @@ struct SwipeDraw: View {
                 Button(action: {
                     model.undo()
                 }) {
-                    SwipeSymbol.backward.frame(width:24, height:24)
+                    SwipeSymbol.backward.frame(width:32, height:32)
                         .foregroundColor(model.undoable ? .blue: .gray)
                 }
                 .disabled(!model.undoable)
                 Button(action: {
                     model.redo()
                 }) {
-                    SwipeSymbol.forward.frame(width:24, height:24)
+                    SwipeSymbol.forward.frame(width:32, height:32)
                         .foregroundColor(model.redoable ? .blue: .gray)
                 }
                 .disabled(!model.redoable)
@@ -60,13 +60,13 @@ struct SwipeDraw: View {
                 Button(action: {
                     model.done(style:.jump)
                 }, label: {
-                    SwipeSymbol.checkmark.frame(width:24, height:24)
+                    SwipeSymbol.checkmark.frame(width:32, height:32)
                         .foregroundColor(.blue)
                 })
                 Button(action: {
                     model.done(style:.leap)
                 }, label: {
-                    SwipeSymbol.checkmark.frame(width:24, height:24)
+                    SwipeSymbol.checkmark.frame(width:32, height:32)
                         .foregroundColor(.blue)
                 })
             }
