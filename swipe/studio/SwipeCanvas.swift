@@ -189,6 +189,7 @@ public struct SwipeCanvas: View {
             }
         }
         .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
