@@ -184,18 +184,20 @@ extension SwipeRenderProperties {
         let effectiveRatio:Double
         switch(ratio) {
         case _ where ratio < r0:
-            x = from.frame.minX
-            y = from.frame.minY
             let r = CGFloat(sin(ratio * ratio / r0 / r0 * .pi))
-            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
+            let scaleY = 1.0 - r * 0.2
+            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, scaleY, 1.0)
             size = from.frame.size
+            x = from.frame.minX
+            y = from.frame.minY + size.height * (1 - scaleY) / 2
             effectiveRatio = 0
         case _ where ratio > (1 - r2):
-            x = frame.minX
-            y = frame.minY
             let r = CGFloat(sin((1 - ratio) / r2 * .pi))
-            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, 1.0 - r * 0.2, 1.0)
+            let scaleY = 1.0 - r * 0.2
+            xfNew = CATransform3DScale(xf, 1.0 + r * 0.25, scaleY, 1.0)
             size = frame.size
+            x = frame.minX
+            y = frame.minY + size.height * (1 - scaleY) / 2
             effectiveRatio = 1.0
         default:
             let r = (ratio - r0) / r1
