@@ -141,25 +141,31 @@ extension SwipeRenderProperties {
         let r1 = 1.0 - r0 - r2 // jump
         let dx = frame.minX - from.frame.minX
         let dy = frame.minY - from.frame.minY
+        let dirX:CGFloat = dx < 0 ? -1 : 1
+        let dirY:CGFloat = dy < 0 ? -1 : 1
         let dir = atan2(dx, dy)
         let size:CGSize
         let effectiveRatio:Double
         switch(ratio) {
         case _ where ratio < r0:
-            x = from.frame.minX
-            y = from.frame.minY
             let r = CGFloat(sin(ratio * ratio / r0 / r0 * .pi))
-            xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.8, 1, 0, 0)
-            xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.8, 0, 1, 0)
+            let rotX = -r * cos(dir) * 0.8
+            xfNew = CATransform3DRotate(xf, rotX, 1, 0, 0)
+            let rotY = r * sin(dir) * 0.8
+            xfNew = CATransform3DRotate(xfNew, rotY, 0, 1, 0)
             size = from.frame.size
+            x = from.frame.minX - dirX * size.width * (1 - cos(rotY)) / 2
+            y = from.frame.minY - dirY * size.height * (1 - cos(rotX)) / 2
             effectiveRatio = 0
         case _ where ratio > (1 - r2):
-            x = frame.minX
-            y = frame.minY
             let r = CGFloat(sin((1 - ratio) / r2 * .pi))
-            xfNew = CATransform3DRotate(xf, -r * cos(dir) * 0.8, 1, 0, 0)
-            xfNew = CATransform3DRotate(xfNew, r * sin(dir) * 0.8, 0, 1, 0)
+            let rotX = -r * cos(dir) * 0.8
+            xfNew = CATransform3DRotate(xf, rotX, 1, 0, 0)
+            let rotY = r * sin(dir) * 0.8
+            xfNew = CATransform3DRotate(xfNew, rotY, 0, 1, 0)
             size = frame.size
+            x = frame.minX + dirX * size.width * (1 - cos(rotY)) / 2
+            y = frame.minY + dirY * size.height * (1 - cos(rotX)) / 2
             effectiveRatio = 1
         default:
             let r = (ratio - r0) / r1
