@@ -12,6 +12,7 @@ struct SwipeDraw: View {
     let dimension:CGSize
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var image: Image? = nil
     
     var body: some View {
         VStack {
@@ -27,6 +28,12 @@ struct SwipeDraw: View {
                 let markerColor = Color(model.strokeColor)
                 #endif
                 ZStack {
+                    if let inputImage = inputImage {
+                        Image(uiImage: inputImage)
+                            .resizable()
+                            .frame(width: geometry.size.width, height:geometry.size.height)
+                            .opacity(0.5)
+                    }
                     ForEach(model.strokes) { stroke in
                         Path {
                             stroke.append(to: &$0)
@@ -88,8 +95,8 @@ struct SwipeDraw: View {
     }
     
     func loadImage() {
-        guard let inputImage = inputImage else { return }
-        print("loadImage", inputImage)
+        //guard let inputImage = inputImage else { return }
+        print("loadImage")
         //image = Image(uiImage: inputImage)
     }
     
