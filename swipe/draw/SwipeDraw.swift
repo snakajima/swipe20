@@ -10,6 +10,8 @@ import SwiftUI
 struct SwipeDraw: View {
     @ObservedObject var model:SwipeDrawModel
     let dimension:CGSize
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
     
     var body: some View {
         VStack {
@@ -58,6 +60,13 @@ struct SwipeDraw: View {
                 .disabled(!model.redoable)
                 Spacer()
                 Button(action: {
+                    print("photo")
+                    self.showingImagePicker = true
+                }, label: {
+                    Text("Photo")
+                })
+                Spacer()
+                Button(action: {
                     model.done(style:.jump)
                 }, label: {
                     SwipeSymbol.checkmark.frame(width:32, height:32)
@@ -73,6 +82,15 @@ struct SwipeDraw: View {
             .frame(height:32, alignment: .bottom)
             .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
         }
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage, content: {
+            ImagePicker(image: $inputImage)
+        })
+    }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        print("loadImage", inputImage)
+        //image = Image(uiImage: inputImage)
     }
     
     func markerStyle(scale:CGFloat) -> StrokeStyle {

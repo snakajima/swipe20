@@ -30,6 +30,8 @@
 		742A09772519BC0300862F36 /* kodim03.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A09762519BC0300862F36 /* kodim03.png */; };
 		742A097E2519BC1C00862F36 /* kodim17.png in Resources */ = {isa = PBXBuildFile; fileRef = 742A097D2519BC1C00862F36 /* kodim17.png */; };
 		742DFB0F25224E2F00A39C80 /* Jump.swipe in Resources */ = {isa = PBXBuildFile; fileRef = 742DFB0E25224E2F00A39C80 /* Jump.swipe */; };
+		7435B8B825833E9C00C35116 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435B8B725833E9C00C35116 /* ImagePicker.swift */; };
+		7435B8B925833E9C00C35116 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435B8B725833E9C00C35116 /* ImagePicker.swift */; };
 		7465DEF32547248E000E8D74 /* SwipeStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DEF12547248E000E8D74 /* SwipeStudio.swift */; };
 		7465DF0925472CF4000E8D74 /* SwipeStudio_LiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */; };
 		7465DF0D25472CF5000E8D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7465DF0C25472CF5000E8D74 /* Assets.xcassets */; };
@@ -170,6 +172,7 @@
 		742A09762519BC0300862F36 /* kodim03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim03.png; sourceTree = "<group>"; };
 		742A097D2519BC1C00862F36 /* kodim17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kodim17.png; sourceTree = "<group>"; };
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
+		7435B8B725833E9C00C35116 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7465DEF12547248E000E8D74 /* SwipeStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStudio.swift; sourceTree = "<group>"; };
 		7465DF0625472CF4000E8D74 /* SwipeStudio Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwipeStudio Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStudio_LiteApp.swift; sourceTree = "<group>"; };
@@ -459,6 +462,7 @@
 				74C934F7255707310042AA4C /* SwipeStroke.swift */,
 				74C9350A255709B00042AA4C /* SwipeDraw.swift */,
 				74E8A16F25575D3300D5C98C /* SwipeDrawModel.swift */,
+				7435B8B725833E9C00C35116 /* ImagePicker.swift */,
 			);
 			path = draw;
 			sourceTree = "<group>";
@@ -704,6 +708,7 @@
 				7465DF3525472DCA000E8D74 /* SwipeElement.swift in Sources */,
 				7465DF2825472DBB000E8D74 /* SwipeCanvasModel.swift in Sources */,
 				7465DF3A25472DCA000E8D74 /* SwipePath.swift in Sources */,
+				7435B8B925833E9C00C35116 /* ImagePicker.swift in Sources */,
 				7465DF2525472DBA000E8D74 /* SwipeCursor.swift in Sources */,
 				7465DF0925472CF4000E8D74 /* SwipeStudio_LiteApp.swift in Sources */,
 			);
@@ -730,6 +735,7 @@
 				746E6651252AC6670041AEE0 /* SwipeScene.swift in Sources */,
 				746E664C252AC6620041AEE0 /* SwipeFileView.swift in Sources */,
 				746E6652252AC6670041AEE0 /* SwipeFrame.swift in Sources */,
+				7435B8B825833E9C00C35116 /* ImagePicker.swift in Sources */,
 				746E66A6252CDD990041AEE0 /* SwipeSceneList.swift in Sources */,
 				746E6635252AC6180041AEE0 /* SwipeStudio.xcdatamodeld in Sources */,
 				746E664D252AC6620041AEE0 /* SwipeView.swift in Sources */,
