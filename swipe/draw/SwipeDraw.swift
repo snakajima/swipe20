@@ -31,6 +31,7 @@ struct SwipeDraw: View {
                     if let inputImage = inputImage {
                         Image(uiImage: inputImage)
                             .resizable()
+                            .aspectRatio(contentMode: .fit)
                             .frame(width: geometry.size.width, height:geometry.size.height)
                             .opacity(0.5)
                     }
