@@ -78,13 +78,13 @@ struct SwipeDraw: View {
                 Button(action: {
                     model.done(style:.jump)
                 }, label: {
-                    SwipeSymbol.checkmark.frame(width:32, height:32)
+                    SwipeSymbol.frog.frame(width:32, height:32)
                         .foregroundColor(.blue)
                 })
                 Button(action: {
                     model.done(style:.leap)
                 }, label: {
-                    SwipeSymbol.checkmark.frame(width:32, height:32)
+                    SwipeSymbol.hare.frame(width:32, height:32)
                         .foregroundColor(.blue)
                 })
             }

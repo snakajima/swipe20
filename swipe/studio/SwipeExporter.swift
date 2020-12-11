@@ -20,11 +20,13 @@ struct SwipeExporter: View {
             Button(action: {
                 export()
             }, label: {
-                Text("Explort")
+                SwipeSymbol.action.frame(width:32, height:32)
+                    .foregroundColor(.blue)
+                    .padding(4)
             })
             Rectangle()
                 .fill(Color.clear)
-                .frame(height:16)
+                .frame(height:32)
         }
     }
     func export() {
