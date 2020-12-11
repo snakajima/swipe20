@@ -71,7 +71,8 @@ struct SwipeDraw: View {
                     print("photo")
                     self.showingImagePicker = true
                 }, label: {
-                    Text("Photo")
+                    SwipeSymbol.photo.frame(width:32, height:32)
+                        .foregroundColor(.blue)
                 })
                 Spacer()
                 Button(action: {

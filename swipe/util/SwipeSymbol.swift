@@ -105,6 +105,9 @@ extension SwipeSymbol {
     static var checkmark:SwipeSymbol {
         return SwipeSymbol(script: s_checkmark)
     }
+    static var photo:SwipeSymbol {
+        return SwipeSymbol(script: s_photo)
+    }
 }
 
 struct SwipeSymbol_Previews: PreviewProvider {
