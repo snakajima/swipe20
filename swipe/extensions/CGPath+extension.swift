@@ -30,13 +30,17 @@ extension CGPath {
         var svgPath:String {
             switch(self) {
             case .moveToPoint(let pt):
-                return "M \(pt.x),\(pt.y)"
+                //return "M \(pt.x),\(pt.y)"
+                return String(format: "M %.2f,%.2f", pt.x, pt.y)
             case .addQuadCurveToPoint(let ct, let pt):
-                return "Q \(ct.x),\(ct.y),\(pt.x),\(pt.y)"
+                //return "Q \(ct.x),\(ct.y),\(pt.x),\(pt.y)"
+                return String(format: "Q %.2f,%.2f,%.2f,%.2f", ct.x, ct.y, pt.x, pt.y)
             case .addLineToPoint(let pt):
-                return "L \(pt.x),\(pt.y)"
+                //return "L \(pt.x),\(pt.y)"
+                return String(format: "L %.2f,%.2f", pt.x, pt.y)
             case .addCurveToPoint(let pt, let ct1, let ct2):
-                return "C \(ct1.x),\(ct1.y),\(ct2.x),\(ct2.y),\(pt.x),\(pt.y)"
+                //return "C \(ct1.x),\(ct1.y),\(ct2.x),\(ct2.y),\(pt.x),\(pt.y)"
+                return String(format: "C %.2f,%.2f", ct1.x, ct1.y, ct2.x, ct2.y, pt.x, pt.y)
             case .closeSubpath:
                 return "Z"
             }
