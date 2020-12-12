@@ -54,15 +54,11 @@ public struct SwipeStudio: View {
         return NavigationView {
             List {
                 ForEach(sceneObjects) { sceneObject in
-                    let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
-                    let scene = SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
-                    let model = SwipeCanvasModel(scene:scene)
                     let drawModel = SwipeDrawModel()
                     NavigationLink(destination:
-                                    SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+                                    SwipeCanvas(sceneObject: sceneObject, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
                     ) {
-                        if let sceneObject = SceneObject.sceneObject(with: model.scene.uuid),
-                           let thumbnail = sceneObject.thumbnail,
+                        if let thumbnail = sceneObject.thumbnail,
                            let image = UIImage(data: thumbnail) {
                             Image(uiImage: image)
                                 .resizable()

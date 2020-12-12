@@ -107,9 +107,11 @@ public struct SwipeCanvas: View {
     let buttonColor:Color
     @State var snapshot: SwipeView.Snapshot? = nil
     
-    init(model:SwipeCanvasModel, drawModel:SwipeDrawModel, previewHeight:CGFloat,
+    init(sceneObject:SceneObject, drawModel:SwipeDrawModel, previewHeight:CGFloat,
          selectionColor:Color, buttonColor:Color) {
-        self.model = model
+        let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
+        let scene = SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
+        self.model = SwipeCanvasModel(scene:scene)
         self.drawModel = drawModel
         self.previewHeight = previewHeight
         self.selectionColor = selectionColor
@@ -193,6 +195,7 @@ public struct SwipeCanvas: View {
     }
 }
 
+/*
 struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
             let drawModel = SwipeDrawModel()
@@ -200,4 +203,4 @@ struct SwipeCanvas_Previews: PreviewProvider {
                         selectionColor: .blue, buttonColor: .blue)
         }
 }
-
+*/

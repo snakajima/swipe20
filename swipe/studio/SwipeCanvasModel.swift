@@ -50,7 +50,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
             
             if !deferedSaving {
                 deferedSaving = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 30.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     if let sceneObject = SceneObject.sceneObject(with: self.scene.uuid) {
                         self.deferedSaving = false
                         sceneObject.script = self.scene.scriptData

@@ -65,7 +65,8 @@ public struct SwipeScene: Identifiable {
         } else {
             self.dimension = CGSize(width: 1920, height: 1080)
         }
-        
+
+        print("SwipeScene parsing")
         var base:SwipeFrame? = nil
         self.frames = scriptFrames.map {
             let frame = SwipeFrame($0, base:base)
