@@ -36,7 +36,13 @@ public struct SwipeStudio: View {
                 NavigationLink(destination:
                                 SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
                 ) {
-                    Text("Sample")
+                    if let sceneObject = SceneObject.sceneObject(with: model.scene.uuid),
+                       let thumbnail = sceneObject.thumbnail,
+                       let image = UIImage(data: thumbnail) {
+                        Text("image")
+                    } else {
+                        Text("Sample")
+                    }
                 }
             }
         }
@@ -49,7 +55,16 @@ public struct SwipeStudio: View {
                     NavigationLink(destination:
                                     SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
                     ) {
-                        Text("Sample")
+                        if let sceneObject = SceneObject.sceneObject(with: model.scene.uuid),
+                           let thumbnail = sceneObject.thumbnail,
+                           let image = UIImage(data: thumbnail) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height:40)
+                        } else {
+                            Text("Sample")
+                        }
                     }
                 }
                 .onDelete(perform: { indexSet in
