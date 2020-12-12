@@ -99,6 +99,17 @@ let s_scriptText:[String:Any] = [
     ]]
 ]
 
+public struct SwipeCanvasHolder: View {
+    let sceneObject: SceneObject
+    let drawModel: SwipeDrawModel
+    let previewHeight: CGFloat
+    let selectionColor:Color
+    let buttonColor:Color
+    public var body: some View {
+        SwipeCanvas(sceneObject: sceneObject, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+    }
+}
+
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
     @ObservedObject var drawModel:SwipeDrawModel

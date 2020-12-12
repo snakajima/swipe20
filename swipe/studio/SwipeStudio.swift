@@ -56,7 +56,7 @@ public struct SwipeStudio: View {
                 ForEach(sceneObjects) { sceneObject in
                     let drawModel = SwipeDrawModel()
                     NavigationLink(destination:
-                                    SwipeCanvas(sceneObject: sceneObject, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+                                    SwipeCanvasHolder(sceneObject: sceneObject, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
                     ) {
                         if let thumbnail = sceneObject.thumbnail,
                            let image = UIImage(data: thumbnail) {
