@@ -56,14 +56,14 @@ struct SwipeDraw: View {
                     model.undo()
                 }) {
                     SwipeSymbol.backward.frame(width:32, height:32)
-                        .foregroundColor(model.undoable ? .blue: .gray)
+                        .foregroundColor(model.undoable ? .accentColor: .gray)
                 }
                 .disabled(!model.undoable)
                 Button(action: {
                     model.redo()
                 }) {
                     SwipeSymbol.forward.frame(width:32, height:32)
-                        .foregroundColor(model.redoable ? .blue: .gray)
+                        .foregroundColor(model.redoable ? .accentColor: .gray)
                 }
                 .disabled(!model.redoable)
                 Spacer()
@@ -72,20 +72,20 @@ struct SwipeDraw: View {
                     self.showingImagePicker = true
                 }, label: {
                     SwipeSymbol.photo.frame(width:32, height:32)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accentColor)
                 })
                 Spacer()
                 Button(action: {
                     model.done(style:.jump)
                 }, label: {
                     SwipeSymbol.frog.frame(width:32, height:32)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accentColor)
                 })
                 Button(action: {
                     model.done(style:.leap)
                 }, label: {
                     SwipeSymbol.hare.frame(width:32, height:32)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accentColor)
                 })
             }
             .frame(height:32, alignment: .bottom)

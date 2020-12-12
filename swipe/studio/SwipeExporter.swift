@@ -23,7 +23,7 @@ struct SwipeExporter: View {
                 export()
             }, label: {
                 SwipeSymbol.action.frame(width:32, height:32)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.accentColor)
                     .padding(4)
             })
             Rectangle()

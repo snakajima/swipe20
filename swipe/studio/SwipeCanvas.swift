@@ -112,7 +112,6 @@ public struct SwipeCanvas: View {
     @ObservedObject var drawModel = SwipeDrawModel()
     let previewHeight:CGFloat
     let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 1.0)
-    let buttonColor = Color.blue
     @State var snapshot: SwipeView.Snapshot? = nil
     
     init(sceneObject:SceneObject, previewHeight:CGFloat) {
@@ -130,7 +129,7 @@ public struct SwipeCanvas: View {
     public var body: some View {
         return VStack(spacing:1) {
             SwipeSceneList(model: model, previewHeight: previewHeight,
-                           selectionColor: selectionColor, buttonColor: buttonColor, snapshot:$snapshot)
+                           selectionColor: selectionColor, snapshot:$snapshot)
             ZStack {
                 VStack {
                     GeometryReader { geometry in
@@ -168,14 +167,14 @@ public struct SwipeCanvas: View {
                             model.undo()
                         }) {
                             SwipeSymbol.backward.frame(width:32, height:32)
-                                .foregroundColor(model.undoable ? .blue: .gray)
+                                .foregroundColor(model.undoable ? .accentColor: .gray)
                         }
                         .disabled(!model.undoable)
                         Button(action: {
                             model.redo()
                         }) {
                             SwipeSymbol.forward.frame(width:32, height:32)
-                                .foregroundColor(model.redoable ? .blue: .gray)
+                                .foregroundColor(model.redoable ? .accentColor: .gray)
                         }
                         .disabled(!model.redoable)
                         Spacer()
@@ -184,7 +183,7 @@ public struct SwipeCanvas: View {
                             drawModel.activate()
                         }, label: {
                             SwipeSymbol.scribble.frame(width:32, height:32)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.accentColor)
                         })
                     }
                     .frame(height:32, alignment: .bottom)
@@ -204,7 +203,7 @@ struct SwipeCanvas_Previews: PreviewProvider {
     static var previews: some View {
             let drawModel = SwipeDrawModel()
             SwipeCanvas(model:SwipeCanvasModel(scene:SwipeScene(s_scriptSample)), drawModel:drawModel, previewHeight: 150,
-                        selectionColor: .blue, buttonColor: .blue)
+                        selectionColor: .accentColor, buttonColor: .accentColor)
         }
 }
 */

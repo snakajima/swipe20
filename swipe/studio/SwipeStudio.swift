@@ -81,7 +81,7 @@ public struct SwipeStudio: View {
                     PersistenceController.shared.saveContext()
                 }, label: {
                     SwipeSymbol.plus.frame(width:32, height:32)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accentColor)
                 })
             }
             .navigationBarTitleDisplayMode(.inline)

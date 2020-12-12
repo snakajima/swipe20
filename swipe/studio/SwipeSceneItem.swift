@@ -13,7 +13,6 @@ struct SwipeSceneItem: View {
     @State private var snapshot: SwipeView.Snapshot? = nil
     let previewHeight:CGFloat
     let selectionColor:Color
-    let buttonColor:Color
     let pub = NotificationCenter.default.publisher(for: SwipeCanvasModel.s_sceneSaved)
     var isSelected:Bool {index == model.frameIndex }
     
@@ -64,7 +63,7 @@ struct SwipeSceneItem: View {
                         model.scene = model.scene.frameDeleted(atIndex: index)
                     }) {
                         SwipeSymbol.trash.frame(width:32, height:44)
-                            .foregroundColor(buttonColor)
+                            .foregroundColor(.accentColor)
                     }.frame(width:44, height:44)
                 }
                 Spacer()
@@ -81,7 +80,7 @@ struct SwipeSceneItem: View {
                     model.frameIndex = index + 1
                 }) {
                     SwipeSymbol.duplicate.frame(width:32, height:44)
-                        .foregroundColor(buttonColor)
+                        .foregroundColor(.accentColor)
                 }.frame(width:44, height:44)
             }.frame(width:width, height:44, alignment: .center)
         }
