@@ -55,7 +55,7 @@ public struct SwipeStudio: View {
                                 .scaledToFit()
                                 .frame(height:100)
                         } else {
-                            Text("Sample")
+                            Text("New Document")
                         }
                     }
                 }
@@ -80,7 +80,8 @@ public struct SwipeStudio: View {
                     sceneObject.uuid = scene.uuid
                     PersistenceController.shared.saveContext()
                 }, label: {
-                    Text("Add New Scene")
+                    SwipeSymbol.plus.frame(width:32, height:32)
+                        .foregroundColor(.blue)
                 })
             }
             .navigationBarTitleDisplayMode(.inline)
