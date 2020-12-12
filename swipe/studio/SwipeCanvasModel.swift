@@ -21,6 +21,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
     @Published var isSelecting = false
 
     private var isUndoing = false
+    private var deferedSaving = false
     private var undoCursor:Int {
         didSet {
             isUndoing = true
@@ -47,11 +48,20 @@ class SwipeCanvasModel: NSObject, ObservableObject {
             }
             updateUndoState()
             
-            if let sceneObject = SceneObject.sceneObject(with: scene.uuid) {
-                sceneObject.script = scene.scriptData
-                //let str = String(bytes: sceneObject.script!, encoding: .utf8)
-                //print(str!)
-                PersistenceController.shared.saveContext()
+            if !deferedSaving {
+                deferedSaving = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 30.0) {
+                    if let sceneObject = SceneObject.sceneObject(with: self.scene.uuid) {
+                        self.deferedSaving = false
+                        sceneObject.script = self.scene.scriptData
+                        //let str = String(bytes: sceneObject.script!, encoding: .utf8)
+                        //print(str!)
+                        PersistenceController.shared.saveContext()
+                        print("saved")
+                    }
+                }
+            } else {
+                print("already saving")
             }
         }
     }
