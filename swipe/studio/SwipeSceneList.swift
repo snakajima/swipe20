@@ -17,7 +17,7 @@ struct SwipeSceneList: View {
         ScrollView (.horizontal, showsIndicators: true) {
             HStack(spacing:1) {
                 ForEach(0..<model.scene.frameCount, id:\.self) { index in
-                    SwipeSceneItem(model:model, index: index, snapshot: $snapshot,
+                    SwipeSceneItem(model:model, index: index,
                                    previewHeight: previewHeight,
                                    selectionColor: selectionColor,
                                    buttonColor: buttonColor)
@@ -33,7 +33,7 @@ struct SwipeSceneList: View {
 struct SwipeSceneItem: View {
     @ObservedObject var model:SwipeCanvasModel
     @State var index:Int
-    @Binding var snapshot: SwipeView.Snapshot?
+    @State private var snapshot: SwipeView.Snapshot? = nil
     let previewHeight:CGFloat
     let selectionColor:Color
     let buttonColor:Color
@@ -42,7 +42,7 @@ struct SwipeSceneItem: View {
             let scale = previewHeight / model.scene.dimension.height
             let width = model.scene.dimension.width * scale
             ZStack {
-                SwipeView(scene: model.scene, frameIndex: $index, scale:scale)
+                SwipeView(scene: model.scene, frameIndex: $index, scale:scale, snapshot: index == model.frameIndex ? snapshot : nil)
                 if index == model.frameIndex {
                     Rectangle()
                         .stroke(lineWidth: 3.0)
@@ -53,6 +53,7 @@ struct SwipeSceneItem: View {
             .frame(width:width, height:previewHeight)
             .gesture(TapGesture().onEnded() {
                 print("### item tapped", model.frameIndex, index)
+                model.frameIndex = index
                 snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, layer) in
                     UIGraphicsBeginImageContext(osView.bounds.size)
                     osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
@@ -66,7 +67,6 @@ struct SwipeSceneItem: View {
                         self.snapshot = nil
                     }
                 })
-                model.frameIndex = index
             })
             HStack(spacing:4) {
                 if model.scene.frameCount > 1 {

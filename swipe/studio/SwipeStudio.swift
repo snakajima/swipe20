@@ -53,7 +53,7 @@ public struct SwipeStudio: View {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height:40)
+                                .frame(height:80)
                         } else {
                             Text("Sample")
                         }
