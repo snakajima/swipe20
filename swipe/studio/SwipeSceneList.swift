@@ -17,7 +17,7 @@ struct SwipeSceneList: View {
         ScrollView (.horizontal, showsIndicators: true) {
             HStack(spacing:1) {
                 ForEach(0..<model.scene.frameCount, id:\.self) { index in
-                    SwipeSceneItem(model:model, index: index,
+                    SwipeSceneItem(model:model, index: index, snapshot: $snapshot,
                                    previewHeight: previewHeight,
                                    selectionColor: selectionColor,
                                    buttonColor: buttonColor)
@@ -33,6 +33,7 @@ struct SwipeSceneList: View {
 struct SwipeSceneItem: View {
     @ObservedObject var model:SwipeCanvasModel
     @State var index:Int
+    @Binding var snapshot: SwipeView.Snapshot?
     let previewHeight:CGFloat
     let selectionColor:Color
     let buttonColor:Color
@@ -51,6 +52,20 @@ struct SwipeSceneItem: View {
             }
             .frame(width:width, height:previewHeight)
             .gesture(TapGesture().onEnded() {
+                print("### item tapped", model.frameIndex, index)
+                snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, layer) in
+                    UIGraphicsBeginImageContext(osView.bounds.size)
+                    osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
+                    if let image = UIGraphicsGetImageFromCurrentImageContext(),
+                       let sceneObject = SceneObject.sceneObject(with: model.scene.uuid) {
+                        sceneObject.thumbnail = image.pngData()
+                        PersistenceController.shared.saveContext()
+                    }
+                    UIGraphicsEndImageContext()
+                    DispatchQueue.main.async {
+                        self.snapshot = nil
+                    }
+                })
                 model.frameIndex = index
             })
             HStack(spacing:4) {
