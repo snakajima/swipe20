@@ -3,12 +3,13 @@
     <entity name="SceneObject" representedClassName="SceneObject" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="script" attributeType="Binary"/>
+        <attribute name="state" optional="YES" attributeType="Binary"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="SceneObject" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="SceneObject" positionX="-54" positionY="-9" width="128" height="134"/>
     </elements>
 </model>
