@@ -67,10 +67,8 @@ public struct SwipeStudio: View {
                     }
                     PersistenceController.shared.saveContext()
                 })
-                /*
                 Button(action: {
                     let scene = SwipeScene(s_scriptEmpty)
-                    scenes.append(scene)
                     guard let data = scene.scriptData else {
                         print("###ERROR failed to serialize")
                         return
@@ -84,7 +82,6 @@ public struct SwipeStudio: View {
                 }, label: {
                     Text("Add New Scene")
                 })
-                */
             }
             .navigationBarTitleDisplayMode(.inline)
         }
