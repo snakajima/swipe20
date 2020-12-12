@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74237C6525844EBF00CA6B6C /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74237C6425844EBF00CA6B6C /* ActivityViewController.swift */; };
+		74237C6625844EBF00CA6B6C /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74237C6425844EBF00CA6B6C /* ActivityViewController.swift */; };
 		7426678C25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
 		7426678D25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
 		7426678E25746C0500E47692 /* CGPath+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7426678B25746C0500E47692 /* CGPath+extension.swift */; };
@@ -152,6 +154,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74237C6425844EBF00CA6B6C /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		7426678B25746C0500E47692 /* CGPath+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPath+extension.swift"; sourceTree = "<group>"; };
 		7426679525747C4A00E47692 /* CGPoint+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
 		7426679C25747D2F00E47692 /* CGVector+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+extension.swift"; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 				746E66A9252D019F0041AEE0 /* SwipeCursor.swift */,
 				746E66A4252CDD970041AEE0 /* SwipeSceneList.swift */,
 				74F5A3E3256AA459006A5EF4 /* SwipeExporter.swift */,
+				74237C6425844EBF00CA6B6C /* ActivityViewController.swift */,
 			);
 			path = studio;
 			sourceTree = "<group>";
@@ -697,6 +701,7 @@
 				7465DF2625472DBB000E8D74 /* SwipeCanvas.swift in Sources */,
 				7426679825747C4A00E47692 /* CGPoint+extension.swift in Sources */,
 				7465DF3B25472DCA000E8D74 /* SwipeScene.swift in Sources */,
+				74237C6625844EBF00CA6B6C /* ActivityViewController.swift in Sources */,
 				7465DF3125472DC5000E8D74 /* SwipeFileView.swift in Sources */,
 				7465DF2C25472DC1000E8D74 /* SwipeCALayer.swift in Sources */,
 				7426679F25747D2F00E47692 /* CGVector+extension.swift in Sources */,
@@ -722,6 +727,7 @@
 				746E6655252AC6670041AEE0 /* SwipePath.swift in Sources */,
 				7426679725747C4A00E47692 /* CGPoint+extension.swift in Sources */,
 				746E6645252AC64A0041AEE0 /* SwipeCanvas.swift in Sources */,
+				74237C6525844EBF00CA6B6C /* ActivityViewController.swift in Sources */,
 				746E6632252AC6180041AEE0 /* ContentView.swift in Sources */,
 				74C9350B255709B00042AA4C /* SwipeDraw.swift in Sources */,
 				746E6630252AC6180041AEE0 /* AppDelegate.swift in Sources */,

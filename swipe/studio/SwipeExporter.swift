@@ -14,6 +14,8 @@ struct SwipeExporter: View {
     let scene: SwipeScene
     @Binding var snapshot: SwipeView.Snapshot?
     let fps = 30
+    @State private var showingActivityViewController = false
+    @State private var imageURL:URL? = nil
     
     var body: some View {
         VStack {
@@ -28,6 +30,9 @@ struct SwipeExporter: View {
                 .fill(Color.clear)
                 .frame(height:32)
         }
+        .sheet(isPresented: $showingActivityViewController, onDismiss: nil, content: {
+            ActivityViewController(activityItems: [imageURL!])
+        })
     }
     func export() {
         print("export")
@@ -63,13 +68,17 @@ struct SwipeExporter: View {
                         snapshot = nil
                         CGImageDestinationFinalize(destination)
                         print("fileURL", fileURL)
-                        
+                        self.imageURL = fileURL
+                        self.showingActivityViewController = true
+                        /*
                         PHPhotoLibrary.shared().performChanges {
                             PHAssetCreationRequest.creationRequestForAssetFromImage(atFileURL: fileURL)
                         } completionHandler: { (saved, error) in
                             print("saved", saved)
                         }
-
+                        */
+                        //let av = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+                        //UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
                     }
                 }
             })
