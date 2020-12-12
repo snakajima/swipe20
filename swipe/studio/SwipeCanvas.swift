@@ -101,32 +101,25 @@ let s_scriptText:[String:Any] = [
 
 public struct SwipeCanvasHolder: View {
     let sceneObject: SceneObject
-    let drawModel: SwipeDrawModel
     let previewHeight: CGFloat
-    let selectionColor:Color
-    let buttonColor:Color
     public var body: some View {
-        SwipeCanvas(sceneObject: sceneObject, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+        SwipeCanvas(sceneObject: sceneObject, previewHeight: previewHeight)
     }
 }
 
 public struct SwipeCanvas: View {
     @ObservedObject var model: SwipeCanvasModel
-    @ObservedObject var drawModel:SwipeDrawModel
+    @ObservedObject var drawModel = SwipeDrawModel()
     let previewHeight:CGFloat
-    let selectionColor:Color
-    let buttonColor:Color
+    let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 1.0)
+    let buttonColor = Color.blue
     @State var snapshot: SwipeView.Snapshot? = nil
     
-    init(sceneObject:SceneObject, drawModel:SwipeDrawModel, previewHeight:CGFloat,
-         selectionColor:Color, buttonColor:Color) {
+    init(sceneObject:SceneObject, previewHeight:CGFloat) {
         let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
         let scene = SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
         self.model = SwipeCanvasModel(scene:scene)
-        self.drawModel = drawModel
         self.previewHeight = previewHeight
-        self.selectionColor = selectionColor
-        self.buttonColor = buttonColor
         self.drawModel.delegate = self.model
     }
 

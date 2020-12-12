@@ -18,15 +18,6 @@ let s_previewHeight:CGFloat = 100
 public struct SwipeStudio: View {
     let viewContext = PersistenceController.shared.container.viewContext
     @FetchRequest(entity: SceneObject.entity(), sortDescriptors: []) var sceneObjects:FetchedResults<SceneObject>
-    
-    //@State var scenes:[SwipeScene]
-    /*
-        SwipeScene(s_scriptEmpty),
-        SwipeScene(s_scriptGen),
-        SwipeScene(s_scriptSample),
-    */
-    let selectionColor = Color(Color.RGBColorSpace.sRGB, red: 0.0, green: 1.0, blue: 1.0, opacity: 1.0)
-    let buttonColor = Color.blue
 
     public var body: some View {
         let previewHeight:CGFloat = s_previewHeight
@@ -54,9 +45,8 @@ public struct SwipeStudio: View {
         return NavigationView {
             List {
                 ForEach(sceneObjects) { sceneObject in
-                    let drawModel = SwipeDrawModel()
                     NavigationLink(destination:
-                                    SwipeCanvasHolder(sceneObject: sceneObject, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+                                    SwipeCanvasHolder(sceneObject: sceneObject, previewHeight: previewHeight)
                     ) {
                         if let thumbnail = sceneObject.thumbnail,
                            let image = UIImage(data: thumbnail) {
