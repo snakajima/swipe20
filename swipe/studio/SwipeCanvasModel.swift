@@ -8,6 +8,7 @@
 import SwiftUI
 
 class SwipeCanvasModel: NSObject, ObservableObject {
+    static let s_sceneSaved = NSNotification.Name("Scene.Saved")
     @Published var frameIndex = 0 {
         didSet {
             selectedElement = nil
@@ -58,6 +59,8 @@ class SwipeCanvasModel: NSObject, ObservableObject {
                         //print(str!)
                         PersistenceController.shared.saveContext()
                         print("saved")
+                        let nc = NotificationCenter.default
+                        nc.post(name: Self.s_sceneSaved, object: self.scene)
                     }
                 }
             } else {

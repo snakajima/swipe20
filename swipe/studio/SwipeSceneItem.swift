@@ -14,6 +14,7 @@ struct SwipeSceneItem: View {
     let previewHeight:CGFloat
     let selectionColor:Color
     let buttonColor:Color
+    let pub = NotificationCenter.default.publisher(for: SwipeCanvasModel.s_sceneSaved)
     var body: some View {
         VStack(spacing:1) {
             let scale = previewHeight / model.scene.dimension.height
@@ -45,6 +46,9 @@ struct SwipeSceneItem: View {
                     }
                 })
             })
+            .onReceive(pub) { output in
+                print("notified")
+            }
             HStack(spacing:4) {
                 if model.scene.frameCount > 1 {
                     Button(action: {
