@@ -131,7 +131,7 @@ public struct SwipeElement {
     }
     
     func hitTest(point:CGPoint) -> Bool {
-        return frame.contains(point)
+        return !isHidden && frame.contains(point)
     }
 
     func updated(animationStyle:SwipeAnimation.Style) -> SwipeElement {
