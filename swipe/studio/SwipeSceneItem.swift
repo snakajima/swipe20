@@ -15,13 +15,31 @@ struct SwipeSceneItem: View {
     let selectionColor:Color
     let buttonColor:Color
     let pub = NotificationCenter.default.publisher(for: SwipeCanvasModel.s_sceneSaved)
+    var isSelected:Bool {index == model.frameIndex }
+    
+    func takeScanpshot() {
+        snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, layer) in
+            UIGraphicsBeginImageContext(osView.bounds.size)
+            osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
+            if let image = UIGraphicsGetImageFromCurrentImageContext(),
+               let sceneObject = SceneObject.sceneObject(with: model.scene.uuid) {
+                sceneObject.thumbnail = image.pngData()
+                PersistenceController.shared.saveContext()
+            }
+            UIGraphicsEndImageContext()
+            DispatchQueue.main.async {
+                self.snapshot = nil
+            }
+        })
+    }
+    
     var body: some View {
         VStack(spacing:1) {
             let scale = previewHeight / model.scene.dimension.height
             let width = model.scene.dimension.width * scale
             ZStack {
                 SwipeView(scene: model.scene, frameIndex: $index, scale:scale, snapshot: index == model.frameIndex ? snapshot : nil)
-                if index == model.frameIndex {
+                if  isSelected {
                     Rectangle()
                         .stroke(lineWidth: 3.0)
                         .foregroundColor(selectionColor)
@@ -32,22 +50,13 @@ struct SwipeSceneItem: View {
             .gesture(TapGesture().onEnded() {
                 print("### item tapped", model.frameIndex, index)
                 model.frameIndex = index
-                snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, layer) in
-                    UIGraphicsBeginImageContext(osView.bounds.size)
-                    osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
-                    if let image = UIGraphicsGetImageFromCurrentImageContext(),
-                       let sceneObject = SceneObject.sceneObject(with: model.scene.uuid) {
-                        sceneObject.thumbnail = image.pngData()
-                        PersistenceController.shared.saveContext()
-                    }
-                    UIGraphicsEndImageContext()
-                    DispatchQueue.main.async {
-                        self.snapshot = nil
-                    }
-                })
+                takeScanpshot()
             })
-            .onReceive(pub) { output in
-                print("notified")
+            .onReceive(pub) { notification in
+                if isSelected, let scene = notification.object as? SwipeScene, scene.uuid == model.scene.uuid {
+                    print("notified", scene.uuid, index)
+                    takeScanpshot()
+                }
             }
             HStack(spacing:4) {
                 if model.scene.frameCount > 1 {
