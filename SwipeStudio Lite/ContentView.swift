@@ -9,16 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    var scenes:[SwipeScene] {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SceneObject")
-        let sceneObjects = (try? viewContext.fetch(request) as? [SceneObject]) ?? [SceneObject]()
-        print("sceneObjects", sceneObjects.count)
-        return sceneObjects.map({ (sceneObject) -> SwipeScene in
-            let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
-            return SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
-        })
-    }
 
     /*
     @FetchRequest(
@@ -28,7 +18,7 @@ struct ContentView: View {
     */
     
     var body: some View {
-        SwipeStudio(scenes:self.scenes)
+        SwipeStudio()
         /*
         List {
             ForEach(items) { item in

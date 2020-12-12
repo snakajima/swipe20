@@ -17,7 +17,9 @@ let s_previewHeight:CGFloat = 100
 
 public struct SwipeStudio: View {
     let viewContext = PersistenceController.shared.container.viewContext
-    @State var scenes:[SwipeScene]
+    @FetchRequest(entity: SceneObject.entity(), sortDescriptors: []) var sceneObjects:FetchedResults<SceneObject>
+    
+    //@State var scenes:[SwipeScene]
     /*
         SwipeScene(s_scriptEmpty),
         SwipeScene(s_scriptGen),
@@ -30,18 +32,20 @@ public struct SwipeStudio: View {
         let previewHeight:CGFloat = s_previewHeight
         #if os(macOS)
         return NavigationView {
-            List(scenes.indices) { index in
-                let model = SwipeCanvasModel(scene:scenes[index])
-                let drawModel = SwipeDrawModel()
-                NavigationLink(destination:
-                                SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
-                ) {
-                    if let sceneObject = SceneObject.sceneObject(with: model.scene.uuid),
-                       let thumbnail = sceneObject.thumbnail,
-                       let image = UIImage(data: thumbnail) {
-                        Text("image")
-                    } else {
-                        Text("Sample")
+            List {
+                ForEach(sceneObjects) { sceneObject in
+                    let model = SwipeCanvasModel(scene:scenes[index])
+                    let drawModel = SwipeDrawModel()
+                    NavigationLink(destination:
+                                    SwipeCanvas(model: model, drawModel:drawModel, previewHeight: previewHeight, selectionColor: selectionColor, buttonColor: buttonColor)
+                    ) {
+                        if let sceneObject = SceneObject.sceneObject(with: model.scene.uuid),
+                           let thumbnail = sceneObject.thumbnail,
+                           let image = UIImage(data: thumbnail) {
+                            Text("image")
+                        } else {
+                            Text("Sample")
+                        }
                     }
                 }
             }
@@ -49,7 +53,9 @@ public struct SwipeStudio: View {
         #else
         return NavigationView {
             List {
-                ForEach(scenes, id: \.id) { scene in
+                ForEach(sceneObjects) { sceneObject in
+                    let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
+                    let scene = SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
                     let model = SwipeCanvasModel(scene:scene)
                     let drawModel = SwipeDrawModel()
                     NavigationLink(destination:
@@ -69,14 +75,13 @@ public struct SwipeStudio: View {
                 }
                 .onDelete(perform: { indexSet in
                     indexSet.forEach { index in
-                        let scene = scenes[index]
-                        scenes.remove(at: index)
-                        if let sceneObject = SceneObject.sceneObject(with: scene.uuid) {
-                            viewContext.delete(sceneObject)
-                            PersistenceController.shared.saveContext()
-                        }
+                        //let scene = scenes[index]
+                        //scenes.remove(at: index)
+                        viewContext.delete(sceneObjects[index])
                     }
+                    PersistenceController.shared.saveContext()
                 })
+                /*
                 Button(action: {
                     let scene = SwipeScene(s_scriptEmpty)
                     scenes.append(scene)
@@ -93,6 +98,7 @@ public struct SwipeStudio: View {
                 }, label: {
                     Text("Add New Scene")
                 })
+                */
             }
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -116,6 +122,6 @@ extension SceneObject {
 
 struct SwipeStudio_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeStudio(scenes:[])
+        SwipeStudio()
     }
 }
