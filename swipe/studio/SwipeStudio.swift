@@ -17,7 +17,7 @@ let s_previewHeight:CGFloat = 100
 
 public struct SwipeStudio: View {
     let viewContext = PersistenceController.shared.container.viewContext
-    @FetchRequest(entity: SceneObject.entity(), sortDescriptors: []) var sceneObjects:FetchedResults<SceneObject>
+    @FetchRequest(entity: SceneObject.entity(), sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: true)]) var sceneObjects:FetchedResults<SceneObject>
 
     public var body: some View {
         let previewHeight:CGFloat = s_previewHeight
