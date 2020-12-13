@@ -55,7 +55,9 @@ public struct SwipeStudio: View {
                                 .scaledToFit()
                                 .frame(height:100)
                         } else {
-                            Text("New Document")
+                            Rectangle()
+                                .foregroundColor(.black)
+                                .frame(width:100/1080*1920, height:100)
                         }
                     }
                 }
