@@ -76,15 +76,22 @@ struct SwipeDraw: View {
                 })
                 Spacer()
                 Button(action: {
+                    model.done(style:.leap)
+                }, label: {
+                    SwipeSymbol.hare.frame(width:32, height:32)
+                        .foregroundColor(.accentColor)
+                })
+                Button(action: {
                     model.done(style:.jump)
                 }, label: {
                     SwipeSymbol.frog.frame(width:32, height:32)
                         .foregroundColor(.accentColor)
                 })
                 Button(action: {
-                    model.done(style:.leap)
+                    model.done(style:.summersault)
                 }, label: {
-                    SwipeSymbol.hare.frame(width:32, height:32)
+                    SwipeSymbol.frog.frame(width:32, height:32)
+                        .rotationEffect(.radians(.pi))
                         .foregroundColor(.accentColor)
                 })
             }
