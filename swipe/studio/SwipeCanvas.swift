@@ -133,7 +133,8 @@ public struct SwipeCanvas: View {
             ZStack {
                 VStack {
                     GeometryReader { geometry in
-                        let scale:CGFloat = geometry.size.height / model.scene.dimension.height
+                        let scale:CGFloat = min(geometry.size.height / model.scene.dimension.height,
+                                                geometry.size.width / model.scene.dimension.width)
                         ZStack {
                             SwipeView(scene: model.scene, frameIndex: $model.frameIndex, scale:scale, snapshot: snapshot)
                             if let _ = model.selectedElement {
