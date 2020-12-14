@@ -18,7 +18,8 @@ let s_previewHeight:CGFloat = 100
 public struct SwipeStudio: View {
     let viewContext = PersistenceController.shared.container.viewContext
     @FetchRequest(entity: SceneObject.entity(), sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: true)]) var sceneObjects:FetchedResults<SceneObject>
-
+    @State private var selection: UUID? = nil
+    
     public var body: some View {
         let previewHeight:CGFloat = s_previewHeight
         #if os(macOS)
@@ -46,7 +47,9 @@ public struct SwipeStudio: View {
             List {
                 ForEach(sceneObjects) { sceneObject in
                     NavigationLink(destination:
-                                    SwipeCanvasHolder(sceneObject: sceneObject, previewHeight: previewHeight)
+                                    SwipeCanvasHolder(sceneObject: sceneObject, previewHeight: previewHeight),
+                                   tag: sceneObject.uuid!,
+                                   selection: $selection
                     ) {
                         if let thumbnail = sceneObject.thumbnail,
                            let image = UIImage(data: thumbnail) {
@@ -81,6 +84,9 @@ public struct SwipeStudio: View {
                     sceneObject.updatedAt = sceneObject.createdAt
                     sceneObject.uuid = scene.uuid
                     PersistenceController.shared.saveContext()
+                    DispatchQueue.main.async {
+                        selection = scene.uuid
+                    }
                 }, label: {
                     SwipeSymbol.plus.frame(width:32, height:32)
                         .foregroundColor(.accentColor)
