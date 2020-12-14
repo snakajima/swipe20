@@ -17,7 +17,7 @@ struct SwipeDraw: View {
     var body: some View {
         VStack {
             GeometryReader { geometry in
-                let scale:CGFloat = geometry.size.height / dimension.height
+                let scale:CGFloat = min(geometry.size.height / dimension.height, geometry.size.width / dimension.width)
                 let drag = DragGesture(minimumDistance: 0.1)
                     .onChanged { model.onChanged($0.location) }
                     .onEnded { model.onEnded($0.location, scale:scale) }

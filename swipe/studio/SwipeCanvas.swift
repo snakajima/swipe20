@@ -23,7 +23,7 @@ let s_scriptEmpty:[String:Any] = [
 let s_scriptEmptyPhone:[String:Any] = [
     "duration": Double(0.7),
     "backgroundColor": "black",
-    "dimension": [CGFloat(1000), CGFloat(1400)],
+    "dimension": [CGFloat(1200), CGFloat(1200)],
     "animation": [
         "engine":"swipe"
     ],

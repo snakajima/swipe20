@@ -51,20 +51,16 @@ class SwipeCanvasModel: NSObject, ObservableObject {
             
             if !deferedSaving {
                 deferedSaving = true
-                DispatchQueue.main.async {
+                // 1.0 sec delay is necessary because of the animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     if let sceneObject = SceneObject.sceneObject(with: self.scene.uuid) {
                         self.deferedSaving = false
                         sceneObject.script = self.scene.scriptData
-                        //let str = String(bytes: sceneObject.script!, encoding: .utf8)
-                        //print(str!)
                         PersistenceController.shared.saveContext()
-                        print("saved")
                         let nc = NotificationCenter.default
                         nc.post(name: Self.s_sceneSaved, object: self.scene)
                     }
                 }
-            } else {
-                print("already saving")
             }
         }
     }
