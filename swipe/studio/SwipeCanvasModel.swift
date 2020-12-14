@@ -70,6 +70,16 @@ class SwipeCanvasModel: NSObject, ObservableObject {
         self.undoCursor = undoStack.count
     }
     
+    var state:[String:Any] {
+        ["frameIndex": frameIndex]
+    }
+    
+    func restore(state:[String:Any]) {
+        if let frameIndex = state["frameIndex"] as? Int {
+            self.frameIndex = frameIndex
+        }
+    }
+    
     func updateUndoState() {
         undoable = undoCursor > 1
         redoable = undoCursor < undoStack.count

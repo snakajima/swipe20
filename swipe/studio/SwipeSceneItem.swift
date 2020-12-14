@@ -16,13 +16,17 @@ struct SwipeSceneItem: View {
     let pub = NotificationCenter.default.publisher(for: SwipeCanvasModel.s_sceneSaved)
     var isSelected:Bool {index == model.frameIndex }
     
-    func takeScanpshot() {
+    func takeSnapshot(saveState:Bool) {
         snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, layer) in
             UIGraphicsBeginImageContext(osView.bounds.size)
             osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
             if let image = UIGraphicsGetImageFromCurrentImageContext(),
                let sceneObject = SceneObject.sceneObject(with: model.scene.uuid) {
                 sceneObject.thumbnail = image.pngData()
+                if saveState,
+                   let data = try? JSONSerialization.data(withJSONObject: model.state, options: []) {
+                    sceneObject.state = data
+                }
                 PersistenceController.shared.saveContext()
             }
             UIGraphicsEndImageContext()
@@ -48,11 +52,11 @@ struct SwipeSceneItem: View {
             .frame(width:width, height:previewHeight)
             .gesture(TapGesture().onEnded() {
                 model.frameIndex = index
-                takeScanpshot()
+                takeSnapshot(saveState: true)
             })
             .onReceive(pub) { notification in
                 if isSelected, let scene = notification.object as? SwipeScene, scene.uuid == model.scene.uuid {
-                    takeScanpshot()
+                    takeSnapshot(saveState: false)
                 }
             }
             HStack(spacing:0) {
@@ -68,6 +72,7 @@ struct SwipeSceneItem: View {
                 Button(action:{
                     model.scene = model.scene.frameDuplicated(atIndex: index)
                     model.frameIndex = index + 1
+                    takeSnapshot(saveState: true)
                 }) {
                     SwipeSymbol.duplicate.frame(width:32, height:44)
                         .foregroundColor(.accentColor)

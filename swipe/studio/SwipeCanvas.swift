@@ -134,6 +134,11 @@ public struct SwipeCanvas: View {
         self.model = SwipeCanvasModel(scene:scene)
         self.previewHeight = previewHeight
         self.drawModel.delegate = self.model
+        
+        if let data = sceneObject.state,
+           let state = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+            self.model.restore(state: state)
+        }
     }
 
     func scaled(_ point:CGPoint, scale:CGFloat) -> CGPoint {
