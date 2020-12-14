@@ -10,6 +10,20 @@ import SwiftUI
 let s_scriptEmpty:[String:Any] = [
     "duration": Double(0.7),
     "backgroundColor": "black",
+    "dimension": [CGFloat(1920), CGFloat(1080)],
+    "animation": [
+        "engine":"swipe"
+    ],
+    "frames":[[
+        "elements":[[
+        ]]
+    ]]
+]
+
+let s_scriptEmptyPhone:[String:Any] = [
+    "duration": Double(0.7),
+    "backgroundColor": "black",
+    "dimension": [CGFloat(1000), CGFloat(1400)],
     "animation": [
         "engine":"swipe"
     ],

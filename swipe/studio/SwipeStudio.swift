@@ -73,7 +73,8 @@ public struct SwipeStudio: View {
                     PersistenceController.shared.saveContext()
                 })
                 Button(action: {
-                    let scene = SwipeScene(s_scriptEmpty)
+                    let scene = SwipeScene(UIDevice.current.userInterfaceIdiom == .phone
+                        ? s_scriptEmptyPhone : s_scriptEmpty)
                     guard let data = scene.scriptData else {
                         print("###ERROR failed to serialize")
                         return
