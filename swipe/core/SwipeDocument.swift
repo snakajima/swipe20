@@ -17,10 +17,18 @@ struct SwipeDocument {
 
     public init(_ script:[String:Any]?, uuid:UUID? = nil) {
         self.uuid = uuid ?? UUID()
-        let scriptScenes = script?["scenes"] as? [[String:Any]] ?? []
-        self.scenes = scriptScenes.map({ (script) -> SwipeScene in
-            SwipeScene(script, uuid: uuid)
-        })
+        if let scriptScenes = script?["scenes"] as? [[String:Any]] {
+            self.scenes = scriptScenes.map({ (script) -> SwipeScene in
+                SwipeScene(script, uuid: uuid)
+            })
+        } else {
+            self.scenes = [SwipeScene(nil, uuid:uuid)]
+        }
+    }
+    
+    public init(scenes:[SwipeScene], uuid:UUID? = nil) {
+        self.uuid = uuid ?? UUID()
+        self.scenes = scenes
     }
 
     var script:[String:Any] {
@@ -28,5 +36,9 @@ struct SwipeDocument {
             "scenes": scenes.map { $0.script }
         ]
         return script
+    }
+
+    var scriptData:Data? {
+        return try? JSONSerialization.data(withJSONObject: self.script, options: [.prettyPrinted, .sortedKeys])
     }
 }

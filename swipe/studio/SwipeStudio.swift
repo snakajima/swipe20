@@ -75,7 +75,10 @@ public struct SwipeStudio: View {
                 Button(action: {
                     let scene = SwipeScene(UIDevice.current.userInterfaceIdiom == .phone
                         ? s_scriptEmptyPhone : s_scriptEmpty)
-                    guard let data = scene.scriptData else {
+                    // NOTE: Store it as a single Scene document for now, assuming
+                    // we will eventually support multi-scene document
+                    let document = SwipeDocument(scenes: [scene])
+                    guard let data = document.scriptData else {
                         print("###ERROR failed to serialize")
                         return
                     }

@@ -55,7 +55,10 @@ class SwipeCanvasModel: NSObject, ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     if let sceneObject = SceneObject.sceneObject(with: self.scene.uuid) {
                         self.deferedSaving = false
-                        sceneObject.script = self.scene.scriptData
+                        // NOTE: Store it as a single Scene document for now, assuming
+                        // we will eventually support multi-scene document
+                        let document = SwipeDocument(scenes:[self.scene], uuid: self.scene.uuid)
+                        sceneObject.script = document.scriptData
                         PersistenceController.shared.saveContext()
                         let nc = NotificationCenter.default
                         nc.post(name: Self.s_sceneSaved, object: self.scene)
