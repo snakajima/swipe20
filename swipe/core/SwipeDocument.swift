@@ -26,9 +26,9 @@ struct SwipeDocument {
         }
     }
     
-    public init(scenes:[SwipeScene], uuid:UUID? = nil) {
-        self.uuid = uuid ?? UUID()
-        self.scenes = scenes
+    public init(scenes:[SwipeScene], uuid:UUID) {
+        self.uuid = uuid
+        self.scenes = scenes.filter { $0.uuid == uuid }
     }
 
     var script:[String:Any] {

@@ -77,7 +77,7 @@ public struct SwipeStudio: View {
                         ? s_scriptEmptyPhone : s_scriptEmpty)
                     // NOTE: Store it as a single Scene document for now, assuming
                     // we will eventually support multi-scene document
-                    let document = SwipeDocument(scenes: [scene])
+                    let document = SwipeDocument(scenes: [scene], uuid:scene.uuid)
                     guard let data = document.scriptData else {
                         print("###ERROR failed to serialize")
                         return
