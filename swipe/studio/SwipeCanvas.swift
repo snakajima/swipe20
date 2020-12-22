@@ -130,7 +130,8 @@ public struct SwipeCanvas: View {
     
     init(sceneObject:SceneObject, previewHeight:CGFloat) {
         let script = try? JSONSerialization.jsonObject(with: sceneObject.script!, options: [])
-        let scene = SwipeScene(script as? [String:Any], uuid: sceneObject.uuid)
+        let document = SwipeDocument(script as? [String:Any], uuid: sceneObject.uuid)
+        let scene = document.scenes.first!
         self.model = SwipeCanvasModel(scene:scene)
         self.previewHeight = previewHeight
         self.drawModel.delegate = self.model
