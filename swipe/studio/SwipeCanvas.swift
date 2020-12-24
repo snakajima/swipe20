@@ -224,9 +224,6 @@ public struct SwipeCanvas: View {
         public var body: some View {
             VStack(alignment: .leading) {
                 Item(symbol: .scribble, text: "scrible")
-                Item(symbol: .hare, text: "hare")
-                Item(symbol: .frog, text: "frog")
-                Item(symbol: .frog, text: "flip")
                 Item(symbol: .trash, text: "trash")
                 Item(symbol: .duplicate, text: "duplicate")
                 Item(symbol: .action, text: "action")

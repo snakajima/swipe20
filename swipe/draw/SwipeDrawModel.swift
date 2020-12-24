@@ -30,6 +30,7 @@ class SwipeDrawModel: ObservableObject {
             }
         }
     }
+    public var isEmpty:Bool { strokes.isEmpty }
     
     private var undoCursor:Int = 0 {
         didSet {
