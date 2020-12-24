@@ -37,9 +37,9 @@ struct SwipeSceneItem: View {
     }
     
     var body: some View {
-        VStack(spacing:0) {
-            let scale = previewHeight / model.scene.dimension.height
-            let width = model.scene.dimension.width * scale
+        let scale = previewHeight / model.scene.dimension.height
+        let width = model.scene.dimension.width * scale
+        HStack(spacing:0) {
             ZStack {
                 SwipeView(scene: model.scene, frameIndex: $index, scale:scale, snapshot: index == model.frameIndex ? snapshot : nil)
                 if  isSelected {
@@ -59,7 +59,7 @@ struct SwipeSceneItem: View {
                     takeSnapshot(saveState: false)
                 }
             }
-            HStack(spacing:0) {
+            VStack(spacing:0) {
                 if model.scene.frameCount > 1 {
                     Button(action: {
                         model.scene = model.scene.frameDeleted(atIndex: index)
@@ -68,7 +68,6 @@ struct SwipeSceneItem: View {
                             .foregroundColor(.accentColor)
                     }.frame(width:44, height:32)
                 }
-                Spacer()
                 Button(action:{
                     model.scene = model.scene.frameDuplicated(atIndex: index)
                     model.frameIndex = index + 1
@@ -77,7 +76,7 @@ struct SwipeSceneItem: View {
                     SwipeSymbol.duplicate.frame(width:32, height:32)
                         .foregroundColor(.accentColor)
                 }.frame(width:44, height:32)
-            }.frame(width:width, height:32, alignment: .center)
+            }
         }
     }
 }
