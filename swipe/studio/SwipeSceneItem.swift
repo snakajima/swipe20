@@ -65,9 +65,8 @@ struct SwipeSceneItem: View {
             VStack(spacing:0) {
                 if model.scene.frameCount > 1 {
                     Button(action: {
-                        if model.frameIndex == model.scene.frameCount - 1 {
-                            model.frameIndex -= 1
-                        }
+                        // We don't need to worry about mode.frameIndex becoming out of range,
+                        // because the model will handle it in didSet of scene
                         model.scene = model.scene.deleteFrame(atIndex: index)
                         takeSnapshot(saveState: true)
                     }) {
@@ -80,9 +79,14 @@ struct SwipeSceneItem: View {
                     model.frameIndex = index + 1
                     takeSnapshot(saveState: true)
                 }) {
-                    SwipeSymbol.duplicate.frame(width:32, height:32)
-                        .foregroundColor(.accentColor)
-                }.frame(width:44, height:32)
+                    HStack {
+                        SwipeSymbol.duplicate.frame(width:32, height:32)
+                            .foregroundColor(.accentColor)
+                        if model.scene.frameCount == 1 {
+                            Text("duplicate")
+                        }
+                    }
+                }
             }
         }
     }
