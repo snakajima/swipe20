@@ -95,6 +95,9 @@ public struct SwipeStudio: View {
                     SwipeSymbol.plus.frame(width:32, height:32)
                         .foregroundColor(.accentColor)
                 })
+                if sceneObjects.isEmpty {
+                    Text("welcome").foregroundColor(.black)
+                }
             }
             .navigationBarTitleDisplayMode(.inline)
         }
