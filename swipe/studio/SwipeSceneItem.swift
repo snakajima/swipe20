@@ -40,24 +40,27 @@ struct SwipeSceneItem: View {
         let scale = previewHeight / model.scene.dimension.height
         let width = model.scene.dimension.width * scale
         HStack(spacing:0) {
-            ZStack {
-                SwipeView(scene: model.scene, frameIndex: $index, scale:scale, snapshot: index == model.frameIndex ? snapshot : nil)
-                if  isSelected {
-                    Rectangle()
-                        .stroke(lineWidth: 3.0)
-                        .foregroundColor(selectionColor)
-                        .padding(2.0)
+            VStack(spacing:0) {
+                ZStack {
+                    SwipeView(scene: model.scene, frameIndex: $index, scale:scale, snapshot: index == model.frameIndex ? snapshot : nil)
+                    if  isSelected {
+                        Rectangle()
+                            .stroke(lineWidth: 3.0)
+                            .foregroundColor(selectionColor)
+                            .padding(2.0)
+                    }
                 }
-            }
-            .frame(width:width, height:previewHeight)
-            .gesture(TapGesture().onEnded() {
-                model.frameIndex = index
-                takeSnapshot(saveState: true)
-            })
-            .onReceive(pub) { notification in
-                if isSelected, let scene = notification.object as? SwipeScene, scene.uuid == model.scene.uuid {
-                    takeSnapshot(saveState: false)
+                .frame(width:width, height:previewHeight)
+                .gesture(TapGesture().onEnded() {
+                    model.frameIndex = index
+                    takeSnapshot(saveState: true)
+                })
+                .onReceive(pub) { notification in
+                    if isSelected, let scene = notification.object as? SwipeScene, scene.uuid == model.scene.uuid {
+                        takeSnapshot(saveState: false)
+                    }
                 }
+                Rectangle().frame(height:2).foregroundColor(.clear)
             }
             VStack(spacing:0) {
                 if model.scene.frameCount > 1 {
