@@ -39,6 +39,8 @@
 		7442E03525914C57001DEF76 /* SwipeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442E03425914C57001DEF76 /* SwipeDocument.swift */; };
 		7442E03625914C57001DEF76 /* SwipeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442E03425914C57001DEF76 /* SwipeDocument.swift */; };
 		7442E03725914C57001DEF76 /* SwipeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7442E03425914C57001DEF76 /* SwipeDocument.swift */; };
+		74477D742594C69C00C73577 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74477D772594C69C00C73577 /* Localizable.strings */; };
+		74477D752594C69C00C73577 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74477D772594C69C00C73577 /* Localizable.strings */; };
 		7465DEF32547248E000E8D74 /* SwipeStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DEF12547248E000E8D74 /* SwipeStudio.swift */; };
 		7465DF0925472CF4000E8D74 /* SwipeStudio_LiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */; };
 		7465DF0D25472CF5000E8D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7465DF0C25472CF5000E8D74 /* Assets.xcassets */; };
@@ -183,6 +185,10 @@
 		742DFB0E25224E2F00A39C80 /* Jump.swipe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jump.swipe; sourceTree = "<group>"; };
 		7435B8B725833E9C00C35116 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7442E03425914C57001DEF76 /* SwipeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDocument.swift; sourceTree = "<group>"; };
+		74477D692594C63900C73577 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		74477D6A2594C63900C73577 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		74477D762594C69C00C73577 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74477D7B2594C6A200C73577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7465DEF12547248E000E8D74 /* SwipeStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStudio.swift; sourceTree = "<group>"; };
 		7465DF0625472CF4000E8D74 /* SwipeStudio Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwipeStudio Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7465DF0825472CF4000E8D74 /* SwipeStudio_LiteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeStudio_LiteApp.swift; sourceTree = "<group>"; };
@@ -408,6 +414,7 @@
 				74237C6A2585068900CA6B6C /* SwipeSceneItem.swift */,
 				74F5A3E3256AA459006A5EF4 /* SwipeExporter.swift */,
 				74237C6425844EBF00CA6B6C /* ActivityViewController.swift */,
+				74477D772594C69C00C73577 /* Localizable.strings */,
 			);
 			path = studio;
 			sourceTree = "<group>";
@@ -561,6 +568,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 742A093B2518632F00862F36;
 			productRefGroup = 742A09452518632F00862F36 /* Products */;
@@ -621,6 +629,7 @@
 				7465DF4A25473148000E8D74 /* kodim17.png in Resources */,
 				7465DF4E25473148000E8D74 /* Bounce.swipe in Resources */,
 				7465DF5825473148000E8D74 /* SVGIcons.swipe in Resources */,
+				74477D752594C69C00C73577 /* Localizable.strings in Resources */,
 				7465DF5325473148000E8D74 /* Duration.swipe in Resources */,
 				7465DF5125473148000E8D74 /* sample1.swipe in Resources */,
 				7465DF5925473148000E8D74 /* Slide1.png in Resources */,
@@ -638,6 +647,7 @@
 			files = (
 				746E6666252AC66E0041AEE0 /* Slide2.png in Resources */,
 				746E663D252AC61B0041AEE0 /* Main.storyboard in Resources */,
+				74477D742594C69C00C73577 /* Localizable.strings in Resources */,
 				746E666A252AC66E0041AEE0 /* Shapes.swipe in Resources */,
 				746E6665252AC66E0041AEE0 /* Bounce.swipe in Resources */,
 				746E6667252AC66E0041AEE0 /* kodim17.png in Resources */,
@@ -776,14 +786,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				742A09512518633100862F36 /* Base */,
+				74477D692594C63900C73577 /* ja */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		74477D772594C69C00C73577 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74477D762594C69C00C73577 /* ja */,
+				74477D7B2594C6A200C73577 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		746E663B252AC61B0041AEE0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				746E663C252AC61B0041AEE0 /* Base */,
+				74477D6A2594C63900C73577 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -795,6 +816,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -856,6 +878,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

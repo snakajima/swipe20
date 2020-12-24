@@ -211,8 +211,7 @@ public struct SwipeCanvas: View {
                 }
                 if drawModel.isActive {
                     SwipeDraw(model: drawModel, dimension: model.scene.dimension)
-                }
-                if model.scene.hasSingleEmptyFrame {
+                } else if model.scene.hasSingleEmptyFrame {
                     Tutorial()
                 }
             } // ZStack
@@ -223,11 +222,16 @@ public struct SwipeCanvas: View {
     
     public struct Tutorial: View {
         public var body: some View {
-            VStack {
-                Item(symbol: .scribble, text: "foo")
-                Item(symbol: .frog, text: "bar")
+            VStack(alignment: .leading) {
+                Item(symbol: .scribble, text: "scrible")
+                Item(symbol: .hare, text: "hare")
+                Item(symbol: .frog, text: "frog")
+                Item(symbol: .frog, text: "flip")
+                Item(symbol: .trash, text: "trash")
+                Item(symbol: .duplicate, text: "duplicate")
+                Item(symbol: .action, text: "action")
             }.padding().background(
-                Rectangle().foregroundColor(.white)
+                Rectangle().foregroundColor(.white).shadow(radius: 5)
             )
         }
         public struct Item: View {
@@ -236,6 +240,7 @@ public struct SwipeCanvas: View {
             public var body: some View {
                 HStack {
                     symbol.frame(width:32, height:32)
+                        .rotationEffect(.radians(text=="flip" ? .pi : 0))
                         .foregroundColor(.accentColor)
                     Text(text).foregroundColor(.black)
                 }

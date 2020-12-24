@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  swipe_dev
+
+  Created by SATOSHI NAKAJIMA on 12/24/20.
+  
+*/
+"scrible" = "Scribble";
+"hare" = "Let it run";
+"frog" = "Let it jump";
+"flip" = "Let it flip";
+"trash" = "Delete frame";
+"duplicate" = "Duplicate frame";
+"action" = "Export";
