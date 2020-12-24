@@ -147,11 +147,11 @@ public struct SwipeCanvas: View {
     }
 
     public var body: some View {
-        return VStack {
+        return VStack(spacing: 0) {
             SwipeSceneList(model: model, previewHeight: previewHeight,
                            selectionColor: selectionColor, snapshot:$snapshot)
             ZStack {
-                VStack {
+                VStack(spacing: 0) {
                     GeometryReader { geometry in
                         let scale:CGFloat = min(geometry.size.height / model.scene.dimension.height,
                                                 geometry.size.width / model.scene.dimension.width)
