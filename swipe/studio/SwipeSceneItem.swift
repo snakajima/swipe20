@@ -37,7 +37,7 @@ struct SwipeSceneItem: View {
     }
     
     var body: some View {
-        VStack(spacing:1) {
+        VStack(spacing:0) {
             let scale = previewHeight / model.scene.dimension.height
             let width = model.scene.dimension.width * scale
             ZStack {
