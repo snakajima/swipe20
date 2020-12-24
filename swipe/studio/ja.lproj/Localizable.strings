@@ -14,4 +14,8 @@
 "action" = "エクスポート";
 "scrible here" = "ここに自由に描いてください";
 "photo" = "写真のトレース";
-"welcome" = "Swipe Anime にようこそ。\n\上の＋ボタンをタップして新しいSwipeドキュメントを作ってください。";
+"empty documents" = "上の＋ボタンをタップして新しいSwipeドキュメントを作ってください。";
+"welcome" = "Swipe Anime にようこそ!
+
+上の \"< Documents\" ボタンをタップしてスタートして下さい。";
+

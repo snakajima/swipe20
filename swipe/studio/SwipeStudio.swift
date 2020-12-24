@@ -96,12 +96,26 @@ public struct SwipeStudio: View {
                         .foregroundColor(.accentColor)
                 })
                 if sceneObjects.isEmpty {
-                    Text("welcome").foregroundColor(.black)
+                    Text("empty documents").foregroundColor(.black)
                 }
-            }
+            } // List
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(Text("Documents"))
+            // NOTE: Having the secondary view causes navigation issue in iPhone
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                Tutorial()
+            }
         }
         #endif
+    }
+    public struct Tutorial: View {
+        public var body: some View {
+            VStack(alignment: .leading) {
+                Text("welcome")
+            }.padding().background(
+                Rectangle().foregroundColor(.white).shadow(radius: 5)
+            )
+        }
     }
 }
 

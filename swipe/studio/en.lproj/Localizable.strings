@@ -14,5 +14,8 @@
 "action" = "Export";
 "scrible here" = "Script here";
 "photo" = "Photo trace";
-"welcome" = "Welcome to Swipe Anime!\n\Please tap the ＋ button to create a new Swipe document.";
+"empty documents" = "Please tap the ＋ button to create a new Swipe document.";
+"welcome" = "Welcome to Swipe Anime!
+
+Please tap the \"< Documents\" to start.";
 
