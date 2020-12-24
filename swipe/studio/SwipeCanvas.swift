@@ -212,10 +212,35 @@ public struct SwipeCanvas: View {
                 if drawModel.isActive {
                     SwipeDraw(model: drawModel, dimension: model.scene.dimension)
                 }
-            }
+                if model.scene.hasSingleEmptyFrame {
+                    Tutorial()
+                }
+            } // ZStack
         }
         .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    public struct Tutorial: View {
+        public var body: some View {
+            VStack {
+                Item(symbol: .scribble, text: "foo")
+                Item(symbol: .frog, text: "bar")
+            }.padding().background(
+                Rectangle().foregroundColor(.white)
+            )
+        }
+        public struct Item: View {
+            let symbol:SwipeSymbol
+            let text:LocalizedStringKey
+            public var body: some View {
+                HStack {
+                    symbol.frame(width:32, height:32)
+                        .foregroundColor(.accentColor)
+                    Text(text).foregroundColor(.black)
+                }
+            }
+        }
     }
 }
 
