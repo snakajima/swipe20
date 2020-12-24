@@ -140,7 +140,7 @@ public struct SwipeScene: Identifiable {
         return scene
     }
 
-    func frameDuplicated(atIndex frameIndex:Int) -> SwipeScene {
+    func duplicateFrame(atIndex frameIndex:Int) -> SwipeScene {
         guard frameIndex >= 0 && frameIndex < frameCount else {
             return self
         }
@@ -151,7 +151,7 @@ public struct SwipeScene: Identifiable {
         return scene
     }
 
-    func frameDeleted(atIndex frameIndex:Int) -> SwipeScene {
+    func deleteFrame(atIndex frameIndex:Int) -> SwipeScene {
         guard frameIndex >= 0 && frameIndex < frameCount && frameCount > 0 else {
             return self
         }

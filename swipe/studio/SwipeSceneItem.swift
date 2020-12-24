@@ -65,14 +65,14 @@ struct SwipeSceneItem: View {
             VStack(spacing:0) {
                 if model.scene.frameCount > 1 {
                     Button(action: {
-                        model.scene = model.scene.frameDeleted(atIndex: index)
+                        model.scene = model.scene.deleteFrame(atIndex: index)
                     }) {
                         SwipeSymbol.trash.frame(width:32, height:32)
                             .foregroundColor(.accentColor)
                     }.frame(width:44, height:32)
                 }
                 Button(action:{
-                    model.scene = model.scene.frameDuplicated(atIndex: index)
+                    model.scene = model.scene.duplicateFrame(atIndex: index)
                     model.frameIndex = index + 1
                     takeSnapshot(saveState: true)
                 }) {
