@@ -29,12 +29,12 @@ struct SwipeDraw: View {
                     #else
                     let markerColor = Color(model.strokeColor)
                     #endif
-                    ZStack {
+                    ZStack(alignment: .top) {
                         if let inputImage = inputImage {
                             Image(uiImage: inputImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width, height:geometry.size.height)
+                                .frame(width: dimension.width * scale, height: dimension.height * scale)
                                 .opacity(0.5)
                         }
                         ForEach(model.strokes) { stroke in
@@ -51,6 +51,11 @@ struct SwipeDraw: View {
                         .fill(markerColor)
                         .background(Color(white: 1.0, opacity: 0.1))
                         .gesture(drag)
+                        if showTutorial && model.isEmpty {
+                            VStack {
+                                Tutorial()
+                            }.frame(height: dimension.height * scale)
+                        }
                     }
                 }
                 HStack {
@@ -100,9 +105,6 @@ struct SwipeDraw: View {
                 .frame(height:32, alignment: .bottom)
                 .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
             } // VStack
-            if showTutorial && model.isEmpty {
-                Tutorial()
-            }
         } // ZStack
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage, content: {
             ImagePicker(image: $inputImage)
