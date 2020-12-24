@@ -17,7 +17,7 @@ struct SwipeDraw: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing:0) {
                 GeometryReader { geometry in
                     let scale:CGFloat = min(geometry.size.height / dimension.height, geometry.size.width / dimension.width)
                     let drag = DragGesture(minimumDistance: 0.1)
@@ -29,7 +29,7 @@ struct SwipeDraw: View {
                     #else
                     let markerColor = Color(model.strokeColor)
                     #endif
-                    ZStack(alignment: .top) {
+                    ZStack(alignment: .topLeading) {
                         if let inputImage = inputImage {
                             Image(uiImage: inputImage)
                                 .resizable()
@@ -54,7 +54,7 @@ struct SwipeDraw: View {
                         if showTutorial && model.isEmpty {
                             VStack {
                                 Tutorial()
-                            }.frame(height: dimension.height * scale)
+                            }.frame(width:dimension.width * scale, height: dimension.height * scale)
                         }
                     }
                 }
