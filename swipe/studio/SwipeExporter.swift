@@ -22,9 +22,11 @@ struct SwipeExporter: View {
             Button(action: {
                 export()
             }, label: {
-                SwipeSymbol.action.frame(width:32, height:32)
-                    .foregroundColor(.accentColor)
-                    .padding(4)
+                HStack {
+                    SwipeSymbol.action.frame(width:32, height:32)
+                        .foregroundColor(.accentColor)
+                    Text("action")
+                }
             })
         }
         .sheet(isPresented: $showingActivityViewController, onDismiss: nil, content: {
