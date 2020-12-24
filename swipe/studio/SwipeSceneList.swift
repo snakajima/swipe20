@@ -24,7 +24,9 @@ struct SwipeSceneList: View {
                     SwipeExporter(scene:model.scene, snapshot:$snapshot)
                 }
             }
-        }
+        }.background(
+            Rectangle().foregroundColor(.red)
+        )
     }
 }
 

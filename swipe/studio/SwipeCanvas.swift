@@ -147,7 +147,7 @@ public struct SwipeCanvas: View {
     }
 
     public var body: some View {
-        return VStack(spacing:1) {
+        return VStack {
             SwipeSceneList(model: model, previewHeight: previewHeight,
                            selectionColor: selectionColor, snapshot:$snapshot)
             ZStack {
@@ -207,7 +207,6 @@ public struct SwipeCanvas: View {
                                 .foregroundColor(.accentColor)
                         })
                     }
-                    .frame(height:32, alignment: .bottom)
                 }
                 if drawModel.isActive {
                     SwipeDraw(model: drawModel, dimension: model.scene.dimension, showTutorial: model.scene.hasSingleEmptyFrame)

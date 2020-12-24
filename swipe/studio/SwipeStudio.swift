@@ -103,10 +103,7 @@ public struct SwipeStudio: View {
             } // List
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle(Text("Documents"))
-            // NOTE: Having the secondary view causes navigation issue in iPhone
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                Tutorial()
-            }
+            Tutorial()
         }
         #endif
     }

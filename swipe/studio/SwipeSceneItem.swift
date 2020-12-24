@@ -64,9 +64,9 @@ struct SwipeSceneItem: View {
                     Button(action: {
                         model.scene = model.scene.frameDeleted(atIndex: index)
                     }) {
-                        SwipeSymbol.trash.frame(width:32, height:44)
+                        SwipeSymbol.trash.frame(width:32, height:32)
                             .foregroundColor(.accentColor)
-                    }.frame(width:44, height:44)
+                    }.frame(width:44, height:32)
                 }
                 Spacer()
                 Button(action:{
@@ -74,10 +74,10 @@ struct SwipeSceneItem: View {
                     model.frameIndex = index + 1
                     takeSnapshot(saveState: true)
                 }) {
-                    SwipeSymbol.duplicate.frame(width:32, height:44)
+                    SwipeSymbol.duplicate.frame(width:32, height:32)
                         .foregroundColor(.accentColor)
-                }.frame(width:44, height:44)
-            }.frame(width:width, height:44, alignment: .center)
+                }.frame(width:44, height:32)
+            }.frame(width:width, height:32, alignment: .center)
         }
     }
 }
