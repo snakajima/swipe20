@@ -12,6 +12,7 @@ import CoreData
 let s_previewHeight:CGFloat = 150
 #else
 let s_previewHeight:CGFloat = 100
+let s_previewHeightPhone:CGFloat = 60
 #endif
 
 
@@ -21,7 +22,7 @@ public struct SwipeStudio: View {
     @State private var selection: UUID? = nil
     
     public var body: some View {
-        let previewHeight:CGFloat = s_previewHeight
+        let previewHeight:CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? s_previewHeightPhone : s_previewHeight
         #if os(macOS)
         return NavigationView {
             List {
@@ -73,8 +74,9 @@ public struct SwipeStudio: View {
                     PersistenceController.shared.saveContext()
                 })
                 Button(action: {
-                    let scene = SwipeScene(UIDevice.current.userInterfaceIdiom == .phone
-                        ? s_scriptEmptyPhone : s_scriptEmpty)
+                    //let scene = SwipeScene(UIDevice.current.userInterfaceIdiom == .phone
+                    //    ? s_scriptEmptyPhone : s_scriptEmpty)
+                    let scene = SwipeScene(s_scriptEmpty)
                     // NOTE: Store it as a single Scene document for now, assuming
                     // we will eventually support multi-scene document
                     let document = SwipeDocument(scenes: [scene], uuid:scene.uuid)
