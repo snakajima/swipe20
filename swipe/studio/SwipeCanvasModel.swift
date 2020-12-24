@@ -37,9 +37,7 @@ class SwipeCanvasModel: NSObject, ObservableObject {
     @Published var redoable = false
     @Published var scene:SwipeScene {
         didSet {
-            if frameIndex >= scene.frameCount - 1 {
-                frameIndex = scene.frameCount - 1
-            }
+            assert(frameIndex <= scene.frameCount - 1, "Invalid frameIndex")
             if !isUndoing {
                 while(undoCursor < undoStack.count) {
                     undoStack.removeLast()
