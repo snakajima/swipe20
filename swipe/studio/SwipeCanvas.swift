@@ -210,12 +210,39 @@ public struct SwipeCanvas: View {
                     .frame(height:32, alignment: .bottom)
                 }
                 if drawModel.isActive {
-                    SwipeDraw(model: drawModel, dimension: model.scene.dimension)
+                    SwipeDraw(model: drawModel, dimension: model.scene.dimension, showTutorial: model.scene.hasSingleEmptyFrame)
+                } else if model.scene.hasSingleEmptyFrame {
+                    Tutorial()
                 }
-            }
+            } // ZStack
         }
         .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    public struct Tutorial: View {
+        public var body: some View {
+            VStack(alignment: .leading) {
+                Item(symbol: .scribble, text: "scrible")
+                Item(symbol: .trash, text: "trash")
+                Item(symbol: .duplicate, text: "duplicate")
+                Item(symbol: .action, text: "action")
+            }.padding().background(
+                Rectangle().foregroundColor(.white).shadow(radius: 5)
+            )
+        }
+        public struct Item: View {
+            let symbol:SwipeSymbol
+            let text:LocalizedStringKey
+            public var body: some View {
+                HStack {
+                    symbol.frame(width:32, height:32)
+                        .rotationEffect(.radians(text=="flip" ? .pi : 0))
+                        .foregroundColor(.accentColor)
+                    Text(text).foregroundColor(.black)
+                }
+            }
+        }
     }
 }
 

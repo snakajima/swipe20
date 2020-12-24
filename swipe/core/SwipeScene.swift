@@ -52,6 +52,7 @@ public struct SwipeScene: Identifiable {
     public var id = UUID() // changes each time when editted
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
+    var hasSingleEmptyFrame:Bool { frames.count == 1 && firstFrame!.isEmpty }
 
     /// Initializes a scene with specified description (in Swipe script)
     public init(_ script:[String:Any]?, uuid:UUID? = nil) {

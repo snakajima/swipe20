@@ -30,6 +30,7 @@ class SwipeDrawModel: ObservableObject {
             }
         }
     }
+    public var isEmpty:Bool { strokes.isEmpty }
     
     private var undoCursor:Int = 0 {
         didSet {
@@ -94,6 +95,6 @@ class SwipeDrawModel: ObservableObject {
 
 struct SwipeDrawModel_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw(model: SwipeDrawModel(), dimension: CGSize(width: 640, height: 480))
+        SwipeDraw(model: SwipeDrawModel(), dimension: CGSize(width: 640, height: 480), showTutorial: true)
     }
 }

@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  swipe_dev
+
+  Created by SATOSHI NAKAJIMA on 12/24/20.
+  
+*/
+"scrible" = "絵を描く";
+"hare" = "描いたものを走らせる";
+"frog" = "描いたものをジャンプさせる";
+"flip" = "描いたものをフリップさせる";
+"trash" = "フレームを消去";
+"duplicate" = "フレームを複製";
+"action" = "エクスポート";
+"scrible here" = "ここに自由に描いてください";
+"photo" = "写真のトレース";
+"empty documents" = "上の＋ボタンをタップして新しいSwipeドキュメントを作ってください。";
+"welcome" = "Swipe Anime にようこそ!
+
+上の \"< Documents\" ボタンをタップしてスタートして下さい。";
+

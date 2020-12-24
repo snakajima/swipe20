@@ -13,6 +13,7 @@ public struct SwipeFrame {
     private(set) var elements:[String:SwipeElement]
     let duration:Double?
     let name:String?
+    public var isEmpty:Bool { elements.isEmpty }
 
     /// Initializes a frame with a specitifed description. base is a previous frame to animate from.
     init(_ script:[String:Any], base:SwipeFrame?) {
