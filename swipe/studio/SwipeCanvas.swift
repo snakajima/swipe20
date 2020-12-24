@@ -210,7 +210,7 @@ public struct SwipeCanvas: View {
                     .frame(height:32, alignment: .bottom)
                 }
                 if drawModel.isActive {
-                    SwipeDraw(model: drawModel, dimension: model.scene.dimension)
+                    SwipeDraw(model: drawModel, dimension: model.scene.dimension, showTutorial: model.scene.hasSingleEmptyFrame)
                 } else if model.scene.hasSingleEmptyFrame {
                     Tutorial()
                 }

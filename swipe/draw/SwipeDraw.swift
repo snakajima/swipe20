@@ -10,6 +10,7 @@ import SwiftUI
 struct SwipeDraw: View {
     @ObservedObject var model:SwipeDrawModel
     let dimension:CGSize
+    let showTutorial:Bool
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var image: Image? = nil
@@ -99,7 +100,7 @@ struct SwipeDraw: View {
                 .frame(height:32, alignment: .bottom)
                 .background(Color(.sRGB, red: 1.0, green: 1.0, blue: 0.8, opacity: 1.0))
             } // VStack
-            if model.isEmpty {
+            if showTutorial && model.isEmpty {
                 Tutorial()
             }
         } // ZStack
@@ -146,7 +147,7 @@ struct SwipeDraw: View {
 
 struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480))
+        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480), showTutorial: true)
     }
 }
 
