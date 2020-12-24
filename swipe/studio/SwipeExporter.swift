@@ -26,9 +26,6 @@ struct SwipeExporter: View {
                     .foregroundColor(.accentColor)
                     .padding(4)
             })
-            Rectangle()
-                .fill(Color.clear)
-                .frame(height:32)
         }
         .sheet(isPresented: $showingActivityViewController, onDismiss: nil, content: {
             ActivityViewController(activityItems: [imageURL!])

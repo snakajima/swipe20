@@ -12,7 +12,7 @@ import CoreData
 let s_previewHeight:CGFloat = 150
 #else
 let s_previewHeight:CGFloat = 100
-let s_previewHeightPhone:CGFloat = 60
+let s_previewHeightPhone:CGFloat = 62
 #endif
 
 
