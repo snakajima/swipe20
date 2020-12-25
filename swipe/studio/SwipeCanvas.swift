@@ -206,7 +206,7 @@ public struct SwipeCanvas: View {
                             HStack {
                                 SwipeSymbol.scribble.frame(width:32, height:32)
                                     .foregroundColor(.accentColor)
-                                if model.scene.tutorialState == .empty {
+                                if model.scene.tutorialState == .isEmpty {
                                     Text("scribble").padding(.trailing)
                                 }
                             }
@@ -215,7 +215,7 @@ public struct SwipeCanvas: View {
                 }
                 if drawModel.isActive {
                     SwipeDraw(model: drawModel, dimension: model.scene.dimension, tutorialState: model.scene.tutorialState)
-                } else if model.scene.tutorialState == .empty {
+                } else if model.scene.tutorialState == .isEmpty {
                     Tutorial()
                 }
             } // ZStack

@@ -43,8 +43,8 @@ public struct SwipeScene: Identifiable {
     }
     
     public enum TutorialState {
-        case empty
-        case singleElement
+        case isEmpty
+        case hasSingleElement
         case other
     }
     
@@ -62,9 +62,9 @@ public struct SwipeScene: Identifiable {
     private var hasSingleFrameWithSingleElement:Bool { frames.count == 1 && firstFrame!.hasSingleElement }
     public var tutorialState:TutorialState {
         if hasSingleEmptyFrame {
-            return .empty
+            return .isEmpty
         } else if hasSingleFrameWithSingleElement {
-            return .singleElement
+            return .hasSingleElement
         }
         return .other
     }

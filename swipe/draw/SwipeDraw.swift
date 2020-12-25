@@ -51,10 +51,12 @@ struct SwipeDraw: View {
                         .fill(markerColor)
                         .background(Color(white: 1.0, opacity: 0.1))
                         .gesture(drag)
-                        if tutorialState == .empty && model.isEmpty {
+                        if tutorialState == .isEmpty && model.isEmpty {
                             VStack {
                                 Tutorial()
                             }.frame(width:dimension.width * scale, height: dimension.height * scale)
+                        } else if tutorialState == .hasSingleElement {
+                            Text("SINGLE ELEMENT")
                         }
                     }
                 }
@@ -81,7 +83,7 @@ struct SwipeDraw: View {
                         HStack {
                             SwipeSymbol.photo.frame(width:32, height:32)
                                 .foregroundColor(.accentColor)
-                            if tutorialState == .empty {
+                            if tutorialState == .isEmpty {
                                 Text("trace")
                             }
                         }
@@ -153,7 +155,7 @@ struct SwipeDraw: View {
 
 struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480), tutorialState: .empty)
+        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480), tutorialState: .isEmpty)
     }
 }
 

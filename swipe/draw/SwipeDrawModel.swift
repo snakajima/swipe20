@@ -95,6 +95,6 @@ class SwipeDrawModel: ObservableObject {
 
 struct SwipeDrawModel_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw(model: SwipeDrawModel(), dimension: CGSize(width: 640, height: 480), tutorialState: .empty)
+        SwipeDraw(model: SwipeDrawModel(), dimension: CGSize(width: 640, height: 480), tutorialState: .isEmpty)
     }
 }
