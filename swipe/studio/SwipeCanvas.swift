@@ -187,7 +187,7 @@ public struct SwipeCanvas: View {
                                 if model.scene.tutorialState == .isEmpty {
                                     Tutorial()
                                 } else if model.scene.tutorialState == .hasSingleElement && model.isUndoStackSharrow {
-                                    Text("More Tutorial").foregroundColor(.yellow)
+                                    ElementTutorial()
                                 }
                             }
                         }.frame(width: model.scene.dimension.width * scale, height: model.scene.dimension.height * scale)
@@ -253,6 +253,15 @@ public struct SwipeCanvas: View {
                     Text(text).foregroundColor(.black)
                 }
             }
+        }
+    }
+
+    public struct ElementTutorial: View {
+        public var body: some View {
+            VStack(alignment: .leading) {
+                Text("lll")
+                Text("lll")
+            }.foregroundColor(.white).padding().opacity(0.5)
         }
     }
 }
