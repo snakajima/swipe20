@@ -53,6 +53,7 @@ public struct SwipeScene: Identifiable {
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
     var hasSingleEmptyFrame:Bool { frames.count == 1 && firstFrame!.isEmpty }
+    var hasSingleFrameWithSingleElement:Bool { frames.count == 1 && firstFrame!.hasSingleElement }
 
     /// Initializes a scene with specified description (in Swipe script)
     public init(_ script:[String:Any]?, uuid:UUID? = nil) {

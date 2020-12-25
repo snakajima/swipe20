@@ -214,7 +214,7 @@ public struct SwipeCanvas: View {
                     }
                 }
                 if drawModel.isActive {
-                    SwipeDraw(model: drawModel, dimension: model.scene.dimension, showTutorial: model.scene.hasSingleEmptyFrame)
+                    SwipeDraw(model: drawModel, dimension: model.scene.dimension, isEmptyDocument: model.scene.hasSingleEmptyFrame)
                 } else if model.scene.hasSingleEmptyFrame {
                     Tutorial()
                 }
