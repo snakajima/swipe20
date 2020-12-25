@@ -42,6 +42,12 @@ public struct SwipeScene: Identifiable {
         case cont = "continue"
     }
     
+    public enum TutorialState {
+        case empty
+        case singleElement
+        case other
+    }
+    
     private(set) var frames:[SwipeFrame]
     let dimension:CGSize
     let backgroundColor:CGColor?
@@ -52,8 +58,16 @@ public struct SwipeScene: Identifiable {
     public var id = UUID() // changes each time when editted
     var frameCount:Int { frames.count }
     var firstFrame:SwipeFrame? { frames.first }
-    var hasSingleEmptyFrame:Bool { frames.count == 1 && firstFrame!.isEmpty }
-    var hasSingleFrameWithSingleElement:Bool { frames.count == 1 && firstFrame!.hasSingleElement }
+    private var hasSingleEmptyFrame:Bool { frames.count == 1 && firstFrame!.isEmpty }
+    private var hasSingleFrameWithSingleElement:Bool { frames.count == 1 && firstFrame!.hasSingleElement }
+    public var tutorialState:TutorialState {
+        if hasSingleEmptyFrame {
+            return .empty
+        } else if hasSingleFrameWithSingleElement {
+            return .singleElement
+        }
+        return .other
+    }
 
     /// Initializes a scene with specified description (in Swipe script)
     public init(_ script:[String:Any]?, uuid:UUID? = nil) {

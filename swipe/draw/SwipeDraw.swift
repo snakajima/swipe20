@@ -10,7 +10,7 @@ import SwiftUI
 struct SwipeDraw: View {
     @ObservedObject var model:SwipeDrawModel
     let dimension:CGSize
-    let isEmptyDocument:Bool
+    let tutorialState:SwipeScene.TutorialState
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var image: Image? = nil
@@ -51,7 +51,7 @@ struct SwipeDraw: View {
                         .fill(markerColor)
                         .background(Color(white: 1.0, opacity: 0.1))
                         .gesture(drag)
-                        if isEmptyDocument && model.isEmpty {
+                        if tutorialState == .empty && model.isEmpty {
                             VStack {
                                 Tutorial()
                             }.frame(width:dimension.width * scale, height: dimension.height * scale)
@@ -81,7 +81,7 @@ struct SwipeDraw: View {
                         HStack {
                             SwipeSymbol.photo.frame(width:32, height:32)
                                 .foregroundColor(.accentColor)
-                            if isEmptyDocument {
+                            if tutorialState == .empty {
                                 Text("trace")
                             }
                         }
@@ -153,7 +153,7 @@ struct SwipeDraw: View {
 
 struct Canvas_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480), isEmptyDocument: true)
+        SwipeDraw(model: SwipeDrawModel(), dimension:CGSize(width: 640, height: 480), tutorialState: .empty)
     }
 }
 
