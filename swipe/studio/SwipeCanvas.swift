@@ -258,9 +258,10 @@ public struct SwipeCanvas: View {
 
     public struct ElementTutorial: View {
         public var body: some View {
-            VStack(alignment: .leading) {
-                Text("lll")
-                Text("lll")
+            VStack(alignment: .leading, spacing:8) {
+                Text("element tutorial 1")
+                Text("element tutorial 2")
+                Text("element tutorial 3")
             }.foregroundColor(.white).padding().opacity(0.5)
         }
     }
