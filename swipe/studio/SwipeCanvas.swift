@@ -182,6 +182,15 @@ public struct SwipeCanvas: View {
                             model.isDragging = false
                             model.isSelecting = false
                         }))
+                        HStack {
+                            if !drawModel.isActive {
+                                if model.scene.tutorialState == .isEmpty {
+                                    Tutorial()
+                                } else if model.scene.tutorialState == .hasSingleElement && model.isUndoStackSharrow {
+                                    Text("More Tutorial").foregroundColor(.yellow)
+                                }
+                            }
+                        }.frame(width: model.scene.dimension.width * scale, height: model.scene.dimension.height * scale)
                     }
                     HStack {
                         Button(action: {
@@ -215,10 +224,6 @@ public struct SwipeCanvas: View {
                 }
                 if drawModel.isActive {
                     SwipeDraw(model: drawModel, dimension: model.scene.dimension, tutorialState: model.scene.tutorialState)
-                } else if model.scene.tutorialState == .isEmpty {
-                    Tutorial()
-                } else if model.scene.tutorialState == .hasSingleElement && model.isUndoStackSharrow {
-                    Text("Foo").foregroundColor(.yellow)
                 }
             } // ZStack
         }
