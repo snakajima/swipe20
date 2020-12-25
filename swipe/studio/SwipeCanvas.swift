@@ -238,9 +238,7 @@ public struct SwipeCanvas: View {
                 Item(symbol: .trash, text: "trash")
                 Item(symbol: .duplicate, text: "duplicate")
                 Item(symbol: .action, text: "action")
-            }.padding().background(
-                Rectangle().foregroundColor(.white).shadow(radius: 5)
-            )
+            }.padding().opacity(0.5)
         }
         public struct Item: View {
             let symbol:SwipeSymbol
@@ -250,7 +248,7 @@ public struct SwipeCanvas: View {
                     symbol.frame(width:32, height:32)
                         .rotationEffect(.radians(text=="flip" ? .pi : 0))
                         .foregroundColor(.accentColor)
-                    Text(text).foregroundColor(.black)
+                    Text(text).foregroundColor(.white)
                 }
             }
         }
