@@ -262,6 +262,7 @@ public struct SwipeCanvas: View {
                 Text("element tutorial 1")
                 Text("element tutorial 2")
                 Text("element tutorial 3")
+                Text("element tutorial 4")
             }.foregroundColor(.white).padding().opacity(0.5)
         }
     }

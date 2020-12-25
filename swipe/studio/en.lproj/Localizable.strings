@@ -21,7 +21,8 @@
 Please tap the ＋ button to create a new Swipe document on the \"< Documents\" pane/page.";
 
 "element tutorial 1" = "Select an element to resize, rotate and move it.";
-"element tutorial 2" = "Duplicate frames to create animation effects.";
-"element tutorial 3" = "Tap the Export button to export it as a GIF animation.";
+"element tutorial 2" = "Duplicate frames and manipulate elements to create animation effects.";
+"element tutorial 3" = "Adding elements to the later frames creates `drawing` animations.";
+"element tutorial 4" = "Tap the Export button to export it as a GIF animation.";
 
 
