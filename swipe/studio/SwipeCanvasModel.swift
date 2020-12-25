@@ -33,7 +33,6 @@ class SwipeCanvasModel: NSObject, ObservableObject {
     }
     private var undoStack:[SwipeScene]
     public var isUndoStackSharrow:Bool {
-        print("isUndo", undoStack.count, undoCursor)
         return undoStack.count <= 2 && !redoable && selectedElement == nil
     }
 
