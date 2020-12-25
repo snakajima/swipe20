@@ -203,8 +203,13 @@ public struct SwipeCanvas: View {
                             model.selectedElement = nil
                             drawModel.activate()
                         }, label: {
-                            SwipeSymbol.scribble.frame(width:32, height:32)
-                                .foregroundColor(.accentColor)
+                            HStack {
+                                SwipeSymbol.scribble.frame(width:32, height:32)
+                                    .foregroundColor(.accentColor)
+                                if model.scene.hasSingleEmptyFrame {
+                                    Text("scribble").padding(.trailing)
+                                }
+                            }
                         })
                     }
                 }
@@ -222,7 +227,7 @@ public struct SwipeCanvas: View {
     public struct Tutorial: View {
         public var body: some View {
             VStack(alignment: .leading) {
-                Item(symbol: .scribble, text: "scrible")
+                Item(symbol: .scribble, text: "scribble")
                 Item(symbol: .trash, text: "trash")
                 Item(symbol: .duplicate, text: "duplicate")
                 Item(symbol: .action, text: "action")

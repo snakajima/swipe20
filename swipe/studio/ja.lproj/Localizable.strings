@@ -5,15 +5,16 @@
   Created by SATOSHI NAKAJIMA on 12/24/20.
   
 */
-"scrible" = "絵を描く";
+"scribble" = "絵を描く";
 "hare" = "描いたものを走らせる";
 "frog" = "描いたものをジャンプさせる";
-"flip" = "描いたものをフリップさせる";
+"flip" = "描いたものを宙返りさせる";
 "trash" = "フレームを消去";
 "duplicate" = "フレームを複製";
 "action" = "エクスポート";
-"scrible here" = "ここに自由に描いてください";
-"photo" = "写真のトレース";
+"scrible here" = "ここに指もしくはペン（iPad）で自由に描いてください。その後、以下の３つのボタンのいずれかをタップしてください。";
+"trace" = "トレース";
+"new document" = "新規作成";
 "empty documents" = "上の＋ボタンをタップして新しいSwipeドキュメントを作ってください。";
 "welcome" = "Swipe Anime にようこそ!
 

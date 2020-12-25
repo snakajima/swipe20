@@ -78,8 +78,13 @@ struct SwipeDraw: View {
                         print("photo")
                         self.showingImagePicker = true
                     }, label: {
-                        SwipeSymbol.photo.frame(width:32, height:32)
-                            .foregroundColor(.accentColor)
+                        HStack {
+                            SwipeSymbol.photo.frame(width:32, height:32)
+                                .foregroundColor(.accentColor)
+                            if showTutorial {
+                                Text("trace")
+                            }
+                        }
                     })
                     Spacer()
                     Button(action: {
@@ -128,7 +133,6 @@ struct SwipeDraw: View {
                 Item(symbol: .hare, text: "hare")
                 Item(symbol: .frog, text: "frog")
                 Item(symbol: .frog, text: "flip")
-                Item(symbol: .photo, text: "photo")
             }.padding().opacity(0.5)
         }
         public struct Item: View {

@@ -94,8 +94,11 @@ public struct SwipeStudio: View {
                         selection = scene.uuid
                     }
                 }, label: {
-                    SwipeSymbol.plus.frame(width:32, height:32)
-                        .foregroundColor(.accentColor)
+                    HStack {
+                        SwipeSymbol.plus.frame(width:32, height:32)
+                        Text("new document")
+                    }
+                    .foregroundColor(.accentColor)
                 })
                 if sceneObjects.isEmpty {
                     Text("empty documents").foregroundColor(.black)
