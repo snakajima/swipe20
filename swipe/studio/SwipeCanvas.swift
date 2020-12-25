@@ -217,6 +217,8 @@ public struct SwipeCanvas: View {
                     SwipeDraw(model: drawModel, dimension: model.scene.dimension, tutorialState: model.scene.tutorialState)
                 } else if model.scene.tutorialState == .isEmpty {
                     Tutorial()
+                } else if model.scene.tutorialState == .hasSingleElement && model.isUndoStackSharrow {
+                    Text("Foo").foregroundColor(.yellow)
                 }
             } // ZStack
         }
