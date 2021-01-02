@@ -24,7 +24,7 @@ public struct SwipeView: OSViewRepresentable {
     public struct Snapshot {
         let frameIndex: Int
         let ratio: Double
-        let callback: (OSView, CALayer) -> Void
+        let callback: (OSView, CGSize, CALayer) -> Void
     }
     let scene: SwipeScene
     @Binding var frameIndex: Int
@@ -81,7 +81,7 @@ public struct SwipeView: OSViewRepresentable {
             CATransaction.setDisableActions(true)
             swipeLayer.transform = CATransform3DMakeScale(scale, scale, 1)
             CATransaction.commit()
-            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer, osView:nsView, snapshot:snapshot)
+            context.coordinator.apply(scene:scene, at: frameIndex, layer:swipeLayer, osView:nsView, scale:self.scale, snapshot:snapshot)
         }
     }
     #endif
@@ -101,7 +101,7 @@ public struct SwipeView: OSViewRepresentable {
             renderer.makeLayer()
         }
         
-        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer, osView:OSView, snapshot:Snapshot?) {
+        func apply(scene:SwipeScene, at frameIndex:Int, layer:CALayer, osView:OSView, scale:CGFloat, snapshot:Snapshot?) {
             if let snapshot = snapshot {
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
@@ -114,7 +114,8 @@ public struct SwipeView: OSViewRepresentable {
                     frame.apply(to: layer.sublayers ?? [], ratio: snapshot.ratio, transition: .next, base: base)
                 }
                 CATransaction.commit()
-                snapshot.callback(osView, layer)
+                let size = CGSize(width:scene.dimension.width * scale, height: scene.dimension.height * scale)
+                snapshot.callback(osView, size, layer)
                 return
             }
             

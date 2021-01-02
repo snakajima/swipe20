@@ -51,9 +51,9 @@ struct SwipeExporter: View {
             let frameIndex = step / fps
             let ratio = Double(step % fps) / Double(fps)
             print("tick", step, frameIndex, ratio)
-            snapshot = SwipeView.Snapshot(frameIndex: frameIndex, ratio: ratio, callback: { (osView, layer) in
+            snapshot = SwipeView.Snapshot(frameIndex: frameIndex, ratio: ratio, callback: { (osView, size, layer) in
                 DispatchQueue.main.async {
-                    UIGraphicsBeginImageContext(osView.bounds.size)
+                    UIGraphicsBeginImageContext(size) // instead of osView.bounds.size in 0.1.1
                     //let ctx = UIGraphicsGetCurrentContext()!
                     //layer.presentation()?.render(in: ctx)
                     osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)

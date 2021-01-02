@@ -17,7 +17,7 @@ struct SwipeSceneItem: View {
     var isSelected:Bool {index == model.frameIndex }
     
     func takeSnapshot(saveState:Bool) {
-        snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, layer) in
+        snapshot = SwipeView.Snapshot(frameIndex: model.frameIndex, ratio: 0.0, callback: { (osView, size, layer) in
             UIGraphicsBeginImageContext(osView.bounds.size)
             osView.drawHierarchy(in: osView.bounds, afterScreenUpdates: false)
             if let image = UIGraphicsGetImageFromCurrentImageContext(),
